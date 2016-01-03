@@ -1,0 +1,25 @@
+{
+  "name": "generator-craftplugin",
+  "version": "1.0.0",
+  "description": "generator-craftplugins is a Yeoman generator for Craft CMS plugins",
+  "main": "app/index.js",
+  "files": [
+    "app"
+  ],
+  "repository": "khalwat/generator-craftplugin",
+  "keywords": [
+    "yeoman-generator",
+    "generator-craftplugin",
+    "craft-cms",
+    "plugin",
+    "craft"
+  ],
+  "author": "nystudio107",
+  "license": "MIT",
+  "dependencies": {
+	"ncp": "^2.0.0",
+    "chalk": "^1.1.1",
+    "inflection": "^1.7.1",
+    "yeoman-generator": "^0.20.3"
+  }
+}

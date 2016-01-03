@@ -1,0 +1,23 @@
+{#
+/**
+ * <%= pluginName %> plugin for Craft CMS
+ *
+ * <%= pluginName %> settings.html
+ *
+ * @author    <%= pluginAuthorName %>
+ * @copyright <%= copyrightNotice %>
+ * @link      <%= pluginAuthorUrl %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+	label: 'Some Setting',
+	instructions: 'Enter some setting here.',
+	id: 'someSetting',
+	name: 'someSetting', 
+	value: settings['someSetting']})
+}}
