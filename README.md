@@ -82,7 +82,7 @@ Here's an example of the output from a `yo nystudio107` generator:
 + templates/models/_SomeModel.php wrote to mycoolnewthing/models/MyCoolNewThing_SomeModel.php
 + templates/records/_SomeRecord.php wrote to mycoolnewthing/records/MyCoolNewThing_SomeRecord.php
 + templates/services/_Service.php wrote to mycoolnewthing/services/MyCoolNewThingService.php
-+ templates/templates/_settings.html wrote to mycoolnewthing/templates/MyCoolNewThingsettings.html
++ templates/templates/_settings.html wrote to mycoolnewthing/templates/settings.html
 + templates/translations/_en.php wrote to mycoolnewthing/translations/en.php
 + templates/twigextensions/_TwigExtension.php wrote to mycoolnewthing/twigextensions/MyCoolNewThingTwigExtension.php
 + templates/variables/_Variable.php wrote to mycoolnewthing/variables/MyCoolNewThingVariable.php
@@ -104,7 +104,7 @@ Here's an example of the output from a `yo nystudio107` generator:
    create mycoolnewthing/models/MyCoolNewThing_SomeModel.php
    create mycoolnewthing/records/MyCoolNewThing_SomeRecord.php
    create mycoolnewthing/services/MyCoolNewThingService.php
-   create mycoolnewthing/templates/MyCoolNewThingsettings.html
+   create mycoolnewthing/templates/settings.html
    create mycoolnewthing/translations/en.php
    create mycoolnewthing/twigextensions/MyCoolNewThingTwigExtension.php
    create mycoolnewthing/variables/MyCoolNewThingVariable.php

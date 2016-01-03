@@ -134,7 +134,7 @@ const TEMPLATE_FILES = [
         src: "templates/_settings.html",
         destDir: "templates/",
         dest: "settings.html",
-        prefix: true
+        prefix: false
     },
     {
         src: "translations/_en.php",
