@@ -27,34 +27,91 @@
 
 const QUESTIONS = [
     {
+	    type: "input",
         name: 'pluginName',
-        message: 'Plugin name',
+        message: 'Plugin name:',
         default: 'Generic'
     },
     {
+	    type: "input",
         name: 'pluginDescription',
-        message: 'Short description of the plugin',
+        message: 'Short description of the plugin:',
         default: 'This is a generic Craft CMS plugin'
     },
     {
+	    type: "input",
         name: 'pluginVersion',
-        message: 'Plugin initial version',
-        default: '1.0.0'
+        message: 'Plugin initial version:',
+        default: '1.0.0',
+        store: true
     },
     {
+	    type: "input",
         name: 'pluginAuthorName',
-        message: 'Plugin author name',
-        default: 'John Doe'
+        message: 'Plugin author name:',
+        default: 'John Doe',
+        store: true
     },
     {
+	    type: "input",
         name: 'pluginAuthorUrl',
-        message: 'Plugin author URL',
-        default: 'http://DoeDesign.com/'
+        message: 'Plugin author URL:',
+        default: 'http://DoeDesign.com/',
+        store: true
     },
     {
+	    type: "input",
         name: 'pluginAuthorGithub',
-        message: 'Plugin author GitHub.com name',
-        default: ''
+        message: 'Plugin author GitHub.com name:',
+        store: true
+    },
+    {
+	    type: "checkbox",
+        name: 'pluginComponents',
+        message: 'Select what components your plugin will have:',
+        choices: [
+			{
+				key: "controllers",
+				name: "Controllers",
+				value: "controllers"
+			},
+			{
+				key: "elementtypes",
+				name: "ElementTypes",
+				value: "elementtypes"
+			},
+			{
+				key: "fieldtypes",
+				name: "FieldTypes",
+				value: "fieldtypes"
+			},
+			{
+				key: "models",
+				name: "Models",
+				value: "models"
+			},
+			{
+				key: "records",
+				name: "Records",
+				value: "records"
+			},
+			{
+				key: "services",
+				name: "Services",
+				value: "services"
+			},
+			{
+				key: "twigextensions",
+				name: "TwigExtensions",
+				value: "twigextensions"
+			},
+			{
+				key: "variables",
+				name: "Variables",
+				value: "variables"
+			},
+		],
+        store: true
     },
 ];
 
@@ -74,6 +131,14 @@ const TEMPLATE_FILES = [
         src: "_Plugin.php",
         destDir: "",
         dest: "Plugin.php",
+        requires: "",
+        prefix: true
+    },
+    {
+        src: "_PluginWithTwig.php",
+        destDir: "",
+        dest: "Plugin.php",
+        requires: "twigextensions",
         prefix: true
     },
     {
@@ -98,36 +163,63 @@ const TEMPLATE_FILES = [
         src: "controllers/_Controller.php",
         destDir: "controllers/",
         dest: "Controller.php",
+        requires: "controllers",
         prefix: true
     },
     {
         src: "elementtypes/_SomeElementType.php",
         destDir: "elementtypes/",
         dest: "_SomeElementType.php",
+        requires: "elementtypes",
         prefix: true
     },
     {
         src: "fieldtypes/_SomeFieldType.php",
         destDir: "fieldtypes/",
         dest: "_SomeFieldType.php",
+        requires: "fieldtypes",
         prefix: true
+    },
+    {
+        src: "templates/_field.html",
+        destDir: "templates/",
+        dest: "field.html",
+        requires: "fieldtypes",
+        prefix: false
+    },
+    {
+        src: "resources/css/_field.css",
+        destDir: "resources/css/",
+        dest: "field.css",
+        requires: "fieldtypes",
+        prefix: false
+    },
+    {
+        src: "resources/js/_field.js",
+        destDir: "resources/js/",
+        dest: "field.js",
+        requires: "fieldtypes",
+        prefix: false
     },
     {
         src: "models/_SomeModel.php",
         destDir: "models/",
         dest: "_SomeModel.php",
+        requires: "models",
         prefix: true
     },
     {
         src: "records/_SomeRecord.php",
         destDir: "records/",
         dest: "_SomeRecord.php",
+        requires: "records",
         prefix: true
     },
     {
         src: "services/_Service.php",
         destDir: "services/",
         dest: "Service.php",
+        requires: "services",
         prefix: true
     },
     {
@@ -146,12 +238,14 @@ const TEMPLATE_FILES = [
         src: "twigextensions/_TwigExtension.php",
         destDir: "twigextensions/",
         dest: "TwigExtension.php",
+        requires: "twigextensions",
         prefix: true
     },
     {
         src: "variables/_Variable.php",
         destDir: "variables/",
         dest: "Variable.php",
+        requires: "variables",
         prefix: true
     },
     {
@@ -292,17 +386,25 @@ module.exports = yo.generators.Base.extend({
         for (var i = 0; i < TEMPLATE_FILES.length; i++) {
             var file = TEMPLATE_FILES[i];
             var destFile;
-            
-            if (file.prefix)
-            	destFile = this.destDir + file.destDir + this.answers.pluginHandle + file.dest;
-            else
-            	destFile = this.destDir + file.destDir + file.dest;
-            console.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
-            this.fs.copyTpl(
-                this.templatePath(file.src),
-                this.destinationPath(destFile),
-                this.answers
-				);
+            var skip = false;
+			
+			if (file.requires) {
+	            if (this.answers.pluginComponents.indexOf(file.requires) == -1) {
+		            skip = true;
+	            	}
+            	}
+            if (!skip) {
+	            if (file.prefix)
+	            	destFile = this.destDir + file.destDir + this.answers.pluginHandle + file.dest;
+	            else
+	            	destFile = this.destDir + file.destDir + file.dest;
+	            console.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
+	            this.fs.copyTpl(
+	                this.templatePath(file.src),
+	                this.destinationPath(destFile),
+	                this.answers
+					);
+				}
 			}
 
 /* -- Copy boilerplate files */
@@ -344,7 +446,6 @@ module.exports = yo.generators.Base.extend({
         }
 
         console.log("Your Craft CMS plugin " + chalk.green(this.answers.pluginHandle) + " has been created.");
-        console.log('Delete any folders that your plugin will not need, for instance if you do not plan to have an ElementType, delete the ' + chalk.green('elementtype') + ' folder.');
         console.log('The default LICENSE.txt is the ' + chalk.green('MIT license') +  '; feel free to change it as you see fit.');
         console.log(chalk.green('> All set.  Have a nice day.'));
         },
@@ -378,4 +479,28 @@ String.prototype.camelize = function() {
 // Capitalize the first letter of a string
 String.prototype.capitalizeFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+// Mimic PHP's in_array()
+if (!Array.prototype.indexOf)
+{
+  Array.prototype.indexOf = function(elt /*, from*/)
+  {
+    var len = this.length >>> 0;
+
+    var from = Number(arguments[1]) || 0;
+    from = (from < 0)
+         ? Math.ceil(from)
+         : Math.floor(from);
+    if (from < 0)
+      from += len;
+
+    for (; from < len; from++)
+    {
+      if (from in this &&
+          this[from] === elt)
+        return from;
+    }
+    return -1;
+  };
 }

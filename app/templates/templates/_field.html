@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= pluginName %> settings.html
+ * <%= pluginName %> field.html
  *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
@@ -14,13 +14,11 @@
 
 {% import "_includes/forms" as forms %}
 
-{% includeCssResource "<%= pluginDirName %>/css/style.css" %}
-{% includeJsResource "<%= pluginDirName %>/js/script.js" %}
-
 {{ forms.textField({
-	label: 'Some Setting',
-	instructions: 'Enter some setting here.',
-	id: 'someSetting',
-	name: 'someSetting', 
-	value: settings['someSetting']})
-}}
+	id: id ~ 'someField',
+	class: 'nicetext',
+	name: name ~ '[someField]',
+	value: values.someField,
+	errors: values.getErrors('someField'),
+	required: false,
+}) }}

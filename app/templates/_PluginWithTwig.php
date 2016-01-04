@@ -135,6 +135,18 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
 	/**
+	 * Add any Twig extensions.
+	 *
+	 * @return mixed
+	 */
+    public function addTwigExtension()
+    {
+        Craft::import('plugins.<%= pluginDirName %>.twigextensions.<%= pluginHandle %>TwigExtension');
+
+        return new <%= pluginHandle %>TwigExtension();
+    }
+
+	/**
 	 * Called right before your plugin’s row gets stored in the plugins database table, and tables have been created
 	 * for it based on its records.
 	 */

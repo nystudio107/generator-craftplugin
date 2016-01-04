@@ -1,6 +1,6 @@
 {
   "name": "generator-craftplugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "generator-craftplugin is a Yeoman generator for Craft CMS plugins",
   "main": "app/index.js",
   "files": [

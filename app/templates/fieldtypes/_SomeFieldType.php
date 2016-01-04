@@ -61,7 +61,38 @@ class <%= pluginHandle %>_SomeFieldType extends BaseFieldType
 	 */
     public function getInputHtml($name, $value)
     {
+        if (!$value)
+        	$value = new <%= pluginHandle %>_SomeFieldModel();
 
+        $id = craft()->templates->formatInputId($name);
+        $namespacedId = craft()->templates->namespaceInputId($id);
+
+        // Include our Javascript & CSS
+        craft()->templates->includeCssResource('<%= pluginDirName %>/css/field.css');
+        craft()->templates->includeJsResource('<%= pluginDirName %>/js/field.js');
+
+/* -- Variables to pass down to our field.js */
+
+		$jsonVars = array(
+            'id' => $id,
+            'name' => $name,
+            'namespace' => $namespacedId,
+            'prefix' => craft()->templates->namespaceInputId(""),
+			);
+		
+		$jsonVars = json_encode($jsonVars);
+        craft()->templates->includeJs("$('#{$namespacedId}').<%= pluginHandle %>FieldType(" . $jsonVars . ");");
+
+/* -- Variables to pass down to our rendered template */
+
+		$variables = array(
+            'id' => $id,
+            'name' => $name,
+            'namespaceId' => $namespacedId,
+            'values' => $value
+			);
+
+        return craft()->templates->render('<%= pluginDirName %>/field', $variables);
     }
 
 	/**
