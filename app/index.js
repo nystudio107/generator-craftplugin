@@ -231,7 +231,7 @@ const TEMPLATE_FILES = [
     {
         src: "translations/_en.php",
         destDir: "translations/",
-        dest: "_en.php",
+        dest: "en.php",
         prefix: false
     },
     {
