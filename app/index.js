@@ -26,6 +26,9 @@
 -------------------------------------------------------------------------------- */
 
 const QUESTIONS = [
+
+/* -- Standard questions */
+
     {
 	    type: "input",
         name: 'pluginName',
@@ -113,6 +116,50 @@ const QUESTIONS = [
 		],
         store: true
     },
+    
+/* -- Questions dependent on pluginComponents choices */
+
+    {
+		when: function (answers) {
+			return (answers.pluginComponents.indexOf('elementtypes') != -1);
+		},
+	    type: "input",
+        name: 'elementName',
+        message: 'Name of your ElementType:',
+        default: '',
+        store: false
+    },
+    {
+		when: function (answers) {
+			return (answers.pluginComponents.indexOf('fieldtypes') != -1);
+		},
+	    type: "input",
+        name: 'fieldName',
+        message: 'Name of your FieldType:',
+        default: '',
+        store: false
+    },
+    {
+		when: function (answers) {
+			return (answers.pluginComponents.indexOf('models') != -1);
+		},
+	    type: "input",
+        name: 'modelName',
+        message: 'Name of your Model:',
+        default: '',
+        store: false
+    },
+    {
+		when: function (answers) {
+			return (answers.pluginComponents.indexOf('records') != -1);
+		},
+	    type: "input",
+        name: 'recordName',
+        message: 'Name of your Record:',
+        default: '',
+        store: false
+    },
+
 ];
 
 /* --------------------------------------------------------------------------------
@@ -167,17 +214,19 @@ const TEMPLATE_FILES = [
         prefix: true
     },
     {
-        src: "elementtypes/_SomeElementType.php",
+        src: "elementtypes/_ElementType.php",
         destDir: "elementtypes/",
-        dest: "_SomeElementType.php",
+        dest: "ElementType.php",
         requires: "elementtypes",
+        subPrefix: "elementName",
         prefix: true
     },
     {
-        src: "fieldtypes/_SomeFieldType.php",
+        src: "fieldtypes/_FieldType.php",
         destDir: "fieldtypes/",
-        dest: "_SomeFieldType.php",
+        dest: "FieldType.php",
         requires: "fieldtypes",
+        subPrefix: "fieldName",
         prefix: true
     },
     {
@@ -202,17 +251,19 @@ const TEMPLATE_FILES = [
         prefix: false
     },
     {
-        src: "models/_SomeModel.php",
+        src: "models/_Model.php",
         destDir: "models/",
-        dest: "_SomeModel.php",
+        dest: "Model.php",
         requires: "models",
+        subPrefix: "modelName",
         prefix: true
     },
     {
-        src: "records/_SomeRecord.php",
+        src: "records/_Record.php",
         destDir: "records/",
-        dest: "_SomeRecord.php",
+        dest: "Record.php",
         requires: "records",
+        subPrefix: "recordName",
         prefix: true
     },
     {
@@ -315,7 +366,7 @@ module.exports = yo.generators.Base.extend({
 /* -- initializing --  Your initialization methods (checking current project state, getting configs, etc) */
 
     initializing: function() {
-        console.log(chalk.yellow.bold('[ Initializing ]'));
+        this.log(chalk.yellow.bold('[ Initializing ]'));
         
         this.answers = {};
         
@@ -324,7 +375,7 @@ module.exports = yo.generators.Base.extend({
 /* -- prompting -- Where you prompt users for options (where you'd call this.prompt()) */
 
     prompting: function() {
-        console.log(chalk.yellow.bold('[ Prompting ]'));
+        this.log(chalk.yellow.bold('[ Prompting ]'));
 
         var done = this.async();
 
@@ -362,13 +413,13 @@ module.exports = yo.generators.Base.extend({
 /* -- configuring -- Saving configurations and configure the project (creating .editorconfig files and other metadata files) */
 
     configuring: function() {
-        console.log(chalk.yellow.bold('[ Configuring ]'));
-        console.log(this.answers);
+        this.log(chalk.yellow.bold('[ Configuring ]'));
+        this.log(this.answers);
 
 /* -- Create the destination folder */
 
 		var dir = this.answers.pluginDirName;
-        console.log('+ Creating Craft plugin folder ' + chalk.green(dir));
+        this.log('+ Creating Craft plugin folder ' + chalk.green(dir));
 		if (!fs.existsSync(dir)){
 		    fs.mkdirSync(dir);
 			}
@@ -378,11 +429,11 @@ module.exports = yo.generators.Base.extend({
 /* -- writing -- Where you write the generator specific files (routes, controllers, etc) */
 
     writing: function() {
-        console.log(chalk.yellow.bold('[ Writing ]'));
+        this.log(chalk.yellow.bold('[ Writing ]'));
     
 /* -- Write template files */
 
-        console.log(chalk.green('> Writing template files'));
+        this.log(chalk.green('> Writing template files'));
         for (var i = 0; i < TEMPLATE_FILES.length; i++) {
             var file = TEMPLATE_FILES[i];
             var destFile;
@@ -394,11 +445,16 @@ module.exports = yo.generators.Base.extend({
 	            	}
             	}
             if (!skip) {
-	            if (file.prefix)
-	            	destFile = this.destDir + file.destDir + this.answers.pluginHandle + file.dest;
+	            if (file.prefix) {
+		            var subPrefix = "";
+		            if (file.subPrefix) {
+			            subPrefix = "_" + this.answers[file.subPrefix];
+		            }
+	            	destFile = this.destDir + file.destDir + this.answers.pluginHandle + subPrefix + file.dest;
+	            	}
 	            else
 	            	destFile = this.destDir + file.destDir + file.dest;
-	            console.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
+	            this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
 	            this.fs.copyTpl(
 	                this.templatePath(file.src),
 	                this.destinationPath(destFile),
@@ -409,11 +465,11 @@ module.exports = yo.generators.Base.extend({
 
 /* -- Copy boilerplate files */
 
-        console.log(chalk.green('> Copying boilerplate files'));
+        this.log(chalk.green('> Copying boilerplate files'));
         for (var i = 0; i < BOILERPLATE_FILES.length; i++) {
             var file = BOILERPLATE_FILES[i];
             var destFile = this.destDir + file.src;
-            console.log('+ ' + this.answers.templatesDir + "/" + file.src + ' copied to ' + chalk.green(destFile));
+            this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' copied to ' + chalk.green(destFile));
             this.fs.copy(
                 this.templatePath(file.src),
                 this.destinationPath(destFile)
@@ -421,33 +477,33 @@ module.exports = yo.generators.Base.extend({
         	}
 
 
-	    console.log(chalk.green('> Sync to file system'));
+	    this.log(chalk.green('> Sync to file system'));
 	    },
         
 /* -- install -- Where installation are run (npm, bower) */
 
     install: function() {
-        console.log(chalk.yellow.bold('[ Install ]'));
+        this.log(chalk.yellow.bold('[ Install ]'));
 
         },
         
 /* -- end - Called last, cleanup, say good bye, etc */
 
     end: function() {
-        console.log(chalk.yellow.bold('[ End ]'));      
+        this.log(chalk.yellow.bold('[ End ]'));      
 
 /* -- Craft base plugins */
 
-        console.log(chalk.green('> End install commands'));
+        this.log(chalk.green('> End install commands'));
         for (var i = 0; i < END_INSTALL_COMMANDS.length; i++) {
             var command = END_INSTALL_COMMANDS[i];
-            console.log('+ ' + chalk.green(command.name) + ' executed');
+            this.log('+ ' + chalk.green(command.name) + ' executed');
             child_process.execSync(command.command);
         }
 
-        console.log("Your Craft CMS plugin " + chalk.green(this.answers.pluginHandle) + " has been created.");
-        console.log('The default LICENSE.txt is the ' + chalk.green('MIT license') +  '; feel free to change it as you see fit.');
-        console.log(chalk.green('> All set.  Have a nice day.'));
+        this.log("Your Craft CMS plugin " + chalk.green(this.answers.pluginHandle) + " has been created.");
+        this.log('The default LICENSE.txt is the ' + chalk.green('MIT license') +  '; feel free to change it as you see fit.');
+        this.log(chalk.green('> All set.  Have a nice day.'));
         },
         
 });  

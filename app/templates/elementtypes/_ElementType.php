@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * Some ElementType
+ * <%= elementName %> ElementType
  *
  * --snip--
  * --snip--
@@ -16,7 +16,7 @@
 
 namespace Craft;
 
-class <%= pluginHandle %>_SomeElementType extends BaseElementType
+class <%= pluginHandle %>_<%= elementName %>ElementType extends BaseElementType
 {
     /**
      * Returns this element type's name.
@@ -25,7 +25,7 @@ class <%= pluginHandle %>_SomeElementType extends BaseElementType
      */
     public function getName()
     {
-        return Craft::t('<%= pluginName %> Some');
+        return Craft::t('<%= pluginName %> <%= elementName %>');
     }
 
     /**

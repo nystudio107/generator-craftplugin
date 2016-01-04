@@ -12,7 +12,7 @@
 
  ;(function ( $, window, document, undefined ) {
 
-    var pluginName = "<%= pluginHandle %>FieldType",
+    var pluginName = "<%= pluginHandle %>_<%= fieldName %>FieldType",
         defaults = {
         };
 

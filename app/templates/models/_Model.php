@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * Some Model
+ * <%= modelName %> Model
  *
  * --snip--
  * Models are containers for data. Just about every time information is passed between services, controllers, and
@@ -20,7 +20,7 @@
 
 namespace Craft;
 
-class <%= pluginHandle %>_SomeModel extends BaseElementModel
+class <%= pluginHandle %>_<%= modelName %>Model extends BaseElementModel
 {
     /**
      * @access protected
@@ -29,6 +29,7 @@ class <%= pluginHandle %>_SomeModel extends BaseElementModel
     protected function defineAttributes()
     {
         return array_merge(parent::defineAttributes(), array(
+            'someField'		=> array(AttributeType::String, 'default' => 'some value'),
         ));
     }
 

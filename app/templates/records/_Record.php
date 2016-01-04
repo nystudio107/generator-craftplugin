@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * Some Record
+ * <%= recordName %> Record
  *
  * --snip--
  * Active record models (or “records”) are like models, except with a database-facing layer built on top. On top of
@@ -31,7 +31,7 @@
 
 namespace Craft;
 
-class <%= pluginHandle %>_SomeRecord extends BaseRecord
+class <%= pluginHandle %>_<%= recordName %>Record extends BaseRecord
 {
 	/**
 	 * Returns the name of the database table the model is associated with (sans table prefix). By convention,
@@ -41,7 +41,7 @@ class <%= pluginHandle %>_SomeRecord extends BaseRecord
 	 */
     public function getTableName()
     {
-        return '<%= pluginDirName %>';
+        return '<%= pluginDirName %>_<%= recordName %>';
     }
 
  	/**
@@ -53,6 +53,7 @@ class <%= pluginHandle %>_SomeRecord extends BaseRecord
    protected function defineAttributes()
     {
         return array(
+            'someField'		=> array(AttributeType::String, 'default' => ''),
 		);
     }
 

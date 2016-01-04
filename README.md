@@ -30,6 +30,8 @@ generator-craftplugin will ask you a few questions:
 * **Plugin author GitHub.com name:** - enter the GitHub.com handle of the author of the plugin.  If you don't have one, just leave it blank
 * **Select what components your plugin will have:** - select the components you want included in your plugin, using the arrow keys to change the component, and `<space>` to select them.
 
+If you selected `ElementTypes`, `FieldTypes`, `Models`, or `Records` components, it will also ask you for a name for each one, respectively.
+
 generator-craftplugin will then do the following for you:
 
 1. Create the `pluginname` directory in the current directory, properly lower-cased and stripped of spaces
@@ -59,6 +61,10 @@ Here's an example of the output from a `yo nystudio107` generator:
  ◉ Services
  ◉ TwigExtensions
  ◉ Variables
+? Name of your ElementType: Satu
+? Name of your FieldType: Dua
+? Name of your Model: Tiga
+? Name of your Record: Empat
 [ Configuring ]
 { pluginName: 'My Cool new thing!',
   pluginDescription: 'This is a generic Craft CMS plugin',
@@ -75,11 +81,15 @@ Here's an example of the output from a `yo nystudio107` generator:
      'services',
      'twigextensions',
      'variables' ],
+  elementName: 'Satu',
+  fieldName: 'Dua',
+  modelName: 'Tiga',
+  recordName: 'Empat',
   templatesDir: 'templates',
   pluginDirName: 'mycoolnewthing',
   pluginCamelHandle: 'myCoolNewThing',
   pluginHandle: 'MyCoolNewThing',
-  dateNow: '2016-01-04T00:48:14.955Z',
+  dateNow: '2016-01-04T04:32:27.948Z',
   niceDate: '2016.01.04',
   copyrightNotice: 'Copyright (c) 2016 John Doe',
   pluginDownloadUrl: 'https://github.com/doedesign/mycoolnewthing/archive/master.zip',
@@ -95,16 +105,16 @@ Here's an example of the output from a `yo nystudio107` generator:
 + templates/_LICENSE.txt wrote to mycoolnewthing/LICENSE.txt
 + templates/_releases.json wrote to mycoolnewthing/releases.json
 + templates/controllers/_Controller.php wrote to mycoolnewthing/controllers/MyCoolNewThingController.php
-+ templates/elementtypes/_SomeElementType.php wrote to mycoolnewthing/elementtypes/MyCoolNewThing_SomeElementType.php
-+ templates/fieldtypes/_SomeFieldType.php wrote to mycoolnewthing/fieldtypes/MyCoolNewThing_SomeFieldType.php
++ templates/elementtypes/_ElementType.php wrote to mycoolnewthing/elementtypes/MyCoolNewThing_SatuElementType.php
++ templates/fieldtypes/_FieldType.php wrote to mycoolnewthing/fieldtypes/MyCoolNewThing_DuaFieldType.php
 + templates/templates/_field.html wrote to mycoolnewthing/templates/field.html
 + templates/resources/css/_field.css wrote to mycoolnewthing/resources/css/field.css
 + templates/resources/js/_field.js wrote to mycoolnewthing/resources/js/field.js
-+ templates/models/_SomeModel.php wrote to mycoolnewthing/models/MyCoolNewThing_SomeModel.php
-+ templates/records/_SomeRecord.php wrote to mycoolnewthing/records/MyCoolNewThing_SomeRecord.php
++ templates/models/_Model.php wrote to mycoolnewthing/models/MyCoolNewThing_TigaModel.php
++ templates/records/_Record.php wrote to mycoolnewthing/records/MyCoolNewThing_EmpatRecord.php
 + templates/services/_Service.php wrote to mycoolnewthing/services/MyCoolNewThingService.php
 + templates/templates/_settings.html wrote to mycoolnewthing/templates/settings.html
-+ templates/translations/_en.php wrote to mycoolnewthing/translations/_en.php
++ templates/translations/_en.php wrote to mycoolnewthing/translations/en.php
 + templates/twigextensions/_TwigExtension.php wrote to mycoolnewthing/twigextensions/MyCoolNewThingTwigExtension.php
 + templates/variables/_Variable.php wrote to mycoolnewthing/variables/MyCoolNewThingVariable.php
 + templates/resources/css/_style.css wrote to mycoolnewthing/resources/css/style.css
@@ -120,16 +130,16 @@ Here's an example of the output from a `yo nystudio107` generator:
    create mycoolnewthing/LICENSE.txt
    create mycoolnewthing/releases.json
    create mycoolnewthing/controllers/MyCoolNewThingController.php
-   create mycoolnewthing/elementtypes/MyCoolNewThing_SomeElementType.php
-   create mycoolnewthing/fieldtypes/MyCoolNewThing_SomeFieldType.php
+   create mycoolnewthing/elementtypes/MyCoolNewThing_SatuElementType.php
+   create mycoolnewthing/fieldtypes/MyCoolNewThing_DuaFieldType.php
    create mycoolnewthing/templates/field.html
    create mycoolnewthing/resources/css/field.css
    create mycoolnewthing/resources/js/field.js
-   create mycoolnewthing/models/MyCoolNewThing_SomeModel.php
-   create mycoolnewthing/records/MyCoolNewThing_SomeRecord.php
+   create mycoolnewthing/models/MyCoolNewThing_TigaModel.php
+   create mycoolnewthing/records/MyCoolNewThing_EmpatRecord.php
    create mycoolnewthing/services/MyCoolNewThingService.php
    create mycoolnewthing/templates/settings.html
-   create mycoolnewthing/translations/_en.php
+   create mycoolnewthing/translations/en.php
    create mycoolnewthing/twigextensions/MyCoolNewThingTwigExtension.php
    create mycoolnewthing/variables/MyCoolNewThingVariable.php
    create mycoolnewthing/resources/css/style.css
@@ -148,6 +158,11 @@ The default LICENSE.txt is the MIT license; feel free to change it as you see fi
 ```
 
 ## Changelog
+
+### 1.0.2 -- 2016.01.04
+
+* Added sub-questions for `ElementTypes`, `FieldTypes`, `Models`, and `Records` so that you can specify the name for each
+* Updated README.md
 
 ### 1.0.1 -- 2016.01.04
 
