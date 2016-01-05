@@ -131,7 +131,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
 	 */
     public function hasCpSection()
     {
-        return true;
+        return false;
     }
 
 	/**

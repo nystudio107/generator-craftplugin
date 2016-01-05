@@ -5,10 +5,10 @@
  * <%= pluginName %> Twig Extension
  *
  * --snip--
- * All of your plugin’s business logic should go in services, including saving data, retrieving data, etc. They
- * provide APIs that your controllers, template variables, and other plugins can interact with.
+ * Twig can be extended in many ways; you can add extra tags, filters, tests, operators, global variables, and
+ * functions. You can even extend the parser itself with node visitors.
  *
- * https://craftcms.com/docs/plugins/services
+ * http://twig.sensiolabs.org/doc/advanced.html
  * --snip--
  * 
  * @author    <%= pluginAuthorName %>

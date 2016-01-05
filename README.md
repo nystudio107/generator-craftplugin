@@ -157,7 +157,19 @@ The default LICENSE.txt is the MIT license; feel free to change it as you see fi
 > All set.  Have a nice day.
 ```
 
+## Command line options
+
+The `craftplugin` generator can also be passed arguments via the command line, bypassing the interactive prompts.  So it's possible do do something like this:
+
+    yo craftplugin --pluginComponents="controllers,elementtypes,fieldtypes,models,records,services,twigextensions,variables" --pluginName="Gimme the works" --pluginDescription="Some cool plugin" --pluginVersion="1.0.0" --pluginAuthorName="Andrew Welch" --pluginAuthorUrl="http://nystudio107.com" --pluginAuthorGithub="khalwat" --elementName="Satu" --fieldName="Dua" --modelName="Tiga" --recordName="Empat"
+
 ## Changelog
+
+### 1.0.3 -- 2016.01.05
+
+* You can now access the generator via the web at [pluginfactory.io](http://pluginfactory.io)
+* Added support for command line arguments being passed to the generator
+* Updated README.md
 
 ### 1.0.2 -- 2016.01.04
 

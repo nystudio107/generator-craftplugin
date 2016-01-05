@@ -5,6 +5,12 @@
  * <%= elementName %> ElementType
  *
  * --snip--
+ * Element Types are the classes used to identify each of these types of elements in Craft. There’s a
+ * “UserElementType”, there’s an “AssetElementType”, and so on. If you’ve ever developed a custom Field Type class
+ * before, this should sound familiar. The relationship between an element and an Element Type is the same as that
+ * between a field and a Field Type.
+ *
+ * http://pixelandtonic.com/blog/craft-element-types
  * --snip--
  * 
  * @author    <%= pluginAuthorName %>

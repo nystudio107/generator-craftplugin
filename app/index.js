@@ -121,7 +121,7 @@ const QUESTIONS = [
 
     {
 		when: function (answers) {
-			return (answers.pluginComponents.indexOf('elementtypes') != -1);
+			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('elementtypes') != -1);
 		},
 	    type: "input",
         name: 'elementName',
@@ -131,7 +131,7 @@ const QUESTIONS = [
     },
     {
 		when: function (answers) {
-			return (answers.pluginComponents.indexOf('fieldtypes') != -1);
+			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('fieldtypes') != -1);
 		},
 	    type: "input",
         name: 'fieldName',
@@ -141,7 +141,7 @@ const QUESTIONS = [
     },
     {
 		when: function (answers) {
-			return (answers.pluginComponents.indexOf('models') != -1);
+			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('models') != -1);
 		},
 	    type: "input",
         name: 'modelName',
@@ -151,7 +151,7 @@ const QUESTIONS = [
     },
     {
 		when: function (answers) {
-			return (answers.pluginComponents.indexOf('records') != -1);
+			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('records') != -1);
 		},
 	    type: "input",
         name: 'recordName',
@@ -360,8 +360,11 @@ var chalk           = require('chalk');
 var fs              = require('fs');
 var child_process   = require('child_process');
 var path            = require('path');
+var optionOrPrompt	= require('yeoman-option-or-prompt');
 
 module.exports = yo.generators.Base.extend({
+    
+    _optionOrPrompt: optionOrPrompt,
     
 /* -- initializing --  Your initialization methods (checking current project state, getting configs, etc) */
 
@@ -379,35 +382,39 @@ module.exports = yo.generators.Base.extend({
 
         var done = this.async();
 
-/* -- Ask them the name they want for this app */
+/* -- Ask some questions about how they want the plugin customized */
 
-        this.prompt(QUESTIONS, function(answers) {
-	        	var now = new Date();
-	        	
-                this.answers = answers;
-                this.answers.templatesDir = 'templates';
-                this.answers.pluginDirName = this.answers.pluginName.directorize();
-                this.answers.pluginCamelHandle = this.answers.pluginName.camelize();
-                this.answers.pluginHandle = this.answers.pluginCamelHandle.capitalizeFirstLetter();
+        if (this.options.pluginComponents) {
+	    	this.options.pluginComponents = this.options.pluginComponents.split(',');
+			}
+
+		this._optionOrPrompt(QUESTIONS, function(answers) {
+        	var now = new Date();
+        	
+            this.answers = answers;
+            this.answers.templatesDir = 'templates';
+            this.answers.pluginDirName = this.answers.pluginName.directorize();
+            this.answers.pluginCamelHandle = this.answers.pluginName.camelize();
+            this.answers.pluginHandle = this.answers.pluginCamelHandle.capitalizeFirstLetter();
 
 /* -- Auto-fill some variables we'll be using in our templates */
 
-                this.answers.dateNow = now.toISOString();
-                this.answers.niceDate = now.yyyymmdd();
+            this.answers.dateNow = now.toISOString();
+            this.answers.niceDate = now.yyyymmdd();
 
-                this.answers.copyrightNotice = "Copyright (c) " + now.getFullYear() + " " + this.answers.pluginAuthorName;
-                this.answers.pluginDownloadUrl = "???";
-                this.answers.pluginDocsUrl = "???";
-                this.answers.pluginReleasesUrl = "???";
-                this.answers.pluginCloneUrl = "???";
-                if (this.answers.pluginAuthorGithub) {
-                	this.answers.pluginDownloadUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/archive/master.zip";
-                	this.answers.pluginDocsUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/blob/master/README.md";
-                	this.answers.pluginReleasesUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/master/releases.json";
-                	this.answers.pluginCloneUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + ".git";
-                	}
-                done();
-            }.bind(this));;
+            this.answers.copyrightNotice = "Copyright (c) " + now.getFullYear() + " " + this.answers.pluginAuthorName;
+            this.answers.pluginDownloadUrl = "???";
+            this.answers.pluginDocsUrl = "???";
+            this.answers.pluginReleasesUrl = "???";
+            this.answers.pluginCloneUrl = "???";
+            if (this.answers.pluginAuthorGithub) {
+            	this.answers.pluginDownloadUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/archive/master.zip";
+            	this.answers.pluginDocsUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/blob/master/README.md";
+            	this.answers.pluginReleasesUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/master/releases.json";
+            	this.answers.pluginCloneUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + ".git";
+            	}
+            done();
+        	}.bind(this));;
         },
         
 /* -- configuring -- Saving configurations and configure the project (creating .editorconfig files and other metadata files) */
@@ -448,7 +455,7 @@ module.exports = yo.generators.Base.extend({
 	            if (file.prefix) {
 		            var subPrefix = "";
 		            if (file.subPrefix) {
-			            subPrefix = "_" + this.answers[file.subPrefix];
+			            subPrefix = "_" + this.answers[file.subPrefix].camelize().capitalizeFirstLetter();
 		            }
 	            	destFile = this.destDir + file.destDir + this.answers.pluginHandle + subPrefix + file.dest;
 	            	}

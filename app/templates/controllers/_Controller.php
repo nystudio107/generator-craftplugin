@@ -38,7 +38,7 @@ class <%= pluginHandle %>Controller extends BaseController
 		);
 	
 	/**
-	 * Handle a request going to our plugin's index action URL, e.g.: actions/<%= pluginHandle %>
+	 * Handle a request going to our plugin's index action URL, e.g.: actions/<%= pluginCamelHandle %>
 	 */
     public function actionIndex()
     {   
