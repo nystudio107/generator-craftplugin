@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= fieldName %> FieldType
+ * <%= pluginHandle %><%= fieldName %> FieldType
  *
  * --snip--
  * Whenever someone creates a new field in Craft, they must specify what type of field it is. The system comes with
@@ -20,7 +20,7 @@
 
 namespace Craft;
 
-class <%= pluginHandle %>_<%= fieldName %>FieldType extends BaseFieldType
+class <%= pluginHandle %><%= fieldName %>FieldType extends BaseFieldType
 {
 	/**
 	 * Returns the name of the fieldtype.
@@ -29,7 +29,7 @@ class <%= pluginHandle %>_<%= fieldName %>FieldType extends BaseFieldType
 	 */
     public function getName()
     {
-        return Craft::t('<%= pluginName %> <%= fieldName %>');
+        return Craft::t('<%= pluginHandle %><%= fieldName %>');
     }
 
 	/**
@@ -81,7 +81,7 @@ class <%= pluginHandle %>_<%= fieldName %>FieldType extends BaseFieldType
 			);
 		
 		$jsonVars = json_encode($jsonVars);
-        craft()->templates->includeJs("$('#{$namespacedId}').<%= pluginHandle %>_<%= fieldName %>FieldType(" . $jsonVars . ");");
+        craft()->templates->includeJs("$('#{$namespacedId}').<%= pluginHandle %><%= pluginHandle %>FieldType(" . $jsonVars . ");");
 
 /* -- Variables to pass down to our rendered template */
 

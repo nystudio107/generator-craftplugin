@@ -165,6 +165,12 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.0.4 -- 2016.01.06
+
+* Added support for named Services and Controllers
+* Cleaned up the naming scheme for all plugin components; null values will be properly handled for all of the *Name's
+* Updated README.md
+
 ### 1.0.3 -- 2016.01.05
 
 * You can now access the generator via the web at [pluginfactory.io](http://pluginfactory.io)

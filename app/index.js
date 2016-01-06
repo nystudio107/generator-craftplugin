@@ -121,6 +121,16 @@ const QUESTIONS = [
 
     {
 		when: function (answers) {
+			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('controllers') != -1);
+		},
+	    type: "input",
+        name: 'controllerName',
+        message: 'Name of your Controller:',
+        default: '',
+        store: false
+    },
+    {
+		when: function (answers) {
 			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('elementtypes') != -1);
 		},
 	    type: "input",
@@ -156,6 +166,16 @@ const QUESTIONS = [
 	    type: "input",
         name: 'recordName',
         message: 'Name of your Record:',
+        default: '',
+        store: false
+    },
+    {
+		when: function (answers) {
+			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('services') != -1);
+		},
+	    type: "input",
+        name: 'serviceName',
+        message: 'Name of your Service:',
         default: '',
         store: false
     },
@@ -211,6 +231,7 @@ const TEMPLATE_FILES = [
         destDir: "controllers/",
         dest: "Controller.php",
         requires: "controllers",
+        subPrefix: "controllerName",
         prefix: true
     },
     {
@@ -271,6 +292,7 @@ const TEMPLATE_FILES = [
         destDir: "services/",
         dest: "Service.php",
         requires: "services",
+        subPrefix: "serviceName",
         prefix: true
     },
     {
@@ -413,6 +435,27 @@ module.exports = yo.generators.Base.extend({
             	this.answers.pluginReleasesUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/master/releases.json";
             	this.answers.pluginCloneUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + ".git";
             	}
+
+/* -- Clean up the various handle names */
+
+			if (typeof this.answers.controllerName != 'undefined')
+					this.answers.controllerName = this.answers.controllerName.prefixize();
+
+			if (typeof this.answers.elementName != 'undefined')
+					this.answers.elementName = this.answers.elementName.prefixize();
+
+			if (typeof this.answers.fieldName != 'undefined')
+					this.answers.fieldName = this.answers.fieldName.prefixize();
+
+			if (typeof this.answers.modelName != 'undefined')
+					this.answers.modelName = this.answers.modelName.prefixize();
+
+			if (typeof this.answers.recordName != 'undefined')
+					this.answers.recordName = this.answers.recordName.prefixize();
+
+			if (typeof this.answers.serviceName != 'undefined')
+					this.answers.serviceName = this.answers.serviceName.prefixize();
+			    
             done();
         	}.bind(this));;
         },
@@ -455,7 +498,7 @@ module.exports = yo.generators.Base.extend({
 	            if (file.prefix) {
 		            var subPrefix = "";
 		            if (file.subPrefix) {
-			            subPrefix = "_" + this.answers[file.subPrefix].camelize().capitalizeFirstLetter();
+			            subPrefix = this.answers[file.subPrefix];
 		            }
 	            	destFile = this.destDir + file.destDir + this.answers.pluginHandle + subPrefix + file.dest;
 	            	}
@@ -537,6 +580,14 @@ String.prototype.camelize = function() {
     if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
     return index == 0 ? match.toLowerCase() : match.toUpperCase();
   });
+}
+
+// Convert a string to have proceed with a _ and be camel-cased, with the first letter capitalized
+String.prototype.prefixize = function() {
+	if (this == "")
+		return this;
+	else
+		return ("_" + this.camelize().capitalizeFirstLetter());
 }
 
 // Capitalize the first letter of a string

@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= pluginName %> Controller
+ * <%= pluginHandle %><%= controllerName %> Controller
  *
  * --snip--
  * Generally speaking, controllers are the middlemen between the front end of the CP/website and your plugin’s
@@ -27,7 +27,7 @@
 
 namespace Craft;
 
-class <%= pluginHandle %>Controller extends BaseController
+class <%= pluginHandle %><%= controllerName %>Controller extends BaseController
 {
 
 	/**

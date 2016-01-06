@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= pluginName %> Service
+ * <%= pluginHandle %><%= serviceName %> Service
  *
  * --snip--
  * All of your plugin’s business logic should go in services, including saving data, retrieving data, etc. They
@@ -20,7 +20,7 @@
 
 namespace Craft;
 
-class <%= pluginHandle %>Service extends BaseApplicationComponent
+class <%= pluginHandle %><%= serviceName %>Service extends BaseApplicationComponent
 {
 	/**
 	 * This function can literally be anything you want, and you can have as many service functions as you want
