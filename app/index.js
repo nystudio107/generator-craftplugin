@@ -104,6 +104,11 @@ const QUESTIONS = [
 				value: "services"
 			},
 			{
+				key: "tasks",
+				name: "Tasks",
+				value: "tasks"
+			},
+			{
 				key: "twigextensions",
 				name: "TwigExtensions",
 				value: "twigextensions"
@@ -181,6 +186,16 @@ const QUESTIONS = [
 	    type: "input",
         name: 'serviceName',
         message: 'Name of your Service:',
+        default: '',
+        store: false
+    },
+    {
+		when: function (answers) {
+			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('tasks') != -1);
+		},
+	    type: "input",
+        name: 'taskName',
+        message: 'Name of your Task:',
         default: '',
         store: false
     },
@@ -324,6 +339,14 @@ const TEMPLATE_FILES = [
         dest: "Service.php",
         requires: "services",
         subPrefix: "serviceName",
+        prefix: true
+    },
+    {
+        src: "tasks/_Task.php",
+        destDir: "tasks/",
+        dest: "Task.php",
+        requires: "tasks",
+        subPrefix: "taskName",
         prefix: true
     },
     {
@@ -494,6 +517,9 @@ module.exports = yo.generators.Base.extend({
 
 			if (typeof this.answers.serviceName != 'undefined')
 					this.answers.serviceName = this.answers.serviceName.prefixize();
+
+			if (typeof this.answers.taskName != 'undefined')
+					this.answers.taskName = this.answers.taskName.prefixize();
 
 			if (typeof this.answers.widgetName != 'undefined')
 					this.answers.widgetName = this.answers.widgetName.prefixize();
