@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= pluginHandle %><%= modelName %> Model
+ * <%= pluginHandle %><%= elementName %> Model
  *
  * --snip--
  * Models are containers for data. Just about every time information is passed between services, controllers, and
@@ -20,7 +20,7 @@
 
 namespace Craft;
 
-class <%= pluginHandle %><%= modelName %>Model extends BaseModel
+class <%= pluginHandle %><%= elementName %>Model extends BaseElementModel
 {
     /**
      * @access protected
@@ -33,4 +33,21 @@ class <%= pluginHandle %><%= modelName %>Model extends BaseModel
         ));
     }
 
+    /**
+     * Returns whether the current user can edit the element.
+     *
+     * @return bool
+     */
+    public function isEditable()
+    {
+    }
+
+    /**
+     * Returns the element's CP edit URL.
+     *
+     * @return string|false
+     */
+    public function getCpEditUrl()
+    {
+    }
 }

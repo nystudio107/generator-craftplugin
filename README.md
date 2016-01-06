@@ -165,6 +165,13 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.0.5 -- 2016.01.06
+
+* Added Widgets to the templates
+* Added additional Record and Model templates if you select ElementTypes
+* Minor generated code cleanup
+* Updated README.md
+
 ### 1.0.4 -- 2016.01.06
 
 * Added support for named Services and Controllers

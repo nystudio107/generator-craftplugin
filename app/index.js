@@ -113,6 +113,11 @@ const QUESTIONS = [
 				name: "Variables",
 				value: "variables"
 			},
+			{
+				key: "widgets",
+				name: "Wigets",
+				value: "widgets"
+			},
 		],
         store: true
     },
@@ -176,6 +181,16 @@ const QUESTIONS = [
 	    type: "input",
         name: 'serviceName',
         message: 'Name of your Service:',
+        default: '',
+        store: false
+    },
+    {
+		when: function (answers) {
+			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('widgets') != -1);
+		},
+	    type: "input",
+        name: 'widgetName',
+        message: 'Name of your Widget:',
         default: '',
         store: false
     },
@@ -280,6 +295,14 @@ const TEMPLATE_FILES = [
         prefix: true
     },
     {
+        src: "models/_ElementModel.php",
+        destDir: "models/",
+        dest: "Model.php",
+        requires: "elementtypes",
+        subPrefix: "elementName",
+        prefix: true
+    },
+    {
         src: "records/_Record.php",
         destDir: "records/",
         dest: "Record.php",
@@ -288,11 +311,27 @@ const TEMPLATE_FILES = [
         prefix: true
     },
     {
+        src: "records/_ElementRecord.php",
+        destDir: "records/",
+        dest: "Record.php",
+        requires: "elementtypes",
+        subPrefix: "elementName",
+        prefix: true
+    },
+    {
         src: "services/_Service.php",
         destDir: "services/",
         dest: "Service.php",
         requires: "services",
         subPrefix: "serviceName",
+        prefix: true
+    },
+    {
+        src: "widgets/_Widget.php",
+        destDir: "widgets/",
+        dest: "Widget.php",
+        requires: "widgets",
+        subPrefix: "widgetName",
         prefix: true
     },
     {
@@ -455,6 +494,9 @@ module.exports = yo.generators.Base.extend({
 
 			if (typeof this.answers.serviceName != 'undefined')
 					this.answers.serviceName = this.answers.serviceName.prefixize();
+
+			if (typeof this.answers.widgetName != 'undefined')
+					this.answers.widgetName = this.answers.widgetName.prefixize();
 			    
             done();
         	}.bind(this));;
