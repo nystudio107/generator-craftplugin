@@ -43,16 +43,6 @@ class <%= pluginHandle %><%= fieldName %>FieldType extends BaseFieldType
 	}
 
 	/**
-	 * Returns the content attribute config.
-	 *
-	 * @return mixed
-	 */
-    public function defineContentAttribute()
-    {
-        return AttributeType::Mixed;
-    }
-
-	/**
 	 * Returns the field's input HTML.
 	 *
 	 * @param string $name
