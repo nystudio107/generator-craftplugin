@@ -281,9 +281,9 @@ const TEMPLATE_FILES = [
         prefix: true
     },
     {
-        src: "templates/_field.html",
+        src: "templates/_field.twig",
         destDir: "templates/",
-        dest: "field.html",
+        dest: "field.twig",
         requires: "fieldtypes",
         prefix: false
     },
@@ -358,9 +358,9 @@ const TEMPLATE_FILES = [
         prefix: true
     },
     {
-        src: "templates/_settings.html",
+        src: "templates/_settings.twig",
         destDir: "templates/",
-        dest: "settings.html",
+        dest: "settings.twig",
         prefix: false
     },
     {

@@ -165,6 +165,11 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.0.7 -- 2016.01.06
+
+* Template fixes
+* Updated README.md
+
 ### 1.0.6 -- 2016.01.06
 
 * Added Tasks to the templates
