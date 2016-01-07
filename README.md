@@ -4,6 +4,8 @@ generator-nystudio107 is a [Yeoman](http://yeoman.io) generator for [Craft CMS](
 
 Type just `yo craftplugin` and a new Craft CMS plugin tailored to your liking will be created.
 
+You can also access the generator via the web at [pluginfactory.io](http://pluginfactory.io)
+
 ## Installation
 
 This assumes you have `nodejs`, `npm`, and `yeoman` installed already.
