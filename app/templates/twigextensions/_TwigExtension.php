@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
@@ -10,7 +10,7 @@
  *
  * http://twig.sensiolabs.org/doc/advanced.html
  * --snip--
- * 
+ *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -25,23 +25,23 @@ use Twig_Filter_Method;
 
 class <%= pluginHandle %>TwigExtension extends \Twig_Extension
 {
-	/**
-	 * Returns the name of the extension.
-	 *
-	 * @return string The extension name
-	 */
+    /**
+     * Returns the name of the extension.
+     *
+     * @return string The extension name
+     */
     public function getName()
     {
         return '<%= pluginHandle %>';
     }
 
-	/**
-	 * Returns an array of Twig filters, used in Twig templates via:
-	 *
-	 *		{{ 'something' | someFilter }}
-	 *
-	 * @return array
-	 */
+    /**
+     * Returns an array of Twig filters, used in Twig templates via:
+     *
+     *      {{ 'something' | someFilter }}
+     *
+     * @return array
+     */
     public function getFilters()
     {
         return array(
@@ -49,13 +49,13 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
         );
     }
 
-	/**
-	 * Returns an array of Twig functions, used in Twig templates via:
-	 *
-	 *		{% set this = someFunction('something') %}
-	 *
-	 * @return array
-	 */
+    /**
+     * Returns an array of Twig functions, used in Twig templates via:
+     *
+     *      {% set this = someFunction('something') %}
+     *
+     * @return array
+     */
     public function getFunctions()
     {
         return array(
@@ -63,15 +63,15 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
         );
     }
 
-	/**
-	 * Our function called via Twig; it can do anything you want
-	 *
-	 * @return string
-	 */
+    /**
+     * Our function called via Twig; it can do anything you want
+     *
+     * @return string
+     */
     public function someInteralFunction($text = null)
     {
         $result = $text . " in the way";
-        
+
         return $result;
-    }   
+    }
 }

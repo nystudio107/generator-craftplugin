@@ -33,11 +33,11 @@
         init: function(id) {
             var _this = this;
 
-			$(function () {
+            $(function () {
 
 /* -- _this.options gives us access to the $jsonVars that our FieldType passed down to us */
 
-			});
+            });
         }
     };
 

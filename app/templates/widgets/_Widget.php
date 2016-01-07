@@ -10,7 +10,7 @@
  *
  * https://craftcms.com/docs/plugins/widgets
  * --snip--
- * 
+ *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -32,7 +32,7 @@ class <%= pluginHandle %><%= widgetName %>Widget extends BaseWidget
     {
         return Craft::t('<%= pluginName %>');
     }
-    
+
     /**
      * getBodyHtml() does just what it says: it returns your widget’s body HTML. We recommend that you store the
      * actual HTML in a template, and load it via craft()->templates->render().

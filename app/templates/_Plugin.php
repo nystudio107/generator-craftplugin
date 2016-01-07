@@ -7,7 +7,7 @@
  * --snip--
  * Craft plugins are very much like little applications in and of themselves. We’ve made it as simple as we can,
  * but the training wheels are off. A little prior knowledge is going to be required to write a plugin.
- * 
+ *
  * For the purposes of the plugin docs, we’re going to assume that you know PHP and SQL, as well as some semi-
  * advanced concepts like object-oriented programming and PHP namespaces.
  *
@@ -20,7 +20,7 @@
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
- 
+
 namespace Craft;
 
 class <%= pluginHandle %>Plugin extends BasePlugin
@@ -57,7 +57,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     {
         return Craft::t('<%= pluginDescription %>');
     }
-    
+
     /**
      * Plugins can have links to their documentation on the Plugins page by adding a getDocumentationUrl() method on
      * the primary plugin class:
@@ -68,7 +68,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     {
         return '<%= pluginDocsUrl %>';
     }
-    
+
     /**
      * Plugins can now take part in Craft’s update notifications, and display release notes on the Updates page, by
      * providing a JSON feed that describes new releases, and adding a getReleaseFeedUrl() method on the primary
@@ -80,7 +80,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     {
         return '<%= pluginReleasesUrl %>';
     }
-    
+
     /**
      * Returns the version number.
      *
@@ -181,7 +181,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
            'settings' => $this->getSettings()
        ));
     }
-    
+
     /**
      * If you need to do any processing on your settings’ post data before they’re saved to the database, you can
      * do it with the prepSettings() method:

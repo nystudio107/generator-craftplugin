@@ -10,7 +10,7 @@
  *
  * https://craftcms.com/docs/plugins/models
  * --snip--
- * 
+ *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -29,7 +29,7 @@ class <%= pluginHandle %><%= elementName %>Model extends BaseElementModel
     protected function defineAttributes()
     {
         return array_merge(parent::defineAttributes(), array(
-            'someField'		=> array(AttributeType::String, 'default' => 'some value'),
+            'someField'     => array(AttributeType::String, 'default' => 'some value'),
         ));
     }
 

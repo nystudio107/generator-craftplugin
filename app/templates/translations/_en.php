@@ -12,5 +12,5 @@
  */
 
 return array(
-	'Translate me' => 'To this',
+    'Translate me' => 'To this',
 );

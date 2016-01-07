@@ -30,7 +30,7 @@ generator-craftplugin will ask you a few questions:
 * **Plugin author GitHub.com name:** - enter the GitHub.com handle of the author of the plugin.  If you don't have one, just leave it blank
 * **Select what components your plugin will have:** - select the components you want included in your plugin, using the arrow keys to change the component, and `<space>` to select them.
 
-If you selected `ElementTypes`, `FieldTypes`, `Models`, or `Records` components, it will also ask you for a name for each one, respectively.
+If you selected `Controllers`, `ElementTypes`, `FieldTypes`, `Models`, `Records`, `Services`, `Tasks`, or `Widgets` components, it will also ask you for a name for each one, respectively.  If you want multiple components, just separate them with a , in the name input.
 
 generator-craftplugin will then do the following for you:
 
@@ -164,6 +164,12 @@ The `craftplugin` generator can also be passed arguments via the command line, b
     yo craftplugin --pluginComponents="controllers,elementtypes,fieldtypes,models,records,services,twigextensions,variables" --pluginName="Gimme the works" --pluginDescription="Some cool plugin" --pluginVersion="1.0.0" --pluginAuthorName="Andrew Welch" --pluginAuthorUrl="http://nystudio107.com" --pluginAuthorGithub="khalwat" --elementName="Satu" --fieldName="Dua" --modelName="Tiga" --recordName="Empat"
 
 ## Changelog
+
+### 1.0.8 -- 2016.01.07
+
+* Added the ability to enter as many *Name's as you need, for multiple template files.  Just separate them with a ,
+* Sanitized all of the templates to remove trailing white space, and converted all tabs to 4 spaces
+* Updated README.md
 
 ### 1.0.7 -- 2016.01.06
 

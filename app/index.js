@@ -30,180 +30,180 @@ const QUESTIONS = [
 /* -- Standard questions */
 
     {
-	    type: "input",
+        type: "input",
         name: 'pluginName',
         message: 'Plugin name:',
         default: 'Generic'
     },
     {
-	    type: "input",
+        type: "input",
         name: 'pluginDescription',
         message: 'Short description of the plugin:',
         default: 'This is a generic Craft CMS plugin'
     },
     {
-	    type: "input",
+        type: "input",
         name: 'pluginVersion',
         message: 'Plugin initial version:',
         default: '1.0.0',
         store: true
     },
     {
-	    type: "input",
+        type: "input",
         name: 'pluginAuthorName',
         message: 'Plugin author name:',
         default: 'John Doe',
         store: true
     },
     {
-	    type: "input",
+        type: "input",
         name: 'pluginAuthorUrl',
         message: 'Plugin author URL:',
         default: 'http://DoeDesign.com/',
         store: true
     },
     {
-	    type: "input",
+        type: "input",
         name: 'pluginAuthorGithub',
         message: 'Plugin author GitHub.com name:',
         store: true
     },
     {
-	    type: "checkbox",
+        type: "checkbox",
         name: 'pluginComponents',
         message: 'Select what components your plugin will have:',
         choices: [
-			{
-				key: "controllers",
-				name: "Controllers",
-				value: "controllers"
-			},
-			{
-				key: "elementtypes",
-				name: "ElementTypes",
-				value: "elementtypes"
-			},
-			{
-				key: "fieldtypes",
-				name: "FieldTypes",
-				value: "fieldtypes"
-			},
-			{
-				key: "models",
-				name: "Models",
-				value: "models"
-			},
-			{
-				key: "records",
-				name: "Records",
-				value: "records"
-			},
-			{
-				key: "services",
-				name: "Services",
-				value: "services"
-			},
-			{
-				key: "tasks",
-				name: "Tasks",
-				value: "tasks"
-			},
-			{
-				key: "twigextensions",
-				name: "TwigExtensions",
-				value: "twigextensions"
-			},
-			{
-				key: "variables",
-				name: "Variables",
-				value: "variables"
-			},
-			{
-				key: "widgets",
-				name: "Wigets",
-				value: "widgets"
-			},
-		],
+            {
+                key: "controllers",
+                name: "Controllers",
+                value: "controllers"
+            },
+            {
+                key: "elementtypes",
+                name: "ElementTypes",
+                value: "elementtypes"
+            },
+            {
+                key: "fieldtypes",
+                name: "FieldTypes",
+                value: "fieldtypes"
+            },
+            {
+                key: "models",
+                name: "Models",
+                value: "models"
+            },
+            {
+                key: "records",
+                name: "Records",
+                value: "records"
+            },
+            {
+                key: "services",
+                name: "Services",
+                value: "services"
+            },
+            {
+                key: "tasks",
+                name: "Tasks",
+                value: "tasks"
+            },
+            {
+                key: "twigextensions",
+                name: "TwigExtensions",
+                value: "twigextensions"
+            },
+            {
+                key: "variables",
+                name: "Variables",
+                value: "variables"
+            },
+            {
+                key: "widgets",
+                name: "Wigets",
+                value: "widgets"
+            },
+        ],
         store: true
     },
-    
+
 /* -- Questions dependent on pluginComponents choices */
 
     {
-		when: function (answers) {
-			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('controllers') != -1);
-		},
-	    type: "input",
+        when: function (answers) {
+            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('controllers') != -1);
+        },
+        type: "input",
         name: 'controllerName',
         message: 'Name of your Controller:',
         default: '',
         store: false
     },
     {
-		when: function (answers) {
-			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('elementtypes') != -1);
-		},
-	    type: "input",
+        when: function (answers) {
+            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('elementtypes') != -1);
+        },
+        type: "input",
         name: 'elementName',
         message: 'Name of your ElementType:',
         default: '',
         store: false
     },
     {
-		when: function (answers) {
-			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('fieldtypes') != -1);
-		},
-	    type: "input",
+        when: function (answers) {
+            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('fieldtypes') != -1);
+        },
+        type: "input",
         name: 'fieldName',
         message: 'Name of your FieldType:',
         default: '',
         store: false
     },
     {
-		when: function (answers) {
-			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('models') != -1);
-		},
-	    type: "input",
+        when: function (answers) {
+            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('models') != -1);
+        },
+        type: "input",
         name: 'modelName',
         message: 'Name of your Model:',
         default: '',
         store: false
     },
     {
-		when: function (answers) {
-			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('records') != -1);
-		},
-	    type: "input",
+        when: function (answers) {
+            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('records') != -1);
+        },
+        type: "input",
         name: 'recordName',
         message: 'Name of your Record:',
         default: '',
         store: false
     },
     {
-		when: function (answers) {
-			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('services') != -1);
-		},
-	    type: "input",
+        when: function (answers) {
+            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('services') != -1);
+        },
+        type: "input",
         name: 'serviceName',
         message: 'Name of your Service:',
         default: '',
         store: false
     },
     {
-		when: function (answers) {
-			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('tasks') != -1);
-		},
-	    type: "input",
+        when: function (answers) {
+            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('tasks') != -1);
+        },
+        type: "input",
         name: 'taskName',
         message: 'Name of your Task:',
         default: '',
         store: false
     },
     {
-		when: function (answers) {
-			return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('widgets') != -1);
-		},
-	    type: "input",
+        when: function (answers) {
+            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('widgets') != -1);
+        },
+        type: "input",
         name: 'widgetName',
         message: 'Name of your Widget:',
         default: '',
@@ -400,7 +400,7 @@ const TEMPLATE_FILES = [
 /* --------------------------------------------------------------------------------
     BOILERPLATE_FILES
     Individual files that we copy wholesale from 'templates' to the destination
-    
+
      src: the source path of the file, relative to the 'templates' directory
 -------------------------------------------------------------------------------- */
 
@@ -444,19 +444,19 @@ var chalk           = require('chalk');
 var fs              = require('fs');
 var child_process   = require('child_process');
 var path            = require('path');
-var optionOrPrompt	= require('yeoman-option-or-prompt');
+var optionOrPrompt  = require('yeoman-option-or-prompt');
 
 module.exports = yo.generators.Base.extend({
-    
+
     _optionOrPrompt: optionOrPrompt,
-    
+
 /* -- initializing --  Your initialization methods (checking current project state, getting configs, etc) */
 
     initializing: function() {
         this.log(chalk.yellow.bold('[ Initializing ]'));
-        
+
         this.answers = {};
-        
+
         },
 
 /* -- prompting -- Where you prompt users for options (where you'd call this.prompt()) */
@@ -469,12 +469,12 @@ module.exports = yo.generators.Base.extend({
 /* -- Ask some questions about how they want the plugin customized */
 
         if (this.options.pluginComponents) {
-	    	this.options.pluginComponents = this.options.pluginComponents.split(',');
-			}
+            this.options.pluginComponents = this.options.pluginComponents.split(',');
+            }
 
-		this._optionOrPrompt(QUESTIONS, function(answers) {
-        	var now = new Date();
-        	
+        this._optionOrPrompt(QUESTIONS, function(answers) {
+            var now = new Date();
+
             this.answers = answers;
             this.answers.templatesDir = 'templates';
             this.answers.pluginDirName = this.answers.pluginName.directorize();
@@ -492,42 +492,30 @@ module.exports = yo.generators.Base.extend({
             this.answers.pluginReleasesUrl = "???";
             this.answers.pluginCloneUrl = "???";
             if (this.answers.pluginAuthorGithub) {
-            	this.answers.pluginDownloadUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/archive/master.zip";
-            	this.answers.pluginDocsUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/blob/master/README.md";
-            	this.answers.pluginReleasesUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/master/releases.json";
-            	this.answers.pluginCloneUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + ".git";
-            	}
+                this.answers.pluginDownloadUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/archive/master.zip";
+                this.answers.pluginDocsUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/blob/master/README.md";
+                this.answers.pluginReleasesUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/master/releases.json";
+                this.answers.pluginCloneUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + ".git";
+                }
 
-/* -- Clean up the various handle names */
+/* -- Clean up the various handle names, and convert them to arrays */
 
-			if (typeof this.answers.controllerName != 'undefined')
-					this.answers.controllerName = this.answers.controllerName.prefixize();
+            var subPrefixHandles = ["controllerName", "elementName", "fieldName", "modelName", "recordName", "serviceName", "taskName", "widgetName"];
+            var _this = this;
 
-			if (typeof this.answers.elementName != 'undefined')
-					this.answers.elementName = this.answers.elementName.prefixize();
+            subPrefixHandles.forEach(function(subElement) {
+                if (typeof _this.answers[subElement] != 'undefined') {
+                    _this.answers[subElement] = _this.answers[subElement].split(',');
+                    _this.answers[subElement].forEach(function(nameElement, nameIndex, nameArray) {
+                        nameArray[nameIndex] = nameElement.prefixize();
+                        });
+                    }
+                });
 
-			if (typeof this.answers.fieldName != 'undefined')
-					this.answers.fieldName = this.answers.fieldName.prefixize();
-
-			if (typeof this.answers.modelName != 'undefined')
-					this.answers.modelName = this.answers.modelName.prefixize();
-
-			if (typeof this.answers.recordName != 'undefined')
-					this.answers.recordName = this.answers.recordName.prefixize();
-
-			if (typeof this.answers.serviceName != 'undefined')
-					this.answers.serviceName = this.answers.serviceName.prefixize();
-
-			if (typeof this.answers.taskName != 'undefined')
-					this.answers.taskName = this.answers.taskName.prefixize();
-
-			if (typeof this.answers.widgetName != 'undefined')
-					this.answers.widgetName = this.answers.widgetName.prefixize();
-			    
             done();
-        	}.bind(this));;
+            }.bind(this));;
         },
-        
+
 /* -- configuring -- Saving configurations and configure the project (creating .editorconfig files and other metadata files) */
 
     configuring: function() {
@@ -536,19 +524,19 @@ module.exports = yo.generators.Base.extend({
 
 /* -- Create the destination folder */
 
-		var dir = this.answers.pluginDirName;
+        var dir = this.answers.pluginDirName;
         this.log('+ Creating Craft plugin folder ' + chalk.green(dir));
-		if (!fs.existsSync(dir)){
-		    fs.mkdirSync(dir);
-			}
-		this.destDir = dir + '/';
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+            }
+        this.destDir = dir + '/';
         },
-        
+
 /* -- writing -- Where you write the generator specific files (routes, controllers, etc) */
 
     writing: function() {
         this.log(chalk.yellow.bold('[ Writing ]'));
-    
+
 /* -- Write template files */
 
         this.log(chalk.green('> Writing template files'));
@@ -556,30 +544,50 @@ module.exports = yo.generators.Base.extend({
             var file = TEMPLATE_FILES[i];
             var destFile;
             var skip = false;
-			
-			if (file.requires) {
-	            if (this.answers.pluginComponents.indexOf(file.requires) == -1) {
-		            skip = true;
-	            	}
-            	}
+
+            if (file.requires) {
+                if (this.answers.pluginComponents.indexOf(file.requires) == -1) {
+                    skip = true;
+                    }
+                }
             if (!skip) {
-	            if (file.prefix) {
-		            var subPrefix = "";
-		            if (file.subPrefix) {
-			            subPrefix = this.answers[file.subPrefix];
-		            }
-	            	destFile = this.destDir + file.destDir + this.answers.pluginHandle + subPrefix + file.dest;
-	            	}
-	            else
-	            	destFile = this.destDir + file.destDir + file.dest;
-	            this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
-	            this.fs.copyTpl(
-	                this.templatePath(file.src),
-	                this.destinationPath(destFile),
-	                this.answers
-					);
-				}
-			}
+                if (file.prefix) {
+/* -- Handle templates that get prefixed */
+                    if (file.subPrefix) {
+/* -- Handle templates that have a prefix and a sub-prefix */
+                        var subPrefix = this.answers[file.subPrefix];
+                        var _this = this;
+                        subPrefix.forEach(function(thisPrefix) {
+                            destFile = _this.destDir + file.destDir + _this.answers.pluginHandle + thisPrefix + file.dest;
+                            _this.log('+ ' + _this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
+                            _this.fs.copyTpl(
+                                _this.templatePath(file.src),
+                                _this.destinationPath(destFile),
+                                _this.answers
+                                );
+                            });
+                        } else {
+/* -- Handle templates that only have a prefix */
+                        destFile = this.destDir + file.destDir + this.answers.pluginHandle  + file.dest;
+                        this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
+                        this.fs.copyTpl(
+                            this.templatePath(file.src),
+                            this.destinationPath(destFile),
+                            this.answers
+                            );
+                        }
+                    } else {
+/* -- Handle templates that are not prefixed */
+                    destFile = this.destDir + file.destDir + file.dest;
+                    this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
+                    this.fs.copyTpl(
+                        this.templatePath(file.src),
+                        this.destinationPath(destFile),
+                        this.answers
+                        );
+                    }
+                }
+            }
 
 /* -- Copy boilerplate files */
 
@@ -591,24 +599,24 @@ module.exports = yo.generators.Base.extend({
             this.fs.copy(
                 this.templatePath(file.src),
                 this.destinationPath(destFile)
-				);
-        	}
+                );
+            }
 
 
-	    this.log(chalk.green('> Sync to file system'));
-	    },
-        
+        this.log(chalk.green('> Sync to file system'));
+        },
+
 /* -- install -- Where installation are run (npm, bower) */
 
     install: function() {
         this.log(chalk.yellow.bold('[ Install ]'));
 
         },
-        
+
 /* -- end - Called last, cleanup, say good bye, etc */
 
     end: function() {
-        this.log(chalk.yellow.bold('[ End ]'));      
+        this.log(chalk.yellow.bold('[ End ]'));
 
 /* -- Craft base plugins */
 
@@ -623,8 +631,8 @@ module.exports = yo.generators.Base.extend({
         this.log('The default LICENSE.txt is the ' + chalk.green('MIT license') +  '; feel free to change it as you see fit.');
         this.log(chalk.green('> All set.  Have a nice day.'));
         },
-        
-});  
+
+});
 
 // Return a date in YYYY.MM.DD format
 Date.prototype.yyyymmdd = function() {
@@ -652,10 +660,10 @@ String.prototype.camelize = function() {
 
 // Convert a string to have proceed with a _ and be camel-cased, with the first letter capitalized
 String.prototype.prefixize = function() {
-	if (this == "")
-		return this;
-	else
-		return ("_" + this.camelize().capitalizeFirstLetter());
+    if (this == "")
+        return this;
+    else
+        return ("_" + this.camelize().capitalizeFirstLetter());
 }
 
 // Capitalize the first letter of a string

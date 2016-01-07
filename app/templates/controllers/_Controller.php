@@ -30,16 +30,16 @@ namespace Craft;
 class <%= pluginHandle %><%= controllerName %>Controller extends BaseController
 {
 
-	/**
-	 * @var    bool|array Allows anonymous access to this controller's actions.
-	 * @access protected
-	 */
-	protected $allowAnonymous = array('actionIndex',
-		);
-	
-	/**
-	 * Handle a request going to our plugin's index action URL, e.g.: actions/<%= pluginCamelHandle %>
-	 */
+    /**
+     * @var    bool|array Allows anonymous access to this controller's actions.
+     * @access protected
+     */
+    protected $allowAnonymous = array('actionIndex',
+        );
+    
+    /**
+     * Handle a request going to our plugin's index action URL, e.g.: actions/<%= pluginCamelHandle %>
+     */
     public function actionIndex()
     {   
     }

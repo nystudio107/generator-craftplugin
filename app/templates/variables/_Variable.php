@@ -10,7 +10,7 @@
  *
  * https://craftcms.com/docs/plugins/variables
  * --snip--
- * 
+ *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -22,18 +22,18 @@ namespace Craft;
 
 class <%= pluginHandle %>Variable
 {
-	/**
-	 * Whatever you want to output to a Twig tempate can go into a Variable method. You can have as many variable
-	 * functions as you want.  From any Twig template, call it like this:
-	 *
-	 *     {{ craft.<%= pluginCamelHandle %>.exampleVariable }}
-	 *
-	 * Or, if your variable requires input from Twig:
-	 *
-	 *     {{ craft.<%= pluginCamelHandle %>.exampleVariable(twigValue) }}
-	 */
-	public function exampleVariable($optional = null)
-	{
-		return "And away we go to the Twig template...";
-	}
+    /**
+     * Whatever you want to output to a Twig tempate can go into a Variable method. You can have as many variable
+     * functions as you want.  From any Twig template, call it like this:
+     *
+     *     {{ craft.<%= pluginCamelHandle %>.exampleVariable }}
+     *
+     * Or, if your variable requires input from Twig:
+     *
+     *     {{ craft.<%= pluginCamelHandle %>.exampleVariable(twigValue) }}
+     */
+    public function exampleVariable($optional = null)
+    {
+        return "And away we go to the Twig template...";
+    }
 }

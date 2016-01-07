@@ -12,7 +12,7 @@
  *
  * http://pixelandtonic.com/blog/craft-element-types
  * --snip--
- * 
+ *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -73,7 +73,7 @@ class <%= pluginHandle %><%= elementName %>ElementType extends BaseElementType
     {
         return false;
     }
-    
+
     /**
      * Returns this element type's sources.
      *

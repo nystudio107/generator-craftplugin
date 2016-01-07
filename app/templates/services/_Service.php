@@ -10,7 +10,7 @@
  *
  * https://craftcms.com/docs/plugins/services
  * --snip--
- * 
+ *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -22,15 +22,15 @@ namespace Craft;
 
 class <%= pluginHandle %><%= serviceName %>Service extends BaseApplicationComponent
 {
-	/**
-	 * This function can literally be anything you want, and you can have as many service functions as you want
-	 *
-	 * From any other plugin file, call it like this:
-	 *
-	 *     craft()-><%= pluginCamelHandle %>->exampleService()
-	 */
-	public function exampleService()
-	{
-	}
+    /**
+     * This function can literally be anything you want, and you can have as many service functions as you want
+     *
+     * From any other plugin file, call it like this:
+     *
+     *     craft()-><%= pluginCamelHandle %>->exampleService()
+     */
+    public function exampleService()
+    {
+    }
 
 }

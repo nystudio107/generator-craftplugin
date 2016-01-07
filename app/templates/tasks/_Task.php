@@ -14,7 +14,7 @@
  *
  * https://craftcms.com/classreference/services/TasksService
  * --snip--
- * 
+ *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -32,7 +32,7 @@ class <%= pluginHandle %><%= taskName %>Task extends BaseTask
      * @access protected
      * @return array
      */
-    
+
     protected function defineSettings()
     {
         return array(
