@@ -1,6 +1,6 @@
-# generator-craftplugin 
+# generator-craftplugin
 
-generator-nystudio107 is a [Yeoman](http://yeoman.io) generator for [Craft CMS](http://www.buildwithcraft.com) plugins
+generator-craftplugin is a [Yeoman](http://yeoman.io) generator for [Craft CMS](http://www.buildwithcraft.com) plugins
 
 Type just `yo craftplugin` and a new Craft CMS plugin tailored to your liking will be created.
 
