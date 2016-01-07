@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= pluginHandle %><%= elementName %> Model
+ * <%= pluginHandle %><%= elementName[index] %> Model
  *
  * --snip--
  * Models are containers for data. Just about every time information is passed between services, controllers, and
@@ -20,7 +20,7 @@
 
 namespace Craft;
 
-class <%= pluginHandle %><%= elementName %>Model extends BaseElementModel
+class <%= pluginHandle %><%= elementName[index] %>Model extends BaseElementModel
 {
     /**
      * @access protected

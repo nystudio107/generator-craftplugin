@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= pluginHandle %><%= elementName %> ElementType
+ * <%= pluginHandle %><%= elementName[index] %> ElementType
  *
  * --snip--
  * Element Types are the classes used to identify each of these types of elements in Craft. There’s a
@@ -22,7 +22,7 @@
 
 namespace Craft;
 
-class <%= pluginHandle %><%= elementName %>ElementType extends BaseElementType
+class <%= pluginHandle %><%= elementName[index] %>ElementType extends BaseElementType
 {
     /**
      * Returns this element type's name.
@@ -31,7 +31,7 @@ class <%= pluginHandle %><%= elementName %>ElementType extends BaseElementType
      */
     public function getName()
     {
-        return Craft::t('<%= pluginHandle %><%= elementName %>');
+        return Craft::t('<%= pluginHandle %><%= elementName[index] %>');
     }
 
     /**

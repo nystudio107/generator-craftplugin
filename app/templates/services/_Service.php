@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= pluginHandle %><%= serviceName %> Service
+ * <%= pluginHandle %><%= serviceName[index] %> Service
  *
  * --snip--
  * All of your plugin’s business logic should go in services, including saving data, retrieving data, etc. They
@@ -20,14 +20,14 @@
 
 namespace Craft;
 
-class <%= pluginHandle %><%= serviceName %>Service extends BaseApplicationComponent
+class <%= pluginHandle %><%= serviceName[index] %>Service extends BaseApplicationComponent
 {
     /**
      * This function can literally be anything you want, and you can have as many service functions as you want
      *
      * From any other plugin file, call it like this:
      *
-     *     craft()-><%= pluginCamelHandle %>->exampleService()
+     *     craft()-><%= pluginCamelHandle %><%= serviceName[index] %>->exampleService()
      */
     public function exampleService()
     {

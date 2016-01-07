@@ -557,9 +557,10 @@ module.exports = yo.generators.Base.extend({
 /* -- Handle templates that have a prefix and a sub-prefix */
                         var subPrefix = this.answers[file.subPrefix];
                         var _this = this;
-                        subPrefix.forEach(function(thisPrefix) {
+                        subPrefix.forEach(function(thisPrefix, index) {
                             destFile = _this.destDir + file.destDir + _this.answers.pluginHandle + thisPrefix + file.dest;
                             _this.log('+ ' + _this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
+                            _this.answers['index'] = index;
                             _this.fs.copyTpl(
                                 _this.templatePath(file.src),
                                 _this.destinationPath(destFile),
@@ -570,6 +571,7 @@ module.exports = yo.generators.Base.extend({
 /* -- Handle templates that only have a prefix */
                         destFile = this.destDir + file.destDir + this.answers.pluginHandle  + file.dest;
                         this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
+                        this.answers['index'] = 0;
                         this.fs.copyTpl(
                             this.templatePath(file.src),
                             this.destinationPath(destFile),
@@ -580,6 +582,7 @@ module.exports = yo.generators.Base.extend({
 /* -- Handle templates that are not prefixed */
                     destFile = this.destDir + file.destDir + file.dest;
                     this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
+                    this.answers['index'] = 0;
                     this.fs.copyTpl(
                         this.templatePath(file.src),
                         this.destinationPath(destFile),

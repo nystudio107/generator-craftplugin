@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= pluginHandle %><%= widgetName %> Widget
+ * <%= pluginHandle %><%= widgetName[index] %> Widget
  *
  * --snip--
  * Dashboard widgets allow you to display information in the Admin CP Dashboard.  Adding new types of widgets to
@@ -20,7 +20,7 @@
 
 namespace Craft;
 
-class <%= pluginHandle %><%= widgetName %>Widget extends BaseWidget
+class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
 {
 
     /**
@@ -30,7 +30,7 @@ class <%= pluginHandle %><%= widgetName %>Widget extends BaseWidget
      */
     public function getName()
     {
-        return Craft::t('<%= pluginName %>');
+        return Craft::t('<%= pluginName %><%= widgetName[index] %>');
     }
 
     /**

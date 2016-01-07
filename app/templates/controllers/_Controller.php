@@ -2,12 +2,12 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= pluginHandle %><%= controllerName %> Controller
+ * <%= pluginHandle %><%= controllerName[index] %> Controller
  *
  * --snip--
  * Generally speaking, controllers are the middlemen between the front end of the CP/website and your plugin’s
  * services. They contain action methods which handle individual tasks.
- * 
+ *
  * A common pattern used throughout Craft involves a controller action gathering post data, saving it on a model,
  * passing the model off to a service, and then responding to the request appropriately depending on the service
  * method’s response.
@@ -17,7 +17,7 @@
  *
  * https://craftcms.com/docs/plugins/controllers
  * --snip--
- * 
+ *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -27,7 +27,7 @@
 
 namespace Craft;
 
-class <%= pluginHandle %><%= controllerName %>Controller extends BaseController
+class <%= pluginHandle %><%= controllerName[index] %>Controller extends BaseController
 {
 
     /**

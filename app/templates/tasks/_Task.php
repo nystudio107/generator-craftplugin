@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= pluginHandle %><%= taskName %> Task
+ * <%= pluginHandle %><%= taskName[index] %> Task
  *
  * --snip--
  * Tasks let you run background processing for things that take a long time, dividing them up into steps.  For
@@ -24,7 +24,7 @@
 
 namespace Craft;
 
-class <%= pluginHandle %><%= taskName %>Task extends BaseTask
+class <%= pluginHandle %><%= taskName[index] %>Task extends BaseTask
 {
     /**
      * Defines the settings.
@@ -47,7 +47,7 @@ class <%= pluginHandle %><%= taskName %>Task extends BaseTask
      */
     public function getDescription()
     {
-        return '<%= pluginHandle %><%= taskName %> Tasks';
+        return '<%= pluginHandle %><%= taskName[index] %> Tasks';
     }
 
     /**

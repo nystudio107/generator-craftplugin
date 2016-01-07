@@ -165,6 +165,11 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.0.9 -- 2016.01.07
+
+* Fixes
+* Updated README.md
+
 ### 1.0.8 -- 2016.01.07
 
 * Added the ability to enter as many *Name's as you need, for multiple template files.  Just separate them with a ,
