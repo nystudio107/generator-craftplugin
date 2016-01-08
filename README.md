@@ -16,6 +16,8 @@ This assumes you have `nodejs`, `npm`, and `yeoman` installed already.
 4.  -OR- do an `npm -g install generator-craftplugin` to install it via npm (and thus skip the `npm link` step)
 5. The generator folder should be named `generator-craftplugin`.  GitHub recently started appending `-master` (the branch name) to the name of the folder for zip file downloads.
 
+Requires Node version 4.0.0 or later.
+
 ## Usage
 
 To create a new Craft CMS plugin and use generator-craftplugin to scaffold it:
