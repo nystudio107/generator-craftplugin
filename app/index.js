@@ -9,431 +9,23 @@
 'use strict';
 
 /* --------------------------------------------------------------------------------
-    *** Being configuration section ***
+    *** Begin configuration section ***
 -------------------------------------------------------------------------------- */
 
-/* --------------------------------------------------------------------------------
-    QUESITONS
-    These are the questions that are asked prior to installation.  The variables
-    set here are passed into your TEMPLATE_FILES in the form of <%= name %> for
-    substitution in your templates, e.g.:
-
-        "name": "<%= pluginName %>",
-
-       name: the internal variable name (used for substitution)
-    message: the human-readable message asked during prompting
-    default: the default answer
--------------------------------------------------------------------------------- */
-
-const QUESTIONS = [
-
-/* -- Standard questions */
-
-    {
-        type: "input",
-        name: 'pluginName',
-        message: 'Plugin name:',
-        default: 'Generic'
-    },
-    {
-        type: "input",
-        name: 'pluginDescription',
-        message: 'Short description of the plugin:',
-        default: 'This is a generic Craft CMS plugin'
-    },
-    {
-        type: "input",
-        name: 'pluginVersion',
-        message: 'Plugin initial version:',
-        default: '1.0.0',
-        store: true
-    },
-    {
-        type: "input",
-        name: 'pluginAuthorName',
-        message: 'Plugin author name:',
-        default: 'John Doe',
-        store: true
-    },
-    {
-        type: "input",
-        name: 'pluginAuthorUrl',
-        message: 'Plugin author URL:',
-        default: 'http://DoeDesign.com/',
-        store: true
-    },
-    {
-        type: "input",
-        name: 'pluginAuthorGithub',
-        message: 'Plugin author GitHub.com name:',
-        store: true
-    },
-    {
-        type: "checkbox",
-        name: 'pluginComponents',
-        message: 'Select what components your plugin will have:',
-        choices: [
-            {
-                key: "controllers",
-                name: "Controllers",
-                value: "controllers"
-            },
-            {
-                key: "elementtypes",
-                name: "ElementTypes",
-                value: "elementtypes"
-            },
-            {
-                key: "fieldtypes",
-                name: "FieldTypes",
-                value: "fieldtypes"
-            },
-            {
-                key: "models",
-                name: "Models",
-                value: "models"
-            },
-            {
-                key: "records",
-                name: "Records",
-                value: "records"
-            },
-            {
-                key: "services",
-                name: "Services",
-                value: "services"
-            },
-            {
-                key: "tasks",
-                name: "Tasks",
-                value: "tasks"
-            },
-            {
-                key: "twigextensions",
-                name: "TwigExtensions",
-                value: "twigextensions"
-            },
-            {
-                key: "variables",
-                name: "Variables",
-                value: "variables"
-            },
-            {
-                key: "widgets",
-                name: "Wigets",
-                value: "widgets"
-            },
-        ],
-        store: true
-    },
-
-/* -- Questions dependent on pluginComponents choices */
-
-    {
-        when: function (answers) {
-            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('controllers') != -1);
+const API_QUESTIONS = [
+        {
+            type: "list",
+            name: 'apiVersion',
+            message: 'Select what Craft CMS API to target:',
+            choices: [
+            ],
+            store: true
         },
-        type: "input",
-        name: 'controllerName',
-        message: 'Name of your Controller:',
-        default: '',
-        store: false
-    },
-    {
-        when: function (answers) {
-            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('elementtypes') != -1);
-        },
-        type: "input",
-        name: 'elementName',
-        message: 'Name of your ElementType:',
-        default: '',
-        store: false
-    },
-    {
-        when: function (answers) {
-            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('fieldtypes') != -1);
-        },
-        type: "input",
-        name: 'fieldName',
-        message: 'Name of your FieldType:',
-        default: '',
-        store: false
-    },
-    {
-        when: function (answers) {
-            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('models') != -1);
-        },
-        type: "input",
-        name: 'modelName',
-        message: 'Name of your Model:',
-        default: '',
-        store: false
-    },
-    {
-        when: function (answers) {
-            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('records') != -1);
-        },
-        type: "input",
-        name: 'recordName',
-        message: 'Name of your Record:',
-        default: '',
-        store: false
-    },
-    {
-        when: function (answers) {
-            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('services') != -1);
-        },
-        type: "input",
-        name: 'serviceName',
-        message: 'Name of your Service:',
-        default: '',
-        store: false
-    },
-    {
-        when: function (answers) {
-            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('tasks') != -1);
-        },
-        type: "input",
-        name: 'taskName',
-        message: 'Name of your Task:',
-        default: '',
-        store: false
-    },
-    {
-        when: function (answers) {
-            return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf('widgets') != -1);
-        },
-        type: "input",
-        name: 'widgetName',
-        message: 'Name of your Widget:',
-        default: '',
-        store: false
-    },
+    ];
 
-];
+const TARGET_APIS_DIR = "/target_apis";
 
-/* --------------------------------------------------------------------------------
-    TEMPLATE_FILES
-    Files that are parsed as templates with the 'answers' context, to allow for
-    variable substitution while copying them from `src:` to `dest:`
-
-        src: the source path for the file, relative to the 'templates' directory
-    destDir: the destination path for the file, relative to the project directory
-       dest: the destination name for the file, relative to the project directory
-     prefix: should the file be prefixed with the plugin name?
--------------------------------------------------------------------------------- */
-
-const TEMPLATE_FILES = [
-    {
-        src: "_Plugin.php",
-        destDir: "",
-        dest: "Plugin.php",
-        requires: "",
-        prefix: true
-    },
-    {
-        src: "_PluginWithTwig.php",
-        destDir: "",
-        dest: "Plugin.php",
-        requires: "twigextensions",
-        prefix: true
-    },
-    {
-        src: "_README.md",
-        destDir: "",
-        dest: "README.md",
-        prefix: false
-    },
-    {
-        src: "_LICENSE.txt",
-        destDir: "",
-        dest: "LICENSE.txt",
-        prefix: false
-    },
-    {
-        src: "_releases.json",
-        destDir: "",
-        dest: "releases.json",
-        prefix: false
-    },
-    {
-        src: "controllers/_Controller.php",
-        destDir: "controllers/",
-        dest: "Controller.php",
-        requires: "controllers",
-        subPrefix: "controllerName",
-        prefix: true
-    },
-    {
-        src: "elementtypes/_ElementType.php",
-        destDir: "elementtypes/",
-        dest: "ElementType.php",
-        requires: "elementtypes",
-        subPrefix: "elementName",
-        prefix: true
-    },
-    {
-        src: "fieldtypes/_FieldType.php",
-        destDir: "fieldtypes/",
-        dest: "FieldType.php",
-        requires: "fieldtypes",
-        subPrefix: "fieldName",
-        prefix: true
-    },
-    {
-        src: "templates/_field.twig",
-        destDir: "templates/",
-        dest: "field.twig",
-        requires: "fieldtypes",
-        prefix: false
-    },
-    {
-        src: "resources/css/_field.css",
-        destDir: "resources/css/",
-        dest: "field.css",
-        requires: "fieldtypes",
-        prefix: false
-    },
-    {
-        src: "resources/js/_field.js",
-        destDir: "resources/js/",
-        dest: "field.js",
-        requires: "fieldtypes",
-        prefix: false
-    },
-    {
-        src: "models/_Model.php",
-        destDir: "models/",
-        dest: "Model.php",
-        requires: "models",
-        subPrefix: "modelName",
-        prefix: true
-    },
-    {
-        src: "models/_ElementModel.php",
-        destDir: "models/",
-        dest: "Model.php",
-        requires: "elementtypes",
-        subPrefix: "elementName",
-        prefix: true
-    },
-    {
-        src: "records/_Record.php",
-        destDir: "records/",
-        dest: "Record.php",
-        requires: "records",
-        subPrefix: "recordName",
-        prefix: true
-    },
-    {
-        src: "records/_ElementRecord.php",
-        destDir: "records/",
-        dest: "Record.php",
-        requires: "elementtypes",
-        subPrefix: "elementName",
-        prefix: true
-    },
-    {
-        src: "services/_Service.php",
-        destDir: "services/",
-        dest: "Service.php",
-        requires: "services",
-        subPrefix: "serviceName",
-        prefix: true
-    },
-    {
-        src: "tasks/_Task.php",
-        destDir: "tasks/",
-        dest: "Task.php",
-        requires: "tasks",
-        subPrefix: "taskName",
-        prefix: true
-    },
-    {
-        src: "widgets/_Widget.php",
-        destDir: "widgets/",
-        dest: "Widget.php",
-        requires: "widgets",
-        subPrefix: "widgetName",
-        prefix: true
-    },
-    {
-        src: "templates/_settings.twig",
-        destDir: "templates/",
-        dest: "settings.twig",
-        prefix: false
-    },
-    {
-        src: "translations/_en.php",
-        destDir: "translations/",
-        dest: "en.php",
-        prefix: false
-    },
-    {
-        src: "twigextensions/_TwigExtension.php",
-        destDir: "twigextensions/",
-        dest: "TwigExtension.php",
-        requires: "twigextensions",
-        prefix: true
-    },
-    {
-        src: "variables/_Variable.php",
-        destDir: "variables/",
-        dest: "Variable.php",
-        requires: "variables",
-        prefix: true
-    },
-    {
-        src: "resources/css/_style.css",
-        destDir: "resources/css/",
-        dest: "style.css",
-        prefix: false
-    },
-    {
-        src: "resources/js/_script.js",
-        destDir: "resources/js/",
-        dest: "script.js",
-        prefix: false
-    },
-];
-
-/* --------------------------------------------------------------------------------
-    BOILERPLATE_FILES
-    Individual files that we copy wholesale from 'templates' to the destination
-
-     src: the source path of the file, relative to the 'templates' directory
--------------------------------------------------------------------------------- */
-
-const BOILERPLATE_FILES = [
-    {
-        src: "resources/icon-mask.svg"
-    },
-    {
-        src: "resources/icon.svg"
-    },
-    {
-        src: "resources/images/plugin.png"
-    },
-    {
-        src: "resources/screenshots/plugin_logo.png"
-    },
-];
-
-/* --------------------------------------------------------------------------------
-    END_INSTALL_COMMANDS
-    A list of arbitrary shell commands to execute in sequence at the [ End ] phase
-    of the generator
-
-       name: The human-readable name of the command
-    command: the shell command to be executed
--------------------------------------------------------------------------------- */
-
-const END_INSTALL_COMMANDS = [
-    {
-        name: "Fin.",
-        command: "echo 'Fin.'"
-    },
-];
+var apis = {};
 
 /* --------------------------------------------------------------------------------
     *** End configuration section ***
@@ -454,25 +46,63 @@ module.exports = yo.generators.Base.extend({
 
     initializing: function() {
         this.log(chalk.yellow.bold('[ Initializing ]'));
+        var done = this.async();
 
         this.answers = {};
+        this.askApiVersion = true;
 
+/* -- Load in our API JSON configs */
+
+        path = this.sourceRoot() + TARGET_APIS_DIR;
+        fs.readdirSync(path).forEach(function(file, index) {
+            var curPath = path + "/" + file;
+            if (!fs.statSync(curPath).isDirectory()) {
+                var ext = file.substr(file.lastIndexOf('.') + 1);
+                if (ext == 'json') {
+                    var data = fs.readFileSync(curPath);
+                    var obj = JSON.parse(data);
+/* -- Fill in the API_QUESTIONS with the found target APIs */
+                    apis[obj.API_KEY] = obj;
+                    API_QUESTIONS[0].choices.push({key: obj.API_KEY, name: obj.API_NAME, value: obj.API_KEY});
+                    }
+                }
+            });
+
+/* -- Ask them which API version they want */
+
+        if (this.askApiVersion) {
+            this._optionOrPrompt(API_QUESTIONS, function(answers) {
+                this.api = apis[answers.apiVersion];
+/* -- Change the templates root based on the API version */
+                this.sourceRoot(this.sourceRoot() + "/" + this.api.API_KEY);
+                done();
+                }.bind(this));
+            }
         },
 
 /* -- prompting -- Where you prompt users for options (where you'd call this.prompt()) */
 
     prompting: function() {
         this.log(chalk.yellow.bold('[ Prompting ]'));
-
         var done = this.async();
 
-/* -- Ask some questions about how they want the plugin customized */
+/* -- Turn the pluginComponents into an array */
 
         if (this.options.pluginComponents) {
             this.options.pluginComponents = this.options.pluginComponents.split(',');
             }
 
-        this._optionOrPrompt(QUESTIONS, function(answers) {
+/* -- Change any questions with "when" properties into functions */
+
+        for (var i = 0; i < this.api.QUESTIONS.length; i++) {
+            if (this.api.QUESTIONS[i].hasOwnProperty('when')) {
+                    var whatsRequired = this.api.QUESTIONS[i].when;
+                    this.api.QUESTIONS[i].when = newClosure(whatsRequired);
+                }
+            }
+/* -- Ask some questions about how they want the plugin customized */
+
+        this._optionOrPrompt(this.api.QUESTIONS, function(answers) {
             var now = new Date();
 
             this.answers = answers;
@@ -513,7 +143,7 @@ module.exports = yo.generators.Base.extend({
                 });
 
             done();
-            }.bind(this));;
+            }.bind(this));
         },
 
 /* -- configuring -- Saving configurations and configure the project (creating .editorconfig files and other metadata files) */
@@ -540,8 +170,8 @@ module.exports = yo.generators.Base.extend({
 /* -- Write template files */
 
         this.log(chalk.green('> Writing template files'));
-        for (var i = 0; i < TEMPLATE_FILES.length; i++) {
-            var file = TEMPLATE_FILES[i];
+        for (var i = 0; i < this.api.TEMPLATE_FILES.length; i++) {
+            var file = this.api.TEMPLATE_FILES[i];
             var destFile;
             var skip = false;
 
@@ -595,8 +225,8 @@ module.exports = yo.generators.Base.extend({
 /* -- Copy boilerplate files */
 
         this.log(chalk.green('> Copying boilerplate files'));
-        for (var i = 0; i < BOILERPLATE_FILES.length; i++) {
-            var file = BOILERPLATE_FILES[i];
+        for (var i = 0; i < this.api.BOILERPLATE_FILES.length; i++) {
+            var file = this.api.BOILERPLATE_FILES[i];
             var destFile = this.destDir + file.src;
             this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' copied to ' + chalk.green(destFile));
             this.fs.copy(
@@ -624,8 +254,8 @@ module.exports = yo.generators.Base.extend({
 /* -- Craft base plugins */
 
         this.log(chalk.green('> End install commands'));
-        for (var i = 0; i < END_INSTALL_COMMANDS.length; i++) {
-            var command = END_INSTALL_COMMANDS[i];
+        for (var i = 0; i < this.api.END_INSTALL_COMMANDS.length; i++) {
+            var command = this.api.END_INSTALL_COMMANDS[i];
             this.log('+ ' + chalk.green(command.name) + ' executed');
             child_process.execSync(command.command);
         }
@@ -636,6 +266,15 @@ module.exports = yo.generators.Base.extend({
         },
 
 });
+
+// Create a closure to wrap up our local scope
+function newClosure(whatsRequired) {
+    // Local variables that end up within closure
+    var whichWhen = whatsRequired;
+    return function(answers) {
+                return (typeof answers.pluginComponents != 'object') ? false : (answers.pluginComponents.indexOf(whichWhen) != -1);
+                };
+}
 
 // Return a date in YYYY.MM.DD format
 Date.prototype.yyyymmdd = function() {

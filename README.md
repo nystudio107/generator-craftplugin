@@ -49,6 +49,8 @@ Here's an example of the output from a `yo nystudio107` generator:
 
 ```
 [ Initializing ]
+? Select what Craft CMS API to target: (Use arrow keys)
+❯ Version 2.5.x 
 [ Prompting ]
 ? Plugin name: My Cool new thing!
 ? Short description of the plugin: This is a generic Craft CMS plugin
@@ -57,14 +59,16 @@ Here's an example of the output from a `yo nystudio107` generator:
 ? Plugin author URL: http://DoeDesign.com/
 ? Plugin author GitHub.com name: doedesign
 ? Select what components your plugin will have: (Press <space> to select)
-❯◉ Controllers
+❯◯ Controllers
  ◉ ElementTypes
  ◉ FieldTypes
  ◉ Models
  ◉ Records
- ◉ Services
+ ◯ Services
+ ◯ Tasks
  ◉ TwigExtensions
  ◉ Variables
+ ◯ Widgets
 ? Name of your ElementType: Satu
 ? Name of your FieldType: Dua
 ? Name of your Model: Tiga
@@ -77,24 +81,22 @@ Here's an example of the output from a `yo nystudio107` generator:
   pluginAuthorUrl: 'http://DoeDesign.com/',
   pluginAuthorGithub: 'doedesign',
   pluginComponents: 
-   [ 'controllers',
-     'elementtypes',
+   [ 'elementtypes',
      'fieldtypes',
      'models',
      'records',
-     'services',
      'twigextensions',
      'variables' ],
-  elementName: 'Satu',
-  fieldName: 'Dua',
-  modelName: 'Tiga',
-  recordName: 'Empat',
+  elementName: [ '_Satu' ],
+  fieldName: [ '_Dua' ],
+  modelName: [ '_Tiga' ],
+  recordName: [ '_Empat' ],
   templatesDir: 'templates',
   pluginDirName: 'mycoolnewthing',
   pluginCamelHandle: 'myCoolNewThing',
   pluginHandle: 'MyCoolNewThing',
-  dateNow: '2016-01-04T04:32:27.948Z',
-  niceDate: '2016.01.04',
+  dateNow: '2016-01-10T04:48:29.362Z',
+  niceDate: '2016.01.10',
   copyrightNotice: 'Copyright (c) 2016 John Doe',
   pluginDownloadUrl: 'https://github.com/doedesign/mycoolnewthing/archive/master.zip',
   pluginDocsUrl: 'https://github.com/doedesign/mycoolnewthing/blob/master/README.md',
@@ -108,16 +110,16 @@ Here's an example of the output from a `yo nystudio107` generator:
 + templates/_README.md wrote to mycoolnewthing/README.md
 + templates/_LICENSE.txt wrote to mycoolnewthing/LICENSE.txt
 + templates/_releases.json wrote to mycoolnewthing/releases.json
-+ templates/controllers/_Controller.php wrote to mycoolnewthing/controllers/MyCoolNewThingController.php
 + templates/elementtypes/_ElementType.php wrote to mycoolnewthing/elementtypes/MyCoolNewThing_SatuElementType.php
 + templates/fieldtypes/_FieldType.php wrote to mycoolnewthing/fieldtypes/MyCoolNewThing_DuaFieldType.php
-+ templates/templates/_field.html wrote to mycoolnewthing/templates/field.html
++ templates/templates/_field.twig wrote to mycoolnewthing/templates/field.twig
 + templates/resources/css/_field.css wrote to mycoolnewthing/resources/css/field.css
 + templates/resources/js/_field.js wrote to mycoolnewthing/resources/js/field.js
 + templates/models/_Model.php wrote to mycoolnewthing/models/MyCoolNewThing_TigaModel.php
++ templates/models/_ElementModel.php wrote to mycoolnewthing/models/MyCoolNewThing_SatuModel.php
 + templates/records/_Record.php wrote to mycoolnewthing/records/MyCoolNewThing_EmpatRecord.php
-+ templates/services/_Service.php wrote to mycoolnewthing/services/MyCoolNewThingService.php
-+ templates/templates/_settings.html wrote to mycoolnewthing/templates/settings.html
++ templates/records/_ElementRecord.php wrote to mycoolnewthing/records/MyCoolNewThing_SatuRecord.php
++ templates/templates/_settings.twig wrote to mycoolnewthing/templates/settings.twig
 + templates/translations/_en.php wrote to mycoolnewthing/translations/en.php
 + templates/twigextensions/_TwigExtension.php wrote to mycoolnewthing/twigextensions/MyCoolNewThingTwigExtension.php
 + templates/variables/_Variable.php wrote to mycoolnewthing/variables/MyCoolNewThingVariable.php
@@ -133,16 +135,16 @@ Here's an example of the output from a `yo nystudio107` generator:
    create mycoolnewthing/README.md
    create mycoolnewthing/LICENSE.txt
    create mycoolnewthing/releases.json
-   create mycoolnewthing/controllers/MyCoolNewThingController.php
    create mycoolnewthing/elementtypes/MyCoolNewThing_SatuElementType.php
    create mycoolnewthing/fieldtypes/MyCoolNewThing_DuaFieldType.php
-   create mycoolnewthing/templates/field.html
+   create mycoolnewthing/templates/field.twig
    create mycoolnewthing/resources/css/field.css
    create mycoolnewthing/resources/js/field.js
    create mycoolnewthing/models/MyCoolNewThing_TigaModel.php
+   create mycoolnewthing/models/MyCoolNewThing_SatuModel.php
    create mycoolnewthing/records/MyCoolNewThing_EmpatRecord.php
-   create mycoolnewthing/services/MyCoolNewThingService.php
-   create mycoolnewthing/templates/settings.html
+   create mycoolnewthing/records/MyCoolNewThing_SatuRecord.php
+   create mycoolnewthing/templates/settings.twig
    create mycoolnewthing/translations/en.php
    create mycoolnewthing/twigextensions/MyCoolNewThingTwigExtension.php
    create mycoolnewthing/variables/MyCoolNewThingVariable.php
@@ -165,9 +167,15 @@ The default LICENSE.txt is the MIT license; feel free to change it as you see fi
 
 The `craftplugin` generator can also be passed arguments via the command line, bypassing the interactive prompts.  So it's possible do do something like this:
 
-    yo craftplugin --pluginComponents="controllers,elementtypes,fieldtypes,models,records,services,twigextensions,variables" --pluginName="Gimme the works" --pluginDescription="Some cool plugin" --pluginVersion="1.0.0" --pluginAuthorName="Andrew Welch" --pluginAuthorUrl="http://nystudio107.com" --pluginAuthorGithub="khalwat" --elementName="Satu" --fieldName="Dua" --modelName="Tiga" --recordName="Empat"
+    yo craftplugin --pluginComponents="controllers,elementtypes,fieldtypes,models,records,services,twigextensions,variables" --apiVersion="api_version_2_5" --pluginName="Gimme the works" --pluginDescription="Some cool plugin" --pluginVersion="1.0.0" --pluginAuthorName="Andrew Welch" --pluginAuthorUrl="http://nystudio107.com" --pluginAuthorGithub="khalwat" --elementName="Satu,One" --fieldName="Dua" --modelName="Tiga" --recordName="Empat"
 
 ## Changelog
+
+### 1.1.0 -- 2016.01.09
+
+* In preparation for Craft 3.0, added support for multiple API targets for the plugin scaffolding
+* Moved all of the configuration out of the Javascript and into a directory of `.json` files, one file per API target
+* Updated README.md
 
 ### 1.0.9 -- 2016.01.07
 
