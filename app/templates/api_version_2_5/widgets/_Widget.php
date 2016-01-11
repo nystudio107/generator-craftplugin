@@ -41,6 +41,17 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
      */
     public function getBodyHtml()
     {
+
+        // Include our Javascript & CSS
+        craft()->templates->includeCssResource('<%= pluginDirName %>/css/widgets/<%= pluginName %><%= widgetName[index] %>Widget.css');
+        craft()->templates->includeJsResource('<%= pluginDirName %>/js/widgets/<%= pluginName %><%= widgetName[index] %>Widget.js');
+
+/* -- Variables to pass down to our rendered template */
+
+        $variables = array();
+        $variables['settings'] = $this->getSettings()
+
+       return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginName %><%= widgetName[index] %>_Body', $variables));
     }
 
     /**
@@ -72,9 +83,13 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
      */
     public function getSettingsHtml()
     {
-       return craft()->templates->render('<%= pluginDirName %>/settings', array(
-           'settings' => $this->getSettings()
-       ));
+
+/* -- Variables to pass down to our rendered template */
+
+        $variables = array();
+        $variables['settings'] = $this->getSettings()
+
+       return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginName %><%= widgetName[index] %>_Settings',$variables));
     }
 
     /**

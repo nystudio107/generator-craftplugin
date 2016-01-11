@@ -1,7 +1,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= pluginName %> FieldType JS
+ * <%= pluginHandle %><%= fieldName[index] %>FieldType JS
  *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>

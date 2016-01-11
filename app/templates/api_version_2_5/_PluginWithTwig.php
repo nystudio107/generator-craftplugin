@@ -189,7 +189,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
      */
     public function getSettingsHtml()
     {
-       return craft()->templates->render('<%= pluginDirName %>/settings', array(
+       return craft()->templates->render('<%= pluginDirName %>/<%= pluginHandle %>_Settings', array(
            'settings' => $this->getSettings()
        ));
     }

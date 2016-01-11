@@ -1,0 +1,24 @@
+{#
+/**
+ * <%= pluginName %> plugin for Craft CMS
+ *
+ * <%= pluginHandle %><%= fieldName[index] %>FieldType HTML
+ *
+ * @author    <%= pluginAuthorName %>
+ * @copyright <%= copyrightNotice %>
+ * @link      <%= pluginAuthorUrl %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    id: id ~ 'someField',
+    class: 'nicetext',
+    name: name ~ '[someField]',
+    value: values.someField,
+    errors: values.getErrors('someField'),
+    required: false,
+}) }}

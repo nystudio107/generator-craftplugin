@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= pluginName %> settings.html
+ * <%= pluginName %> Settings.twig
  *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
@@ -14,8 +14,8 @@
 
 {% import "_includes/forms" as forms %}
 
-{% includeCssResource "<%= pluginDirName %>/css/style.css" %}
-{% includeJsResource "<%= pluginDirName %>/js/script.js" %}
+{% includeCssResource "<%= pluginDirName %>/css/<%= pluginHandle %>_Style.css" %}
+{% includeJsResource "<%= pluginDirName %>/js/<%= pluginHandle %>_Script.js" %}
 
 {{ forms.textField({
     label: 'Some Setting',

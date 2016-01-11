@@ -171,6 +171,14 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.1.1 -- 2016.01.11
+
+* We now create per-FieldType and per-Widget CSS/JS/Twig templates, named appropriately
+* Cleaned up the Widget.php template
+* We now create Body and Settings Twig template for Widgets
+* Made the naming of certain templates more consistent
+* Updated README.md
+
 ### 1.1.0 -- 2016.01.09
 
 * In preparation for Craft 3.0, added support for multiple API targets for the plugin scaffolding

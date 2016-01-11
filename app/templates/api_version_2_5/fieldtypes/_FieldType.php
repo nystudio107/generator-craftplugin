@@ -52,14 +52,14 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
     public function getInputHtml($name, $value)
     {
         if (!$value)
-            $value = new <%= pluginHandle %>_<%= modelName %>FieldModel();
+            $value = new <%= pluginHandle %><%= fieldName[index] %>Model();
 
         $id = craft()->templates->formatInputId($name);
         $namespacedId = craft()->templates->namespaceInputId($id);
 
         // Include our Javascript & CSS
-        craft()->templates->includeCssResource('<%= pluginDirName %>/css/field.css');
-        craft()->templates->includeJsResource('<%= pluginDirName %>/js/field.js');
+        craft()->templates->includeCssResource('<%= pluginDirName %>/css/fields/<%= pluginHandle %><%= fieldName[index] %>FieldType.css');
+        craft()->templates->includeJsResource('<%= pluginDirName %>/js/fields/<%= pluginHandle %><%= fieldName[index] %>FieldType.js');
 
 /* -- Variables to pass down to our field.js */
 
@@ -82,7 +82,7 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
             'values' => $value
             );
 
-        return craft()->templates->render('<%= pluginDirName %>/field', $variables);
+        return craft()->templates->render('<%= pluginDirName %>/fields/<%= pluginHandle %><%= fieldName[index] %>FieldType.twig', $variables);
     }
 
     /**
