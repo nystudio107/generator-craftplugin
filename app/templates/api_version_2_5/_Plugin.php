@@ -43,9 +43,13 @@ class <%= pluginHandle %>Plugin extends BasePlugin
      * @return mixed
      */
     public function getName()
-    {
-         return Craft::t('<%= pluginName %>');
-    }
+	{
+		$pluginName	= Craft::t('<%= pluginName %>');
+		$pluginNameOverride	= $this->getSettings()->pluginNameOverride;
+
+
+		return ($pluginNameOverride) ? $pluginNameOverride : $pluginName;
+	}
 
     /**
      * Plugins can have descriptions of themselves displayed on the Plugins page by adding a getDescription() method
@@ -166,6 +170,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     protected function defineSettings()
     {
         return array(
+	        'pluginNameOverride' => AttributeType::String,
             'someSetting' => array(AttributeType::String, 'label' => 'Some Setting', 'default' => ''),
         );
     }
