@@ -18,6 +18,17 @@
 {% includeJsResource "<%= pluginDirName %>/js/<%= pluginHandle %>_Script.js" %}
 
 {{ forms.textField({
+	label: "Plugin Name"|t,
+	id: 'pluginNameOverride',
+	name: 'pluginNameOverride',
+	instructions: "Intuitive, human-readable plugin name for the end user."|t,
+	value: settings.pluginNameOverride,
+	autofocus: true,
+	first: true,
+	errors: ''
+}) }}
+
+{{ forms.textField({
     label: 'Some Setting',
     instructions: 'Enter some setting here.',
     id: 'someSetting',
