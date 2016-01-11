@@ -45,7 +45,7 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'someFilter' => new \Twig_Filter_Method($this, 'someInteralFunction'),
+            'someFilter' => new \Twig_Filter_Method($this, 'someInternalFunction'),
         );
     }
 
@@ -59,7 +59,7 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'someFunction' => new \Twig_Function_Method($this, 'someInteralFunction'),
+            'someFunction' => new \Twig_Function_Method($this, 'someInternalFunction'),
         );
     }
 
@@ -68,7 +68,7 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function someInteralFunction($text = null)
+    public function someInternalFunction($text = null)
     {
         $result = $text . " in the way";
 
