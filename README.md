@@ -172,6 +172,12 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.1.2 -- 2016.01.20
+
+* Craft Commerce "Purchasables" now adds an ElementType, Model, and Record
+* Fixed an error in the naming of the plugin's Settings.twig template
+* Updated README.md
+
 ### 1.1.2 -- 2016.01.19
 
 * Added a Craft Commerce Purchasable ElementType template

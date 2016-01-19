@@ -227,6 +227,14 @@
             "prefix": true
         },
         {
+            "src": "elementtypes/_PurchasableElementType.php",
+            "destDir": "elementtypes/",
+            "dest": "ElementType.php",
+            "requires": "purchasables",
+            "subPrefix": "purchasableName",
+            "prefix": true
+        },
+        {
             "src": "fieldtypes/_FieldType.php",
             "destDir": "fieldtypes/",
             "dest": "FieldType.php",
@@ -304,6 +312,14 @@
             "dest": "Record.php",
             "requires": "elementtypes",
             "subPrefix": "elementName",
+            "prefix": true
+        },
+        {
+            "src": "records/_PurchasableRecord.php",
+            "destDir": "records/",
+            "dest": "Record.php",
+            "requires": "purchasables",
+            "subPrefix": "purchasableName",
             "prefix": true
         },
         {
