@@ -130,7 +130,7 @@ module.exports = yo.generators.Base.extend({
 
 /* -- Clean up the various handle names, and convert them to arrays */
 
-            var subPrefixHandles = ["controllerName", "elementName", "fieldName", "modelName", "recordName", "serviceName", "taskName", "widgetName"];
+            var subPrefixHandles = ["controllerName", "elementName", "fieldName", "modelName", "purchasableName", "recordName", "serviceName", "taskName", "widgetName"];
             var _this = this;
 
             subPrefixHandles.forEach(function(subElement) {

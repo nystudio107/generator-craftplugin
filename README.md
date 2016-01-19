@@ -34,7 +34,7 @@ generator-craftplugin will ask you a few questions:
 * **Plugin author GitHub.com name:** - enter the GitHub.com handle of the author of the plugin.  If you don't have one, just leave it blank
 * **Select what components your plugin will have:** - select the components you want included in your plugin, using the arrow keys to change the component, and `<space>` to select them.
 
-If you selected `Controllers`, `ElementTypes`, `FieldTypes`, `Models`, `Records`, `Services`, `Tasks`, or `Widgets` components, it will also ask you for a name for each one, respectively.  If you want multiple components, just separate them with a , in the name input.
+If you selected `Controllers`, `ElementTypes`, `FieldTypes`, `Models`, `Purchasables`. `Records`, `Services`, `Tasks`, or `Widgets` components, it will also ask you for a name for each one, respectively.  If you want multiple components, just separate them with a , in the name input.
 
 generator-craftplugin will then do the following for you:
 
@@ -63,6 +63,7 @@ Here's an example of the output from a `yo nystudio107` generator:
  ◉ ElementTypes
  ◉ FieldTypes
  ◉ Models
+ ◯ Purchasables
  ◉ Records
  ◯ Services
  ◯ Tasks
@@ -170,6 +171,11 @@ The `craftplugin` generator can also be passed arguments via the command line, b
     yo craftplugin --pluginComponents="controllers,elementtypes,fieldtypes,models,records,services,twigextensions,variables" --apiVersion="api_version_2_5" --pluginName="Gimme the works" --pluginDescription="Some cool plugin" --pluginVersion="1.0.0" --pluginAuthorName="Andrew Welch" --pluginAuthorUrl="http://nystudio107.com" --pluginAuthorGithub="khalwat" --elementName="Satu,One" --fieldName="Dua" --modelName="Tiga" --recordName="Empat"
 
 ## Changelog
+
+### 1.1.2 -- 2016.01.19
+
+* Added a Craft Commerce Purchasable ElementType template
+* Updated README.md
 
 ### 1.1.1 -- 2016.01.11
 

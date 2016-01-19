@@ -67,6 +67,11 @@
                     "value": "models"
                 },
                 {
+                    "key": "purchasables",
+                    "name": "Purchasables",
+                    "value": "purchasables"
+                },
+                {
                     "key": "records",
                     "name": "Records",
                     "value": "records"
@@ -128,6 +133,14 @@
             "type": "input",
             "name": "modelName",
             "message": "Name of your Model:",
+            "default": "",
+            "store": false
+        },
+        {
+            "when": "purchasables",
+            "type": "input",
+            "name": "purchasableName",
+            "message": "Name of your Purchasable:",
             "default": "",
             "store": false
         },
@@ -267,6 +280,14 @@
             "dest": "Model.php",
             "requires": "fieldtypes",
             "subPrefix": "fieldName",
+            "prefix": true
+        },
+        {
+            "src": "models/_PurchasableElementModel.php",
+            "destDir": "models/",
+            "dest": "Model.php",
+            "requires": "purchasables",
+            "subPrefix": "purchasableName",
             "prefix": true
         },
         {

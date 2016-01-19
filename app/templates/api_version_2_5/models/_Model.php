@@ -23,7 +23,8 @@ namespace Craft;
 class <%= pluginHandle %><%= modelName[index] %>Model extends BaseModel
 {
     /**
-     * @access protected
+     * Defines this model's attributes.
+     *
      * @return array
      */
     protected function defineAttributes()

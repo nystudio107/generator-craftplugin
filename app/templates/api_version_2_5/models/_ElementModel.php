@@ -9,6 +9,8 @@
  * templates in Craft, it’s passed via a model.
  *
  * https://craftcms.com/docs/plugins/models
+ *
+ * https://craftcms.com/docs/plugins/working-with-elements
  * --snip--
  *
  * @author    <%= pluginAuthorName %>
@@ -23,7 +25,8 @@ namespace Craft;
 class <%= pluginHandle %><%= elementName[index] %>Model extends BaseElementModel
 {
     /**
-     * @access protected
+     * Defines this model's attributes.
+     *
      * @return array
      */
     protected function defineAttributes()
