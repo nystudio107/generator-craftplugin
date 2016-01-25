@@ -47,6 +47,11 @@
             "message": "Select what components your plugin will have:",
             "choices": [
                 {
+                    "key": "consolecommands",
+                    "name": "ConsoleCommands",
+                    "value": "consolecommands"
+                },
+                {
                     "key": "controllers",
                     "name": "Controllers",
                     "value": "controllers"
@@ -227,6 +232,13 @@
             "destDir": "",
             "dest": "releases.json",
             "prefix": false
+        },
+        {
+            "src": "consolecommands/_Command.php",
+            "destDir": "consolecommands/",
+            "dest": "Command.php",
+            "requires": ["consolecommands"],
+            "prefix": true
         },
         {
             "src": "controllers/_Controller.php",

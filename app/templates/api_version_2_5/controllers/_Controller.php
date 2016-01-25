@@ -36,11 +36,11 @@ class <%= pluginHandle %><%= controllerName[index] %>Controller extends BaseCont
      */
     protected $allowAnonymous = array('actionIndex',
         );
-    
+
     /**
      * Handle a request going to our plugin's index action URL, e.g.: actions/<%= pluginCamelHandle %>
      */
     public function actionIndex()
-    {   
+    {
     }
 }

@@ -59,7 +59,8 @@ Here's an example of the output from a `yo nystudio107` generator:
 ? Plugin author URL: http://DoeDesign.com/
 ? Plugin author GitHub.com name: doedesign
 ? Select what components your plugin will have: (Press <space> to select)
-❯◯ Controllers
+❯◯ ConsoleCommands
+ ◯ Controllers
  ◉ ElementTypes
  ◉ FieldTypes
  ◉ Models
@@ -172,6 +173,11 @@ The `craftplugin` generator can also be passed arguments via the command line, b
     yo craftplugin --pluginComponents="controllers,elementtypes,fieldtypes,models,records,services,settings,twigextensions,variables" --apiVersion="api_version_2_5" --pluginName="Gimme the works" --pluginDescription="Some cool plugin" --pluginVersion="1.0.0" --pluginAuthorName="Andrew Welch" --pluginAuthorUrl="http://nystudio107.com" --pluginAuthorGithub="khalwat" --elementName="Satu,One" --fieldName="Dua" --modelName="Tiga" --recordName="Empat"
 
 ## Changelog
+
+### 1.1.5 -- 2016.01.25
+
+* Added the ability to create `ConsoleCommands`
+* Updated README.md
 
 ### 1.1.4 -- 2016.01.24
 
