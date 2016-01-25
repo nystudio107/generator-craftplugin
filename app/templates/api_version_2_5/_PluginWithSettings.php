@@ -157,4 +157,44 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     public function onBeforeUninstall()
     {
     }
+
+    /**
+     * Defines the attributes that model your plugin’s available settings.
+     *
+     * @return array
+     */
+    protected function defineSettings()
+    {
+        return array(
+            'someSetting' => array(AttributeType::String, 'label' => 'Some Setting', 'default' => ''),
+        );
+    }
+
+    /**
+     * Returns the HTML that displays your plugin’s settings.
+     *
+     * @return mixed
+     */
+    public function getSettingsHtml()
+    {
+       return craft()->templates->render('<%= pluginDirName %>/<%= pluginHandle %>_Settings', array(
+           'settings' => $this->getSettings()
+       ));
+    }
+
+    /**
+     * If you need to do any processing on your settings’ post data before they’re saved to the database, you can
+     * do it with the prepSettings() method:
+     *
+     * @param mixed $settings  The Widget's settings
+     *
+     * @return mixed
+     */
+    public function prepSettings($settings)
+    {
+        // Modify $settings here...
+
+        return $settings;
+    }
+
 }

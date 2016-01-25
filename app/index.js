@@ -175,10 +175,13 @@ module.exports = yo.generators.Base.extend({
             var destFile;
             var skip = false;
 
-            if (file.requires) {
-                if (this.answers.pluginComponents.indexOf(file.requires) == -1) {
-                    skip = true;
-                    }
+            if ((typeof file.requires == 'object') && (file.requires.length)) {
+                var _this = this;
+                file.requires.forEach(function(thisRequires, index) {
+                    if (_this.answers.pluginComponents.indexOf(thisRequires) == -1) {
+                        skip = true;
+                        }
+                    });
                 }
             if (!skip) {
                 if (file.prefix) {
@@ -228,11 +231,22 @@ module.exports = yo.generators.Base.extend({
         for (var i = 0; i < this.api.BOILERPLATE_FILES.length; i++) {
             var file = this.api.BOILERPLATE_FILES[i];
             var destFile = this.destDir + file.src;
-            this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' copied to ' + chalk.green(destFile));
-            this.fs.copy(
-                this.templatePath(file.src),
-                this.destinationPath(destFile)
-                );
+            var skip = false;
+            if ((typeof file.requires == 'object') && (file.requires.length)) {
+                var _this = this;
+                file.requires.forEach(function(thisRequires, index) {
+                    if (_this.answers.pluginComponents.indexOf(thisRequires) == -1) {
+                        skip = true;
+                        }
+                    });
+                }
+                if (!skip) {
+                this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' copied to ' + chalk.green(destFile));
+                this.fs.copy(
+                    this.templatePath(file.src),
+                    this.destinationPath(destFile)
+                    );
+                }
             }
 
 

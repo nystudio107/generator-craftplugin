@@ -11,7 +11,7 @@ You can also access the generator via the web at [pluginfactory.io](http://plugi
 This assumes you have `nodejs`, `npm`, and `yeoman` installed already.
 
 1. Download & unzip the file and place the `generator-craftplugin` directory onto your dev machine
-2.  -OR- do a `git clone https://github.com/khalwat/generator-craftplugin.git` directly onto your dev machine.  You can then update it with `git pull`
+2.  -OR- do a `git clone https://github.com/nystudio107/generator-craftplugin.git` directly onto your dev machine.  You can then update it with `git pull`
 3. On the command line, from the root of the generator-craftplugin project (in the `generator-craftplugin/` folder), type: `npm link` to install the project dependencies and symlink a global module.  On some setups, you may have to do `sudo npm link --no-bin-links`
 4.  -OR- do an `npm -g install generator-craftplugin` to install it via npm (and thus skip the `npm link` step)
 5. The generator folder should be named `generator-craftplugin`.  GitHub recently started appending `-master` (the branch name) to the name of the folder for zip file downloads.
@@ -66,6 +66,7 @@ Here's an example of the output from a `yo nystudio107` generator:
  ◯ Purchasables
  ◉ Records
  ◯ Services
+ ◉ Settings
  ◯ Tasks
  ◉ TwigExtensions
  ◉ Variables
@@ -168,9 +169,16 @@ The default LICENSE.txt is the MIT license; feel free to change it as you see fi
 
 The `craftplugin` generator can also be passed arguments via the command line, bypassing the interactive prompts.  So it's possible do do something like this:
 
-    yo craftplugin --pluginComponents="controllers,elementtypes,fieldtypes,models,records,services,twigextensions,variables" --apiVersion="api_version_2_5" --pluginName="Gimme the works" --pluginDescription="Some cool plugin" --pluginVersion="1.0.0" --pluginAuthorName="Andrew Welch" --pluginAuthorUrl="http://nystudio107.com" --pluginAuthorGithub="khalwat" --elementName="Satu,One" --fieldName="Dua" --modelName="Tiga" --recordName="Empat"
+    yo craftplugin --pluginComponents="controllers,elementtypes,fieldtypes,models,records,services,settings,twigextensions,variables" --apiVersion="api_version_2_5" --pluginName="Gimme the works" --pluginDescription="Some cool plugin" --pluginVersion="1.0.0" --pluginAuthorName="Andrew Welch" --pluginAuthorUrl="http://nystudio107.com" --pluginAuthorGithub="khalwat" --elementName="Satu,One" --fieldName="Dua" --modelName="Tiga" --recordName="Empat"
 
 ## Changelog
+
+### 1.1.4 -- 2016.01.24
+
+* Made the `requires` dependencies an array, to allow for multiple dependencies
+* Added an a new `Settings` component that determines if the plugin has AdminCP settings, and includes the appropriate templates/resources only if so
+* Added the ability for BOILERPLATE_FILES to have dependencies just like templates
+* Updated README.md
 
 ### 1.1.3 -- 2016.01.20
 

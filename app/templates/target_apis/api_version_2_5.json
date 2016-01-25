@@ -82,6 +82,11 @@
                     "value": "services"
                 },
                 {
+                    "key": "settings",
+                    "name": "Settings",
+                    "value": "settings"
+                },
+                {
                     "key": "tasks",
                     "name": "Tasks",
                     "value": "tasks"
@@ -182,14 +187,27 @@
             "src": "_Plugin.php",
             "destDir": "",
             "dest": "Plugin.php",
-            "requires": "",
             "prefix": true
         },
         {
             "src": "_PluginWithTwig.php",
             "destDir": "",
             "dest": "Plugin.php",
-            "requires": "twigextensions",
+            "requires": ["twigextensions"],
+            "prefix": true
+        },
+        {
+            "src": "_PluginWithSettings.php",
+            "destDir": "",
+            "dest": "Plugin.php",
+            "requires": ["settings"],
+            "prefix": true
+        },
+        {
+            "src": "_PluginWithTwigAndSettings.php",
+            "destDir": "",
+            "dest": "Plugin.php",
+            "requires": ["twigextensions", "settings"],
             "prefix": true
         },
         {
@@ -214,7 +232,7 @@
             "src": "controllers/_Controller.php",
             "destDir": "controllers/",
             "dest": "Controller.php",
-            "requires": "controllers",
+            "requires": ["controllers"],
             "subPrefix": "controllerName",
             "prefix": true
         },
@@ -222,7 +240,7 @@
             "src": "elementtypes/_ElementType.php",
             "destDir": "elementtypes/",
             "dest": "ElementType.php",
-            "requires": "elementtypes",
+            "requires": ["elementtypes"],
             "subPrefix": "elementName",
             "prefix": true
         },
@@ -230,7 +248,7 @@
             "src": "elementtypes/_PurchasableElementType.php",
             "destDir": "elementtypes/",
             "dest": "ElementType.php",
-            "requires": "purchasables",
+            "requires": ["purchasables"],
             "subPrefix": "purchasableName",
             "prefix": true
         },
@@ -238,7 +256,7 @@
             "src": "fieldtypes/_FieldType.php",
             "destDir": "fieldtypes/",
             "dest": "FieldType.php",
-            "requires": "fieldtypes",
+            "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
             "prefix": true
         },
@@ -246,7 +264,7 @@
             "src": "templates/fields/_field.twig",
             "destDir": "templates/fields/",
             "dest": "FieldType.twig",
-            "requires": "fieldtypes",
+            "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
             "prefix": true
         },
@@ -254,7 +272,7 @@
             "src": "resources/css/fields/_field.css",
             "destDir": "resources/css/fields/",
             "dest": "FieldType.css",
-            "requires": "fieldtypes",
+            "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
             "prefix": true
         },
@@ -262,7 +280,7 @@
             "src": "resources/js/fields/_field.js",
             "destDir": "resources/js/fields/",
             "dest": "FieldType.js",
-            "requires": "fieldtypes",
+            "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
             "prefix": true
         },
@@ -270,7 +288,7 @@
             "src": "models/_Model.php",
             "destDir": "models/",
             "dest": "Model.php",
-            "requires": "models",
+            "requires": ["models"],
             "subPrefix": "modelName",
             "prefix": true
         },
@@ -278,7 +296,7 @@
             "src": "models/_ElementModel.php",
             "destDir": "models/",
             "dest": "Model.php",
-            "requires": "elementtypes",
+            "requires": ["elementtypes"],
             "subPrefix": "elementName",
             "prefix": true
         },
@@ -286,7 +304,7 @@
             "src": "models/_FieldModel.php",
             "destDir": "models/",
             "dest": "Model.php",
-            "requires": "fieldtypes",
+            "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
             "prefix": true
         },
@@ -294,7 +312,7 @@
             "src": "models/_PurchasableElementModel.php",
             "destDir": "models/",
             "dest": "Model.php",
-            "requires": "purchasables",
+            "requires": ["purchasables"],
             "subPrefix": "purchasableName",
             "prefix": true
         },
@@ -302,7 +320,7 @@
             "src": "records/_Record.php",
             "destDir": "records/",
             "dest": "Record.php",
-            "requires": "records",
+            "requires": ["records"],
             "subPrefix": "recordName",
             "prefix": true
         },
@@ -310,7 +328,7 @@
             "src": "records/_ElementRecord.php",
             "destDir": "records/",
             "dest": "Record.php",
-            "requires": "elementtypes",
+            "requires": ["elementtypes"],
             "subPrefix": "elementName",
             "prefix": true
         },
@@ -318,7 +336,7 @@
             "src": "records/_PurchasableRecord.php",
             "destDir": "records/",
             "dest": "Record.php",
-            "requires": "purchasables",
+            "requires": ["purchasables"],
             "subPrefix": "purchasableName",
             "prefix": true
         },
@@ -326,7 +344,7 @@
             "src": "services/_Service.php",
             "destDir": "services/",
             "dest": "Service.php",
-            "requires": "services",
+            "requires": ["services"],
             "subPrefix": "serviceName",
             "prefix": true
         },
@@ -334,7 +352,7 @@
             "src": "tasks/_Task.php",
             "destDir": "tasks/",
             "dest": "Task.php",
-            "requires": "tasks",
+            "requires": ["tasks"],
             "subPrefix": "taskName",
             "prefix": true
         },
@@ -342,7 +360,7 @@
             "src": "widgets/_Widget.php",
             "destDir": "widgets/",
             "dest": "Widget.php",
-            "requires": "widgets",
+            "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": true
         },
@@ -350,7 +368,7 @@
             "src": "templates/widgets/_body.twig",
             "destDir": "templates/widgets/",
             "dest": "Widget_Body.twig",
-            "requires": "widgets",
+            "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": true
         },
@@ -358,7 +376,7 @@
             "src": "templates/widgets/_settings.twig",
             "destDir": "templates/widgets/",
             "dest": "Widget_Settings.twig",
-            "requires": "widgets",
+            "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": true
         },
@@ -366,7 +384,7 @@
             "src": "resources/css/widgets/_widget.css",
             "destDir": "resources/css/widgets/",
             "dest": "Widget.css",
-            "requires": "widgets",
+            "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": true
         },
@@ -374,14 +392,15 @@
             "src": "resources/js/widgets/_widget.js",
             "destDir": "resources/js/widgets/",
             "dest": "Widget.js",
-            "requires": "widgets",
+            "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": true
         },
         {
             "src": "templates/_settings.twig",
             "destDir": "templates/",
-            "dest": "Settings.twig",
+            "dest": "_Settings.twig",
+            "requires": ["settings"],
             "prefix": true
         },
         {
@@ -394,26 +413,28 @@
             "src": "twigextensions/_TwigExtension.php",
             "destDir": "twigextensions/",
             "dest": "TwigExtension.php",
-            "requires": "twigextensions",
+            "requires": ["twigextensions"],
             "prefix": true
         },
         {
             "src": "variables/_Variable.php",
             "destDir": "variables/",
             "dest": "Variable.php",
-            "requires": "variables",
+            "requires": ["variables"],
             "prefix": true
         },
         {
             "src": "resources/css/_style.css",
             "destDir": "resources/css/",
             "dest": "_Style.css",
+            "requires": ["settings"],
             "prefix": true
         },
         {
             "src": "resources/js/_script.js",
             "destDir": "resources/js/",
             "dest": "_Script.js",
+            "requires": ["settings"],
             "prefix": true
         }
     ],
@@ -425,7 +446,8 @@
             "src": "resources/icon.svg"
         },
         {
-            "src": "resources/images/plugin.png"
+            "src": "resources/images/plugin.png",
+            "requires": ["settings"]
         },
         {
             "src": "resources/screenshots/plugin_logo.png"
