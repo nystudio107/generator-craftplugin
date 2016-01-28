@@ -151,10 +151,18 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-     * Called right after your plugin’s record-based tables have been deleted, and its row in the plugins table
+     * Called right before your plugin’s record-based tables have been deleted, and its row in the plugins table
      * has been deleted.
      */
     public function onBeforeUninstall()
+    {
+    }
+
+    /**
+     * Called right after your plugin’s record-based tables have been deleted, and its row in the plugins table
+     * has been deleted.
+     */
+    public function onAfterUninstall()
     {
     }
 
