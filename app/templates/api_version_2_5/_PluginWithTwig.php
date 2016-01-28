@@ -27,7 +27,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
 {
     /**
      * Called after the plugin class is instantiated; do any one-time initialization here such as hooks and events:
-     * 
+     *
      * craft()->on('entries.saveEntry', function(Event $event) {
      *    // ...
      * });
