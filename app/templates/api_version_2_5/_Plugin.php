@@ -26,8 +26,13 @@ namespace Craft;
 class <%= pluginHandle %>Plugin extends BasePlugin
 {
     /**
-     * Called after the plugin class is instantiated; do any one-time initialization here, such as loading any
-     * third party Composer packages via:
+     * Called after the plugin class is instantiated; do any one-time initialization here such as hooks and events:
+     * 
+     * craft()->on('entries.saveEntry', function(Event $event) {
+     *    // ...
+     * });
+     *
+     * orcloading any third party Composer packages via:
      *
      * require_once __DIR__ . '/vendor/autoload.php';
      *
