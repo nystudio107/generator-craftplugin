@@ -308,7 +308,7 @@ String.prototype.directorize = function() {
 
 // Return a string stripped of white space & non-alpha characters, and in CamelCase
 String.prototype.camelize = function() {
-  return this.replace(/[^a-z ]/ig, '').replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
+  return this.replace(/[^a-z0-9 ]/ig, '').replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
     if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
     return index == 0 ? match.toLowerCase() : match.toUpperCase();
   });
