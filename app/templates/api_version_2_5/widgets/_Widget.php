@@ -22,7 +22,6 @@ namespace Craft;
 
 class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
 {
-
     /**
      * Returns the name of the widget name.
      *
@@ -41,17 +40,16 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
      */
     public function getBodyHtml()
     {
-
         // Include our Javascript & CSS
         craft()->templates->includeCssResource('<%= pluginDirName %>/css/widgets/<%= pluginName %><%= widgetName[index] %>Widget.css');
         craft()->templates->includeJsResource('<%= pluginDirName %>/js/widgets/<%= pluginName %><%= widgetName[index] %>Widget.js');
 
-/* -- Variables to pass down to our rendered template */
+        /* -- Variables to pass down to our rendered template */
 
         $variables = array();
-        $variables['settings'] = $this->getSettings()
+        $variables['settings'] = $this->getSettings();
 
-       return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginName %><%= widgetName[index] %>_Body', $variables));
+        return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginName %><%= widgetName[index] %>Widget_Body', $variables);
     }
 
     /**
@@ -83,13 +81,12 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
      */
     public function getSettingsHtml()
     {
-
-/* -- Variables to pass down to our rendered template */
+        /* -- Variables to pass down to our rendered template */
 
         $variables = array();
-        $variables['settings'] = $this->getSettings()
+        $variables['settings'] = $this->getSettings();
 
-       return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginName %><%= widgetName[index] %>_Settings',$variables));
+        return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginName %><%= widgetName[index] %>Widget_Settings',$variables);
     }
 
     /**
@@ -103,7 +100,7 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
     public function prepSettings($settings)
     {
         // Modify $settings here...
-
+        
         return $settings;
     }
 }
