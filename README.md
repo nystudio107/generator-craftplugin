@@ -174,6 +174,11 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.1.8 -- 2016.02.18
+
+* Fixes/enhancements to the `_Widget.php` template
+* Updated README.md
+
 ### 1.1.7 -- 2016.01.28
 
 * Numbers are now allowed in the plugin name and sub-handle names, so `News2Buffer` for example is okay now
