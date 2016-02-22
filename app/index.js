@@ -303,15 +303,19 @@ Date.prototype.yyyymmdd = function() {
 
 // Return a string stripped of non-alpha characters, and replace spaces with _'s
 String.prototype.directorize = function() {
-  return this.toLowerCase().replace(/\W/g, '');
+    return this.toLowerCase().replace(/\W/g, '');
 }
 
-// Return a string stripped of white space & non-alpha characters, and in CamelCase
+// Return a string stripped of white space & non-alpha characters, and in CamelCase (lowercasing it first, if it has any whitespace in it)
 String.prototype.camelize = function() {
-  return this.replace(/[^a-z0-9 ]/ig, '').replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
-    if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
-    return index == 0 ? match.toLowerCase() : match.toUpperCase();
-  });
+    var _this = this;
+    if (/\s/.test(_this)) {
+       _this = _this.toLowerCase();
+    }
+    return _this.replace(/[^a-z0-9 ]/ig, '').replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
+        if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+        return index == 0 ? match.toLowerCase() : match.toUpperCase();
+    });
 }
 
 // Convert a string to have proceed with a _ and be camel-cased, with the first letter capitalized
