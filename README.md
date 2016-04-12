@@ -174,6 +174,11 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.1.10 -- 2016.04.12
+
+* Fixed widget naming issues
+* Updated README.md
+
 ### 1.1.9 -- 2016.02.22
 
 * We now lowercase the plugin name and handles before Camel-izing them, if the string contains any whitespace
