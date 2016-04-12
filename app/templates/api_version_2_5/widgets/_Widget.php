@@ -38,12 +38,12 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
     public function getBodyHtml()
     {
         // Include our Javascript & CSS
-        craft()->templates->includeCssResource('<%= pluginDirName %>/css/widgets/<%= pluginName %><%= widgetName[index] %>Widget.css');
-        craft()->templates->includeJsResource('<%= pluginDirName %>/js/widgets/<%= pluginName %><%= widgetName[index] %>Widget.js');
+        craft()->templates->includeCssResource('<%= pluginDirName %>/css/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget.css');
+        craft()->templates->includeJsResource('<%= pluginDirName %>/js/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget.js');
         /* -- Variables to pass down to our rendered template */
         $variables = array();
         $variables['settings'] = $this->getSettings();
-        return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginName %><%= widgetName[index] %>Widget_Body', $variables);
+        return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget_Body', $variables);
     }
     /**
      * Returns how many columns the widget will span in the Admin CP
@@ -75,7 +75,7 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
         /* -- Variables to pass down to our rendered template */
         $variables = array();
         $variables['settings'] = $this->getSettings();
-        return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginName %><%= widgetName[index] %>Widget_Settings',$variables);
+        return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget_Settings',$variables);
     }
     /**
      * If you need to do any processing on your settings’ post data before they’re saved to the database, you can
