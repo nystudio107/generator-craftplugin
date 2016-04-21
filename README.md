@@ -174,6 +174,11 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.1.11 -- 2016.04.21
+
+* Fixed widget settings issues
+* Updated README.md
+
 ### 1.1.10 -- 2016.04.12
 
 * Fixed widget naming issues
