@@ -14,11 +14,13 @@
 
 {% import "_includes/forms" as forms %}
 
+{% includeCssResource "<%= pluginDirName %>/css/<%= pluginHandle %>_Style.css" %}
+{% includeJsResource "<%= pluginDirName %>/js/<%= pluginHandle %>_Script.js" %}
+
 {{ forms.textField({
-    id: id ~ 'someField',
-    class: 'nicetext',
-    name: name ~ '[someField]',
-    value: values.someField,
-    errors: values.getErrors('someField'),
-    required: false,
-}) }}
+    label: 'Some Setting',
+    instructions: 'Enter some setting here.',
+    id: 'someSetting',
+    name: 'someSetting',
+    value: settings['someSetting']})
+}}
