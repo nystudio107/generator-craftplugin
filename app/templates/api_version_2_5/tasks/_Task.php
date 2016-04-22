@@ -4,6 +4,7 @@
  *
  * <%= pluginHandle %><%= taskName[index] %> Task
  *
+<% if (typeof codeComments !== 'undefined'){ -%>
  * --snip--
  * Tasks let you run background processing for things that take a long time, dividing them up into steps.  For
  * example, Asset Transforms are regenerated using Tasks.
@@ -15,6 +16,7 @@
  * https://craftcms.com/classreference/services/TasksService
  * --snip--
  *
+<% } -%>
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -27,8 +29,10 @@ namespace Craft;
 class <%= pluginHandle %><%= taskName[index] %>Task extends BaseTask
 {
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Defines the settings.
      *
+<% } -%>
      * @access protected
      * @return array
      */
@@ -41,8 +45,10 @@ class <%= pluginHandle %><%= taskName[index] %>Task extends BaseTask
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the default description for this task.
      *
+<% } -%>
      * @return string
      */
     public function getDescription()
@@ -51,8 +57,10 @@ class <%= pluginHandle %><%= taskName[index] %>Task extends BaseTask
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Gets the total number of steps for this task.
      *
+<% } -%>
      * @return int
      */
     public function getTotalSteps()
@@ -61,8 +69,10 @@ class <%= pluginHandle %><%= taskName[index] %>Task extends BaseTask
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Runs a task step.
      *
+<% } -%>
      * @param int $step
      * @return bool
      */

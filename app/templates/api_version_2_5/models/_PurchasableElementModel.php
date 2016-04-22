@@ -4,6 +4,7 @@
  *
  * <%= pluginHandle %><%= purchasableName[index] %> Purchasable Model
  *
+<% if (typeof codeComments !== 'undefined'){ -%>
  * --snip--
  * Models are containers for data. Just about every time information is passed between services, controllers, and
  * templates in Craft, it’s passed via a model.
@@ -23,6 +24,7 @@
  * https://craftcommerce.com/docs/purchasables
  * --snip--
  *
+<% } -%>
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -37,8 +39,10 @@ use Commerce\Interfaces\Purchasable;
 class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementModel implements Purchasable
 {
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Defines this model's attributes.
      *
+<% } -%>
      * @return array
      */
     protected function defineAttributes()
@@ -49,8 +53,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns whether the current user can edit the element.
      *
+<% } -%>
      * @return bool
      */
     public function isEditable()
@@ -59,8 +65,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the element's CP edit URL.
      *
+<% } -%>
      * @return string|false
      */
     public function getCpEditUrl()
@@ -68,9 +76,11 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the Id of the Purchasable element that should be added to the lineitem.
      * This elements model should meet the Purchasable Interface.
      *
+<% } -%>
      * @return int
      */
     public function getPurchasableId()
@@ -79,6 +89,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /*
+<% if (typeof codeComments !== 'undefined'){ -%>
      * This is an array of data that should be saved in a serialized way to the line item.
      *
      * Use it as a way to store data on the lineItem even after the purchasable may be deleted.
@@ -90,6 +101,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
      *                       'location' => 'N'];
      *
      *
+<% } -%>
      * @return array
      */
     public function getSnapshot()
@@ -98,8 +110,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * This is the base price the item will be added to the line item with.
      *
+<% } -%>
      * @return float decimal(14,4)
      */
     public function getPrice()
@@ -109,8 +123,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * This must be a unique code. Unique as per the commerce_purchasables table.
      *
+<% } -%>
      * @return string
      */
     public function getSku()
@@ -120,8 +136,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * This would usually be your elements title or any additional descriptive information.
      *
+<% } -%>
      * @return string
      */
     public function getDescription()
@@ -130,8 +148,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns a Craft Commerce tax category id
      *
+<% } -%>
      * @return int
      */
     public function getTaxCategoryId()
@@ -142,10 +162,12 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Validates this purchasable for the line item it is on. Called when Purchasable is added to the cart.
      *
      * You can add model errors to the line item like this: `$lineItem->addError('qty', $errorText);`
      *
+<% } -%>
      * @param \Craft\Commerce_LineItemModel $lineItem
      *
      * @return mixed

@@ -4,6 +4,7 @@
  *
  * <%= pluginHandle %><%= modelName[index] %> Model
  *
+<% if (typeof codeComments !== 'undefined'){ -%>
  * --snip--
  * Models are containers for data. Just about every time information is passed between services, controllers, and
  * templates in Craft, it’s passed via a model.
@@ -11,6 +12,7 @@
  * https://craftcms.com/docs/plugins/models
  * --snip--
  *
+<% } -%>
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -23,8 +25,10 @@ namespace Craft;
 class <%= pluginHandle %><%= modelName[index] %>Model extends BaseModel
 {
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Defines this model's attributes.
      *
+<% } -%>
      * @return array
      */
     protected function defineAttributes()

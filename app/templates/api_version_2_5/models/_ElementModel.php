@@ -4,6 +4,7 @@
  *
  * <%= pluginHandle %><%= elementName[index] %> Model
  *
+<% if (typeof codeComments !== 'undefined'){ -%>
  * --snip--
  * Models are containers for data. Just about every time information is passed between services, controllers, and
  * templates in Craft, it’s passed via a model.
@@ -13,6 +14,7 @@
  * https://craftcms.com/docs/plugins/working-with-elements
  * --snip--
  *
+<% } -%>
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -25,8 +27,10 @@ namespace Craft;
 class <%= pluginHandle %><%= elementName[index] %>Model extends BaseElementModel
 {
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Defines this model's attributes.
      *
+<% } -%>
      * @return array
      */
     protected function defineAttributes()
@@ -37,8 +41,10 @@ class <%= pluginHandle %><%= elementName[index] %>Model extends BaseElementModel
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns whether the current user can edit the element.
      *
+<% } -%>
      * @return bool
      */
     public function isEditable()
@@ -46,8 +52,10 @@ class <%= pluginHandle %><%= elementName[index] %>Model extends BaseElementModel
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the element's CP edit URL.
      *
+<% } -%>
      * @return string|false
      */
     public function getCpEditUrl()

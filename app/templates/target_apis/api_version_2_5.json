@@ -47,6 +47,12 @@
             "message": "Select what components your plugin will have:",
             "choices": [
                 {
+                    "key": "codeComments",
+                    "name": "Code Comments",
+                    "value": "codeComments",
+                    "checked": true
+                },
+                {
                     "key": "consolecommands",
                     "name": "ConsoleCommands",
                     "value": "consolecommands"

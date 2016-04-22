@@ -4,6 +4,7 @@
  *
  * <%= pluginHandle %><%= purchasableName[index] %> ElementType
  *
+<% if (typeof codeComments !== 'undefined'){ -%>
  * --snip--
  * Element Types are the classes used to identify each of these types of elements in Craft. There’s a
  * “UserElementType”, there’s an “AssetElementType”, and so on. If you’ve ever developed a custom Field Type class
@@ -13,6 +14,7 @@
  * http://pixelandtonic.com/blog/craft-element-types
  * --snip--
  *
+<% } -%>
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -25,8 +27,10 @@ namespace Craft;
 class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseElementType
 {
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns this element type's name.
      *
+<% } -%>
      * @return mixed
      */
     public function getName()
@@ -35,8 +39,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns whether this element type has content.
      *
+<% } -%>
      * @return bool
      */
     public function hasContent()
@@ -45,8 +51,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns whether this element type has titles.
      *
+<% } -%>
      * @return bool
      */
     public function hasTitles()
@@ -55,8 +63,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns whether this element type can have statuses.
      *
+<% } -%>
      * @return bool
      */
     public function hasStatuses()
@@ -65,8 +75,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns whether this element type is localized.
      *
+<% } -%>
      * @return bool
      */
     public function isLocalized()
@@ -75,8 +87,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns this element type's sources.
      *
+<% } -%>
      * @param string|null $context
      * @return array|false
      */
@@ -96,8 +110,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the attributes that can be shown/sorted by in table views.
      *
+<% } -%>
      * @param string|null $source
      * @return array
      */
@@ -106,8 +122,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the table view HTML for a given attribute.
      *
+<% } -%>
      * @param BaseElementModel $element
      * @param string $attribute
      * @return string
@@ -117,8 +135,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Defines any custom element criteria attributes for this element type.
      *
+<% } -%>
      * @return array
      */
     public function defineCriteriaAttributes()
@@ -126,8 +146,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Modifies an element query targeting elements of this type.
      *
+<% } -%>
      * @param DbCommand $query
      * @param ElementCriteriaModel $criteria
      * @return mixed
@@ -137,8 +159,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
    }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Populates an element model based on a query result.
      *
+<% } -%>
      * @param array $row
      * @return array
      */
@@ -147,8 +171,10 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the HTML for an editor HUD for the given element.
      *
+<% } -%>
      * @param BaseElementModel $element
      * @return string
      */

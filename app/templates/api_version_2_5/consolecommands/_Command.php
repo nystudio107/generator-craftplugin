@@ -4,6 +4,7 @@
  *
  * <%= pluginHandle %> Command
  *
+<% if (typeof codeComments !== 'undefined'){ -%>
  * --snip--
  * Craft is built on the Yii framework and includes a command runner, yiic in ./craft/app/etc/console/yiic
  *
@@ -20,6 +21,7 @@
  * http://spin.atomicobject.com/2015/06/16/craft-console-plugin/
  * --snip--
  *
+<% } -%>
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -32,7 +34,9 @@ namespace Craft;
 class <%= pluginHandle %>Command extends BaseCommand
 {
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Handle our plugin's index action command, e.g.: ./craft/app/etc/console/yiic <%= pluginDirName %>
+<% } -%>
      */
     public function actionIndex($param="")
     {

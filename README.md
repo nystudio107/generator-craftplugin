@@ -174,6 +174,11 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.1.12 -- 2016.04.22
+
+* Added a "Code Comments" checkbox, so that you can disable the verbose comments in the generated code scaffolding
+* Updated README.md
+
 ### 1.1.11 -- 2016.04.21
 
 * Fixed widget settings issues

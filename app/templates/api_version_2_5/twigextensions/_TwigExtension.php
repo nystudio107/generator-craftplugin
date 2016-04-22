@@ -4,6 +4,7 @@
  *
  * <%= pluginName %> Twig Extension
  *
+<% if (typeof codeComments !== 'undefined'){ -%>
  * --snip--
  * Twig can be extended in many ways; you can add extra tags, filters, tests, operators, global variables, and
  * functions. You can even extend the parser itself with node visitors.
@@ -11,6 +12,7 @@
  * http://twig.sensiolabs.org/doc/advanced.html
  * --snip--
  *
+<% } -%>
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -26,8 +28,10 @@ use Twig_Filter_Method;
 class <%= pluginHandle %>TwigExtension extends \Twig_Extension
 {
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the name of the extension.
      *
+<% } -%>
      * @return string The extension name
      */
     public function getName()
@@ -36,10 +40,12 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns an array of Twig filters, used in Twig templates via:
      *
      *      {{ 'something' | someFilter }}
      *
+<% } -%>
      * @return array
      */
     public function getFilters()
@@ -50,11 +56,13 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns an array of Twig functions, used in Twig templates via:
      *
      *      {% set this = someFunction('something') %}
      *
-     * @return array
+ <% } -%>
+    * @return array
      */
     public function getFunctions()
     {
@@ -64,8 +72,10 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Our function called via Twig; it can do anything you want
      *
+ <% } -%>
      * @return string
      */
     public function someInternalFunction($text = null)

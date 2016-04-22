@@ -4,6 +4,7 @@
  *
  * <%= pluginHandle %><%= widgetName[index] %> Widget
  *
+<% if (typeof codeComments !== 'undefined'){ -%>
  * --snip--
  * Dashboard widgets allow you to display information in the Admin CP Dashboard.  Adding new types of widgets to
  * the dashboard couldn’t be easier in Craft
@@ -11,6 +12,7 @@
  * https://craftcms.com/docs/plugins/widgets
  * --snip--
  *
+<% } -%>
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -21,8 +23,10 @@ namespace Craft;
 class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
 {
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the name of the widget name.
      *
+<% } -%>
      * @return mixed
      */
     public function getName()
@@ -30,9 +34,11 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
         return Craft::t('<%= pluginName %><%= widgetName[index] %>');
     }
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * getBodyHtml() does just what it says: it returns your widget’s body HTML. We recommend that you store the
      * actual HTML in a template, and load it via craft()->templates->render().
      *
+<% } -%>
      * @return mixed
      */
     public function getBodyHtml()
@@ -46,8 +52,10 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
         return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget_Body', $variables);
     }
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns how many columns the widget will span in the Admin CP
      *
+<% } -%>
      * @return int
      */
     public function getColspan()
@@ -55,8 +63,10 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
         return 1;
     }
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Defines the attributes that model your Widget's available settings.
      *
+<% } -%>
      * @return array
      */
     protected function defineSettings()
@@ -66,28 +76,36 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
         );
     }
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the HTML that displays your Widget's settings.
      *
+<% } -%>
      * @return mixed
      */
     public function getSettingsHtml()
     {
-        /* -- Variables to pass down to our rendered template */
+
+/* -- Variables to pass down to our rendered template */
+
         $variables = array();
         $variables['settings'] = $this->getSettings();
         return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget_Settings',$variables);
     }
+
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * If you need to do any processing on your settings’ post data before they’re saved to the database, you can
      * do it with the prepSettings() method:
      *
+<% } -%>
      * @param mixed $settings  The Widget's settings
      *
      * @return mixed
      */
     public function prepSettings($settings)
     {
-        // Modify $settings here...
+
+/* -- Modify $settings here... */
 
         return $settings;
     }

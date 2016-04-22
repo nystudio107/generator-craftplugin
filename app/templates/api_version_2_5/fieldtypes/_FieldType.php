@@ -4,6 +4,7 @@
  *
  * <%= pluginHandle %><%= fieldName[index] %> FieldType
  *
+<% if (typeof codeComments !== 'undefined'){ -%>
  * --snip--
  * Whenever someone creates a new field in Craft, they must specify what type of field it is. The system comes with
  * a handful of field types baked in, and we’ve made it extremely easy for plugins to add new ones.
@@ -11,6 +12,7 @@
  * https://craftcms.com/docs/plugins/field-types
  * --snip--
  *
+<% } -%>
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -23,8 +25,10 @@ namespace Craft;
 class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
 {
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the name of the fieldtype.
      *
+<% } -%>
      * @return mixed
      */
     public function getName()
@@ -33,8 +37,10 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the content attribute config.
      *
+<% } -%>
      * @return mixed
      */
     public function defineContentAttribute()
@@ -43,8 +49,10 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the field's input HTML.
      *
+<% } -%>
      * @param string $name
      * @param mixed  $value
      * @return string
@@ -57,7 +65,8 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
         $id = craft()->templates->formatInputId($name);
         $namespacedId = craft()->templates->namespaceInputId($id);
 
-        // Include our Javascript & CSS
+/* -- Include our Javascript & CSS */
+
         craft()->templates->includeCssResource('<%= pluginDirName %>/css/fields/<%= pluginHandle %><%= fieldName[index] %>FieldType.css');
         craft()->templates->includeJsResource('<%= pluginDirName %>/js/fields/<%= pluginHandle %><%= fieldName[index] %>FieldType.js');
 
@@ -86,8 +95,10 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Returns the input value as it should be saved to the database.
      *
+<% } -%>
      * @param mixed $value
      * @return mixed
      */
@@ -96,8 +107,10 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
     }
 
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Prepares the field's value for use.
      *
+<% } -%>
      * @param mixed $value
      * @return mixed
      */

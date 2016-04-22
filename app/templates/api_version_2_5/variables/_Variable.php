@@ -4,6 +4,7 @@
  *
  * <%= pluginName %> Variable
  *
+<% if (typeof codeComments !== 'undefined'){ -%>
  * --snip--
  * Craft allows plugins to provide their own template variables, accessible from the {{ craft }} global variable
  * (e.g. {{ craft.pluginName }}).
@@ -11,6 +12,7 @@
  * https://craftcms.com/docs/plugins/variables
  * --snip--
  *
+<% } -%>
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
@@ -23,6 +25,7 @@ namespace Craft;
 class <%= pluginHandle %>Variable
 {
     /**
+<% if (typeof codeComments !== 'undefined'){ -%>
      * Whatever you want to output to a Twig tempate can go into a Variable method. You can have as many variable
      * functions as you want.  From any Twig template, call it like this:
      *
@@ -31,6 +34,7 @@ class <%= pluginHandle %>Variable
      * Or, if your variable requires input from Twig:
      *
      *     {{ craft.<%= pluginCamelHandle %>.exampleVariable(twigValue) }}
+<% } -%>
      */
     public function exampleVariable($optional = null)
     {
