@@ -104,6 +104,7 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
      */
     public function prepValueFromPost($value)
     {
+        return $value;
     }
 
     /**
@@ -116,5 +117,6 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
      */
     public function prepValue($value)
     {
+        return $value;
     }
 }
