@@ -4,7 +4,7 @@
  *
  * <%= pluginName %> Twig Extension
  *
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Twig can be extended in many ways; you can add extra tags, filters, tests, operators, global variables, and
  * functions. You can even extend the parser itself with node visitors.
@@ -28,7 +28,7 @@ use Twig_Filter_Method;
 class <%= pluginHandle %>TwigExtension extends \Twig_Extension
 {
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the name of the extension.
      *
 <% } -%>
@@ -40,7 +40,7 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns an array of Twig filters, used in Twig templates via:
      *
      *      {{ 'something' | someFilter }}
@@ -56,7 +56,7 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns an array of Twig functions, used in Twig templates via:
      *
      *      {% set this = someFunction('something') %}
@@ -72,7 +72,7 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Our function called via Twig; it can do anything you want
      *
  <% } -%>

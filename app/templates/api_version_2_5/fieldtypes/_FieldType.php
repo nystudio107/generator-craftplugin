@@ -4,7 +4,7 @@
  *
  * <%= pluginHandle %><%= fieldName[index] %> FieldType
  *
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Whenever someone creates a new field in Craft, they must specify what type of field it is. The system comes with
  * a handful of field types baked in, and we’ve made it extremely easy for plugins to add new ones.
@@ -25,7 +25,7 @@ namespace Craft;
 class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
 {
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the name of the fieldtype.
      *
 <% } -%>
@@ -37,7 +37,7 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the content attribute config.
      *
 <% } -%>
@@ -49,7 +49,7 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the field's input HTML.
      *
 <% } -%>
@@ -95,7 +95,7 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the input value as it should be saved to the database.
      *
 <% } -%>
@@ -108,7 +108,7 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Prepares the field's value for use.
      *
 <% } -%>

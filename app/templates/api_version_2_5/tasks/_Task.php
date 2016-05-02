@@ -4,7 +4,7 @@
  *
  * <%= pluginHandle %><%= taskName[index] %> Task
  *
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Tasks let you run background processing for things that take a long time, dividing them up into steps.  For
  * example, Asset Transforms are regenerated using Tasks.
@@ -29,7 +29,7 @@ namespace Craft;
 class <%= pluginHandle %><%= taskName[index] %>Task extends BaseTask
 {
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Defines the settings.
      *
 <% } -%>
@@ -45,7 +45,7 @@ class <%= pluginHandle %><%= taskName[index] %>Task extends BaseTask
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the default description for this task.
      *
 <% } -%>
@@ -57,7 +57,7 @@ class <%= pluginHandle %><%= taskName[index] %>Task extends BaseTask
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Gets the total number of steps for this task.
      *
 <% } -%>
@@ -69,7 +69,7 @@ class <%= pluginHandle %><%= taskName[index] %>Task extends BaseTask
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Runs a task step.
      *
 <% } -%>

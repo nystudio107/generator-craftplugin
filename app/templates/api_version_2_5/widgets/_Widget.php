@@ -4,7 +4,7 @@
  *
  * <%= pluginHandle %><%= widgetName[index] %> Widget
  *
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Dashboard widgets allow you to display information in the Admin CP Dashboard.  Adding new types of widgets to
  * the dashboard couldn’t be easier in Craft
@@ -23,7 +23,7 @@ namespace Craft;
 class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
 {
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the name of the widget name.
      *
 <% } -%>
@@ -34,7 +34,7 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
         return Craft::t('<%= pluginName %><%= widgetName[index] %>');
     }
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * getBodyHtml() does just what it says: it returns your widget’s body HTML. We recommend that you store the
      * actual HTML in a template, and load it via craft()->templates->render().
      *
@@ -52,7 +52,7 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
         return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget_Body', $variables);
     }
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns how many columns the widget will span in the Admin CP
      *
 <% } -%>
@@ -63,7 +63,7 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
         return 1;
     }
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Defines the attributes that model your Widget's available settings.
      *
 <% } -%>
@@ -76,7 +76,7 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
         );
     }
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the HTML that displays your Widget's settings.
      *
 <% } -%>
@@ -93,7 +93,7 @@ class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * If you need to do any processing on your settings’ post data before they’re saved to the database, you can
      * do it with the prepSettings() method:
      *

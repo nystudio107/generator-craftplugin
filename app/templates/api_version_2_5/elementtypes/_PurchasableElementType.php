@@ -4,7 +4,7 @@
  *
  * <%= pluginHandle %><%= purchasableName[index] %> ElementType
  *
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Element Types are the classes used to identify each of these types of elements in Craft. There’s a
  * “UserElementType”, there’s an “AssetElementType”, and so on. If you’ve ever developed a custom Field Type class
@@ -27,7 +27,7 @@ namespace Craft;
 class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseElementType
 {
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns this element type's name.
      *
 <% } -%>
@@ -39,7 +39,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns whether this element type has content.
      *
 <% } -%>
@@ -51,7 +51,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns whether this element type has titles.
      *
 <% } -%>
@@ -63,7 +63,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns whether this element type can have statuses.
      *
 <% } -%>
@@ -75,7 +75,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns whether this element type is localized.
      *
 <% } -%>
@@ -87,7 +87,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns this element type's sources.
      *
 <% } -%>
@@ -110,7 +110,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the attributes that can be shown/sorted by in table views.
      *
 <% } -%>
@@ -122,7 +122,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the table view HTML for a given attribute.
      *
 <% } -%>
@@ -135,7 +135,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Defines any custom element criteria attributes for this element type.
      *
 <% } -%>
@@ -146,7 +146,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Modifies an element query targeting elements of this type.
      *
 <% } -%>
@@ -159,7 +159,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
    }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Populates an element model based on a query result.
      *
 <% } -%>
@@ -171,7 +171,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the HTML for an editor HUD for the given element.
      *
 <% } -%>

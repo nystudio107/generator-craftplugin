@@ -4,7 +4,7 @@
  *
  * <%= pluginName %> Variable
  *
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Craft allows plugins to provide their own template variables, accessible from the {{ craft }} global variable
  * (e.g. {{ craft.pluginName }}).
@@ -25,7 +25,7 @@ namespace Craft;
 class <%= pluginHandle %>Variable
 {
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Whatever you want to output to a Twig tempate can go into a Variable method. You can have as many variable
      * functions as you want.  From any Twig template, call it like this:
      *

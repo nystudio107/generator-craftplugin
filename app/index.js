@@ -167,6 +167,8 @@ module.exports = yo.generators.Base.extend({
     writing: function() {
         this.log(chalk.yellow.bold('[ Writing ]'));
 
+this.log(this.answers);
+
 /* -- Write template files */
 
         this.log(chalk.green('> Writing template files'));

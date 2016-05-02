@@ -4,7 +4,7 @@
  *
  * <%= pluginDescription %>
  *
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Craft plugins are very much like little applications in and of themselves. We’ve made it as simple as we can,
  * but the training wheels are off. A little prior knowledge is going to be required to write a plugin.
@@ -28,7 +28,7 @@ namespace Craft;
 class <%= pluginHandle %>Plugin extends BasePlugin
 {
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Called after the plugin class is instantiated; do any one-time initialization here such as hooks and events:
      *
      * craft()->on('entries.saveEntry', function(Event $event) {
@@ -47,7 +47,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the user-facing name.
      *
 <% } -%>
@@ -59,7 +59,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Plugins can have descriptions of themselves displayed on the Plugins page by adding a getDescription() method
      * on the primary plugin class:
      *
@@ -72,7 +72,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Plugins can have links to their documentation on the Plugins page by adding a getDocumentationUrl() method on
      * the primary plugin class:
      *
@@ -85,7 +85,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Plugins can now take part in Craft’s update notifications, and display release notes on the Updates page, by
      * providing a JSON feed that describes new releases, and adding a getReleaseFeedUrl() method on the primary
      * plugin class.
@@ -99,7 +99,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the version number.
      *
 <% } -%>
@@ -111,7 +111,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * As of Craft 2.5, Craft no longer takes the whole site down every time a plugin’s version number changes, in
      * case there are any new migrations that need to be run. Instead plugins must explicitly tell Craft that they
      * have new migrations by returning a new (higher) schema version number with a getSchemaVersion() method on
@@ -126,7 +126,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the developer’s name.
      *
 <% } -%>
@@ -138,7 +138,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the developer’s website URL.
      *
 <% } -%>
@@ -150,7 +150,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns whether the plugin should get its own tab in the CP header.
      *
 <% } -%>
@@ -162,7 +162,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Add any Twig extensions.
      *
 <% } -%>
@@ -176,7 +176,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Called right before your plugin’s row gets stored in the plugins database table, and tables have been created
      * for it based on its records.
 <% } -%>
@@ -186,7 +186,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Called right after your plugin’s row has been stored in the plugins database table, and tables have been
      * created for it based on its records.
 <% } -%>
@@ -196,7 +196,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Called right before your plugin’s record-based tables have been deleted, and its row in the plugins table
      * has been deleted.
 <% } -%>
@@ -206,7 +206,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Called right after your plugin’s record-based tables have been deleted, and its row in the plugins table
      * has been deleted.
 <% } -%>

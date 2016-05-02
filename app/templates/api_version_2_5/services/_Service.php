@@ -4,7 +4,7 @@
  *
  * <%= pluginHandle %><%= serviceName[index] %> Service
  *
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * All of your plugin’s business logic should go in services, including saving data, retrieving data, etc. They
  * provide APIs that your controllers, template variables, and other plugins can interact with.
@@ -25,7 +25,7 @@ namespace Craft;
 class <%= pluginHandle %><%= serviceName[index] %>Service extends BaseApplicationComponent
 {
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * This function can literally be anything you want, and you can have as many service functions as you want
      *
      * From any other plugin file, call it like this:

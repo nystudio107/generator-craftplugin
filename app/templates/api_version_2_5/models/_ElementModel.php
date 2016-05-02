@@ -4,7 +4,7 @@
  *
  * <%= pluginHandle %><%= elementName[index] %> Model
  *
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Models are containers for data. Just about every time information is passed between services, controllers, and
  * templates in Craft, it’s passed via a model.
@@ -27,7 +27,7 @@ namespace Craft;
 class <%= pluginHandle %><%= elementName[index] %>Model extends BaseElementModel
 {
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Defines this model's attributes.
      *
 <% } -%>
@@ -41,7 +41,7 @@ class <%= pluginHandle %><%= elementName[index] %>Model extends BaseElementModel
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns whether the current user can edit the element.
      *
 <% } -%>
@@ -52,7 +52,7 @@ class <%= pluginHandle %><%= elementName[index] %>Model extends BaseElementModel
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the element's CP edit URL.
      *
 <% } -%>

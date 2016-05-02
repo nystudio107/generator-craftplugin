@@ -4,7 +4,7 @@
  *
  * <%= pluginHandle %> Command
  *
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Craft is built on the Yii framework and includes a command runner, yiic in ./craft/app/etc/console/yiic
  *
@@ -34,7 +34,7 @@ namespace Craft;
 class <%= pluginHandle %>Command extends BaseCommand
 {
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Handle our plugin's index action command, e.g.: ./craft/app/etc/console/yiic <%= pluginDirName %>
 <% } -%>
      */

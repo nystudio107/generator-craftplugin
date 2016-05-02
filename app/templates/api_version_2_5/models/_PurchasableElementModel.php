@@ -4,7 +4,7 @@
  *
  * <%= pluginHandle %><%= purchasableName[index] %> Purchasable Model
  *
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Models are containers for data. Just about every time information is passed between services, controllers, and
  * templates in Craft, it’s passed via a model.
@@ -39,7 +39,7 @@ use Commerce\Interfaces\Purchasable;
 class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementModel implements Purchasable
 {
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Defines this model's attributes.
      *
 <% } -%>
@@ -53,7 +53,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns whether the current user can edit the element.
      *
 <% } -%>
@@ -65,7 +65,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the element's CP edit URL.
      *
 <% } -%>
@@ -76,7 +76,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the Id of the Purchasable element that should be added to the lineitem.
      * This elements model should meet the Purchasable Interface.
      *
@@ -89,7 +89,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /*
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * This is an array of data that should be saved in a serialized way to the line item.
      *
      * Use it as a way to store data on the lineItem even after the purchasable may be deleted.
@@ -110,7 +110,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * This is the base price the item will be added to the line item with.
      *
 <% } -%>
@@ -123,7 +123,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * This must be a unique code. Unique as per the commerce_purchasables table.
      *
 <% } -%>
@@ -136,7 +136,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * This would usually be your elements title or any additional descriptive information.
      *
 <% } -%>
@@ -148,7 +148,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns a Craft Commerce tax category id
      *
 <% } -%>
@@ -162,7 +162,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>Model extends BaseElementM
     }
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Validates this purchasable for the line item it is on. Called when Purchasable is added to the cart.
      *
      * You can add model errors to the line item like this: `$lineItem->addError('qty', $errorText);`

@@ -4,7 +4,7 @@
  *
  * <%= pluginHandle %><%= controllerName[index] %> Controller
  *
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Generally speaking, controllers are the middlemen between the front end of the CP/website and your plugin’s
  * services. They contain action methods which handle individual tasks.
@@ -40,7 +40,7 @@ class <%= pluginHandle %><%= controllerName[index] %>Controller extends BaseCont
         );
 
     /**
-<% if (typeof codeComments !== 'undefined'){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Handle a request going to our plugin's index action URL, e.g.: actions/<%= pluginCamelHandle %>
 <% } -%>
      */

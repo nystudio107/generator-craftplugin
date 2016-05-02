@@ -43,15 +43,22 @@
         },
         {
             "type": "checkbox",
-            "name": "pluginComponents",
-            "message": "Select what components your plugin will have:",
+            "name": "codeComments",
+            "message": "Should there be code comments generated:",
             "choices": [
                 {
                     "key": "codeComments",
                     "name": "Code Comments",
                     "value": "codeComments",
                     "checked": true
-                },
+                }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "name": "pluginComponents",
+            "message": "Select what components your plugin will have:",
+            "choices": [
                 {
                     "key": "consolecommands",
                     "name": "ConsoleCommands",
