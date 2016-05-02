@@ -174,6 +174,21 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.1.17 -- 2016.05.02
+
+* Code Comments fixes
+* Updated README.md
+
+### 1.1.16 -- 2016.05.02
+
+* Code Comments fixes
+* Updated README.md
+
+### 1.1.15 -- 2016.05.02
+
+* Code Comments fixes
+* Updated README.md
+
 ### 1.1.14 -- 2016.04.28
 
 * We now `return $value;` in the FieldType's `prepValue()` and `prepValueFromPost()` template
