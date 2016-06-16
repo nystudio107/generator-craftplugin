@@ -1,0 +1,14 @@
+{
+	"name": "<%= pluginAuthorGithub %>/<%= pluginDirName %>'",
+	"description": "<%= pluginDescription %>",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "<%= pluginAuthorName %>",
+			"homepage": "<%= pluginAuthorUrl %>"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}
