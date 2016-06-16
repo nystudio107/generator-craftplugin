@@ -30,7 +30,7 @@ class <%= pluginHandle %><%= serviceName[index] %>Service extends BaseApplicatio
      *
      * From any other plugin file, call it like this:
      *
-     *     craft()-><%= pluginCamelHandle %><%= serviceName[index] %>->exampleService()
+     *     craft()-><%= pluginCamelHandle %><%= serviceName[index][0].toLowerCase() + serviceName[index].slice(1) %>->exampleService()
 <% } -%>
      */
     public function exampleService()
