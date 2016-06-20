@@ -174,6 +174,11 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.1.19 -- 2016.06.19
+
+* [Fixed] Fixed a bug where empty service names would generate errors
+* Updated README.md
+
 ### 1.1.18 -- 2016.06.16
 
 * [Fixed] Fix service comment naming error
