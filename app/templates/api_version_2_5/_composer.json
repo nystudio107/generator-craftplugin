@@ -1,5 +1,5 @@
 {
-	"name": "<%= pluginAuthorGithub %>/<%= pluginDirName %>'",
+	"name": "<%= pluginAuthorGithub %>/<%= pluginDirName %>",
 	"description": "<%= pluginDescription %>",
 	"type": "craft-plugin",
 	"authors": [
