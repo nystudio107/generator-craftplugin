@@ -174,6 +174,11 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.1.21 -- 2016.06.29
+
+* [Fixed] Fixed an issue with Composer support to the generated plugins
+* Updated README.md
+
 ### 1.1.20 -- 2016.06.22
 
 * [Added] Added Composer support to the generated plugins
