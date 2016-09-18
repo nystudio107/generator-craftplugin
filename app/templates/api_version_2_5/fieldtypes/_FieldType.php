@@ -80,7 +80,7 @@ class <%= pluginHandle %><%= fieldName[index] %>FieldType extends BaseFieldType
             );
 
         $jsonVars = json_encode($jsonVars);
-        craft()->templates->includeJs("$('#{$namespacedId}').<%= pluginHandle %><%= fieldName[index] %>FieldType(" . $jsonVars . ");");
+        craft()->templates->includeJs("$('#{$namespacedId}-field').<%= pluginHandle %><%= fieldName[index] %>FieldType(" . $jsonVars . ");");
 
 /* -- Variables to pass down to our rendered template */
 
