@@ -174,6 +174,11 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.1.23 -- 2016.10.03
+
+* [Added] Initial Craft 3 support
+* Updated README.md
+
 ### 1.1.22 -- 2016.09.18
 
 * [Fixed] Fixed an issue the FieldType namespacing JS code
