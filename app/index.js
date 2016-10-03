@@ -136,11 +136,28 @@ module.exports = yo.generators.Base.extend({
             subPrefixHandles.forEach(function(subElement) {
                 if (typeof _this.answers[subElement] != 'undefined') {
                     _this.answers[subElement] = _this.answers[subElement].split(',');
-                    _this.answers[subElement].forEach(function(nameElement, nameIndex, nameArray) {
-                        nameArray[nameIndex] = nameElement.prefixize();
-                        });
+/* -- For API version 2.5.x, prefixize() the names */
+                    if (_this.api.API_KEY == "api_version_2_5") {
+                        _this.answers[subElement].forEach(function(nameElement, nameIndex, nameArray) {
+                            nameArray[nameIndex] = nameElement.prefixize();
+                            });
+                        }
+/* -- For API version 3.0x, Camelize() the names */
+                    if (_this.api.API_KEY == "api_version_3_0") {
+                        _this.answers[subElement].forEach(function(nameElement, nameIndex, nameArray) {
+                            nameArray[nameIndex] = nameElement.camelize().capitalizeFirstLetter();
+                            });
+                        }
                     }
                 });
+
+/* -- For API version 3.0x, make sure the models have a name */
+            if (_this.api.API_KEY == "api_version_3_0") {
+                _this.answers['modelName'].forEach(function(nameElement, nameIndex, nameArray) {
+                    if (nameElement == "")
+                        nameArray[nameIndex] = _this.answers.pluginHandle;
+                    });
+                }
 
             done();
             }.bind(this));
@@ -204,7 +221,10 @@ this.log(this.answers);
                             });
                         } else {
 /* -- Handle templates that only have a prefix */
-                        destFile = this.destDir + file.destDir + this.answers.pluginHandle  + file.dest;
+                        if (file.lowercasePrefix)
+                            destFile = this.destDir + file.destDir + this.answers.pluginDirName + file.dest;
+                        else
+                            destFile = this.destDir + file.destDir + this.answers.pluginHandle  + file.dest;
                         this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
                         this.answers['index'] = 0;
                         this.fs.copyTpl(
@@ -214,15 +234,31 @@ this.log(this.answers);
                             );
                         }
                     } else {
+                    if (file.subPrefix) {
+/* -- Handle templates that have a sub-prefix */
+                        var subPrefix = this.answers[file.subPrefix];
+                        var _this = this;
+                        subPrefix.forEach(function(thisPrefix, index) {
+                            destFile = _this.destDir + file.destDir + thisPrefix + file.dest;
+                            _this.log('+ ' + _this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
+                            _this.answers['index'] = index;
+                            _this.fs.copyTpl(
+                                _this.templatePath(file.src),
+                                _this.destinationPath(destFile),
+                                _this.answers
+                                );
+                            });
+                        } else {
 /* -- Handle templates that are not prefixed */
-                    destFile = this.destDir + file.destDir + file.dest;
-                    this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
-                    this.answers['index'] = 0;
-                    this.fs.copyTpl(
-                        this.templatePath(file.src),
-                        this.destinationPath(destFile),
-                        this.answers
-                        );
+                        destFile = this.destDir + file.destDir + file.dest;
+                        this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
+                        this.answers['index'] = 0;
+                        this.fs.copyTpl(
+                            this.templatePath(file.src),
+                            this.destinationPath(destFile),
+                            this.answers
+                            );
+                        }
                     }
                 }
             }

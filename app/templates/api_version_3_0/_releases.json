@@ -1,0 +1,10 @@
+[
+    {
+        "version": "<%= pluginVersion %>",
+        "downloadUrl": "<%= pluginDownloadUrl %>",
+        "date": "<%= dateNow %>",
+        "notes": [
+            "[Added] Initial release"
+        ]
+    }
+]
