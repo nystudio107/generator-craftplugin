@@ -1,14 +1,47 @@
 {
-	"name": "<%= pluginAuthorGithub %>/<%= pluginDirName %>",
+	"name": "<%= pluginVendorName %>/<%= pluginDirName %>",
 	"description": "<%= pluginDescription %>",
-	"type": "craft-plugin",
+    "type": "craft-plugin",
+    "version": "1.2.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "plugin",
+        "<%= pluginDirName %>"
+    ],
+    "license": "MIT",
 	"authors": [
 		{
 			"name": "<%= pluginAuthorName %>",
 			"homepage": "<%= pluginAuthorUrl %>"
 		}
 	],
-	"require": {
-		"composer/installers": "~1.0"
-	}
+    "require": {
+        "composer/installers": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "<%= pluginVendorName %>\\<%= pluginDirName %>\\": ""
+        }
+    },
+    "extra": {
+	    "name": "<%= pluginHandle %>",
+	    "version": "<%= pluginVersion %>",
+    	"schemaVersion": "<%= pluginVersion %>",
+    	"developer": "<%= pluginAuthorName %>",
+    	"developerUrl": "<%= pluginAuthorUrl %>",
+    	"description": "<%= pluginDescription %>",
+    	"documentationUrl": "<%= pluginDocsUrl %>",
+    	"releaseFeedUrl": "<%= pluginReleasesUrl %>",
+<% var components = serviceName -%>
+<% if ((typeof(components[0]) !== 'undefined') && (components[0] !== "")) { -%>
+    	"components": {
+<% components.forEach(function(component, index, array){ -%>
+        	"<%= component[0].toLowerCase() + component.slice(1) %>": "craft\\plugins\\<%= pluginDirName%>\\services\\<%= component%>"<% if (index !== array.length - 1) { %>,<% } %>
+<% }); -%>
+    	},
+<% } -%>
+    "class": "<%= pluginVendorName %>\\<%= pluginDirName %>\\<%= pluginHandle %>"
+    }
 }
