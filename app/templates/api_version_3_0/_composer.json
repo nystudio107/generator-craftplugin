@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-          "<%= pluginVendorName %>\\<%= pluginDirName %>\\": ""
+          "<%= pluginVendorName %>\\<%= pluginDirName %>\\": "src/"
         }
     },
     "extra": {
@@ -42,6 +42,6 @@
 <% }); -%>
     	},
 <% } -%>
-    "class": "<%= pluginVendorName %>\\<%= pluginDirName %>\\<%= pluginHandle %>"
+        "class": "<%= pluginVendorName %>\\<%= pluginDirName %>\\<%= pluginHandle %>"
     }
 }

@@ -30,6 +30,13 @@
         },
         {
             "type": "input",
+            "name": "pluginVendorName",
+            "message": "Plugin vendor name:",
+            "default": "Doe Enterprises",
+            "store": true
+        },
+        {
+            "type": "input",
             "name": "pluginAuthorUrl",
             "message": "Plugin author URL:",
             "default": "http://DoeDesign.com/",
@@ -202,43 +209,16 @@
     ],
     "TEMPLATE_FILES": [
         {
-            "src": "_Plugin.php",
-            "destDir": "",
+            "src": "src/_Plugin.php",
+            "destDir": "src/",
             "dest": ".php",
             "prefix": true
         },
         {
-            "src": "_PluginWithTwig.php",
-            "destDir": "",
-            "dest": ".php",
-            "requires": ["twigextensions"],
-            "prefix": true
-        },
-        {
-            "src": "_PluginWithSettings.php",
-            "destDir": "",
-            "dest": ".php",
-            "requires": ["settings"],
-            "prefix": true
-        },
-        {
-            "src": "_PluginWithTwigAndSettings.php",
-            "destDir": "",
-            "dest": ".php",
-            "requires": ["twigextensions", "settings"],
-            "prefix": true
-        },
-        {
-            "src": "models/_Settings.php",
-            "destDir": "models/",
+            "src": "src/models/_Settings.php",
+            "destDir": "src/models/",
             "dest": "Settings.php",
             "requires": ["settings"],
-            "prefix": false
-        },
-        {
-            "src": "_plugin.json",
-            "destDir": "",
-            "dest": "plugin.json",
             "prefix": false
         },
         {
@@ -266,218 +246,218 @@
             "prefix": false
         },
         {
-            "src": "consolecommands/_Command.php",
-            "destDir": "consolecommands/",
+            "src": "src/consolecommands/_Command.php",
+            "destDir": "src/consolecommands/",
             "dest": "Command.php",
             "requires": ["consolecommands"],
             "prefix": true
         },
         {
-            "src": "controllers/_Controller.php",
-            "destDir": "controllers/",
+            "src": "src/controllers/_Controller.php",
+            "destDir": "src/controllers/",
             "dest": "Controller.php",
             "requires": ["controllers"],
             "subPrefix": "controllerName",
             "prefix": true
         },
         {
-            "src": "elementtypes/_ElementType.php",
-            "destDir": "elementtypes/",
+            "src": "src/elementtypes/_ElementType.php",
+            "destDir": "src/elementtypes/",
             "dest": "ElementType.php",
             "requires": ["elementtypes"],
             "subPrefix": "elementName",
             "prefix": true
         },
         {
-            "src": "elementtypes/_PurchasableElementType.php",
-            "destDir": "elementtypes/",
+            "src": "src/elementtypes/_PurchasableElementType.php",
+            "destDir": "src/elementtypes/",
             "dest": "ElementType.php",
             "requires": ["purchasables"],
             "subPrefix": "purchasableName",
             "prefix": true
         },
         {
-            "src": "fieldtypes/_FieldType.php",
-            "destDir": "fieldtypes/",
+            "src": "src/fieldtypes/_FieldType.php",
+            "destDir": "src/fieldtypes/",
             "dest": "FieldType.php",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
             "prefix": true
         },
         {
-            "src": "templates/fields/_field.twig",
-            "destDir": "templates/fields/",
+            "src": "src/templates/fields/_field.twig",
+            "destDir": "src/templates/fields/",
             "dest": "FieldType.twig",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
             "prefix": true
         },
         {
-            "src": "resources/css/fields/_field.css",
-            "destDir": "resources/css/fields/",
+            "src": "src/resources/css/fields/_field.css",
+            "destDir": "src/resources/css/fields/",
             "dest": "FieldType.css",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
             "prefix": true
         },
         {
-            "src": "resources/js/fields/_field.js",
-            "destDir": "resources/js/fields/",
+            "src": "src/resources/js/fields/_field.js",
+            "destDir": "src/resources/js/fields/",
             "dest": "FieldType.js",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
             "prefix": true
         },
         {
-            "src": "models/_Model.php",
-            "destDir": "models/",
+            "src": "src/models/_Model.php",
+            "destDir": "src/models/",
             "dest": ".php",
             "requires": ["models"],
             "subPrefix": "modelName",
             "prefix": false
         },
         {
-            "src": "models/_ElementModel.php",
-            "destDir": "models/",
+            "src": "src/models/_ElementModel.php",
+            "destDir": "src/models/",
             "dest": "Model.php",
             "requires": ["elementtypes"],
             "subPrefix": "elementName",
             "prefix": true
         },
         {
-            "src": "models/_FieldModel.php",
-            "destDir": "models/",
+            "src": "src/models/_FieldModel.php",
+            "destDir": "src/models/",
             "dest": "Model.php",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
             "prefix": true
         },
         {
-            "src": "models/_PurchasableElementModel.php",
-            "destDir": "models/",
+            "src": "src/models/_PurchasableElementModel.php",
+            "destDir": "src/models/",
             "dest": "Model.php",
             "requires": ["purchasables"],
             "subPrefix": "purchasableName",
             "prefix": true
         },
         {
-            "src": "records/_Record.php",
-            "destDir": "records/",
+            "src": "src/records/_Record.php",
+            "destDir": "src/records/",
             "dest": "Record.php",
             "requires": ["records"],
             "subPrefix": "recordName",
             "prefix": true
         },
         {
-            "src": "records/_ElementRecord.php",
-            "destDir": "records/",
+            "src": "src/records/_ElementRecord.php",
+            "destDir": "src/records/",
             "dest": "Record.php",
             "requires": ["elementtypes"],
             "subPrefix": "elementName",
             "prefix": true
         },
         {
-            "src": "records/_PurchasableRecord.php",
-            "destDir": "records/",
+            "src": "src/records/_PurchasableRecord.php",
+            "destDir": "src/records/",
             "dest": "Record.php",
             "requires": ["purchasables"],
             "subPrefix": "purchasableName",
             "prefix": true
         },
         {
-            "src": "services/_Service.php",
-            "destDir": "services/",
+            "src": "src/services/_Service.php",
+            "destDir": "src/services/",
             "dest": ".php",
             "requires": ["services"],
             "subPrefix": "serviceName",
             "prefix": false
         },
         {
-            "src": "tasks/_Task.php",
-            "destDir": "tasks/",
+            "src": "src/tasks/_Task.php",
+            "destDir": "src/tasks/",
             "dest": "Task.php",
             "requires": ["tasks"],
             "subPrefix": "taskName",
             "prefix": true
         },
         {
-            "src": "widgets/_Widget.php",
-            "destDir": "widgets/",
+            "src": "src/widgets/_Widget.php",
+            "destDir": "src/widgets/",
             "dest": "Widget.php",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": true
         },
         {
-            "src": "templates/widgets/_body.twig",
-            "destDir": "templates/widgets/",
+            "src": "src/templates/widgets/_body.twig",
+            "destDir": "src/templates/widgets/",
             "dest": "Widget_Body.twig",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": true
         },
         {
-            "src": "templates/widgets/_settings.twig",
-            "destDir": "templates/widgets/",
+            "src": "src/templates/widgets/_settings.twig",
+            "destDir": "src/templates/widgets/",
             "dest": "Widget_Settings.twig",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": true
         },
         {
-            "src": "resources/css/widgets/_widget.css",
-            "destDir": "resources/css/widgets/",
+            "src": "src/resources/css/widgets/_widget.css",
+            "destDir": "src/resources/css/widgets/",
             "dest": "Widget.css",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": true
         },
         {
-            "src": "resources/js/widgets/_widget.js",
-            "destDir": "resources/js/widgets/",
+            "src": "src/resources/js/widgets/_widget.js",
+            "destDir": "src/resources/js/widgets/",
             "dest": "Widget.js",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": true
         },
         {
-            "src": "templates/_settings.twig",
-            "destDir": "templates/",
+            "src": "src/templates/_settings.twig",
+            "destDir": "src/templates/",
             "dest": "_Settings.twig",
             "requires": ["settings"],
             "prefix": true
         },
         {
-            "src": "translations/_en.php",
-            "destDir": "translations/en/",
+            "src": "src/translations/_en.php",
+            "destDir": "src/translations/en/",
             "dest": ".php",
             "lowercasePrefix": true,
             "prefix": true
         },
         {
-            "src": "twigextensions/_TwigExtension.php",
-            "destDir": "twigextensions/",
+            "src": "src/twigextensions/_TwigExtension.php",
+            "destDir": "src/twigextensions/",
             "dest": "TwigExtension.php",
             "requires": ["twigextensions"],
             "prefix": true
         },
         {
-            "src": "variables/_Variable.php",
-            "destDir": "variables/",
+            "src": "src/variables/_Variable.php",
+            "destDir": "src/variables/",
             "dest": "Variable.php",
             "requires": ["variables"],
             "prefix": true
         },
         {
-            "src": "resources/css/_style.css",
-            "destDir": "resources/css/",
+            "src": "src/resources/css/_style.css",
+            "destDir": "src/resources/css/",
             "dest": "_Style.css",
             "requires": ["settings"],
             "prefix": true
         },
         {
-            "src": "resources/js/_script.js",
-            "destDir": "resources/js/",
+            "src": "src/resources/js/_script.js",
+            "destDir": "src/resources/js/",
             "dest": "_Script.js",
             "requires": ["settings"],
             "prefix": true
@@ -485,17 +465,17 @@
     ],
     "BOILERPLATE_FILES": [
         {
-            "src": "resources/icon-mask.svg"
+            "src": "src/resources/icon-mask.svg"
         },
         {
-            "src": "resources/icon.svg"
+            "src": "src/resources/icon.svg"
         },
         {
-            "src": "resources/images/plugin.png",
+            "src": "src/resources/images/plugin.png",
             "requires": ["settings"]
         },
         {
-            "src": "resources/screenshots/plugin_logo.png"
+            "src": "src/resources/screenshots/plugin_logo.png"
         }
     ],
     "END_INSTALL_COMMANDS": [

@@ -1,9 +1,12 @@
 <?php
 
-namespace craft\plugins\<%= pluginDirName%>;
+namespace <%= pluginVendorName %>\<%= pluginDirName %>;
+
+<% if (pluginComponents.indexOf('twigextensions') >= 0){ -%>
+use <%= pluginVendorName %>\<%= pluginDirName%>\twigextensions\<%= pluginHandle %>TwigExtension;
+<% } -%>
 
 use Craft;
-use craft\plugins\<%= pluginDirName%>\models\Settings;
 
 /**
  * <%= pluginName %> plugin for Craft CMS 3.x
@@ -29,7 +32,7 @@ use craft\plugins\<%= pluginDirName%>\models\Settings;
  * @since     <%= pluginVersion %>
  */
 
-class <%= pluginHandle %> extends \craft\app\base\Plugin
+class <%= pluginHandle %> extends \craft\base\Plugin
 {
     /**
      * Static property that is an instance of this plugin class so that it can be accessed via
@@ -70,6 +73,14 @@ class <%= pluginHandle %> extends \craft\app\base\Plugin
     {
         parent::init();
         $this->name = $this->getName();
+<% if (pluginComponents.indexOf('twigextensions') >= 0){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+        /**
+         * Add in our Twig extensions
+         */
+<% } -%>
+        Craft::$app->view->twig->addExtension(new JsonLdTwigExtension());
+<% } -%>
     }
 
     /**
@@ -135,31 +146,5 @@ class <%= pluginHandle %> extends \craft\app\base\Plugin
      */
     protected function onAfterUninstall()
     {
-    }
-
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns your plugin’s settings model.
-     *
-<% } -%>
-     * @return mixed
-     */
-    protected function createSettingsModel()
-    {
-        return new Settings();
-    }
-
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns the HTML that displays your plugin’s settings.
-     *
-<% } -%>
-     * @return mixed
-     */
-    protected function getSettingsHtml()
-    {
-        return Craft::$app->view->renderTemplate('<%= pluginDirName %>/<%= pluginHandle %>_Settings', [
-            'settings' => $this->getSettings()
-        ]);
     }
 }
