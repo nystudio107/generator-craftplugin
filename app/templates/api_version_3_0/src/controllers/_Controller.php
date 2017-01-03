@@ -1,11 +1,20 @@
 <?php
+/**
+ * <%= pluginName %> plugin for Craft CMS 3.x
+ *
+ * <%= pluginDescription %>
+ *
+ * @link      <%= pluginAuthorUrl %>
+ * @copyright <%= copyrightNotice %>
+ */
 
-// WARNING: Not converted to Craft 3 yet
+namespace <%= pluginVendorName %>\<%= pluginDirName %>\variables;
+
+use Craft;
+use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
 /**
- * <%= pluginName %> plugin for Craft CMS
- *
- * <%= pluginHandle %><%= controllerName[index] %> Controller
+ * <%= pluginHandle %> <%= controllerName[index] %> Controller
  *
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
@@ -24,30 +33,36 @@
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
- * @copyright <%= copyrightNotice %>
- * @link      <%= pluginAuthorUrl %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
-
-namespace Craft;
-
-class <%= pluginHandle %><%= controllerName[index] %>Controller extends BaseController
+class <%= pluginHandle %><%= controllerName[index] %>Controller extends Controller
 {
 
     /**
      * @var    bool|array Allows anonymous access to this controller's actions.
+     *         The actions must be in 'kebab-case'
      * @access protected
      */
-    protected $allowAnonymous = array('actionIndex',
-        );
+    protected $allowAnonymous = ['index', 'do-something'];
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Handle a request going to our plugin's index action URL, e.g.: actions/<%= pluginCamelHandle %>
+     * Handle a request going to our plugin's index action URL,
+     * e.g.: actions/<%= pluginCamelHandle %>/<%= controllerName[index] %>
 <% } -%>
      */
     public function actionIndex()
+    {
+    }
+
+    /**
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+     * Handle a request going to our plugin's actionDoSomething URL,
+     * e.g.: actions/<%= pluginCamelHandle %>/<%= controllerName[index] %>/do-something
+<% } -%>
+     */
+    public function actionDoSomething()
     {
     }
 }

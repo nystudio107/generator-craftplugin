@@ -21,6 +21,11 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\variables\<%= pluginHandle %>Var
 <% } -%>
 
 use Craft;
+<% if (pluginComponents.indexOf('controllers') >= 0){ -%>
+use craft\web\UrlManager;
+use craft\events\RegisterUrlRulesEvent;
+use yii\base\Event;
+<% } -%>
 
 /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -81,12 +86,31 @@ class <%= pluginHandle %> extends \craft\base\Plugin
         parent::init();
         $this->name = $this->getName();
 <% if (pluginComponents.indexOf('twigextensions') >= 0){ -%>
+
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
         /**
          * Add in our Twig extensions
          */
 <% } -%>
         Craft::$app->view->twig->addExtension(new <%= pluginHandle %>TwigExtension());
+<% } -%>
+<% if (pluginComponents.indexOf('controllers') >= 0){ -%>
+
+        /**
+         * Register our site routes
+         */
+        Event::on(UrlManager::className(), UrlManager::EVENT_REGISTER_SITE_URL_RULES, function(RegisterUrlRulesEvent $event)
+            {
+                $event->rules['siteActionTrigger'] = '<%= pluginCamelHandle %>/<%= controllerName[0] %>';
+            });
+
+        /**
+         * Register our CP routes
+         */
+        Event::on(UrlManager::className(), UrlManager::EVENT_REGISTER_CP_URL_RULES, function(RegisterUrlRulesEvent $event)
+            {
+                $event->rules['cpActionTrigger'] = '<%= pluginCamelHandle %>/<%= controllerName[0] %>/do-something';
+            });
 <% } -%>
     }
 
