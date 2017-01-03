@@ -1,18 +1,25 @@
 <?php
+/**
+ * <%= pluginName %> plugin for Craft CMS 3.x
+ *
+ * <%= pluginDescription %>
+ *
+ * @link      <%= pluginAuthorUrl %>
+ * @copyright <%= copyrightNotice %>
+ */
 
 namespace <%= pluginVendorName %>\<%= pluginDirName %>;
 
 <% if (pluginComponents.indexOf('twigextensions') >= 0){ -%>
 use <%= pluginVendorName %>\<%= pluginDirName%>\twigextensions\<%= pluginHandle %>TwigExtension;
 <% } -%>
+<% if (pluginComponents.indexOf('settings') >= 0){ -%>
+use <%= pluginVendorName %>\<%= pluginDirName%>\models\Settings;
+<% } -%>
 
 use Craft;
 
 /**
- * <%= pluginName %> plugin for Craft CMS 3.x
- *
- * <%= pluginDescription %>
- *
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Craft plugins are very much like little applications in and of themselves. We’ve made it as simple as we can,
@@ -26,8 +33,6 @@ use Craft;
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
- * @copyright <%= copyrightNotice %>
- * @link      <%= pluginAuthorUrl %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
@@ -37,7 +42,7 @@ class <%= pluginHandle %> extends \craft\base\Plugin
     /**
      * Static property that is an instance of this plugin class so that it can be accessed via
      * <%= pluginHandle %>::$plugin
-     * @var craft\plugins\<%= pluginDirName %>\<%= pluginHandle %>
+     * @var <%= pluginVendorName %>\<%= pluginDirName %>\<%= pluginHandle %>
      */
     public static $plugin;
 
@@ -58,13 +63,12 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Called after the plugin class is instantiated; do any one-time initialization here such as hooks and events:
      *
-     * craft()->on('entries.saveEntry', function(Event $event) {
+     * Craft::$app->on('entries.saveEntry', function(Event $event) {
      *    // ...
      * });
      *
-     * or loading any third party Composer packages via:
-     *
-     * require_once __DIR__ . '/vendor/autoload.php';
+     * If you have a '/vendor/autoload.php' file, it will be loaded for you automatically;
+     * you do not need to load it in your init() method.
      *
 <% } -%>
      * @return mixed
@@ -79,7 +83,7 @@ class <%= pluginHandle %> extends \craft\base\Plugin
          * Add in our Twig extensions
          */
 <% } -%>
-        Craft::$app->view->twig->addExtension(new JsonLdTwigExtension());
+        Craft::$app->view->twig->addExtension(new <%= pluginHandle %>TwigExtension());
 <% } -%>
     }
 
@@ -107,6 +111,35 @@ class <%= pluginHandle %> extends \craft\base\Plugin
     {
         return false;
     }
+
+<% if (pluginComponents.indexOf('settings') >= 0){ -%>
+    /**
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+     * Returns your plugin’s settings model.
+     *
+<% } -%>
+     * @return mixed
+     */
+    protected function createSettingsModel()
+    {
+        return new Settings();
+    }
+
+    /**
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+     * Returns the HTML that displays your plugin’s settings.
+     *
+<% } -%>
+     * @return mixed
+     */
+    protected function getSettingsHtml()
+    {
+        return Craft::$app->view->renderTemplate('<%= pluginDirName %>/<%= pluginHandle %>_Settings', [
+            'settings' => $this->getSettings()
+        ]);
+    }
+}
+<% } -%>
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>

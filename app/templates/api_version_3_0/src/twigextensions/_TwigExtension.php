@@ -1,15 +1,20 @@
 <?php
-
-namespace craft\plugins\<%= pluginDirName %>\twigextensions;
-
-use Craft;
-use craft\plugins\<%= pluginDirName%>\<%= pluginHandle %>;
-
 /**
  * <%= pluginName %> plugin for Craft CMS 3.x
  *
- * <%= pluginName %> Twig Extension
+ * <%= pluginDescription %>
  *
+ * @link      <%= pluginAuthorUrl %>
+ * @copyright <%= copyrightNotice %>
+ */
+
+namespace <%= pluginVendorName %>\<%= pluginDirName %>\twigextensions;
+
+use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+
+use Craft;
+
+/**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * --snip--
  * Twig can be extended in many ways; you can add extra tags, filters, tests, operators, global variables, and
@@ -20,12 +25,9 @@ use craft\plugins\<%= pluginDirName%>\<%= pluginHandle %>;
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
- * @copyright <%= copyrightNotice %>
- * @link      <%= pluginAuthorUrl %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
-
 class <%= pluginHandle %>TwigExtension extends \Twig_Extension
 {
     /**

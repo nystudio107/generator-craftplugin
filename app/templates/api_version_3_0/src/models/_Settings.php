@@ -1,12 +1,18 @@
 <?php
-
-namespace craft\plugins\<%= pluginDirName%>\models;
-
-use craft\app\base\Model;
-
 /**
  * <%= pluginName %> plugin for Craft CMS 3.x
  *
+ * <%= pluginDescription %>
+ *
+ * @link      <%= pluginAuthorUrl %>
+ * @copyright <%= copyrightNotice %>
+ */
+
+namespace <%= pluginVendorName %>\<%= pluginDirName%>\models;
+
+use craft\base\Model;
+
+/**
  * <%= pluginHandle %> Settings Model
  *
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -19,8 +25,6 @@ use craft\app\base\Model;
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
- * @copyright <%= copyrightNotice %>
- * @link      <%= pluginAuthorUrl %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
