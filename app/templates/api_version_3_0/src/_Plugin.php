@@ -16,6 +16,9 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\twigextensions\<%= pluginHandle 
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
 use <%= pluginVendorName %>\<%= pluginDirName%>\models\Settings;
 <% } -%>
+<% if (pluginComponents.indexOf('variables') >= 0){ -%>
+use <%= pluginVendorName %>\<%= pluginDirName%>\variables\<%= pluginHandle %>Variable;
+<% } -%>
 
 use Craft;
 
@@ -138,9 +141,21 @@ class <%= pluginHandle %> extends \craft\base\Plugin
             'settings' => $this->getSettings()
         ]);
     }
-}
-<% } -%>
 
+<% } -%>
+<% if (pluginComponents.indexOf('variables') >= 0){ -%>
+    /**
+     * Returns the component definition that should be registered on the [[\craft\app\web\twig\variables\CraftVariable]] instance for this plugin’s handle.
+     *
+     * @return mixed|null The component definition to be registered.
+     * It can be any of the formats supported by [[\yii\di\ServiceLocator::set()]].
+     */
+    public function defineTemplateComponent()
+    {
+        return '<%= pluginVendorName %>\<%= pluginDirName %>\variables\<%= pluginHandle %>Variable';
+    }
+
+<% } -%>
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Called right before your plugin’s row gets stored in the plugins database table, and tables have been created

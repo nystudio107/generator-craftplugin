@@ -1,14 +1,21 @@
 <?php
-
-namespace craft\plugins\<%= pluginDirName%>\services;
-
-use Craft;
-use craft\app\base\Component;
-use craft\plugins\<%= pluginDirName%>\<%= pluginHandle %>;
-
 /**
  * <%= pluginName %> plugin for Craft CMS 3.x
  *
+ * <%= pluginDescription %>
+ *
+ * @link      <%= pluginAuthorUrl %>
+ * @copyright <%= copyrightNotice %>
+ */
+
+namespace <%= pluginVendorName %>\<%= pluginDirName%>\services;
+
+use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+
+use Craft;
+use craft\base\Component;
+
+/**
  * <%= serviceName[index] %> Service
  *
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -17,16 +24,13 @@ use craft\plugins\<%= pluginDirName%>\<%= pluginHandle %>;
  * provide APIs that your controllers, template variables, and other plugins can interact with.
  *
  * https://craftcms.com/docs/plugins/services
- * --snip--
  *
+ * --snip--
 <% } -%>
  * @author    <%= pluginAuthorName %>
- * @copyright <%= copyrightNotice %>
- * @link      <%= pluginAuthorUrl %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
-
 class <%= serviceName[index] %> extends Component
 {
     /**
@@ -35,7 +39,7 @@ class <%= serviceName[index] %> extends Component
      *
      * From any other plugin file, call it like this:
      *
-     *     <%= pluginName %>::$plugin-><%= serviceName[index][0].toLowerCase() + serviceName[index].slice(1) %>->exampleService()
+     *     <%= pluginHandle %>::$plugin-><%= serviceName[index][0].toLowerCase() + serviceName[index].slice(1) %>->exampleService()
 <% } -%>
      */
     public function exampleService()

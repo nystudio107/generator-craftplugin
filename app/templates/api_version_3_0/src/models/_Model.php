@@ -37,7 +37,7 @@ class <%= modelName[index] %> extends Model
 <% } -%>
      * @var string
      */
-    public $someAttribute;
+    public $someAttribute = 'Some Default';
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -53,7 +53,8 @@ class <%= modelName[index] %> extends Model
     public function rules()
     {
         return [
-            ['someAttribute', 'string', 'default' => 'Some Default'],
+            ['someAttribute', 'string'],
+            ['someAttribute', 'default', 'value' => 'Some Default'],
         ];
     }
 }

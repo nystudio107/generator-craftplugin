@@ -37,7 +37,7 @@ class Settings extends Model
 <% } -%>
      * @var string
      */
-    public $someField;
+    public $someField = 'Some Default';
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -53,7 +53,8 @@ class Settings extends Model
     public function rules()
     {
         return [
-            ['someField', 'string', 'default' => 'Some Default'],
+            ['someField', 'string'],
+            ['someField', 'default', 'value' => 'Some Default'],
         ];
     }
 }

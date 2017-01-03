@@ -1,13 +1,19 @@
 <?php
-
-namespace craft\plugins\<%= pluginDirName %>\variables;
-
-use Craft;
-use craft\plugins\<%= pluginDirName%>\<%= pluginHandle %>;
-
 /**
  * <%= pluginName %> plugin for Craft CMS 3.x
  *
+ * <%= pluginDescription %>
+ *
+ * @link      <%= pluginAuthorUrl %>
+ * @copyright <%= copyrightNotice %>
+ */
+
+namespace <%= pluginVendorName %>\<%= pluginDirName %>\variables;
+
+use Craft;
+use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+
+/**
  * <%= pluginName %> Variable
  *
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -20,8 +26,6 @@ use craft\plugins\<%= pluginDirName%>\<%= pluginHandle %>;
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
- * @copyright <%= copyrightNotice %>
- * @link      <%= pluginAuthorUrl %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
@@ -35,7 +39,7 @@ class <%= pluginHandle %>Variable
      *
      *     {{ craft.<%= pluginCamelHandle %>.exampleVariable }}
      *
-     * Or, if your variable requires paremeters from Twig:
+     * Or, if your variable requires parameters from Twig:
      *
      *     {{ craft.<%= pluginCamelHandle %>.exampleVariable(twigValue) }}
 <% } -%>
