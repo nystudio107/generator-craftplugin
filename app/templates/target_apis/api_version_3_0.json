@@ -228,9 +228,9 @@
             "prefix": false
         },
         {
-            "src": "_LICENSE.txt",
+            "src": "_LICENSE.md",
             "destDir": "",
-            "dest": "LICENSE.txt",
+            "dest": "LICENSE.md",
             "prefix": false
         },
         {
