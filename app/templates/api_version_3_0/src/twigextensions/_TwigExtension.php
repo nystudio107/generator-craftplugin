@@ -36,6 +36,8 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
      *
 <% } -%>
      * @return string The extension name
+     *
+     * @inheritdoc
      */
     public function getName()
     {
@@ -50,6 +52,8 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
      *
 <% } -%>
      * @return array
+     *
+     * @inheritdoc
      */
     public function getFilters()
     {
@@ -66,6 +70,8 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
      *
  <% } -%>
     * @return array
+     *
+     * @inheritdoc
      */
     public function getFunctions()
     {

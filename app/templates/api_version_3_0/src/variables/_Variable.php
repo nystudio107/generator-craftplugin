@@ -29,7 +29,6 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
-
 class <%= pluginHandle %>Variable
 {
     /**

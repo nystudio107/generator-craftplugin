@@ -58,6 +58,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      * Set our $plugin static property to this class so that it can be accessed via
      * <%= pluginHandle %>::$plugin
      * @param array $config [description]
+     *
+     * @inheritdoc
      */
     public function __construct($id, $parent = null, $config = [])
     {
@@ -80,6 +82,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      *
 <% } -%>
      * @return mixed
+     *
+     * @inheritdoc
      */
     public function init()
     {
@@ -121,6 +125,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      *
 <% } -%>
      * @return mixed
+     *
+     * @inheritdoc
      */
     public function getName()
     {
@@ -133,6 +139,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      *
 <% } -%>
      * @return bool
+     *
+     * @inheritdoc
      */
     public static function hasCpSection()
     {
@@ -146,6 +154,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      *
 <% } -%>
      * @return mixed
+     *
+     * @inheritdoc
      */
     protected function createSettingsModel()
     {
@@ -158,6 +168,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      *
 <% } -%>
      * @return mixed
+     *
+     * @inheritdoc
      */
     protected function getSettingsHtml()
     {
@@ -173,6 +185,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      *
      * @return mixed|null The component definition to be registered.
      * It can be any of the formats supported by [[\yii\di\ServiceLocator::set()]].
+     *
+     * @inheritdoc
      */
     public function defineTemplateComponent()
     {
@@ -185,6 +199,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      * Called right before your plugin’s row gets stored in the plugins database table, and tables have been created
      * for it based on its records.
 <% } -%>
+     *
+     * @inheritdoc
      */
     protected function onBeforeInstall()
     {
@@ -195,6 +211,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      * Called right after your plugin’s row has been stored in the plugins database table, and tables have been
      * created for it based on its records.
 <% } -%>
+     *
+     * @inheritdoc
      */
     protected function onAfterInstall()
     {
@@ -205,6 +223,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      * Called right before your plugin’s record-based tables have been deleted, and its row in the plugins table
      * has been deleted.
 <% } -%>
+     *
+     * @inheritdoc
      */
     protected function onBeforeUninstall()
     {
@@ -215,6 +235,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      * Called right after your plugin’s record-based tables have been deleted, and its row in the plugins table
      * has been deleted.
 <% } -%>
+     *
+     * @inheritdoc
      */
     protected function onAfterUninstall()
     {

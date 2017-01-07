@@ -28,7 +28,6 @@ use craft\base\Model;
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
-
 class <%= modelName[index] %> extends Model
 {
     /**
@@ -49,7 +48,9 @@ class <%= modelName[index] %> extends Model
      * More info: http://www.yiiframework.com/doc-2.0/guide-input-validation.html
 <% } -%>
      * @return array
-    */
+     *
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
