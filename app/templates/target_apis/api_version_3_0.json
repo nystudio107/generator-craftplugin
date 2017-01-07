@@ -346,7 +346,14 @@
             "dest": "Record.php",
             "requires": ["records"],
             "subPrefix": "recordName",
-            "prefix": true
+            "prefix": false
+        },
+        {
+            "src": "src/migrations/_Install.php",
+            "destDir": "src/migrations/",
+            "dest": "Install.twig",
+            "requires": ["records"],
+            "prefix": false
         },
         {
             "src": "src/records/_ElementRecord.php",

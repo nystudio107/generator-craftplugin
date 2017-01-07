@@ -1,10 +1,16 @@
 <?php
+/**
+ * <%= pluginName %> plugin for Craft CMS 3.x
+ *
+ * <%= pluginDescription %>
+ *
+ * @link      <%= pluginAuthorUrl %>
+ * @copyright <%= copyrightNotice %>
+ */
 
 // WARNING: Not converted to Craft 3 yet
 
 /**
- * <%= pluginName %> plugin for Craft CMS
- *
  * <%= pluginHandle %><%= recordName[index] %> Record
  *
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -28,15 +34,11 @@
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
- * @copyright <%= copyrightNotice %>
- * @link      <%= pluginAuthorUrl %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
 
-namespace Craft;
-
-class <%= pluginHandle %><%= recordName[index] %>Record extends BaseRecord
+class <%= recordName[index] %> extends ActiveRecord
 {
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -45,38 +47,11 @@ class <%= pluginHandle %><%= recordName[index] %>Record extends BaseRecord
      *
 <% } -%>
      * @return string
+     *
+     * @inheritdoc
      */
     public function getTableName()
     {
-        return '<%= pluginDirName %><%= recordName[index] %>';
-    }
-
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns an array of attributes which map back to columns in the database table.
-     *
-<% } -%>
-     * @access protected
-     * @return array
-     */
-   protected function defineAttributes()
-    {
-        return array(
-            'someField'     => array(AttributeType::String, 'default' => ''),
-        );
-    }
-
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * If your record should have any relationships with other tables, you can specify them with the
-     * defineRelations() function
-     *
-<% } -%>
-     * @return array
-     */
-    public function defineRelations()
-    {
-        return array(
-        );
+        return '{{%<%= recordName[index] %>}}';
     }
 }

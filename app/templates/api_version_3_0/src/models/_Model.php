@@ -46,6 +46,7 @@ class <%= modelName[index] %> extends Model
      * Child classes may override this method to declare different validation rules.
      *
      * More info: http://www.yiiframework.com/doc-2.0/guide-input-validation.html
+     *
 <% } -%>
      * @return array
      *
