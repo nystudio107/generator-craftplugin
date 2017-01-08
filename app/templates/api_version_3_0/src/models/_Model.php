@@ -16,12 +16,10 @@ use craft\base\Model;
  * <%= modelName[index] %> Model
  *
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * --snip--
- * Models are containers for data. Just about every time information is passed between services, controllers, and
- * templates in Craft, it’s passed via a model.
+ * Models are containers for data. Just about every time information is passed
+ * between services, controllers, and templates in Craft, it’s passed via a model.
  *
  * https://craftcms.com/docs/plugins/models
- * --snip--
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
@@ -33,6 +31,7 @@ class <%= modelName[index] %> extends Model
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Some model attribute
+     *
 <% } -%>
      * @var string
      */

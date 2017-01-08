@@ -19,14 +19,12 @@ use craft\services\Config;
  * <%= pluginName %> Install Migration
  *
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * --snip--
  * If your plugin needs to create any custom database tables when it gets installed,
  * create a migrations/ folder within your plugin folder, and save an Install.php file
  * within it using the following template:
  *
  * If you need to perform any additional actions on install/uninstall, override the
  * safeUp() and safeDown() methods.
- * --snip--
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
@@ -88,9 +86,9 @@ class Install extends Migration
 <% var records = recordName -%>
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
-        $this->createTable('{{%<%= record %>}}', [
+        $this->createTable('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', [
             'id' => $this->primaryKey(),
-            'someField' => $this->string(255)->notNull()->defaultValue(''),
+            'some_field' => $this->string(255)->notNull()->defaultValue(''),
         ]);
 
 <% }); -%>
@@ -99,9 +97,7 @@ class Install extends Migration
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * --snip--
      * Creates the indexes.
- * --snip--
      *
 <% } -%>
      * @return void
@@ -111,7 +107,7 @@ class Install extends Migration
 <% var records = recordName -%>
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
-        $this->createIndex($this->db->getIndexName('{{%<%= record %>}}', 'someField', true), '{{%<%= record %>}}', 'someField', true);
+        $this->createIndex($this->db->getIndexName('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', 'some_field', true), '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', 'some_field', true);
 
         // Additional commands depending on the db driver
         switch ($this->driver) {
@@ -127,9 +123,7 @@ class Install extends Migration
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * --snip--
      * Adds the foreign keys.
- * --snip--
      *
 <% } -%>
      * @return void
@@ -140,9 +134,7 @@ class Install extends Migration
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * --snip--
      * Populates the DB with the default data.
- * --snip--
      *
 <% } -%>
      * @return void
@@ -153,9 +145,7 @@ class Install extends Migration
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * --snip--
      * Removes the tables.
- * --snip--
      *
 <% } -%>
      * @return void
@@ -165,7 +155,7 @@ class Install extends Migration
 <% var records = recordName -%>
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
-        $this->dropTable('{{%<%= record %>}}');
+        $this->dropTable('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}');
 
 <% }); -%>
 <% } -%>
@@ -173,9 +163,7 @@ class Install extends Migration
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * --snip--
      * Creates the indexes.
- * --snip--
      *
 <% } -%>
      * @return void
@@ -185,8 +173,7 @@ class Install extends Migration
 <% var records = recordName -%>
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
-        $this->dropTable('{{%<%= record %>}}');
-        $this->dropIndex($this->db->getIndexName('{{%<%= record %>}}', 'someField', true), '{{%<%= record %>}}');
+        $this->dropIndex($this->db->getIndexName('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', 'some_field', true), '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}');
 
 <% }); -%>
 <% } -%>

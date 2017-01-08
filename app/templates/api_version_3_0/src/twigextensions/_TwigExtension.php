@@ -16,12 +16,11 @@ use Craft;
 
 /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * --snip--
- * Twig can be extended in many ways; you can add extra tags, filters, tests, operators, global variables, and
- * functions. You can even extend the parser itself with node visitors.
+ * Twig can be extended in many ways; you can add extra tags, filters, tests, operators,
+ * global variables, and functions. You can even extend the parser itself with
+ * node visitors.
  *
  * http://twig.sensiolabs.org/doc/advanced.html
- * --snip--
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>

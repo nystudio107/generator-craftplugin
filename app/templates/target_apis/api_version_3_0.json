@@ -343,7 +343,7 @@
         {
             "src": "src/records/_Record.php",
             "destDir": "src/records/",
-            "dest": "Record.php",
+            "dest": ".php",
             "requires": ["records"],
             "subPrefix": "recordName",
             "prefix": false
@@ -351,7 +351,7 @@
         {
             "src": "src/migrations/_Install.php",
             "destDir": "src/migrations/",
-            "dest": "Install.twig",
+            "dest": "Install.php",
             "requires": ["records"],
             "prefix": false
         },

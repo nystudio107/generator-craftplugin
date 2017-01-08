@@ -16,12 +16,10 @@ use craft\base\Model;
  * <%= pluginHandle %> Settings Model
  *
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * --snip--
- * Models are containers for data. Just about every time information is passed between services, controllers, and
- * templates in Craft, it’s passed via a model.
+ * Models are containers for data. Just about every time information is passed
+ * between services, controllers, and templates in Craft, it’s passed via a model.
  *
  * https://craftcms.com/docs/plugins/models
- * --snip--
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
@@ -33,6 +31,7 @@ class Settings extends Model
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Some field model attribute
+     *
 <% } -%>
      * @var string
      */
@@ -46,6 +45,7 @@ class Settings extends Model
      * Child classes may override this method to declare different validation rules.
      *
      * More info: http://www.yiiframework.com/doc-2.0/guide-input-validation.html
+     *
 <% } -%>
      * @return array
      *

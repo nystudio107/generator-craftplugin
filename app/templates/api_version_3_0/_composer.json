@@ -25,7 +25,8 @@
         }
     },
     "extra": {
-	    "name": "<%= pluginHandle %>",
+        "name": "<%= pluginHandle %>",
+        "handle": "<%= pluginDirName %>",
 	    "version": "<%= pluginVersion %>",
     	"schemaVersion": "<%= pluginVersion %>",
     	"developer": "<%= pluginAuthorName %>",

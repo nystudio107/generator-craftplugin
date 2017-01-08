@@ -29,15 +29,14 @@ use yii\base\Event;
 
 /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * --snip--
- * Craft plugins are very much like little applications in and of themselves. We’ve made it as simple as we can,
- * but the training wheels are off. A little prior knowledge is going to be required to write a plugin.
+ * Craft plugins are very much like little applications in and of themselves. We’ve made
+ * it as simple as we can, but the training wheels are off. A little prior knowledge is
+ * going to be required to write a plugin.
  *
- * For the purposes of the plugin docs, we’re going to assume that you know PHP and SQL, as well as some semi-
- * advanced concepts like object-oriented programming and PHP namespaces.
+ * For the purposes of the plugin docs, we’re going to assume that you know PHP and SQL,
+ * as well as some semi-advanced concepts like object-oriented programming and PHP namespaces.
  *
  * https://craftcms.com/docs/plugins/introduction
- * --snip--
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
@@ -48,17 +47,22 @@ use yii\base\Event;
 class <%= pluginHandle %> extends \craft\base\Plugin
 {
     /**
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Static property that is an instance of this plugin class so that it can be accessed via
      * <%= pluginHandle %>::$plugin
+     *
+<% } -%>
      * @var <%= pluginVendorName %>\<%= pluginDirName %>\<%= pluginHandle %>
      */
     public static $plugin;
 
     /**
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Set our $plugin static property to this class so that it can be accessed via
      * <%= pluginHandle %>::$plugin
      * @param array $config [description]
      *
+<% } -%>
      * @inheritdoc
      */
     public function __construct($id, $parent = null, $config = [])
@@ -71,7 +75,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Called after the plugin class is instantiated; do any one-time initialization here such as hooks and events:
+     * Called after the plugin class is instantiated; do any one-time initialization
+     * here such as hooks and events:
      *
      * Craft::$app->on('entries.saveEntry', function(Event $event) {
      *    // ...
@@ -100,17 +105,21 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 <% } -%>
 <% if (pluginComponents.indexOf('controllers') >= 0){ -%>
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
         /**
          * Register our site routes
          */
+<% } -%>
         Event::on(UrlManager::className(), UrlManager::EVENT_REGISTER_SITE_URL_RULES, function(RegisterUrlRulesEvent $event)
             {
                 $event->rules['siteActionTrigger'] = '<%= pluginCamelHandle %>/<%= controllerName[0] %>';
             });
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
         /**
          * Register our CP routes
          */
+<% } -%>
         Event::on(UrlManager::className(), UrlManager::EVENT_REGISTER_CP_URL_RULES, function(RegisterUrlRulesEvent $event)
             {
                 $event->rules['cpActionTrigger'] = '<%= pluginCamelHandle %>/<%= controllerName[0] %>/do-something';
@@ -121,7 +130,7 @@ class <%= pluginHandle %> extends \craft\base\Plugin
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the user-facing name of the plugin, to which can override the name in
-     * plugin.json
+     * composer.json
      *
 <% } -%>
      * @return mixed
@@ -135,7 +144,7 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns whether the plugin should get its own tab in the CP header.
+     * Returns whether the plugin should get its own tab in the AdminCP sidebar.
      *
 <% } -%>
      * @return bool
@@ -181,8 +190,10 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 <% } -%>
 <% if (pluginComponents.indexOf('variables') >= 0){ -%>
     /**
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the component definition that should be registered on the [[\craft\app\web\twig\variables\CraftVariable]] instance for this plugin’s handle.
      *
+<% } -%>
      * @return mixed|null The component definition to be registered.
      * It can be any of the formats supported by [[\yii\di\ServiceLocator::set()]].
      *
@@ -196,10 +207,10 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 <% } -%>
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Called right before your plugin’s row gets stored in the plugins database table, and tables have been created
-     * for it based on its records.
-<% } -%>
+     * Called right before your plugin’s row gets stored in the plugins database table,
+     * and tables have been created for it based on its records.
      *
+<% } -%>
      * @inheritdoc
      */
     protected function onBeforeInstall()
@@ -208,10 +219,10 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Called right after your plugin’s row has been stored in the plugins database table, and tables have been
-     * created for it based on its records.
-<% } -%>
+     * Called right after your plugin’s row has been stored in the plugins database table,
+     * and tables have been created for it based on its records.
      *
+<% } -%>
      * @inheritdoc
      */
     protected function onAfterInstall()
@@ -220,10 +231,10 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Called right before your plugin’s record-based tables have been deleted, and its row in the plugins table
-     * has been deleted.
-<% } -%>
+     * Called right before your plugin’s record-based tables have been deleted, and its
+     * row in the plugins table has been deleted.
      *
+<% } -%>
      * @inheritdoc
      */
     protected function onBeforeUninstall()
@@ -232,8 +243,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Called right after your plugin’s record-based tables have been deleted, and its row in the plugins table
-     * has been deleted.
+     * Called right after your plugin’s record-based tables have been deleted, and its
+     * row in the plugins table has been deleted.
 <% } -%>
      *
      * @inheritdoc
