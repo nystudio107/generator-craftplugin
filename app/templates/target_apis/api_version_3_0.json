@@ -258,7 +258,7 @@
             "dest": "Controller.php",
             "requires": ["controllers"],
             "subPrefix": "controllerName",
-            "prefix": true
+            "prefix": false
         },
         {
             "src": "src/elementtypes/_ElementType.php",
