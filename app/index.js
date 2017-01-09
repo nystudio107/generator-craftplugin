@@ -124,7 +124,9 @@ module.exports = yo.generators.Base.extend({
             if (this.answers.pluginVendorName == "") {
                 this.answers.pluginVendorName = this.answers.pluginAuthorGithub;
                 }
-            this.answers.pluginVendorName = this.answers.pluginVendorName.directorize();
+            if (this.answers.pluginVendorName) {
+                this.answers.pluginVendorName = this.answers.pluginVendorName.directorize();
+                }
             if (this.answers.pluginAuthorGithub) {
                 this.answers.pluginDownloadUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/archive/master.zip";
                 this.answers.pluginDocsUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/blob/master/README.md";
