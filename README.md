@@ -174,6 +174,11 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 ## Changelog
 
+### 1.1.24 -- 2017.01.08
+
+* [Improved] More Craft 3 API improvements / additions
+* [Improved] Updated README.md
+
 ### 1.1.23 -- 2016.10.03
 
 * [Added] Initial Craft 3 support
