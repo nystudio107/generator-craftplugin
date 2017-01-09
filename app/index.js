@@ -157,11 +157,23 @@ module.exports = yo.generators.Base.extend({
                     }
                 });
 
-/* -- For API version 3.0x, make sure the models have a name */
+/* -- For API version 3.0x, make sure the controllers, models, records, and services have a name */
             if (_this.api.API_KEY == "api_version_3_0") {
+                _this.answers['controllerName'].forEach(function(nameElement, nameIndex, nameArray) {
+                    if (nameElement == "")
+                        nameArray[nameIndex] = "Default";
+                    });
                 _this.answers['modelName'].forEach(function(nameElement, nameIndex, nameArray) {
                     if (nameElement == "")
-                        nameArray[nameIndex] = _this.answers.pluginHandle;
+                        nameArray[nameIndex] = "Default";
+                    });
+                _this.answers['recordName'].forEach(function(nameElement, nameIndex, nameArray) {
+                    if (nameElement == "")
+                        nameArray[nameIndex] = "Default";
+                    });
+                _this.answers['serviceName'].forEach(function(nameElement, nameIndex, nameArray) {
+                    if (nameElement == "")
+                        nameArray[nameIndex] = "Default";
                     });
                 }
 

@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.1.27 -- 2017.01.09
+
+* [Fixed] Fixed an issue that would cause the generator to fail if you had empty Controller or Services names
+
 ## 1.1.26 -- 2017.01.09
 
 * [Fixed] Fixed a regression error that would cause Craft CMS API 2.5.x plugins to fail
