@@ -44,6 +44,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
      */
     public function init()
     {
+        parent::init();
     }
 
     /**

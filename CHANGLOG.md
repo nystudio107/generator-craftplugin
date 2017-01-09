@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.1.28 -- 2017.01.09
+
+* [Improved] We now call `parent::init()` in our overriden init() method in the 2.5.x API
+
 ## 1.1.27 -- 2017.01.09
 
 * [Fixed] Fixed an issue that would cause the generator to fail if you had empty Controller or Services names
