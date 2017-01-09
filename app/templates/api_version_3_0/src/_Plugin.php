@@ -112,7 +112,7 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 <% } -%>
         Event::on(UrlManager::className(), UrlManager::EVENT_REGISTER_SITE_URL_RULES, function(RegisterUrlRulesEvent $event)
             {
-                $event->rules['siteActionTrigger'] = '<%= pluginCamelHandle %>/<%= controllerName[0] %>';
+                $event->rules['siteActionTrigger'] = '<%= pluginDirName %>/<%= controllerName[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>';
             });
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -122,7 +122,7 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 <% } -%>
         Event::on(UrlManager::className(), UrlManager::EVENT_REGISTER_CP_URL_RULES, function(RegisterUrlRulesEvent $event)
             {
-                $event->rules['cpActionTrigger'] = '<%= pluginCamelHandle %>/<%= controllerName[0] %>/do-something';
+                $event->rules['cpActionTrigger'] = '<%= pluginDirName %>/<%= controllerName[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
             });
 <% } -%>
     }

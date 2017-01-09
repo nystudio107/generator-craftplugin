@@ -360,6 +360,11 @@ String.prototype.camelize = function() {
     });
 }
 
+// Return a string in kebab-case
+String.prototype.kebabize = function() {
+    return this.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();});
+};
+
 // Convert a string to have proceed with a _ and be camel-cased, with the first letter capitalized
 String.prototype.prefixize = function() {
     if (this == "")

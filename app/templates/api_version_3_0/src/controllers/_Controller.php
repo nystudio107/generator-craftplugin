@@ -48,7 +48,7 @@ class <%= pluginHandle %><%= controllerName[index] %>Controller extends Controll
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Handle a request going to our plugin's index action URL,
-     * e.g.: actions/<%= pluginCamelHandle %>/<%= controllerName[index] %>
+     * e.g.: actions/<%= pluginDirName %>/<%= controllerName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>
      *
 <% } -%>
      * @return mixed
@@ -60,7 +60,7 @@ class <%= pluginHandle %><%= controllerName[index] %>Controller extends Controll
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Handle a request going to our plugin's actionDoSomething URL,
-     * e.g.: actions/<%= pluginCamelHandle %>/<%= controllerName[index] %>/do-something
+     * e.g.: actions/<%= pluginDirName %>/<%= controllerName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something
      *
 <% } -%>
      * @return mixed
