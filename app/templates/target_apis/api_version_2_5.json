@@ -235,6 +235,12 @@
             "prefix": false
         },
         {
+            "src": "_CHANGELOG.md",
+            "destDir": "",
+            "dest": "CHANGELOG.md",
+            "prefix": false
+        },
+        {
             "src": "_LICENSE.txt",
             "destDir": "",
             "dest": "LICENSE.txt",
