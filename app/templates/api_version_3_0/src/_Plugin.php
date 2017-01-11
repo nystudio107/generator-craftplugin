@@ -16,9 +16,6 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\twigextensions\<%= pluginHandle 
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
 use <%= pluginVendorName %>\<%= pluginDirName%>\models\Settings;
 <% } -%>
-<% if (pluginComponents.indexOf('variables') >= 0){ -%>
-use <%= pluginVendorName %>\<%= pluginDirName%>\variables\<%= pluginHandle %>Variable;
-<% } -%>
 
 use Craft;
 <% if (pluginComponents.indexOf('controllers') >= 0){ -%>
@@ -133,11 +130,11 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      * composer.json
      *
 <% } -%>
-     * @return mixed
+     * @return string
      *
      * @inheritdoc
      */
-    public function getName()
+    public function getName(): string
     {
          return Craft::t('<%= pluginDirName %>', '<%= pluginName %>');
     }
@@ -151,7 +148,7 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      *
      * @inheritdoc
      */
-    public static function hasCpSection()
+    public static function hasCpSection(): bool
     {
         return false;
     }
@@ -159,10 +156,10 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns your plugin’s settings model.
+     * Creates and returns the model used to store the plugin’s settings.
      *
 <% } -%>
-     * @return mixed
+     * @return Model|null
      *
      * @inheritdoc
      */
@@ -173,14 +170,15 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns the HTML that displays your plugin’s settings.
+     * Returns the rendered settings HTML, which will be inserted into the content
+     * block on the settings page.
      *
 <% } -%>
      * @return mixed
      *
      * @inheritdoc
      */
-    protected function getSettingsHtml()
+    protected function getSettingsHtml(): string
     {
         return Craft::$app->view->renderTemplate('<%= pluginDirName %>/<%= pluginHandle %>_Settings', [
             'settings' => $this->getSettings()
@@ -207,49 +205,76 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 <% } -%>
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Called right before your plugin’s row gets stored in the plugins database table,
-     * and tables have been created for it based on its records.
+     * Performs actions before the plugin is installed.
+     *
+<% } -%>
+     * @return bool Whether the plugin should be installed
+     *
+     * @inheritdoc
+     */
+    protected function beforeInstall(): bool
+    {
+        return true;
+    }
+
+    /**
+ <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+     * Performs actions after the plugin is installed.
      *
 <% } -%>
      * @inheritdoc
      */
-    protected function onBeforeInstall()
+    protected function afterInstall()
     {
     }
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Called right after your plugin’s row has been stored in the plugins database table,
-     * and tables have been created for it based on its records.
+     * Performs actions before the plugin is updated.
+     *
+<% } -%>
+     * @return bool Whether the plugin should be updated
+     *
+     * @inheritdoc
+     */
+    protected function beforeUpdate(): bool
+    {
+        return true;
+    }
+
+    /**
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+     * Performs actions after the plugin is updated.
      *
 <% } -%>
      * @inheritdoc
      */
-    protected function onAfterInstall()
+    protected function afterUpdate()
     {
     }
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Called right before your plugin’s record-based tables have been deleted, and its
-     * row in the plugins table has been deleted.
+     * Performs actions before the plugin is installed.
      *
 <% } -%>
+     * @return bool Whether the plugin should be installed
+     *
      * @inheritdoc
      */
-    protected function onBeforeUninstall()
+    protected function beforeUninstall(): bool
     {
+        return true;
     }
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Called right after your plugin’s record-based tables have been deleted, and its
-     * row in the plugins table has been deleted.
-<% } -%>
+     * Performs actions after the plugin is installed.
      *
+<% } -%>
      * @inheritdoc
      */
-    protected function onAfterUninstall()
+    protected function afterUninstall()
     {
     }
 }
