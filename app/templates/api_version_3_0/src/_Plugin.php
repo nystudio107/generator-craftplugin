@@ -49,7 +49,7 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      * <%= pluginHandle %>::$plugin
      *
 <% } -%>
-     * @var <%= pluginVendorName %>\<%= pluginDirName %>\<%= pluginHandle %>
+     * @var \<%= pluginVendorName %>\<%= pluginDirName %>\<%= pluginHandle %>
      */
     public static $plugin;
 
