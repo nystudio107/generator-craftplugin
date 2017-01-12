@@ -1,30 +1,49 @@
 <?php
+/**
+ * <%= pluginName %> plugin for Craft CMS 3.x
+ *
+ * <%= pluginDescription %>
+ *
+ * @link      <%= pluginAuthorUrl %>
+ * @copyright <%= copyrightNotice %>
+ */
+
+namespace <%= pluginVendorName %>\<%= pluginDirName %>\widgets;
+
+use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+
+use Craft;
+use craft\base\Widget;
 
 // WARNING: Not converted to Craft 3 yet
 
 /**
- * <%= pluginName %> plugin for Craft CMS
- *
- * <%= pluginHandle %><%= widgetName[index] %> Widget
+ * <%= pluginName %> Widget
  *
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * --snip--
- * Dashboard widgets allow you to display information in the Admin CP Dashboard.  Adding new types of widgets to
- * the dashboard couldn’t be easier in Craft
+ * Dashboard widgets allow you to display information in the Admin CP Dashboard.
+ * Adding new types of widgets to the dashboard couldn’t be easier in Craft
  *
  * https://craftcms.com/docs/plugins/widgets
- * --snip--
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
- * @copyright <%= copyrightNotice %>
- * @link      <%= pluginAuthorUrl %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
-namespace Craft;
-class <%= pluginHandle %><%= widgetName[index] %>Widget extends BaseWidget
+class <%= widgetName[index] %> extends Widget
 {
+
+    /**
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+<% } -%>
+     * @inheritdoc
+     */
+    public static function displayName(): string
+    {
+        return Craft::t('<%= pluginDirName %>', '<%= widgetName[index] %>');
+    }
+
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the name of the widget name.

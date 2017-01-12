@@ -396,10 +396,10 @@
         {
             "src": "src/widgets/_Widget.php",
             "destDir": "src/widgets/",
-            "dest": "Widget.php",
+            "dest": ".php",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
-            "prefix": true
+            "prefix": false
         },
         {
             "src": "src/templates/widgets/_body.twig",
