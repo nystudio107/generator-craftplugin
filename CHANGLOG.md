@@ -1,5 +1,11 @@
 # generator-craftplugin Changelog
 
+## 1.1.29 -- 2017.01.12
+
+* [Improved] Added Console Commands to the 3.0.x API
+* [Improved] PSR-2 linted code for the 3.0.x API
+* [Improved] Various code-cleanup and fixes
+
 ## 1.1.28 -- 2017.01.09
 
 * [Improved] We now call `parent::init()` in our overriden init() method in the 2.5.x API
