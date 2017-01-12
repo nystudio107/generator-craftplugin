@@ -8,7 +8,7 @@
  * @copyright <%= copyrightNotice %>
  */
 
-namespace <%= pluginVendorName %>\<%= pluginDirName %>\controllers;
+namespace <%= pluginVendorName %>\<%= pluginDirName %>\commands;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
@@ -16,28 +16,31 @@ use Craft;
 use craft\web\Controller;
 
 /**
- * <%= controllerName[index] %> Controller
+ * Default Command
  *
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * Generally speaking, controllers are the middlemen between the front end of
- * the CP/website and your plugin’s services. They contain action methods which
- * handle individual tasks.
+ * Craft can be invoked via commandline console by using the `./craft` command
+ * from the project root.
  *
- * A common pattern used throughout Craft involves a controller action gathering
- * post data, saving it on a model, passing the model off to a service, and then
- * responding to the request appropriately depending on the service method’s response.
+ * Console Commands are just controllers that are invoked to handle console
+ * actions. The segment routing is plugin/controller/action but if the controller
+ * is named DefaultController, the second segment can be omitted.
  *
- * Action methods begin with the prefix “action”, followed by a description of what
- * the method does (for example, actionSaveIngredient()).
+ * The actionIndex() method is what is executed if no sub-commands are supplied, e.g.:
  *
- * https://craftcms.com/docs/plugins/controllers
+ * ./craft <%= pluginDirName %>
+ *
+ * Actions must be in 'kebab-case' so actionDoSomething() maps to 'do-something',
+ * and would be invoked via:
+ *
+ * ./craft <%= pluginDirName %>/do-something
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
-class <%= pluginHandle %><%= controllerName[index] %>Controller extends Controller
+class DefaultController extends Controller
 {
 
     /**

@@ -94,6 +94,17 @@ class <%= pluginHandle %> extends Plugin
 <% } -%>
         Craft::$app->view->twig->addExtension(new <%= pluginHandle %>TwigExtension());
 <% } -%>
+<% if (pluginComponents.indexOf('consolecommands') >= 0){ -%>
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+        /**
+         * Add in our console commands
+         */
+<% } -%>
+    if (Craft::$app instanceof \craft\console\Application) {
+        $this->controllerNamespace = '<%= pluginVendorName %>\<%= pluginDirName %>\commands';
+    }
+<% } -%>
 <% if (pluginComponents.indexOf('controllers') >= 0){ -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>

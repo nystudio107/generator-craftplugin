@@ -252,11 +252,11 @@
             "prefix": false
         },
         {
-            "src": "src/consolecommands/_Command.php",
-            "destDir": "src/consolecommands/",
-            "dest": "Command.php",
+            "src": "src/commands/_Command.php",
+            "destDir": "src/commands/",
+            "dest": "DefaultController.php",
             "requires": ["consolecommands"],
-            "prefix": true
+            "prefix": false
         },
         {
             "src": "src/controllers/_Controller.php",
