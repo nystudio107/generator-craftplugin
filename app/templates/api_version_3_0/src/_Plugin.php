@@ -18,6 +18,7 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\models\Settings;
 <% } -%>
 
 use Craft;
+use craft\base\Plugin;
 <% if (pluginComponents.indexOf('controllers') >= 0){ -%>
 use craft\web\UrlManager;
 use craft\events\RegisterUrlRulesEvent;
@@ -41,7 +42,7 @@ use yii\base\Event;
  * @since     <%= pluginVersion %>
  */
 
-class <%= pluginHandle %> extends \craft\base\Plugin
+class <%= pluginHandle %> extends Plugin
 {
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -57,7 +58,6 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Set our $plugin static property to this class so that it can be accessed via
      * <%= pluginHandle %>::$plugin
-     * @param array $config [description]
      *
 <% } -%>
      * @inheritdoc
@@ -73,18 +73,12 @@ class <%= pluginHandle %> extends \craft\base\Plugin
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Called after the plugin class is instantiated; do any one-time initialization
-     * here such as hooks and events:
-     *
-     * Craft::$app->on('entries.saveEntry', function(Event $event) {
-     *    // ...
-     * });
+     * here such as hooks and events.
      *
      * If you have a '/vendor/autoload.php' file, it will be loaded for you automatically;
      * you do not need to load it in your init() method.
      *
 <% } -%>
-     * @return mixed
-     *
      * @inheritdoc
      */
     public function init()
@@ -107,20 +101,26 @@ class <%= pluginHandle %> extends \craft\base\Plugin
          * Register our site routes
          */
 <% } -%>
-        Event::on(UrlManager::className(), UrlManager::EVENT_REGISTER_SITE_URL_RULES, function(RegisterUrlRulesEvent $event)
-            {
+        Event::on(
+            UrlManager::className(),
+            UrlManager::EVENT_REGISTER_SITE_URL_RULES,
+            function (RegisterUrlRulesEvent $event) {
                 $event->rules['siteActionTrigger'] = '<%= pluginDirName %>/<%= controllerName[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>';
-            });
+            }
+        );
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
         /**
          * Register our CP routes
          */
 <% } -%>
-        Event::on(UrlManager::className(), UrlManager::EVENT_REGISTER_CP_URL_RULES, function(RegisterUrlRulesEvent $event)
-            {
+        Event::on(
+            UrlManager::className(),
+            UrlManager::EVENT_REGISTER_CP_URL_RULES,
+            function (RegisterUrlRulesEvent $event) {
                 $event->rules['cpActionTrigger'] = '<%= pluginDirName %>/<%= controllerName[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
-            });
+            }
+        );
 <% } -%>
     }
 
@@ -159,7 +159,7 @@ class <%= pluginHandle %> extends \craft\base\Plugin
      * Creates and returns the model used to store the plugin’s settings.
      *
 <% } -%>
-     * @return Model|null
+     * @return \craft\base\Model|null
      *
      * @inheritdoc
      */
@@ -189,7 +189,8 @@ class <%= pluginHandle %> extends \craft\base\Plugin
 <% if (pluginComponents.indexOf('variables') >= 0){ -%>
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns the component definition that should be registered on the [[\craft\app\web\twig\variables\CraftVariable]] instance for this plugin’s handle.
+     * Returns the component definition that should be registered on the
+     * [[\craft\web\twig\variables\CraftVariable]] instance for this plugin’s handle.
      *
 <% } -%>
      * @return mixed|null The component definition to be registered.

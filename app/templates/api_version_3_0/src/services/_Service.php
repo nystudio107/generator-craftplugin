@@ -47,5 +47,4 @@ class <%= serviceName[index] %> extends Component
     public function exampleService()
     {
     }
-
 }

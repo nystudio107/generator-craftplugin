@@ -10,8 +10,9 @@
 
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\variables;
 
-use Craft;
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+
+use Craft;
 
 /**
  * <%= pluginName %> Variable
@@ -41,6 +42,8 @@ class <%= pluginHandle %>Variable
      *
      *     {{ craft.<%= pluginCamelHandle %>.exampleVariable(twigValue) }}
 <% } -%>
+     * @param null $optional
+     * @return string
      */
     public function exampleVariable($optional = null)
     {

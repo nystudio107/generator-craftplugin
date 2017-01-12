@@ -10,8 +10,10 @@
 
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\variables;
 
-use Craft;
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+
+use Craft;
+use craft\web\Controller;
 
 /**
  * <%= controllerName[index] %> Controller

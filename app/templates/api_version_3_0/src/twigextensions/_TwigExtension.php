@@ -84,6 +84,8 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
      * Our function called via Twig; it can do anything you want
      *
  <% } -%>
+     * @param null $text
+     *
      * @return string
      */
     public function someInternalFunction($text = null)

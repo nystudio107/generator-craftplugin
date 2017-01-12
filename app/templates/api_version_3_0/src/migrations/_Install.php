@@ -86,11 +86,16 @@ class Install extends Migration
 <% var records = recordName -%>
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
-        $this->createTable('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', [
-            'id' => $this->primaryKey(),
-            'some_field' => $this->string(255)->notNull()->defaultValue(''),
-        ]);
+        $this->createTable(
+            '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}',
+            [
+                'id' => $this->primaryKey(),
+                'some_field' => $this->string(255)->notNull()->defaultValue(''),
+            ]
+        );
+<% if (index !== array.length - 1) { -%>
 
+<% }; -%>
 <% }); -%>
 <% } -%>
     }
@@ -107,7 +112,16 @@ class Install extends Migration
 <% var records = recordName -%>
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
-        $this->createIndex($this->db->getIndexName('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', 'some_field', true), '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', 'some_field', true);
+        $this->createIndex(
+            $this->db->getIndexName(
+                '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}',
+                'some_field',
+                true
+            ),
+            '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}',
+            'some_field',
+            true
+        );
 
         // Additional commands depending on the db driver
         switch ($this->driver) {
@@ -116,7 +130,9 @@ class Install extends Migration
             case Connection::DRIVER_PGSQL:
                 break;
         }
+<% if (index !== array.length - 1) { -%>
 
+<% }; -%>
 <% }); -%>
 <% } -%>
     }
@@ -156,7 +172,9 @@ class Install extends Migration
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
         $this->dropTable('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}');
+<% if (index !== array.length - 1) { -%>
 
+<% }; -%>
 <% }); -%>
 <% } -%>
     }
@@ -174,10 +192,10 @@ class Install extends Migration
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
         $this->dropIndex($this->db->getIndexName('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', 'some_field', true), '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}');
+<% if (index !== array.length - 1) { -%>
 
+<% }; -%>
 <% }); -%>
 <% } -%>
-
     }
-
 }
