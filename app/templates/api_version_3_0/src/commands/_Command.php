@@ -13,7 +13,8 @@ namespace <%= pluginVendorName %>\<%= pluginDirName %>\commands;
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
 use Craft;
-use craft\web\Controller;
+use yii\console\Controller;
+use yii\helpers\Console;
 
 /**
  * Default Command
@@ -23,17 +24,21 @@ use craft\web\Controller;
  * from the project root.
  *
  * Console Commands are just controllers that are invoked to handle console
- * actions. The segment routing is plugin/controller/action but if the controller
- * is named DefaultController, the second segment can be omitted.
+ * actions. The segment routing is plugin/controller/action
  *
  * The actionIndex() method is what is executed if no sub-commands are supplied, e.g.:
+ *
+ * ./craft <%= pluginDirName %>/default
+ *
+ * Since it will assume DefaultController if the `controller` segment is omitted,
+ * this works, too:
  *
  * ./craft <%= pluginDirName %>
  *
  * Actions must be in 'kebab-case' so actionDoSomething() maps to 'do-something',
  * and would be invoked via:
  *
- * ./craft <%= pluginDirName %>/do-something
+ * ./craft <%= pluginDirName %>/default/do-something
  *
 <% } -%>
  * @author    <%= pluginAuthorName %>
@@ -42,14 +47,6 @@ use craft\web\Controller;
  */
 class DefaultController extends Controller
 {
-
-    /**
-     * @var    bool|array Allows anonymous access to this controller's actions.
-     *         The actions must be in 'kebab-case'
-     * @access protected
-     */
-    protected $allowAnonymous = ['index', 'do-something'];
-
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Handle a request going to our plugin's index action URL,
@@ -60,6 +57,7 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
+        echo "Welcome to the actionIndex()\n";
     }
 
     /**
@@ -72,5 +70,6 @@ class DefaultController extends Controller
      */
     public function actionDoSomething()
     {
+        echo "Welcome to the actionDoSomething()\n";
     }
 }
