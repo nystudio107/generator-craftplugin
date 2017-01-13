@@ -221,9 +221,14 @@ class <%= pluginHandle %> extends Plugin
      */
     protected function getSettingsHtml(): string
     {
-        return Craft::$app->view->renderTemplate('<%= pluginDirName %>/<%= pluginHandle %>_Settings', [
-            'settings' => $this->getSettings()
-        ]);
+        return Craft::$app->view->renderTemplate(
+            '<%= pluginDirName %>'
+            . DIRECTORY_SEPARATOR
+            . '<%= pluginHandle %>_Settings',
+            [
+                'settings' => $this->getSettings()
+            ]
+        );
     }
 
 <% } -%>

@@ -34,8 +34,21 @@ use craft\base\Widget;
 class <%= widgetName[index] %> extends Widget
 {
 
+    // Public Properties
+    // =========================================================================
+
+    /**
+     * @var string The message to display
+     */
+    public $message = 'Hello, world.';
+
+    // Static Methods
+    // =========================================================================
+
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+     * Returns the display name of the widget
+     *
 <% } -%>
      * @inheritdoc
      */
@@ -44,91 +57,77 @@ class <%= widgetName[index] %> extends Widget
         return Craft::t('<%= pluginDirName %>', '<%= widgetName[index] %>');
     }
 
+    // Public Methods
+    // =========================================================================
+
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns the name of the widget name.
+     * Returns the validation rules for attributes.
      *
-<% } -%>
-     * @return mixed
-     */
-    public function getName()
-    {
-        return Craft::t('<%= pluginName %><%= widgetName[index] %>');
-    }
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * getBodyHtml() does just what it says: it returns your widget’s body HTML. We recommend that you store the
-     * actual HTML in a template, and load it via craft()->templates->render().
+     * Validation rules are used by [[validate()]] to check if attribute values are valid.
+     * Child classes may override this method to declare different validation rules.
      *
-<% } -%>
-     * @return mixed
-     */
-    public function getBodyHtml()
-    {
-        // Include our Javascript & CSS
-        craft()->templates->includeCssResource('<%= pluginDirName %>/css/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget.css');
-        craft()->templates->includeJsResource('<%= pluginDirName %>/js/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget.js');
-        /* -- Variables to pass down to our rendered template */
-        $variables = array();
-        $variables['settings'] = $this->getSettings();
-        return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget_Body', $variables);
-    }
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns how many columns the widget will span in the Admin CP
-     *
-<% } -%>
-     * @return int
-     */
-    public function getColspan()
-    {
-        return 1;
-    }
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Defines the attributes that model your Widget's available settings.
+     * More info: http://www.yiiframework.com/doc-2.0/guide-input-validation.html
      *
 <% } -%>
      * @return array
-     */
-    protected function defineSettings()
-    {
-        return array(
-            'someSetting' => array(AttributeType::String, 'label' => 'Some Setting', 'default' => ''),
-        );
-    }
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns the HTML that displays your Widget's settings.
      *
-<% } -%>
-     * @return mixed
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        $rules = parent::rules();
+        $rules = array_merge($rules,
+            [
+                ['message', 'string'],
+                ['message', 'default', 'value' => 'Hello, world.'],
+            ]);
+        return $rules;
+    }
+
+    /**
+     * @inheritdoc
      */
     public function getSettingsHtml()
     {
-
-/* -- Variables to pass down to our rendered template */
-
-        $variables = array();
-        $variables['settings'] = $this->getSettings();
-        return craft()->templates->render('<%= pluginDirName %>/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget_Settings',$variables);
+        return Craft::$app->getView()->renderTemplate(
+            '<%= pluginDirName %>/widgets/<%= widgetName[index] %>Widget_Settings',
+            [
+                'widget' => $this
+            ]
+        );
     }
 
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * If you need to do any processing on your settings’ post data before they’re saved to the database, you can
-     * do it with the prepSettings() method:
-     *
-<% } -%>
-     * @param mixed $settings  The Widget's settings
-     *
-     * @return mixed
+     * @inheritdoc
      */
-    public function prepSettings($settings)
+    public function getIconPath()
     {
-
-/* -- Modify $settings here... */
-
-        return $settings;
+        return Craft::$app->getPath()->getPluginsPath()
+            . DIRECTORY_SEPARATOR
+            . '<%= pluginDirName %>'
+            . DIRECTORY_SEPARATOR
+            . 'src'
+            . DIRECTORY_SEPARATOR
+            .'resources'
+            . DIRECTORY_SEPARATOR
+            .'icon.svg';
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getBodyHtml()
+    {
+        Craft::$app->getView()->registerCssResource('<%= pluginDirName %>/css/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget.css');
+        Craft::$app->getView()->registerJsResource('<%= pluginDirName %>/js/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget.js');
+
+        return Craft::$app->getView()->renderTemplate(
+            '<%= pluginDirName %>/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget_Body',
+            [
+                'message' => $this->message
+            ]
+        );
+    }
+
 }
