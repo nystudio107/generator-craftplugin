@@ -10,6 +10,9 @@
 
 namespace <%= pluginVendorName %>\<%= pluginDirName %>;
 
+<% if (pluginComponents.indexOf('variables') >= 0){ -%>
+use <%= pluginVendorName %>\<%= pluginDirName %>\variables\<%= pluginHandle %>Variable;
+<% } -%>
 <% if (pluginComponents.indexOf('twigextensions') >= 0){ -%>
 use <%= pluginVendorName %>\<%= pluginDirName%>\twigextensions\<%= pluginHandle %>TwigExtension;
 <% } -%>
@@ -65,7 +68,7 @@ class <%= pluginHandle %> extends Plugin
      * <%= pluginHandle %>::$plugin
      *
 <% } -%>
-     * @var \<%= pluginVendorName %>\<%= pluginDirName %>\<%= pluginHandle %>
+     * @var static
      */
     public static $plugin;
 
@@ -94,19 +97,6 @@ class <%= pluginHandle %> extends Plugin
      * Set our $plugin static property to this class so that it can be accessed via
      * <%= pluginHandle %>::$plugin
      *
-<% } -%>
-     * @inheritdoc
-     */
-    public function __construct($id, $parent = null, $config = [])
-    {
-        static::$plugin = $this;
-        static::setInstance($this);
-
-        parent::__construct($id, $parent, $config);
-    }
-
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Called after the plugin class is instantiated; do any one-time initialization
      * here such as hooks and events.
      *
@@ -119,22 +109,18 @@ class <%= pluginHandle %> extends Plugin
     public function init()
     {
         parent::init();
-        $this->name = $this->getName();
+        self::$plugin = $this;
 <% if (pluginComponents.indexOf('twigextensions') >= 0){ -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-        /**
-         * Add in our Twig extensions
-         */
+        // Add in our Twig extensions
 <% } -%>
         Craft::$app->view->twig->addExtension(new <%= pluginHandle %>TwigExtension());
 <% } -%>
 <% if (pluginComponents.indexOf('consolecommands') >= 0){ -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-        /**
-         * Add in our console commands
-         */
+        // Add in our console commands
 <% } -%>
     if (Craft::$app instanceof \craft\console\Application) {
         $this->controllerNamespace = '<%= pluginVendorName %>\<%= pluginDirName %>\commands';
@@ -143,9 +129,7 @@ class <%= pluginHandle %> extends Plugin
 <% if (pluginComponents.indexOf('controllers') >= 0){ -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-        /**
-         * Register our site routes
-         */
+        // Register our site routes
 <% } -%>
         Event::on(
             UrlManager::className(),
@@ -161,9 +145,7 @@ class <%= pluginHandle %> extends Plugin
         );
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-        /**
-         * Register our CP routes
-         */
+        // Register our CP routes
 <% } -%>
         Event::on(
             UrlManager::className(),
@@ -181,9 +163,7 @@ class <%= pluginHandle %> extends Plugin
 <% if (pluginComponents.indexOf('widgets') >= 0){ -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-        /**
-         * Register our widgets
-         */
+        // Register our widgets
 <% } -%>
         Event::on(
             Dashboard::className(),
@@ -201,21 +181,6 @@ class <%= pluginHandle %> extends Plugin
 <% } -%>
     }
 
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns the user-facing name of the plugin, to which can override the name in
-     * composer.json
-     *
-<% } -%>
-     * @return string
-     *
-     * @inheritdoc
-     */
-    public function getName(): string
-    {
-         return Craft::t('<%= pluginDirName %>', '<%= pluginName %>');
-    }
-
 <% if (pluginComponents.indexOf('variables') >= 0){ -%>
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -230,7 +195,7 @@ class <%= pluginHandle %> extends Plugin
      */
     public function defineTemplateComponent()
     {
-        return '<%= pluginVendorName %>\<%= pluginDirName %>\variables\<%= pluginHandle %>Variable';
+        return <%= pluginHandle %>Variable::class;
     }
 
 <% } -%>

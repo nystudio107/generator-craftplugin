@@ -15,8 +15,6 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 use Craft;
 use craft\base\Widget;
 
-// WARNING: Not converted to Craft 3 yet
-
 /**
  * <%= pluginName %> Widget
  *
