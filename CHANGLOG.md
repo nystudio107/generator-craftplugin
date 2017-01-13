@@ -1,5 +1,13 @@
 # generator-craftplugin Changelog
 
+## 1.1.30 -- 2017.01.12
+
+* [Added] Added section comments
+* [Added] Added widgets
+* [Improved] Cleaned up the css/js/template naming
+* [Improved] Use DIRECTORY_SEPARATOR everywhere instead of /'s
+* [Improved] Added an example Site and CP route for each controller
+
 ## 1.1.29 -- 2017.01.12
 
 * [Improved] Added Console Commands to the 3.0.x API
