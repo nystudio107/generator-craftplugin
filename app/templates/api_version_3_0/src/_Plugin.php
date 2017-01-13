@@ -151,7 +151,12 @@ class <%= pluginHandle %> extends Plugin
             UrlManager::className(),
             UrlManager::EVENT_REGISTER_SITE_URL_RULES,
             function (RegisterUrlRulesEvent $event) {
-                $event->rules['siteActionTrigger'] = '<%= pluginDirName %>/<%= controllerName[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>';
+<% var controllers = controllerName -%>
+<% if ((typeof(controllers[0]) !== 'undefined') && (controllers[0] !== "")) { -%>
+<% controllers.forEach(function(controller, index, array){ -%>
+                $event->rules['siteActionTrigger<%= index + 1 %>'] = '<%= pluginDirName %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>';
+<% }); -%>
+<% } -%>
             }
         );
 
@@ -164,7 +169,12 @@ class <%= pluginHandle %> extends Plugin
             UrlManager::className(),
             UrlManager::EVENT_REGISTER_CP_URL_RULES,
             function (RegisterUrlRulesEvent $event) {
-                $event->rules['cpActionTrigger'] = '<%= pluginDirName %>/<%= controllerName[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
+<% var controllers = controllerName -%>
+<% if ((typeof(controllers[0]) !== 'undefined') && (controllers[0] !== "")) { -%>
+<% controllers.forEach(function(controller, index, array){ -%>
+                $event->rules['cpActionTrigger<%= index + 1 %>'] = '<%= pluginDirName %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
+<% }); -%>
+<% } -%>
             }
         );
 <% } -%>
