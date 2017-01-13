@@ -119,15 +119,14 @@ class <%= widgetName[index] %> extends Widget
      */
     public function getBodyHtml()
     {
-        Craft::$app->getView()->registerCssResource('<%= pluginDirName %>/css/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget.css');
-        Craft::$app->getView()->registerJsResource('<%= pluginDirName %>/js/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget.js');
+        Craft::$app->getView()->registerCssResource('<%= pluginDirName %>/css/widgets/<%= widgetName[index] %>Widget.css');
+        Craft::$app->getView()->registerJsResource('<%= pluginDirName %>/js/widgets/<%= widgetName[index] %>Widget.js');
 
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginDirName %>/widgets/<%= pluginHandle %><%= widgetName[index] %>Widget_Body',
+            '<%= pluginDirName %>/widgets/<%= widgetName[index] %>Widget_Body',
             [
                 'message' => $this->message
             ]
         );
     }
-
 }

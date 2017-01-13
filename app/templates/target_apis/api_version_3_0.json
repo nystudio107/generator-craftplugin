@@ -407,7 +407,7 @@
             "dest": "Widget_Body.twig",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
-            "prefix": true
+            "prefix": false
         },
         {
             "src": "src/templates/widgets/_settings.twig",
@@ -415,7 +415,7 @@
             "dest": "Widget_Settings.twig",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
-            "prefix": true
+            "prefix": false
         },
         {
             "src": "src/resources/css/widgets/_widget.css",
@@ -423,7 +423,7 @@
             "dest": "Widget.css",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
-            "prefix": true
+            "prefix": false
         },
         {
             "src": "src/resources/js/widgets/_widget.js",
@@ -431,7 +431,7 @@
             "dest": "Widget.js",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
-            "prefix": true
+            "prefix": false
         },
         {
             "src": "src/templates/_settings.twig",

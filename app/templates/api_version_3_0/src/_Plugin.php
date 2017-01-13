@@ -16,6 +16,14 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\twigextensions\<%= pluginHandle 
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
 use <%= pluginVendorName %>\<%= pluginDirName%>\models\Settings;
 <% } -%>
+<% if (pluginComponents.indexOf('widgets') >= 0){ -%>
+<% var widgets = widgetName -%>
+<% if ((typeof(widgets[0]) !== 'undefined') && (widgets[0] !== "")) { -%>
+<% widgets.forEach(function(widget, index, array){ -%>
+use <%= pluginVendorName %>\<%= pluginDirName%>\widgets\<%= widget %>;
+<% }); -%>
+<% } -%>
+<% } -%>
 
 use Craft;
 use craft\base\Plugin;
@@ -23,6 +31,10 @@ use craft\base\Plugin;
 use craft\web\UrlManager;
 use craft\events\RegisterUrlRulesEvent;
 use yii\base\Event;
+<% } -%>
+<% if (pluginComponents.indexOf('widgets') >= 0){ -%>
+use craft\services\Dashboard;
+use craft\events\RegisterComponentTypesEvent;
 <% } -%>
 
 /**
@@ -155,6 +167,27 @@ class <%= pluginHandle %> extends Plugin
                 $event->rules['cpActionTrigger'] = '<%= pluginDirName %>/<%= controllerName[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
             }
         );
+<% } -%>
+<% if (pluginComponents.indexOf('widgets') >= 0){ -%>
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+        /**
+         * Register our widgets
+         */
+<% } -%>
+        Event::on(
+            Dashboard::className(),
+            Dashboard::EVENT_REGISTER_WIDGET_TYPES,
+            function (RegisterComponentTypesEvent $event) {
+<% var widgets = widgetName -%>
+<% if ((typeof(widgets[0]) !== 'undefined') && (widgets[0] !== "")) { -%>
+<% widgets.forEach(function(widget, index, array){ -%>
+                $event->types[] = <%= widget %>::class;
+<% }); -%>
+<% } -%>
+            }
+        );
+
 <% } -%>
     }
 
