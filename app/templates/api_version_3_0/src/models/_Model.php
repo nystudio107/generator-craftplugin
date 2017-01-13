@@ -28,6 +28,9 @@ use craft\base\Model;
  */
 class <%= modelName[index] %> extends Model
 {
+    // Public Properties
+    // =========================================================================
+
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Some model attribute
@@ -36,6 +39,9 @@ class <%= modelName[index] %> extends Model
      * @var string
      */
     public $someAttribute = 'Some Default';
+
+    // Public Methods
+    // =========================================================================
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>

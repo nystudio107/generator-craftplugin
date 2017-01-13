@@ -32,6 +32,9 @@ use craft\base\Component;
  */
 class <%= serviceName[index] %> extends Component
 {
+    // Public Methods
+    // =========================================================================
+
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * This function can literally be anything you want, and you can have as many service

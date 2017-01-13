@@ -40,12 +40,18 @@ use craft\web\Controller;
 class <%= pluginHandle %><%= controllerName[index] %>Controller extends Controller
 {
 
+    // Protected Properties
+    // =========================================================================
+
     /**
      * @var    bool|array Allows anonymous access to this controller's actions.
      *         The actions must be in 'kebab-case'
      * @access protected
      */
     protected $allowAnonymous = ['index', 'do-something'];
+
+    // Public Methods
+    // =========================================================================
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>

@@ -41,6 +41,9 @@ use craft\db\ActiveRecord;
  */
 class <%= recordName[index] %> extends ActiveRecord
 {
+    // Public Methods
+    // =========================================================================
+
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the name of the database table the model is associated with (sans

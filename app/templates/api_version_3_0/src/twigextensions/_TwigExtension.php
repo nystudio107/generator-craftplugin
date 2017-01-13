@@ -29,6 +29,9 @@ use Craft;
  */
 class <%= pluginHandle %>TwigExtension extends \Twig_Extension
 {
+    // Public Methods
+    // =========================================================================
+
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the name of the extension.

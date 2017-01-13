@@ -33,7 +33,7 @@ use craft\services\Config;
  */
 class Install extends Migration
 {
-    // Properties
+    // Public Properties
     // =========================================================================
 
     /**

@@ -30,6 +30,9 @@ use Craft;
  */
 class <%= pluginHandle %>Variable
 {
+    // Public Methods
+    // =========================================================================
+
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Whatever you want to output to a Twig tempate can go into a Variable method.

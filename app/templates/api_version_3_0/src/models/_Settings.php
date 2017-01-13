@@ -28,6 +28,9 @@ use craft\base\Model;
  */
 class Settings extends Model
 {
+    // Public Properties
+    // =========================================================================
+
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Some field model attribute
@@ -36,6 +39,9 @@ class Settings extends Model
      * @var string
      */
     public $someField = 'Some Default';
+
+    // Public Methods
+    // =========================================================================
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>

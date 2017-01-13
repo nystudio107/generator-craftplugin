@@ -47,6 +47,9 @@ use yii\helpers\Console;
  */
 class DefaultController extends Controller
 {
+    // Public Methods
+    // =========================================================================
+
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Handle a request going to our plugin's index action URL,

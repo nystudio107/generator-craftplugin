@@ -44,6 +44,9 @@ use yii\base\Event;
 
 class <%= pluginHandle %> extends Plugin
 {
+    // Static Properties
+    // =========================================================================
+
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Static property that is an instance of this plugin class so that it can be accessed via
@@ -53,6 +56,26 @@ class <%= pluginHandle %> extends Plugin
      * @var \<%= pluginVendorName %>\<%= pluginDirName %>\<%= pluginHandle %>
      */
     public static $plugin;
+
+    // Static Methods
+    // =========================================================================
+
+    /**
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+     * Returns whether the plugin should get its own tab in the AdminCP sidebar.
+     *
+<% } -%>
+     * @return bool
+     *
+     * @inheritdoc
+     */
+    public static function hasCpSection(): bool
+    {
+        return false;
+    }
+
+    // Public Methods
+    // =========================================================================
 
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -150,19 +173,26 @@ class <%= pluginHandle %> extends Plugin
          return Craft::t('<%= pluginDirName %>', '<%= pluginName %>');
     }
 
+<% if (pluginComponents.indexOf('variables') >= 0){ -%>
     /**
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns whether the plugin should get its own tab in the AdminCP sidebar.
+     * Returns the component definition that should be registered on the
+     * [[\craft\web\twig\variables\CraftVariable]] instance for this plugin’s handle.
      *
 <% } -%>
-     * @return bool
+     * @return mixed|null The component definition to be registered.
+     * It can be any of the formats supported by [[\yii\di\ServiceLocator::set()]].
      *
      * @inheritdoc
      */
-    public static function hasCpSection(): bool
+    public function defineTemplateComponent()
     {
-        return false;
+        return '<%= pluginVendorName %>\<%= pluginDirName %>\variables\<%= pluginHandle %>Variable';
     }
+
+<% } -%>
+    // Protected Methods
+    // =========================================================================
 
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
     /**
@@ -194,24 +224,6 @@ class <%= pluginHandle %> extends Plugin
         return Craft::$app->view->renderTemplate('<%= pluginDirName %>/<%= pluginHandle %>_Settings', [
             'settings' => $this->getSettings()
         ]);
-    }
-
-<% } -%>
-<% if (pluginComponents.indexOf('variables') >= 0){ -%>
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns the component definition that should be registered on the
-     * [[\craft\web\twig\variables\CraftVariable]] instance for this plugin’s handle.
-     *
-<% } -%>
-     * @return mixed|null The component definition to be registered.
-     * It can be any of the formats supported by [[\yii\di\ServiceLocator::set()]].
-     *
-     * @inheritdoc
-     */
-    public function defineTemplateComponent()
-    {
-        return '<%= pluginVendorName %>\<%= pluginDirName %>\variables\<%= pluginHandle %>Variable';
     }
 
 <% } -%>
