@@ -404,7 +404,7 @@
         {
             "src": "src/templates/widgets/_body.twig",
             "destDir": "src/templates/widgets/",
-            "dest": "Widget_Body.twig",
+            "dest": "_Body.twig",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": false
@@ -412,7 +412,7 @@
         {
             "src": "src/templates/widgets/_settings.twig",
             "destDir": "src/templates/widgets/",
-            "dest": "Widget_Settings.twig",
+            "dest": "_Settings.twig",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": false
@@ -420,7 +420,7 @@
         {
             "src": "src/resources/css/widgets/_widget.css",
             "destDir": "src/resources/css/widgets/",
-            "dest": "Widget.css",
+            "dest": ".css",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": false
@@ -428,7 +428,7 @@
         {
             "src": "src/resources/js/widgets/_widget.js",
             "destDir": "src/resources/js/widgets/",
-            "dest": "Widget.js",
+            "dest": ".js",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": false
@@ -464,14 +464,14 @@
         {
             "src": "src/resources/css/_style.css",
             "destDir": "src/resources/css/",
-            "dest": "_Style.css",
+            "dest": ".css",
             "requires": ["settings"],
             "prefix": true
         },
         {
             "src": "src/resources/js/_script.js",
             "destDir": "src/resources/js/",
-            "dest": "_Script.js",
+            "dest": ".js",
             "requires": ["settings"],
             "prefix": true
         }

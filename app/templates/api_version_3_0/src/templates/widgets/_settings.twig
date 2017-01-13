@@ -14,8 +14,8 @@
 
 {% import "_includes/forms" as forms %}
 
-{% includeCssResource "<%= pluginDirName %>/css/<%= pluginHandle %>_Style.css" %}
-{% includeJsResource "<%= pluginDirName %>/js/<%= pluginHandle %>_Script.js" %}
+{% includeCssResource "<%= pluginDirName %>/css/<%= pluginHandle %>.css" %}
+{% includeJsResource "<%= pluginDirName %>/js/<%= pluginHandle %>.js" %}
 
 {{ forms.textField({
     label: 'Message',

@@ -91,7 +91,11 @@ class <%= widgetName[index] %> extends Widget
     public function getSettingsHtml()
     {
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginDirName %>/widgets/<%= widgetName[index] %>Widget_Settings',
+            '<%= pluginDirName %>'
+            . DIRECTORY_SEPARATOR
+            . 'widgets'
+            . DIRECTORY_SEPARATOR
+            . '<%= widgetName[index] %>_Settings',
             [
                 'widget' => $this
             ]
@@ -119,11 +123,30 @@ class <%= widgetName[index] %> extends Widget
      */
     public function getBodyHtml()
     {
-        Craft::$app->getView()->registerCssResource('<%= pluginDirName %>/css/widgets/<%= widgetName[index] %>Widget.css');
-        Craft::$app->getView()->registerJsResource('<%= pluginDirName %>/js/widgets/<%= widgetName[index] %>Widget.js');
+        Craft::$app->getView()->registerCssResource(
+            '<%= pluginDirName %>'
+            . DIRECTORY_SEPARATOR
+            . 'css'
+            . DIRECTORY_SEPARATOR
+            . 'widgets'
+            . DIRECTORY_SEPARATOR
+            . '<%= widgetName[index] %>.css'
+        );
+        Craft::$app->getView()->registerJsResource(
+            '<%= pluginDirName %>'
+            . DIRECTORY_SEPARATOR
+            . 'js'
+            . DIRECTORY_SEPARATOR
+            . 'widgets'
+            . DIRECTORY_SEPARATOR
+            . '<%= widgetName[index] %>.js');
 
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginDirName %>/widgets/<%= widgetName[index] %>Widget_Body',
+            '<%= pluginDirName %>'
+            . DIRECTORY_SEPARATOR
+            . 'widgets'
+            . DIRECTORY_SEPARATOR
+            . '<%= widgetName[index] %>_Body',
             [
                 'message' => $this->message
             ]
