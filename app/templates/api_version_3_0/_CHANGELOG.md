@@ -1,7 +1,9 @@
 # <%= pluginName %> Changelog
 
-## <%= pluginVersion %> -- <%= niceDate %>
+All notable changes to this project will be documented in this file.
 
-* Initial release
+The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-Brought to you by [<%= pluginAuthorName %>](<%= pluginAuthorUrl %>)
+## [<%= pluginVersion %>] - <%= niceDate %>
+### Added
+- Initial release
