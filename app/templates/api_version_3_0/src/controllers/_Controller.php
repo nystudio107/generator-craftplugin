@@ -15,10 +15,10 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 use Craft;
 use craft\web\Controller;
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
  * <%= controllerName[index] %> Controller
  *
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * Generally speaking, controllers are the middlemen between the front end of
  * the CP/website and your plugin’s services. They contain action methods which
  * handle individual tasks.
@@ -32,12 +32,18 @@ use craft\web\Controller;
  *
  * https://craftcms.com/docs/plugins/controllers
  *
-<% } -%>
  * @author    <%= pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
-class <%= pluginHandle %><%= controllerName[index] %>Controller extends Controller
+<% } else { -%>
+/**
+ * @author    <%= pluginAuthorName %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
+<% } -%>
+class <%= controllerName[index] %>Controller extends Controller
 {
 
     // Protected Properties
@@ -53,27 +59,41 @@ class <%= pluginHandle %><%= controllerName[index] %>Controller extends Controll
     // Public Methods
     // =========================================================================
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Handle a request going to our plugin's index action URL,
      * e.g.: actions/<%= pluginDirName %>/<%= controllerName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>
      *
-<% } -%>
      * @return mixed
      */
+<% } else { -%>
+    /**
+     * @return mixed
+     */
+<% } -%>
     public function actionIndex()
     {
+        $result = 'something';
+
+        return $result;
     }
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Handle a request going to our plugin's actionDoSomething URL,
      * e.g.: actions/<%= pluginDirName %>/<%= controllerName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something
      *
-<% } -%>
      * @return mixed
      */
+<% } else { -%>
+    /**
+     * @return mixed
+     */
+<% } -%>
     public function actionDoSomething()
     {
+        $result = 'something';
+
+        return $result;
     }
 }

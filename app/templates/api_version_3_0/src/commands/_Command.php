@@ -16,10 +16,10 @@ use Craft;
 use yii\console\Controller;
 use yii\helpers\Console;
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
  * Default Command
  *
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * Craft can be invoked via commandline console by using the `./craft` command
  * from the project root.
  *
@@ -40,39 +40,61 @@ use yii\helpers\Console;
  *
  * ./craft <%= pluginDirName %>/default/do-something
  *
-<% } -%>
  * @author    <%= pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
+<% } else { -%>
+/**
+ * @author    <%= pluginAuthorName %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
+<% } -%>
 class DefaultController extends Controller
 {
     // Public Methods
     // =========================================================================
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Handle a request going to our plugin's index action URL,
      * e.g.: actions/<%= pluginDirName %>/<%= controllerName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>
      *
-<% } -%>
      * @return mixed
      */
+<% } else { -%>
+    /**
+     * @return mixed
+     */
+<% } -%>
     public function actionIndex()
     {
+        $result = 'something';
+
         echo "Welcome to the actionIndex()\n";
+
+        return $result;
     }
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Handle a request going to our plugin's actionDoSomething URL,
      * e.g.: actions/<%= pluginDirName %>/<%= controllerName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something
      *
-<% } -%>
      * @return mixed
      */
+<% } else { -%>
+    /**
+     * @return mixed
+     */
+<% } -%>
     public function actionDoSomething()
     {
+        $result = 'something';
+
         echo "Welcome to the actionDoSomething()\n";
+
+        return $result;
     }
 }

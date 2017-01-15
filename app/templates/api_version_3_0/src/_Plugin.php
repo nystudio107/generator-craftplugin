@@ -39,9 +39,12 @@ use yii\base\Event;
 use craft\services\Dashboard;
 use craft\events\RegisterComponentTypesEvent;
 <% } -%>
+<% if (pluginComponents.indexOf('consolecommands') >= 0){ -%>
+use craft\console\Application as ConsoleApplication;
+<% } -%>
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * Craft plugins are very much like little applications in and of themselves. We’ve made
  * it as simple as we can, but the training wheels are off. A little prior knowledge is
  * going to be required to write a plugin.
@@ -51,39 +54,50 @@ use craft\events\RegisterComponentTypesEvent;
  *
  * https://craftcms.com/docs/plugins/introduction
  *
-<% } -%>
  * @author    <%= pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
-
+<% } else { -%>
+/**
+ * @author    <%= pluginAuthorName %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
+<% } -%>
 class <%= pluginHandle %> extends Plugin
 {
     // Static Properties
     // =========================================================================
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Static property that is an instance of this plugin class so that it can be accessed via
      * <%= pluginHandle %>::$plugin
      *
-<% } -%>
      * @var static
      */
+<% } else { -%>
+    /**
+     * @var static
+     */
+<% } -%>
     public static $plugin;
 
     // Static Methods
     // =========================================================================
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns whether the plugin should get its own tab in the AdminCP sidebar.
+     * Returns whether the plugin has its own section in the CP.
      *
-<% } -%>
-     * @return bool
-     *
+     * @return bool Whether the plugin has its own section in the CP.
+     */
+<% } else { -%>
+    /**
      * @inheritdoc
      */
+<% } -%>
     public static function hasCpSection(): bool
     {
         return false;
@@ -92,8 +106,8 @@ class <%= pluginHandle %> extends Plugin
     // Public Methods
     // =========================================================================
 
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+ <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+   /**
      * Set our $plugin static property to this class so that it can be accessed via
      * <%= pluginHandle %>::$plugin
      *
@@ -103,9 +117,12 @@ class <%= pluginHandle %> extends Plugin
      * If you have a '/vendor/autoload.php' file, it will be loaded for you automatically;
      * you do not need to load it in your init() method.
      *
-<% } -%>
+     */
+<% } else { -%>
+   /**
      * @inheritdoc
      */
+<% } -%>
     public function init()
     {
         parent::init();
@@ -122,9 +139,9 @@ class <%= pluginHandle %> extends Plugin
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
         // Add in our console commands
 <% } -%>
-    if (Craft::$app instanceof \craft\console\Application) {
-        $this->controllerNamespace = '<%= pluginVendorName %>\<%= pluginDirName %>\commands';
-    }
+        if (Craft::$app instanceof ConsoleApplication) {
+            $this->controllerNamespace = '<%= pluginVendorName %>\<%= pluginDirName %>\commands';
+        }
 <% } -%>
 <% if (pluginComponents.indexOf('controllers') >= 0){ -%>
 
@@ -177,22 +194,23 @@ class <%= pluginHandle %> extends Plugin
 <% } -%>
             }
         );
-
 <% } -%>
     }
 
 <% if (pluginComponents.indexOf('variables') >= 0){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the component definition that should be registered on the
      * [[\craft\web\twig\variables\CraftVariable]] instance for this plugin’s handle.
      *
-<% } -%>
      * @return mixed|null The component definition to be registered.
      * It can be any of the formats supported by [[\yii\di\ServiceLocator::set()]].
-     *
+     */
+<% } else { -%>
+    /**
      * @inheritdoc
      */
+<% } -%>
     public function defineTemplateComponent()
     {
         return <%= pluginHandle %>Variable::class;
@@ -202,32 +220,123 @@ class <%= pluginHandle %> extends Plugin
     // Protected Methods
     // =========================================================================
 
-<% if (pluginComponents.indexOf('settings') >= 0){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Creates and returns the model used to store the plugin’s settings.
+     * Performs actions before the plugin is installed.
      *
-<% } -%>
-     * @return \craft\base\Model|null
-     *
+     * @return bool Whether the plugin should be installed
+     */
+<% } else { -%>
+    /**
      * @inheritdoc
      */
+<% } -%>
+    protected function beforeInstall(): bool
+    {
+        return true;
+    }
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Performs actions after the plugin is installed.
+     */
+<% } else { -%>
+    /**
+     * @inheritdoc
+     */
+<% } -%>
+    protected function afterInstall()
+    {
+    }
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Performs actions before the plugin is updated.
+     *
+     * @return bool Whether the plugin should be updated
+     */
+<% } else { -%>
+    /**
+     * @inheritdoc
+     */
+<% } -%>
+    protected function beforeUpdate(): bool
+    {
+        return true;
+    }
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Performs actions after the plugin is updated.
+     */
+<% } else { -%>
+    /**
+     * @inheritdoc
+     */
+<% } -%>
+    protected function afterUpdate()
+    {
+    }
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Performs actions before the plugin is installed.
+     *
+     * @return bool Whether the plugin should be installed
+     */
+<% } else { -%>
+    /**
+     * @inheritdoc
+     */
+<% } -%>
+    protected function beforeUninstall(): bool
+    {
+        return true;
+    }
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Performs actions after the plugin is installed.
+     */
+<% } else { -%>
+    /**
+     * @inheritdoc
+     */
+<% } -%>
+    protected function afterUninstall()
+    {
+    }
+<% if (pluginComponents.indexOf('settings') >= 0){ -%>
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Creates and returns the model used to store the plugin’s settings.
+     *
+     * @return \craft\base\Model|null
+     */
+<% } else { -%>
+    /**
+     * @inheritdoc
+     */
+<% } -%>
     protected function createSettingsModel()
     {
         return new Settings();
     }
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the rendered settings HTML, which will be inserted into the content
      * block on the settings page.
      *
-<% } -%>
-     * @return mixed
-     *
+     * @return string The rendered settings HTML
+     */
+<% } else { -%>
+    /**
      * @inheritdoc
      */
-    protected function getSettingsHtml(): string
+<% } -%>
+    protected function settingsHtml(): string
     {
         return Craft::$app->view->renderTemplate(
             '<%= pluginDirName %>'
@@ -238,80 +347,5 @@ class <%= pluginHandle %> extends Plugin
             ]
         );
     }
-
 <% } -%>
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Performs actions before the plugin is installed.
-     *
-<% } -%>
-     * @return bool Whether the plugin should be installed
-     *
-     * @inheritdoc
-     */
-    protected function beforeInstall(): bool
-    {
-        return true;
-    }
-
-    /**
- <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Performs actions after the plugin is installed.
-     *
-<% } -%>
-     * @inheritdoc
-     */
-    protected function afterInstall()
-    {
-    }
-
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Performs actions before the plugin is updated.
-     *
-<% } -%>
-     * @return bool Whether the plugin should be updated
-     *
-     * @inheritdoc
-     */
-    protected function beforeUpdate(): bool
-    {
-        return true;
-    }
-
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Performs actions after the plugin is updated.
-     *
-<% } -%>
-     * @inheritdoc
-     */
-    protected function afterUpdate()
-    {
-    }
-
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Performs actions before the plugin is installed.
-     *
-<% } -%>
-     * @return bool Whether the plugin should be installed
-     *
-     * @inheritdoc
-     */
-    protected function beforeUninstall(): bool
-    {
-        return true;
-    }
-
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Performs actions after the plugin is installed.
-     *
-<% } -%>
-     * @inheritdoc
-     */
-    protected function afterUninstall()
-    {
-    }
 }

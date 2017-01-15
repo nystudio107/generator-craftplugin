@@ -15,10 +15,10 @@ use craft\db\Connection;
 use craft\db\Migration;
 use craft\services\Config;
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
  * <%= pluginName %> Install Migration
  *
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * If your plugin needs to create any custom database tables when it gets installed,
  * create a migrations/ folder within your plugin folder, and save an Install.php file
  * within it using the following template:
@@ -26,11 +26,17 @@ use craft\services\Config;
  * If you need to perform any additional actions on install/uninstall, override the
  * safeUp() and safeDown() methods.
  *
-<% } -%>
  * @author    <%= pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
+<% } else { -%>
+/**
+ * @author    <%= pluginAuthorName %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
+<% } -%>
 class Install extends Migration
 {
     // Public Properties
@@ -44,11 +50,22 @@ class Install extends Migration
     // Public Methods
     // =========================================================================
 
-    /**
-     * @return bool
+ <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+   /**
+     * This method contains the logic to be executed when applying this migration.
+     * This method differs from [[up()]] in that the DB logic implemented here will
+     * be enclosed within a DB transaction.
+     * Child classes may implement this method instead of [[up()]] if the DB logic
+     * needs to be within a transaction.
      *
+     * @return boolean return a false value to indicate the migration fails
+     * and should not proceed further. All other return values mean the migration succeeds.
+     */
+<% } else { -%>
+   /**
      * @inheritdoc
      */
+<% } -%>
     public function safeUp()
     {
         $this->driver = Craft::$app->getConfig()->get('driver', Config::CATEGORY_DB);
@@ -60,11 +77,22 @@ class Install extends Migration
         return true;
     }
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * @return bool
+     * This method contains the logic to be executed when removing this migration.
+     * This method differs from [[down()]] in that the DB logic implemented here will
+     * be enclosed within a DB transaction.
+     * Child classes may implement this method instead of [[down()]] if the DB logic
+     * needs to be within a transaction.
      *
+     * @return boolean return a false value to indicate the migration fails
+     * and should not proceed further. All other return values mean the migration succeeds.
+     */
+<% } else { -%>
+   /**
      * @inheritdoc
      */
+<% } -%>
     public function safeDown()
     {
         $this->driver = Craft::$app->getConfig()->get('driver', Config::CATEGORY_DB);
@@ -76,11 +104,17 @@ class Install extends Migration
     // Protected Methods
     // =========================================================================
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * Creates the tables.
+     * Creates the tables needed for the Records used by the plugin
      *
      * @return void
      */
+<% } else { -%>
+    /**
+     * @return void
+     */
+<% } -%>
     protected function createTables()
     {
 <% var records = recordName -%>
@@ -100,13 +134,17 @@ class Install extends Migration
 <% } -%>
     }
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Creates the indexes.
+     * Creates the indexes needed for the Records used by the plugin
      *
-<% } -%>
      * @return void
      */
+<% } else { -%>
+    /**
+     * @return void
+     */
+<% } -%>
     protected function createIndexes()
     {
 <% var records = recordName -%>
@@ -137,35 +175,47 @@ class Install extends Migration
 <% } -%>
     }
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Adds the foreign keys.
+     * Creates the foreign keys needed for the Records used by the plugin
      *
-<% } -%>
      * @return void
      */
+<% } else { -%>
+    /**
+     * @return void
+     */
+<% } -%>
     protected function addForeignKeys()
     {
     }
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Populates the DB with the default data.
      *
-<% } -%>
      * @return void
      */
+<% } else { -%>
+    /**
+     * @return void
+     */
+<% } -%>
     protected function insertDefaultData()
     {
     }
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Removes the tables.
+     * Removes the tables needed for the Records used by the plugin
      *
-<% } -%>
      * @return void
      */
+<% } else { -%>
+    /**
+     * @return void
+     */
+<% } -%>
     protected function removeTables()
     {
 <% var records = recordName -%>
@@ -179,13 +229,17 @@ class Install extends Migration
 <% } -%>
     }
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Creates the indexes.
+     * Removes the indexes needed for the Records used by the plugin
      *
-<% } -%>
      * @return void
      */
+<% } else { -%>
+    /**
+     * @return void
+     */
+<% } -%>
     protected function removeIndexes()
     {
 <% var records = recordName -%>

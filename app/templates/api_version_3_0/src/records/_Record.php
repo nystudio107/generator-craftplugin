@@ -12,10 +12,10 @@ namespace <%= pluginVendorName %>\<%= pluginDirName %>\records;
 
 use craft\db\ActiveRecord;
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
  * <%= recordName[index] %> Record
  *
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
  * Active record models (or “records”) are like models, except with a
  * database-facing layer built on top. On top of all the things that models
  * can do, records can:
@@ -34,27 +34,36 @@ use craft\db\ActiveRecord;
  *
  * https://craftcms.com/docs/plugins/records
  *
-<% } -%>
  * @author    <%= pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
+<% } else { -%>
+/**
+ * @author    <%= pluginAuthorName %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
+<% } -%>
 class <%= recordName[index] %> extends ActiveRecord
 {
     // Public Methods
     // =========================================================================
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Returns the name of the database table the model is associated with (sans
      * table prefix). By convention, tables created by plugins should be prefixed
      * with the plugin name and an underscore.
      *
-<% } -%>
      * @return string
      *
+     */
+<% } else { -%>
+    /**
      * @inheritdoc
      */
+<% } -%>
     public function getTableName()
     {
         return '{{%<%= pluginDirName %>_<%= recordName[index].toLowerCase() %>}}';
