@@ -41,6 +41,8 @@ use yii\helpers\Console;
  */
 <% } else { -%>
 /**
+ * <%= consolecommandName[index] %> Command
+ *
  * @author    <%= pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
@@ -53,13 +55,14 @@ class <%= consolecommandName[index] %>Controller extends Controller
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * Handle a request going to our plugin's index action URL,
-     * e.g.: actions/<%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>
+     * Handle <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %> console commands
      *
      * @return mixed
      */
 <% } else { -%>
     /**
+     * Handle <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %> console commands
+     *
      * @return mixed
      */
 <% } -%>
@@ -74,13 +77,14 @@ class <%= consolecommandName[index] %>Controller extends Controller
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * Handle a request going to our plugin's actionDoSomething URL,
-     * e.g.: actions/<%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something
+     * Handle <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something console commands
      *
      * @return mixed
      */
 <% } else { -%>
     /**
+     * Handle <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something console commands
+     *
      * @return mixed
      */
 <% } -%>
