@@ -261,12 +261,6 @@
             "prefix": false
         },
         {
-            "src": "_releases.json",
-            "destDir": "",
-            "dest": "releases.json",
-            "prefix": false
-        },
-        {
             "src": "_composer.json",
             "destDir": "",
             "dest": "composer.json",
