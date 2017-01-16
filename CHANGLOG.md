@@ -1,5 +1,14 @@
 # generator-craftplugin Changelog
 
+## 1.1.31 -- 2017.01.15
+
+* [Added] Added Utilities component
+* [Added] Added the ability to generate multiple ConsoleCommands
+* [Improved] Code comments now are more complete, and if disabled, @inheritdoc is used
+* [Removed] Removed releases.json from the 3.0.x API
+* [Improved] Implemented CHANGELOG.md
+* [Improved] Cleaned up the plugin code
+
 ## 1.1.30 -- 2017.01.12
 
 * [Added] Added section comments
