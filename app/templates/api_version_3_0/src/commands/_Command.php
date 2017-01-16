@@ -18,27 +18,22 @@ use yii\helpers\Console;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
- * Default Command
+ * <%= consolecommandName[index] %> Command
  *
  * Craft can be invoked via commandline console by using the `./craft` command
  * from the project root.
  *
  * Console Commands are just controllers that are invoked to handle console
- * actions. The segment routing is plugin/controller/action
+ * actions. The segment routing is plugin/controller-name/action-name
  *
  * The actionIndex() method is what is executed if no sub-commands are supplied, e.g.:
  *
- * ./craft <%= pluginDirName %>/default
- *
- * Since it will assume DefaultController if the `controller` segment is omitted,
- * this works, too:
- *
- * ./craft <%= pluginDirName %>
+ * ./craft <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>
  *
  * Actions must be in 'kebab-case' so actionDoSomething() maps to 'do-something',
  * and would be invoked via:
  *
- * ./craft <%= pluginDirName %>/default/do-something
+ * ./craft <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something
  *
  * @author    <%= pluginAuthorName %>
  * @package   <%= pluginHandle %>
@@ -51,7 +46,7 @@ use yii\helpers\Console;
  * @since     <%= pluginVersion %>
  */
 <% } -%>
-class DefaultController extends Controller
+class <%= consolecommandName[index] %>Controller extends Controller
 {
     // Public Methods
     // =========================================================================
@@ -59,7 +54,7 @@ class DefaultController extends Controller
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
      * Handle a request going to our plugin's index action URL,
-     * e.g.: actions/<%= pluginDirName %>/<%= controllerName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>
+     * e.g.: actions/<%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>
      *
      * @return mixed
      */
@@ -80,7 +75,7 @@ class DefaultController extends Controller
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
      * Handle a request going to our plugin's actionDoSomething URL,
-     * e.g.: actions/<%= pluginDirName %>/<%= controllerName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something
+     * e.g.: actions/<%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something
      *
      * @return mixed
      */

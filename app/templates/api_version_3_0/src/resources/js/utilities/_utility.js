@@ -1,7 +1,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= widgetName[index] %> Widget CSS
+ * <%= widgetName[index] %> Utility JS
  *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>

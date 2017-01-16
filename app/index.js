@@ -139,6 +139,12 @@ module.exports = yo.generators.Base.extend({
             var subPrefixHandles = ["controllerName", "elementName", "fieldName", "modelName", "purchasableName", "recordName", "serviceName", "taskName", "widgetName"];
             var _this = this;
 
+/* -- For API version 3.0x, we have a few more subPrefixHandles */
+            if (_this.api.API_KEY == "api_version_3_0") {
+                subPrefixHandles.push("consolecommandName");
+                subPrefixHandles.push("utilityName");
+                }
+
             subPrefixHandles.forEach(function(subElement) {
                 if (typeof _this.answers[subElement] != 'undefined') {
                     _this.answers[subElement] = _this.answers[subElement].split(',');
@@ -159,21 +165,13 @@ module.exports = yo.generators.Base.extend({
 
 /* -- For API version 3.0x, make sure the controllers, models, records, and services have a name */
             if (_this.api.API_KEY == "api_version_3_0") {
-                _this.answers['controllerName'].forEach(function(nameElement, nameIndex, nameArray) {
-                    if (nameElement == "")
-                        nameArray[nameIndex] = "Default";
-                    });
-                _this.answers['modelName'].forEach(function(nameElement, nameIndex, nameArray) {
-                    if (nameElement == "")
-                        nameArray[nameIndex] = "Default";
-                    });
-                _this.answers['recordName'].forEach(function(nameElement, nameIndex, nameArray) {
-                    if (nameElement == "")
-                        nameArray[nameIndex] = "Default";
-                    });
-                _this.answers['serviceName'].forEach(function(nameElement, nameIndex, nameArray) {
-                    if (nameElement == "")
-                        nameArray[nameIndex] = "Default";
+                var defaultNameHandles = ["controllerName", "modelName",  "recordName", "serviceName", "utilityName", "widgetName"];
+
+                defaultNameHandles.forEach(function(defaultNameElement) {
+                    _this.answers[defaultNameElement].forEach(function(nameElement, nameIndex, nameArray) {
+                        if (nameElement == "")
+                            nameArray[nameIndex] = "Default";
+                        });
                     });
                 }
 
@@ -202,7 +200,7 @@ module.exports = yo.generators.Base.extend({
     writing: function() {
         this.log(chalk.yellow.bold('[ Writing ]'));
 
-this.log(this.answers);
+        this.log(this.answers);
 
 /* -- Write template files */
 

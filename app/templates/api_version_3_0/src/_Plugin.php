@@ -23,24 +23,45 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\models\Settings;
 <% var widgets = widgetName -%>
 <% if ((typeof(widgets[0]) !== 'undefined') && (widgets[0] !== "")) { -%>
 <% widgets.forEach(function(widget, index, array){ -%>
-use <%= pluginVendorName %>\<%= pluginDirName%>\widgets\<%= widget %>;
+use <%= pluginVendorName %>\<%= pluginDirName%>\widgets\<%= widget %> as <%= widget %>Widget;
+<% }); -%>
+<% } -%>
+<% } -%>
+<% if (pluginComponents.indexOf('utilities') >= 0){ -%>
+<% var utilities = utilityName -%>
+<% if ((typeof(utilities[0]) !== 'undefined') && (utilities[0] !== "")) { -%>
+<% utilities.forEach(function(utility, index, array){ -%>
+use <%= pluginVendorName %>\<%= pluginDirName%>\utilities\<%= utility %> as <%= utility %>Utility;
 <% }); -%>
 <% } -%>
 <% } -%>
 
+<% var includeRegisterComponentTypesEvent = false -%>
+<% var includeRegisterUrlRulesEvent = false -%>
 use Craft;
 use craft\base\Plugin;
-<% if (pluginComponents.indexOf('controllers') >= 0){ -%>
-use craft\web\UrlManager;
-use craft\events\RegisterUrlRulesEvent;
-use yii\base\Event;
-<% } -%>
-<% if (pluginComponents.indexOf('widgets') >= 0){ -%>
-use craft\services\Dashboard;
-use craft\events\RegisterComponentTypesEvent;
-<% } -%>
 <% if (pluginComponents.indexOf('consolecommands') >= 0){ -%>
 use craft\console\Application as ConsoleApplication;
+<% } -%>
+<% if (pluginComponents.indexOf('controllers') >= 0){ -%>
+<% includeRegisterUrlRulesEvent = true -%>
+use craft\web\UrlManager;
+use yii\base\Event;
+<% } -%>
+<% var includeRegisterComponentTypesEvent = false -%>
+<% if (pluginComponents.indexOf('utilities') >= 0){ -%>
+<% includeRegisterComponentTypesEvent = true -%>
+use craft\services\Utilities;
+<% } -%>
+<% if (pluginComponents.indexOf('widgets') >= 0){ -%>
+<% includeRegisterComponentTypesEvent = true -%>
+use craft\services\Dashboard;
+<% } -%>
+<% if (includeRegisterComponentTypesEvent === true){ -%>
+use craft\events\RegisterComponentTypesEvent;
+<% } -%>
+<% if (includeRegisterUrlRulesEvent === true){ -%>
+use craft\events\RegisterUrlRulesEvent;
 <% } -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
@@ -189,7 +210,25 @@ class <%= pluginHandle %> extends Plugin
 <% var widgets = widgetName -%>
 <% if ((typeof(widgets[0]) !== 'undefined') && (widgets[0] !== "")) { -%>
 <% widgets.forEach(function(widget, index, array){ -%>
-                $event->types[] = <%= widget %>::class;
+                $event->types[] = <%= widget %>Widget::class;
+<% }); -%>
+<% } -%>
+            }
+        );
+<% } -%>
+<% if (pluginComponents.indexOf('utilities') >= 0){ -%>
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+        // Register our utilities
+<% } -%>
+        Event::on(
+            Utilities::className(),
+            Utilities::EVENT_REGISTER_UTILITY_TYPES,
+            function (RegisterComponentTypesEvent $event) {
+<% var utilities = utilityName -%>
+<% if ((typeof(utilities[0]) !== 'undefined') && (utilities[0] !== "")) { -%>
+<% utilities.forEach(function(utility, index, array){ -%>
+                $event->types[] = <%= utility %>Utility::class;
 <% }); -%>
 <% } -%>
             }

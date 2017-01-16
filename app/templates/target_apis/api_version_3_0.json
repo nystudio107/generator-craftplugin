@@ -122,6 +122,11 @@
                     "value": "twigextensions"
                 },
                 {
+                    "key": "utilities",
+                    "name": "Utilities",
+                    "value": "utilities"
+                },
+                {
                     "key": "variables",
                     "name": "Variables",
                     "value": "variables"
@@ -133,6 +138,14 @@
                 }
             ],
             "store": true
+        },
+        {
+            "when": "consolecommands",
+            "type": "input",
+            "name": "consolecommandName",
+            "message": "Name of your ConsoleCommand:",
+            "default": "",
+            "store": false
         },
         {
             "when": "controllers",
@@ -199,6 +212,14 @@
             "store": false
         },
         {
+            "when": "utilities",
+            "type": "input",
+            "name": "utilityName",
+            "message": "Name of your Utility:",
+            "default": "",
+            "store": false
+        },
+        {
             "when": "widgets",
             "type": "input",
             "name": "widgetName",
@@ -254,8 +275,9 @@
         {
             "src": "src/commands/_Command.php",
             "destDir": "src/commands/",
-            "dest": "DefaultController.php",
+            "dest": "Controller.php",
             "requires": ["consolecommands"],
+            "subPrefix": "consolecommandName",
             "prefix": false
         },
         {
@@ -392,6 +414,38 @@
             "requires": ["tasks"],
             "subPrefix": "taskName",
             "prefix": true
+        },
+        {
+            "src": "src/utilities/_Utility.php",
+            "destDir": "src/utilities/",
+            "dest": ".php",
+            "requires": ["utilities"],
+            "subPrefix": "utilityName",
+            "prefix": false
+        },
+        {
+            "src": "src/templates/utilities/_content.twig",
+            "destDir": "src/templates/utilities/",
+            "dest": "_Content.twig",
+            "requires": ["utilities"],
+            "subPrefix": "utilityName",
+            "prefix": false
+        },
+        {
+            "src": "src/resources/css/utilities/_utility.css",
+            "destDir": "src/resources/css/utilities/",
+            "dest": ".css",
+            "requires": ["utilities"],
+            "subPrefix": "utilityName",
+            "prefix": false
+        },
+        {
+            "src": "src/resources/js/utilities/_utility.js",
+            "destDir": "src/resources/js/utilities/",
+            "dest": ".js",
+            "requires": ["utilities"],
+            "subPrefix": "utilityName",
+            "prefix": false
         },
         {
             "src": "src/widgets/_Widget.php",
