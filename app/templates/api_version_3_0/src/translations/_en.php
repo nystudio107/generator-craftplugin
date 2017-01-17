@@ -24,6 +24,7 @@
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
+<% } -%>
 return array(
     'Translate me' => 'To this',
 );

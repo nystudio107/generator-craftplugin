@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.1.33 -- 2017.01.16
+
+* [Fixed] Fixed broken translations
+
 ## 1.1.32 -- 2017.01.16
 
 * [Added] Added Tasks component for the 3.0.x API
