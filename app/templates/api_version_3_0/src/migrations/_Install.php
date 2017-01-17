@@ -10,6 +10,8 @@
 
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\migrations;
 
+use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+
 use Craft;
 use craft\db\Connection;
 use craft\db\Migration;

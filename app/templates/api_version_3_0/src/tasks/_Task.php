@@ -1,86 +1,150 @@
 <?php
-
-// WARNING: Not converted to Craft 3 yet
-
 /**
- * <%= pluginName %> plugin for Craft CMS
+ * <%= pluginName %> plugin for Craft CMS 3.x
  *
- * <%= pluginHandle %><%= taskName[index] %> Task
+ * <%= pluginDescription %>
  *
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
- * --snip--
- * Tasks let you run background processing for things that take a long time, dividing them up into steps.  For
- * example, Asset Transforms are regenerated using Tasks.
+ * @link      <%= pluginAuthorUrl %>
+ * @copyright <%= copyrightNotice %>
+ */
+
+namespace <%= pluginVendorName %>\<%= pluginDirName %>\tasks;
+
+use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+
+use Craft;
+use craft\base\Task;
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+/**
+ * <%= taskName[index] %> Task
  *
- * Keep in mind that tasks only get timeslices to run when Craft is handling requests on your website.  If you
- * need a task to be run on a regular basis, write a Controller that triggers it, and set up a cron job to
+ * Tasks let you run background processing for things that take a long time,
+ * dividing them up into steps.  For example, Asset Transforms are regenerated
+ * using Tasks.
+ *
+ * Keep in mind that tasks only get timeslices to run when Craft is handling
+ * requests on your website.  If you need a task to be run on a regular basis,
+ * write a Controller that triggers it, and set up a cron job to
  * trigger the controller.
  *
- * https://craftcms.com/classreference/services/TasksService
- * --snip--
+ * The pattern used to queue up a task for running is:
  *
-<% } -%>
+ * use <%= pluginVendorName %>\<%= pluginDirName %>\tasks\<%= taskName[index] %> as <%= taskName[index] %>Task;
+ *
+ * $tasks = Craft::$app->getTasks();
+ * if (!$tasks->areTasksPending(<%= taskName[index] %>Task::class)) {
+ *     $tasks->createTask(<%= taskName[index] %>Task::class);
+ * }
+ *
+ * https://craftcms.com/classreference/services/TasksService
+ *
  * @author    <%= pluginAuthorName %>
- * @copyright <%= copyrightNotice %>
- * @link      <%= pluginAuthorUrl %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
-
-namespace Craft;
-
-class <%= pluginHandle %><%= taskName[index] %>Task extends BaseTask
-{
-    /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Defines the settings.
-     *
+<% } else { -%>
+/**
+ * @author    <%= pluginAuthorName %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
 <% } -%>
-     * @access protected
+class <%= taskName[index] %> extends Task
+{
+    // Public Properties
+    // =========================================================================
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Some attribute
+     *
+     * @var string
+     */
+<% } else { -%>
+    /**
+     * @var string
+     */
+<% } -%>
+    public $someAttribute = 'Some Default';
+
+    // Public Methods
+    // =========================================================================
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Returns the validation rules for attributes.
+     *
+     * Validation rules are used by [[validate()]] to check if attribute values are valid.
+     * Child classes may override this method to declare different validation rules.
+     *
+     * More info: http://www.yiiframework.com/doc-2.0/guide-input-validation.html
+     *
      * @return array
      */
-
-    protected function defineSettings()
+<% } else { -%>
+    /**
+     * @inheritdoc
+     */
+<% } -%>
+    public function rules()
     {
-        return array(
-            'someSetting' => AttributeType::String,
-        );
+        return [
+            ['someAttribute', 'string'],
+            ['someAttribute', 'default', 'value' => 'Some Default'],
+        ];
     }
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Returns the default description for this task.
+     * Returns the total number of steps for this task.
      *
-<% } -%>
-     * @return string
+     * @return int The total number of steps for this task
      */
-    public function getDescription()
-    {
-        return '<%= pluginHandle %><%= taskName[index] %> Tasks';
-    }
-
+<% } else { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-     * Gets the total number of steps for this task.
-     *
-<% } -%>
-     * @return int
+     * @inheritdoc
      */
-    public function getTotalSteps()
+<% } -%>
+    public function getTotalSteps(): int
     {
         return 1;
     }
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
      * Runs a task step.
      *
-<% } -%>
-     * @param int $step
-     * @return bool
+     * @param int $step The step to run
+     *
+     * @return bool|string True if the step was successful, false or an error message if not
      */
-    public function runStep($step)
+<% } else { -%>
+    /**
+     * @inheritdoc
+     */
+<% } -%>
+    public function runStep(int $step)
     {
         return true;
+    }
+
+    // Protected Methods
+    // =========================================================================
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Returns a default description for [[getDescription()]], if [[description]] isn’t set.
+     *
+     * @return string The default task description
+     */
+<% } else { -%>
+    /**
+     * @inheritdoc
+     */
+<% } -%>
+    protected function defaultDescription(): string
+    {
+        return Craft::t('<%= pluginDirName %>', '<%= taskName[index] %>');
     }
 }

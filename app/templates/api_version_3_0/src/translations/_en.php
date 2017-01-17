@@ -2,15 +2,28 @@
 /**
  * <%= pluginName %> plugin for Craft CMS 3.x
  *
- * <%= pluginName %> Translation
+ * <%= pluginDescription %>
+ *
+ * @link      <%= pluginAuthorUrl %>
+ * @copyright <%= copyrightNotice %>
+ */
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+/**
+ * <%= pluginName %> en Translation
+ *
+ * http://www.yiiframework.com/doc-2.0/guide-tutorial-i18n.html
  *
  * @author    <%= pluginAuthorName %>
- * @copyright <%= copyrightNotice %>
- * @link      <%= pluginAuthorUrl %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
-
+<% } else { -%>
+/**
+ * @author    <%= pluginAuthorName %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
 return array(
     'Translate me' => 'To this',
 );

@@ -404,10 +404,10 @@
         {
             "src": "src/tasks/_Task.php",
             "destDir": "src/tasks/",
-            "dest": "Task.php",
+            "dest": ".php",
             "requires": ["tasks"],
             "subPrefix": "taskName",
-            "prefix": true
+            "prefix": false
         },
         {
             "src": "src/utilities/_Utility.php",
