@@ -20,6 +20,9 @@ use yii\helpers\Console;
 /**
  * <%= consolecommandName[index] %> Command
  *
+ * The first line of this class docblock is displayed as the description
+ * of the Console Command in ./craft help
+ *
  * Craft can be invoked via commandline console by using the `./craft` command
  * from the project root.
  *
@@ -57,6 +60,9 @@ class <%= consolecommandName[index] %>Controller extends Controller
     /**
      * Handle <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %> console commands
      *
+     * The first line of this method docblock is displayed as the description
+     * of the Console Command in ./craft help
+     *
      * @return mixed
      */
 <% } else { -%>
@@ -78,6 +84,9 @@ class <%= consolecommandName[index] %>Controller extends Controller
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
      * Handle <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something console commands
+     *
+     * The first line of this method docblock is displayed as the description
+     * of the Console Command in ./craft help
      *
      * @return mixed
      */
