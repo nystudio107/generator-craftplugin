@@ -25,6 +25,6 @@
  * @since     <%= pluginVersion %>
  */
 <% } -%>
-return array(
+return [
     'Translate me' => 'To this',
-);
+];
