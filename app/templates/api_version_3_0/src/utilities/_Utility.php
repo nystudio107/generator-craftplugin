@@ -94,8 +94,6 @@ class <%= utilityName[index] %> extends Utility
             . DIRECTORY_SEPARATOR
             . 'src'
             . DIRECTORY_SEPARATOR
-            .'resources'
-            . DIRECTORY_SEPARATOR
             .'icon.svg';
     }
 

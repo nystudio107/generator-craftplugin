@@ -92,8 +92,6 @@ class <%= widgetName[index] %> extends Widget
             . DIRECTORY_SEPARATOR
             . 'src'
             . DIRECTORY_SEPARATOR
-            .'resources'
-            . DIRECTORY_SEPARATOR
             .'icon.svg';
     }
 
