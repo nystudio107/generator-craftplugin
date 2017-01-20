@@ -246,9 +246,11 @@ class <%= widgetName[index] %> extends Widget
         return Craft::$app->getView()->renderTemplate(
             '<%= pluginDirName %>'
             . DIRECTORY_SEPARATOR
+            . '_components'
+            . DIRECTORY_SEPARATOR
             . 'widgets'
             . DIRECTORY_SEPARATOR
-            . '<%= widgetName[index] %>_Settings',
+            . '<%= widgetName[index] %>_settings',
             [
                 'widget' => $this
             ]
@@ -292,9 +294,11 @@ class <%= widgetName[index] %> extends Widget
         return Craft::$app->getView()->renderTemplate(
             '<%= pluginDirName %>'
             . DIRECTORY_SEPARATOR
+            . '_components'
+            . DIRECTORY_SEPARATOR
             . 'widgets'
             . DIRECTORY_SEPARATOR
-            . '<%= widgetName[index] %>_Body',
+            . '<%= widgetName[index] %>_body',
             [
                 'message' => $this->message
             ]

@@ -267,8 +267,8 @@
             "prefix": false
         },
         {
-            "src": "src/commands/_Command.php",
-            "destDir": "src/commands/",
+            "src": "src/console/controllers/_Command.php",
+            "destDir": "src/console/controllers/",
             "dest": "Controller.php",
             "requires": ["consolecommands"],
             "subPrefix": "consolecommandName",
@@ -418,9 +418,9 @@
             "prefix": false
         },
         {
-            "src": "src/templates/utilities/_content.twig",
-            "destDir": "src/templates/utilities/",
-            "dest": "_Content.twig",
+            "src": "src/templates/_components/utilities/_content.twig",
+            "destDir": "src/templates/_components/utilities/",
+            "dest": "_content.twig",
             "requires": ["utilities"],
             "subPrefix": "utilityName",
             "prefix": false
@@ -450,17 +450,17 @@
             "prefix": false
         },
         {
-            "src": "src/templates/widgets/_body.twig",
-            "destDir": "src/templates/widgets/",
-            "dest": "_Body.twig",
+            "src": "src/templates/_components/widgets/_body.twig",
+            "destDir": "src/templates/_components/widgets/",
+            "dest": "_body.twig",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": false
         },
         {
-            "src": "src/templates/widgets/_settings.twig",
-            "destDir": "src/templates/widgets/",
-            "dest": "_Settings.twig",
+            "src": "src/templates/_components/widgets/_settings.twig",
+            "destDir": "src/templates/_components/widgets/",
+            "dest": "_settings.twig",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": false
@@ -484,9 +484,9 @@
         {
             "src": "src/templates/_settings.twig",
             "destDir": "src/templates/",
-            "dest": "_Settings.twig",
+            "dest": "settings.twig",
             "requires": ["settings"],
-            "prefix": true
+            "prefix": false
         },
         {
             "src": "src/translations/_en.php",
@@ -526,10 +526,10 @@
     ],
     "BOILERPLATE_FILES": [
         {
-            "src": "src/resources/icon-mask.svg"
+            "src": "src/icon-mask.svg"
         },
         {
-            "src": "src/resources/icon.svg"
+            "src": "src/icon.svg"
         },
         {
             "src": "src/resources/images/plugin.png",

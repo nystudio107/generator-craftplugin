@@ -165,8 +165,7 @@ module.exports = yo.generators.Base.extend({
 
 /* -- For API version 3.0x, make sure the controllers, models, records, and services have a name */
             if (_this.api.API_KEY == "api_version_3_0") {
-                var defaultNameHandles = ["controllerName", "modelName",  "recordName", "serviceName", "utilityName", "widgetName"];
-
+                var defaultNameHandles = ["consolecommandName", "controllerName", "modelName",  "recordName", "serviceName", "taskName", "utilityName", "widgetName"];
                 defaultNameHandles.forEach(function(defaultNameElement) {
                     _this.answers[defaultNameElement].forEach(function(nameElement, nameIndex, nameArray) {
                         if (nameElement == "")

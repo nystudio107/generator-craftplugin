@@ -8,7 +8,7 @@
  * @copyright <%= copyrightNotice %>
  */
 
-namespace <%= pluginVendorName %>\<%= pluginDirName %>\commands;
+namespace <%= pluginVendorName %>\<%= pluginDirName %>\console\controllers;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
@@ -76,7 +76,7 @@ class <%= consolecommandName[index] %>Controller extends Controller
     {
         $result = 'something';
 
-        echo "Welcome to the actionIndex()\n";
+        echo "Welcome to the <%= consolecommandName[index] %> actionIndex() method\n";
 
         return $result;
     }
@@ -101,7 +101,7 @@ class <%= consolecommandName[index] %>Controller extends Controller
     {
         $result = 'something';
 
-        echo "Welcome to the actionDoSomething()\n";
+        echo "Welcome to the <%= consolecommandName[index] %> actionDoSomething() method\n";
 
         return $result;
     }

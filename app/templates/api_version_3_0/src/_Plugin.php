@@ -161,7 +161,7 @@ class <%= pluginHandle %> extends Plugin
         // Add in our console commands
 <% } -%>
         if (Craft::$app instanceof ConsoleApplication) {
-            $this->controllerNamespace = '<%= pluginVendorName %>\<%= pluginDirName %>\commands';
+            $this->controllerNamespace = '<%= pluginVendorName %>\<%= pluginDirName %>\console\controllers';
         }
 <% } -%>
 <% if (pluginComponents.indexOf('controllers') >= 0){ -%>
@@ -380,7 +380,7 @@ class <%= pluginHandle %> extends Plugin
         return Craft::$app->view->renderTemplate(
             '<%= pluginDirName %>'
             . DIRECTORY_SEPARATOR
-            . '<%= pluginHandle %>_Settings',
+            . 'settings',
             [
                 'settings' => $this->getSettings()
             ]

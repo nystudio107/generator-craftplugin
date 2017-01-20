@@ -151,9 +151,11 @@ class <%= utilityName[index] %> extends Utility
         return Craft::$app->getView()->renderTemplate(
             '<%= pluginDirName %>'
             . DIRECTORY_SEPARATOR
+            . '_components'
+            . DIRECTORY_SEPARATOR
             . 'utilities'
             . DIRECTORY_SEPARATOR
-            . '<%= utilityName[index] %>_Content',
+            . '<%= utilityName[index] %>_content',
             [
                 'someVar' => $someVar
             ]
