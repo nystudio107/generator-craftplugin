@@ -299,36 +299,44 @@
             "prefix": true
         },
         {
-            "src": "src/fieldtypes/_FieldType.php",
-            "destDir": "src/fieldtypes/",
-            "dest": "FieldType.php",
+            "src": "src/fields/_Field.php",
+            "destDir": "src/fields/",
+            "dest": ".php",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
-            "prefix": true
+            "prefix": false
         },
         {
-            "src": "src/templates/fields/_field.twig",
-            "destDir": "src/templates/fields/",
-            "dest": "FieldType.twig",
+            "src": "src/templates/_components/fields/_input.twig",
+            "destDir": "src/templates/_components/fields/",
+            "dest": "_input.twig",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
-            "prefix": true
+            "prefix": false
+        },
+        {
+            "src": "src/templates/_components/fields/_settings.twig",
+            "destDir": "src/templates/_components/fields/",
+            "dest": "_settings.twig",
+            "requires": ["fieldtypes"],
+            "subPrefix": "fieldName",
+            "prefix": false
         },
         {
             "src": "src/resources/css/fields/_field.css",
             "destDir": "src/resources/css/fields/",
-            "dest": "FieldType.css",
+            "dest": "_field.css",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
-            "prefix": true
+            "prefix": false
         },
         {
             "src": "src/resources/js/fields/_field.js",
             "destDir": "src/resources/js/fields/",
-            "dest": "FieldType.js",
+            "dest": "_field.js",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
-            "prefix": true
+            "prefix": false
         },
         {
             "src": "src/models/_Model.php",
@@ -344,14 +352,6 @@
             "dest": "Model.php",
             "requires": ["elementtypes"],
             "subPrefix": "elementName",
-            "prefix": true
-        },
-        {
-            "src": "src/models/_FieldModel.php",
-            "destDir": "src/models/",
-            "dest": "Model.php",
-            "requires": ["fieldtypes"],
-            "subPrefix": "fieldName",
             "prefix": true
         },
         {
