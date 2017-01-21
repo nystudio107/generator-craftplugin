@@ -1,5 +1,13 @@
 # generator-craftplugin Changelog
 
+## 1.1.34 -- 2017.01.20
+
+* [Added] Added Fields
+* [Improved] New-style arrays for the translations
+* [Improved] Moved icon.svg & icon-mask.svg to /src
+* [Improved] Moved commands to console/controllers
+* [Improved] Moved component templates to templates/_components/
+
 ## 1.1.33 -- 2017.01.16
 
 * [Fixed] Fixed broken translations

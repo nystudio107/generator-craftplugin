@@ -1,8 +1,8 @@
 {#
 /**
- * <%= pluginName %> plugin for Craft CMS
+ * <%= pluginName %> plugin for Craft CMS 3.x
  *
- * <%= pluginHandle %><%= fieldName[index] %>FieldType HTML
+ * <%= fieldName[index] %> Field Input
  *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
@@ -14,11 +14,13 @@
 
 {% import "_includes/forms" as forms %}
 
+{% includeCssResource "<%= pluginDirName %>/css/<%= pluginHandle %>.css" %}
+{% includeJsResource "<%= pluginDirName %>/js/<%= pluginHandle %>.js" %}
+
 {{ forms.textField({
-    id: id ~ 'someField',
-    class: 'nicetext',
-    name: name ~ '[someField]',
-    value: values.someField,
-    errors: values.getErrors('someField'),
-    required: false,
-}) }}
+        label: 'Some Field',
+        instructions: 'Enter some text here.',
+        id: name,
+        name: name,
+        value: value})
+}}

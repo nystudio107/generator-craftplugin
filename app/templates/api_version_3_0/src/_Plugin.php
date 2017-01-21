@@ -19,11 +19,11 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\twigextensions\<%= pluginHandle 
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
 use <%= pluginVendorName %>\<%= pluginDirName%>\models\Settings;
 <% } -%>
-<% if (pluginComponents.indexOf('widgets') >= 0){ -%>
-<% var widgets = widgetName -%>
-<% if ((typeof(widgets[0]) !== 'undefined') && (widgets[0] !== "")) { -%>
-<% widgets.forEach(function(widget, index, array){ -%>
-use <%= pluginVendorName %>\<%= pluginDirName%>\widgets\<%= widget %> as <%= widget %>Widget;
+<% if (pluginComponents.indexOf('fieldtypes') >= 0){ -%>
+<% var fields = fieldName -%>
+<% if ((typeof(fields[0]) !== 'undefined') && (fields[0] !== "")) { -%>
+<% fields.forEach(function(field, index, array){ -%>
+use <%= pluginVendorName %>\<%= pluginDirName%>\fields\<%= field %> as <%= field %>Field;
 <% }); -%>
 <% } -%>
 <% } -%>
@@ -32,6 +32,14 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\widgets\<%= widget %> as <%= wid
 <% if ((typeof(utilities[0]) !== 'undefined') && (utilities[0] !== "")) { -%>
 <% utilities.forEach(function(utility, index, array){ -%>
 use <%= pluginVendorName %>\<%= pluginDirName%>\utilities\<%= utility %> as <%= utility %>Utility;
+<% }); -%>
+<% } -%>
+<% } -%>
+<% if (pluginComponents.indexOf('widgets') >= 0){ -%>
+<% var widgets = widgetName -%>
+<% if ((typeof(widgets[0]) !== 'undefined') && (widgets[0] !== "")) { -%>
+<% widgets.forEach(function(widget, index, array){ -%>
+use <%= pluginVendorName %>\<%= pluginDirName%>\widgets\<%= widget %> as <%= widget %>Widget;
 <% }); -%>
 <% } -%>
 <% } -%>
@@ -49,6 +57,10 @@ use craft\web\UrlManager;
 use yii\base\Event;
 <% } -%>
 <% var includeRegisterComponentTypesEvent = false -%>
+<% if (pluginComponents.indexOf('fieldtypes') >= 0){ -%>
+<% includeRegisterComponentTypesEvent = true -%>
+use craft\services\Fields;
+<% } -%>
 <% if (pluginComponents.indexOf('utilities') >= 0){ -%>
 <% includeRegisterComponentTypesEvent = true -%>
 use craft\services\Utilities;
@@ -198,6 +210,24 @@ class <%= pluginHandle %> extends Plugin
             }
         );
 <% } -%>
+<% if (pluginComponents.indexOf('fieldtypes') >= 0){ -%>
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+        // Register our fields
+<% } -%>
+        Event::on(
+            Fields::className(),
+            Fields::EVENT_REGISTER_FIELD_TYPES,
+            function (RegisterComponentTypesEvent $event) {
+<% var fields = fieldName -%>
+<% if ((typeof(fields[0]) !== 'undefined') && (fields[0] !== "")) { -%>
+<% fields.forEach(function(field, index, array){ -%>
+                $event->types[] = <%= field %>Field::class;
+<% }); -%>
+<% } -%>
+            }
+        );
+<% } -%>
 <% if (pluginComponents.indexOf('widgets') >= 0){ -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -215,8 +245,7 @@ class <%= pluginHandle %> extends Plugin
 <% } -%>
             }
         );
-<% } -%>
-<% if (pluginComponents.indexOf('utilities') >= 0){ -%>
+<% } -%><% if (pluginComponents.indexOf('utilities') >= 0){ -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
         // Register our utilities

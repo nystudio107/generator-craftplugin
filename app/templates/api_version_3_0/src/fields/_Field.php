@@ -41,20 +41,21 @@ use yii\db\Schema;
 <% } -%>
 class <%= fieldName[index] %> extends Field
 {
-
     // Public Properties
     // =========================================================================
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * @var string The message to display
+     * Some attribute
+     *
+     * @var string
      */
 <% } else { -%>
     /**
      * @var string
      */
 <% } -%>
-    public $message = 'Hello, world.';
+    public $someAttribute = 'Some Default';
 
     // Static Methods
     // =========================================================================
@@ -72,45 +73,7 @@ class <%= fieldName[index] %> extends Field
 <% } -%>
     public static function displayName(): string
     {
-        return Craft::t('<%= pluginDirName %>', '<%= widgetName[index] %>');
-    }
-
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    /**
-     * Returns the path to the widget’s SVG icon.
-     *
-     * @return string|null The path to the widget’s SVG icon
-     */
-<% } else { -%>
-    /**
-     * @inheritdoc
-     */
-<% } -%>
-    public static function iconPath()
-    {
-        return Craft::$app->getPath()->getPluginsPath()
-            . DIRECTORY_SEPARATOR
-            . '<%= pluginDirName %>'
-            . DIRECTORY_SEPARATOR
-            . 'src'
-            . DIRECTORY_SEPARATOR
-            .'icon.svg';
-    }
-
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    /**
-     * Returns the widget’s maximum colspan.
-     *
-     * @return int|null The widget’s maximum colspan, if it has one
-     */
-<% } else { -%>
-    /**
-     * @inheritdoc
-     */
-<% } -%>
-    public static function maxColspan()
-    {
-        return null;
+        return Craft::t('<%= pluginDirName %>', '<%= fieldName[index] %>');
     }
 
     // Public Methods
@@ -134,15 +97,10 @@ class <%= fieldName[index] %> extends Field
 <% } -%>
     public function rules()
     {
-        $rules = parent::rules();
-        $rules = array_merge(
-            $rules,
-            [
-                ['message', 'string'],
-                ['message', 'default', 'value' => 'Hello, world.'],
-            ]
-        );
-        return $rules;
+        return [
+            ['someAttribute', 'string'],
+            ['someAttribute', 'default', 'value' => 'Some Default'],
+        ];
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>

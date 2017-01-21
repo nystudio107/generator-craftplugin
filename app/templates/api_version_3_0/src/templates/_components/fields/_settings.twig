@@ -2,7 +2,7 @@
 /**
  * <%= pluginName %> plugin for Craft CMS
  *
- * <%= widgetName[index] %> Widget Settings
+ * <%= fieldName[index] %> Field Settings
  *
  * @author    <%= pluginAuthorName %>
  * @copyright <%= copyrightNotice %>
@@ -18,9 +18,9 @@
 {% includeJsResource "<%= pluginDirName %>/js/<%= pluginHandle %>.js" %}
 
 {{ forms.textField({
-    label: 'Message',
-    instructions: 'Enter a message here.',
-    id: 'message',
-    name: 'message',
-    value: widget['message']})
+    label: 'Some Attribute',
+    instructions: 'Enter some attribute here.',
+    id: 'someAttribute',
+    name: 'someAttribute',
+    value: field['someAttribute']})
 }}
