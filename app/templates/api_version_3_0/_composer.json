@@ -33,7 +33,7 @@
     	"developerUrl": "<%= pluginAuthorUrl %>",
     	"description": "<%= pluginDescription %>",
     	"documentationUrl": "<%= pluginDocsUrl %>",
-    	"releaseFeedUrl": "<%= pluginReleasesUrl %>",
+    	"changelogUrl": "<%= pluginChangelogUrl %>",
 <% var components = serviceName -%>
 <% if ((typeof(components[0]) !== 'undefined') && (components[0] !== "")) { -%>
     	"components": {
