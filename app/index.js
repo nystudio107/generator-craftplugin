@@ -120,6 +120,7 @@ module.exports = yo.generators.Base.extend({
             this.answers.pluginDownloadUrl = "???";
             this.answers.pluginDocsUrl = "???";
             this.answers.pluginReleasesUrl = "???";
+            this.answers.pluginChangelogUrl = "???";
             this.answers.pluginCloneUrl = "???";
             if (this.answers.pluginVendorName == "") {
                 this.answers.pluginVendorName = this.answers.pluginAuthorGithub;
