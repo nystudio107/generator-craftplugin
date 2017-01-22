@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.1.35 -- 2017.01.21
+
+* [Added] Added Elements
+* [Added] Added pluginChangelogUrl
+
 ## 1.1.34 -- 2017.01.20
 
 * [Added] Added Fields
