@@ -62,7 +62,6 @@ use craft\console\Application as ConsoleApplication;
 <% if (pluginComponents.indexOf('controllers') >= 0){ -%>
 <% includeRegisterUrlRulesEvent = true -%>
 use craft\web\UrlManager;
-use yii\base\Event;
 <% } -%>
 <% var includeRegisterComponentTypesEvent = false -%>
 <% if (pluginComponents.indexOf('elementtypes') >= 0){ -%>
@@ -86,6 +85,9 @@ use craft\events\RegisterComponentTypesEvent;
 <% } -%>
 <% if (includeRegisterUrlRulesEvent === true){ -%>
 use craft\events\RegisterUrlRulesEvent;
+<% } -%>
+<% if ((includeRegisterComponentTypesEvent === true) || (includeRegisterUrlRulesEvent === true)) { -%>
+use yii\base\Event;
 <% } -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
