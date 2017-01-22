@@ -159,7 +159,7 @@
             "when": "elementtypes",
             "type": "input",
             "name": "elementName",
-            "message": "Name of your ElementType:",
+            "message": "Name of your Element:",
             "default": "",
             "store": false
         },
@@ -167,7 +167,7 @@
             "when": "fieldtypes",
             "type": "input",
             "name": "fieldName",
-            "message": "Name of your FieldType:",
+            "message": "Name of your Field:",
             "default": "",
             "store": false
         },
@@ -283,20 +283,20 @@
             "prefix": false
         },
         {
-            "src": "src/elementtypes/_ElementType.php",
-            "destDir": "src/elementtypes/",
-            "dest": "ElementType.php",
+            "src": "src/elements/_Element.php",
+            "destDir": "src/elements/",
+            "dest": ".php",
             "requires": ["elementtypes"],
             "subPrefix": "elementName",
-            "prefix": true
+            "prefix": false
         },
         {
-            "src": "src/elementtypes/_PurchasableElementType.php",
-            "destDir": "src/elementtypes/",
-            "dest": "ElementType.php",
+            "src": "src/elements/_Purchasable.php",
+            "destDir": "src/elements/",
+            "dest": ".php",
             "requires": ["purchasables"],
             "subPrefix": "purchasableName",
-            "prefix": true
+            "prefix": false
         },
         {
             "src": "src/fields/_Field.php",
@@ -347,22 +347,6 @@
             "prefix": false
         },
         {
-            "src": "src/models/_ElementModel.php",
-            "destDir": "src/models/",
-            "dest": "Model.php",
-            "requires": ["elementtypes"],
-            "subPrefix": "elementName",
-            "prefix": true
-        },
-        {
-            "src": "src/models/_PurchasableElementModel.php",
-            "destDir": "src/models/",
-            "dest": "Model.php",
-            "requires": ["purchasables"],
-            "subPrefix": "purchasableName",
-            "prefix": true
-        },
-        {
             "src": "src/records/_Record.php",
             "destDir": "src/records/",
             "dest": ".php",
@@ -376,22 +360,6 @@
             "dest": "Install.php",
             "requires": ["records"],
             "prefix": false
-        },
-        {
-            "src": "src/records/_ElementRecord.php",
-            "destDir": "src/records/",
-            "dest": "Record.php",
-            "requires": ["elementtypes"],
-            "subPrefix": "elementName",
-            "prefix": true
-        },
-        {
-            "src": "src/records/_PurchasableRecord.php",
-            "destDir": "src/records/",
-            "dest": "Record.php",
-            "requires": ["purchasables"],
-            "subPrefix": "purchasableName",
-            "prefix": true
         },
         {
             "src": "src/services/_Service.php",

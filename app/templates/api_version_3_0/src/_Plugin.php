@@ -19,6 +19,14 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\twigextensions\<%= pluginHandle 
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
 use <%= pluginVendorName %>\<%= pluginDirName%>\models\Settings;
 <% } -%>
+<% if (pluginComponents.indexOf('elementtypes') >= 0){ -%>
+<% var elements = elementName -%>
+<% if ((typeof(elements[0]) !== 'undefined') && (elements[0] !== "")) { -%>
+<% elements.forEach(function(element, index, array){ -%>
+use <%= pluginVendorName %>\<%= pluginDirName%>\elements\<%= element %> as <%= element %>Element;
+<% }); -%>
+<% } -%>
+<% } -%>
 <% if (pluginComponents.indexOf('fieldtypes') >= 0){ -%>
 <% var fields = fieldName -%>
 <% if ((typeof(fields[0]) !== 'undefined') && (fields[0] !== "")) { -%>
@@ -57,6 +65,10 @@ use craft\web\UrlManager;
 use yii\base\Event;
 <% } -%>
 <% var includeRegisterComponentTypesEvent = false -%>
+<% if (pluginComponents.indexOf('elementtypes') >= 0){ -%>
+<% includeRegisterComponentTypesEvent = true -%>
+use craft\services\Elements;
+<% } -%>
 <% if (pluginComponents.indexOf('fieldtypes') >= 0){ -%>
 <% includeRegisterComponentTypesEvent = true -%>
 use craft\services\Fields;
@@ -210,6 +222,24 @@ class <%= pluginHandle %> extends Plugin
             }
         );
 <% } -%>
+<% if (pluginComponents.indexOf('elementtypes') >= 0){ -%>
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+        // Register our elements
+<% } -%>
+        Event::on(
+            Elements::className(),
+            Elements::EVENT_REGISTER_ELEMENT_TYPES,
+            function (RegisterComponentTypesEvent $event) {
+<% var elements = elementName -%>
+<% if ((typeof(elements[0]) !== 'undefined') && (elements[0] !== "")) { -%>
+<% elements.forEach(function(element, index, array){ -%>
+                $event->types[] = <%= element %>Element::class;
+<% }); -%>
+<% } -%>
+            }
+        );
+<% } -%>
 <% if (pluginComponents.indexOf('fieldtypes') >= 0){ -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
@@ -223,6 +253,24 @@ class <%= pluginHandle %> extends Plugin
 <% if ((typeof(fields[0]) !== 'undefined') && (fields[0] !== "")) { -%>
 <% fields.forEach(function(field, index, array){ -%>
                 $event->types[] = <%= field %>Field::class;
+<% }); -%>
+<% } -%>
+            }
+        );
+<% } -%>
+<% } -%><% if (pluginComponents.indexOf('utilities') >= 0){ -%>
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+        // Register our utilities
+<% } -%>
+        Event::on(
+            Utilities::className(),
+            Utilities::EVENT_REGISTER_UTILITY_TYPES,
+            function (RegisterComponentTypesEvent $event) {
+<% var utilities = utilityName -%>
+<% if ((typeof(utilities[0]) !== 'undefined') && (utilities[0] !== "")) { -%>
+<% utilities.forEach(function(utility, index, array){ -%>
+                $event->types[] = <%= utility %>Utility::class;
 <% }); -%>
 <% } -%>
             }
@@ -245,24 +293,6 @@ class <%= pluginHandle %> extends Plugin
 <% } -%>
             }
         );
-<% } -%><% if (pluginComponents.indexOf('utilities') >= 0){ -%>
-
-<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
-        // Register our utilities
-<% } -%>
-        Event::on(
-            Utilities::className(),
-            Utilities::EVENT_REGISTER_UTILITY_TYPES,
-            function (RegisterComponentTypesEvent $event) {
-<% var utilities = utilityName -%>
-<% if ((typeof(utilities[0]) !== 'undefined') && (utilities[0] !== "")) { -%>
-<% utilities.forEach(function(utility, index, array){ -%>
-                $event->types[] = <%= utility %>Utility::class;
-<% }); -%>
-<% } -%>
-            }
-        );
-<% } -%>
     }
 
 <% if (pluginComponents.indexOf('variables') >= 0){ -%>
