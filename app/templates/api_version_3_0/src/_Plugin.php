@@ -258,7 +258,7 @@ class <%= pluginHandle %> extends Plugin
             }
         );
 <% } -%>
-<% } -%><% if (pluginComponents.indexOf('utilities') >= 0){ -%>
+<% if (pluginComponents.indexOf('utilities') >= 0){ -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
         // Register our utilities
@@ -293,6 +293,7 @@ class <%= pluginHandle %> extends Plugin
 <% } -%>
             }
         );
+<% } -%>
     }
 
 <% if (pluginComponents.indexOf('variables') >= 0){ -%>
