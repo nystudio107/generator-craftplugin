@@ -45,123 +45,311 @@ The code generated conforms to Pixel & Tonic's [Coding Standards](https://github
 
 ### Sample Output
 
-Here's an example of the output from a `yo nystudio107` generator:
+Here's an example of the output from a `yo craftplugin` generator:
 
 ```
 [ Initializing ]
 ? Select what Craft CMS API to target: (Use arrow keys)
-❯ Version 2.5.x 
+  Version 2.5.x
+❯ Version 3.0.x
 [ Prompting ]
-? Plugin name: My Cool new thing!
-? Short description of the plugin: This is a generic Craft CMS plugin
+? Plugin name: Some Plugin
+? Short description of the plugin: Some Description
 ? Plugin initial version: 1.0.0
-? Plugin author name: John Doe
-? Plugin author URL: http://DoeDesign.com/
-? Plugin author GitHub.com name: doedesign
-? Select what components your plugin will have: (Press <space> to select)
-❯◯ ConsoleCommands
- ◯ Controllers
+? Plugin author name: Some Author
+? Plugin vendor name: Some Vendor
+? Plugin author URL: https://SomeDomain.com
+? Plugin author GitHub.com name: SomeGithub
+? Should there be code comments generated: (Press <space> to select, <a> to toggle all, <i> to invers
+e selection)
+❯◉ Code Comments
+? Select what components your plugin will have: (Press <space> to select, <a> to toggle all, <i> to invers
+e selection)
+❯◉ ConsoleCommands
+ ◉ Controllers
  ◉ ElementTypes
  ◉ FieldTypes
  ◉ Models
  ◯ Purchasables
  ◉ Records
- ◯ Services
+ ◉ Services
  ◉ Settings
- ◯ Tasks
+ ◉ Tasks
  ◉ TwigExtensions
+ ◉ Utilities
  ◉ Variables
- ◯ Widgets
-? Name of your ElementType: Satu
-? Name of your FieldType: Dua
-? Name of your Model: Tiga
-? Name of your Record: Empat
+ ◉ Widgets
+? Name of your ConsoleCommand: Een,Twee,Drie
+? Name of your Controller: One,Two,Three
+? Name of your Element: Neung,Song,Sam
+? Name of your Field: Ichi,Ni,San
+? Name of your Model: Uno,Dos,Tres
+? Name of your Record: Satu,Dua,Tiga
+? Name of your Service: Yi,Er,San
+? Name of your Task: Hana,Dul,Set
+? Name of your Utility: Eins,Zwei,Drei
+? Name of your Widget: Un,Deux,Trois
 [ Configuring ]
-{ pluginName: 'My Cool new thing!',
-  pluginDescription: 'This is a generic Craft CMS plugin',
+{ pluginName: 'Some Plugin',
+  pluginDescription: 'Some Description',
   pluginVersion: '1.0.0',
-  pluginAuthorName: 'John Doe',
-  pluginAuthorUrl: 'http://DoeDesign.com/',
-  pluginAuthorGithub: 'doedesign',
-  pluginComponents: 
-   [ 'elementtypes',
+  pluginAuthorName: 'Some Author',
+  pluginVendorName: 'somevendor',
+  pluginAuthorUrl: 'https://SomeDomain.com',
+  pluginAuthorGithub: 'SomeGithub',
+  codeComments: 'yes',
+  pluginComponents:
+   [ 'controllers',
+     'consolecommands',
+     'elementtypes',
      'fieldtypes',
      'models',
      'records',
+     'services',
+     'settings',
+     'tasks',
      'twigextensions',
-     'variables' ],
-  elementName: [ '_Satu' ],
-  fieldName: [ '_Dua' ],
-  modelName: [ '_Tiga' ],
-  recordName: [ '_Empat' ],
+     'utilities',
+     'variables',
+     'widgets' ],
+  consolecommandName: [ 'Een', 'Twee', 'Drie' ],
+  controllerName: [ 'One', 'Two', 'Three' ],
+  elementName: [ 'Neung', 'Song', 'Sam' ],
+  fieldName: [ 'Ichi', 'Ni', 'San' ],
+  modelName: [ 'Uno', 'Dos', 'Tres' ],
+  purchasableName: [ '' ],
+  recordName: [ 'Satu', 'Dua', 'Tiga' ],
+  serviceName: [ 'Yi', 'Er', 'San' ],
+  taskName: [ 'Hana', 'Dul', 'Set' ],
+  utilityName: [ 'Eins', 'Zwei', 'Drei' ],
+  widgetName: [ 'Un', 'Deux', 'Trois' ],
   templatesDir: 'templates',
-  pluginDirName: 'mycoolnewthing',
-  pluginCamelHandle: 'myCoolNewThing',
-  pluginHandle: 'MyCoolNewThing',
-  dateNow: '2016-01-10T04:48:29.362Z',
-  niceDate: '2016.01.10',
-  copyrightNotice: 'Copyright (c) 2016 John Doe',
-  pluginDownloadUrl: 'https://github.com/doedesign/mycoolnewthing/archive/master.zip',
-  pluginDocsUrl: 'https://github.com/doedesign/mycoolnewthing/blob/master/README.md',
-  pluginReleasesUrl: 'https://raw.githubusercontent.com/doedesign/mycoolnewthing/master/releases.json',
-  pluginCloneUrl: 'https://github.com/doedesign/mycoolnewthing.git' }
-+ Creating Craft plugin folder mycoolnewthing
+  pluginDirName: 'someplugin',
+  pluginCamelHandle: 'somePlugin',
+  pluginHandle: 'SomePlugin',
+  dateNow: '2017-01-22T04:43:17.276Z',
+  niceDate: '2017.01.22',
+  copyrightNotice: 'Copyright (c) 2017 Some Author',
+  pluginDownloadUrl: 'https://github.com/SomeGithub/someplugin/archive/master.zip',
+  pluginDocsUrl: 'https://github.com/SomeGithub/someplugin/blob/master/README.md',
+  pluginReleasesUrl: 'https://raw.githubusercontent.com/SomeGithub/someplugin/master/releases.json',
+  pluginChangelogUrl: 'https://raw.githubusercontent.com/SomeGithub/someplugin/master/CHANGELOG.md',
+  pluginCloneUrl: 'https://github.com/SomeGithub/someplugin.git' }
++ Creating Craft plugin folder someplugin
 [ Writing ]
+{ pluginName: 'Some Plugin',
+  pluginDescription: 'Some Description',
+  pluginVersion: '1.0.0',
+  pluginAuthorName: 'Some Author',
+  pluginVendorName: 'somevendor',
+  pluginAuthorUrl: 'https://SomeDomain.com',
+  pluginAuthorGithub: 'SomeGithub',
+  codeComments: 'yes',
+  pluginComponents:
+   [ 'controllers',
+     'consolecommands',
+     'elementtypes',
+     'fieldtypes',
+     'models',
+     'records',
+     'services',
+     'settings',
+     'tasks',
+     'twigextensions',
+     'utilities',
+     'variables',
+     'widgets' ],
+  consolecommandName: [ 'Een', 'Twee', 'Drie' ],
+  controllerName: [ 'One', 'Two', 'Three' ],
+  elementName: [ 'Neung', 'Song', 'Sam' ],
+  fieldName: [ 'Ichi', 'Ni', 'San' ],
+  modelName: [ 'Uno', 'Dos', 'Tres' ],
+  purchasableName: [ '' ],
+  recordName: [ 'Satu', 'Dua', 'Tiga' ],
+  serviceName: [ 'Yi', 'Er', 'San' ],
+  taskName: [ 'Hana', 'Dul', 'Set' ],
+  utilityName: [ 'Eins', 'Zwei', 'Drei' ],
+  widgetName: [ 'Un', 'Deux', 'Trois' ],
+  templatesDir: 'templates',
+  pluginDirName: 'someplugin',
+  pluginCamelHandle: 'somePlugin',
+  pluginHandle: 'SomePlugin',
+  dateNow: '2017-01-22T04:43:17.276Z',
+  niceDate: '2017.01.22',
+  copyrightNotice: 'Copyright (c) 2017 Some Author',
+  pluginDownloadUrl: 'https://github.com/SomeGithub/someplugin/archive/master.zip',
+  pluginDocsUrl: 'https://github.com/SomeGithub/someplugin/blob/master/README.md',
+  pluginReleasesUrl: 'https://raw.githubusercontent.com/SomeGithub/someplugin/master/releases.json',
+  pluginChangelogUrl: 'https://raw.githubusercontent.com/SomeGithub/someplugin/master/CHANGELOG.md',
+  pluginCloneUrl: 'https://github.com/SomeGithub/someplugin.git' }
 > Writing template files
-+ templates/_Plugin.php wrote to mycoolnewthing/MyCoolNewThingPlugin.php
-+ templates/_PluginWithTwig.php wrote to mycoolnewthing/MyCoolNewThingPlugin.php
-+ templates/_README.md wrote to mycoolnewthing/README.md
-+ templates/_LICENSE.txt wrote to mycoolnewthing/LICENSE.txt
-+ templates/_releases.json wrote to mycoolnewthing/releases.json
-+ templates/elementtypes/_ElementType.php wrote to mycoolnewthing/elementtypes/MyCoolNewThing_SatuElementType.php
-+ templates/fieldtypes/_FieldType.php wrote to mycoolnewthing/fieldtypes/MyCoolNewThing_DuaFieldType.php
-+ templates/templates/_field.twig wrote to mycoolnewthing/templates/field.twig
-+ templates/resources/css/_field.css wrote to mycoolnewthing/resources/css/field.css
-+ templates/resources/js/_field.js wrote to mycoolnewthing/resources/js/field.js
-+ templates/models/_Model.php wrote to mycoolnewthing/models/MyCoolNewThing_TigaModel.php
-+ templates/models/_ElementModel.php wrote to mycoolnewthing/models/MyCoolNewThing_SatuModel.php
-+ templates/records/_Record.php wrote to mycoolnewthing/records/MyCoolNewThing_EmpatRecord.php
-+ templates/records/_ElementRecord.php wrote to mycoolnewthing/records/MyCoolNewThing_SatuRecord.php
-+ templates/templates/_settings.twig wrote to mycoolnewthing/templates/settings.twig
-+ templates/translations/_en.php wrote to mycoolnewthing/translations/en.php
-+ templates/twigextensions/_TwigExtension.php wrote to mycoolnewthing/twigextensions/MyCoolNewThingTwigExtension.php
-+ templates/variables/_Variable.php wrote to mycoolnewthing/variables/MyCoolNewThingVariable.php
-+ templates/resources/css/_style.css wrote to mycoolnewthing/resources/css/style.css
-+ templates/resources/js/_script.js wrote to mycoolnewthing/resources/js/script.js
++ templates/src/_Plugin.php wrote to someplugin/src/SomePlugin.php
++ templates/src/models/_Settings.php wrote to someplugin/src/models/Settings.php
++ templates/_README.md wrote to someplugin/README.md
++ templates/_CHANGELOG.md wrote to someplugin/CHANGELOG.md
++ templates/_LICENSE.md wrote to someplugin/LICENSE.md
++ templates/_composer.json wrote to someplugin/composer.json
++ templates/src/console/controllers/_Command.php wrote to someplugin/src/console/controllers/EenController.php
++ templates/src/console/controllers/_Command.php wrote to someplugin/src/console/controllers/TweeController.php
++ templates/src/console/controllers/_Command.php wrote to someplugin/src/console/controllers/DrieController.php
++ templates/src/controllers/_Controller.php wrote to someplugin/src/controllers/OneController.php
++ templates/src/controllers/_Controller.php wrote to someplugin/src/controllers/TwoController.php
++ templates/src/controllers/_Controller.php wrote to someplugin/src/controllers/ThreeController.php
++ templates/src/elements/_Element.php wrote to someplugin/src/elements/Neung.php
++ templates/src/elements/_Element.php wrote to someplugin/src/elements/Song.php
++ templates/src/elements/_Element.php wrote to someplugin/src/elements/Sam.php
++ templates/src/fields/_Field.php wrote to someplugin/src/fields/Ichi.php
++ templates/src/fields/_Field.php wrote to someplugin/src/fields/Ni.php
++ templates/src/fields/_Field.php wrote to someplugin/src/fields/San.php
++ templates/src/templates/_components/fields/_input.twig wrote to someplugin/src/templates/_components/fields/Ichi_input.twig
++ templates/src/templates/_components/fields/_input.twig wrote to someplugin/src/templates/_components/fields/Ni_input.twig
++ templates/src/templates/_components/fields/_input.twig wrote to someplugin/src/templates/_components/fields/San_input.twig
++ templates/src/templates/_components/fields/_settings.twig wrote to someplugin/src/templates/_components/fields/Ichi_settings.twig
++ templates/src/templates/_components/fields/_settings.twig wrote to someplugin/src/templates/_components/fields/Ni_settings.twig
++ templates/src/templates/_components/fields/_settings.twig wrote to someplugin/src/templates/_components/fields/San_settings.twig
++ templates/src/resources/css/fields/_field.css wrote to someplugin/src/resources/css/fields/Ichi_field.css
++ templates/src/resources/css/fields/_field.css wrote to someplugin/src/resources/css/fields/Ni_field.css
++ templates/src/resources/css/fields/_field.css wrote to someplugin/src/resources/css/fields/San_field.css
++ templates/src/resources/js/fields/_field.js wrote to someplugin/src/resources/js/fields/Ichi_field.js
++ templates/src/resources/js/fields/_field.js wrote to someplugin/src/resources/js/fields/Ni_field.js
++ templates/src/resources/js/fields/_field.js wrote to someplugin/src/resources/js/fields/San_field.js
++ templates/src/models/_Model.php wrote to someplugin/src/models/Uno.php
++ templates/src/models/_Model.php wrote to someplugin/src/models/Dos.php
++ templates/src/models/_Model.php wrote to someplugin/src/models/Tres.php
++ templates/src/records/_Record.php wrote to someplugin/src/records/Satu.php
++ templates/src/records/_Record.php wrote to someplugin/src/records/Dua.php
++ templates/src/records/_Record.php wrote to someplugin/src/records/Tiga.php
++ templates/src/migrations/_Install.php wrote to someplugin/src/migrations/Install.php
++ templates/src/services/_Service.php wrote to someplugin/src/services/Yi.php
++ templates/src/services/_Service.php wrote to someplugin/src/services/Er.php
++ templates/src/services/_Service.php wrote to someplugin/src/services/San.php
++ templates/src/tasks/_Task.php wrote to someplugin/src/tasks/Hana.php
++ templates/src/tasks/_Task.php wrote to someplugin/src/tasks/Dul.php
++ templates/src/tasks/_Task.php wrote to someplugin/src/tasks/Set.php
++ templates/src/utilities/_Utility.php wrote to someplugin/src/utilities/Eins.php
++ templates/src/utilities/_Utility.php wrote to someplugin/src/utilities/Zwei.php
++ templates/src/utilities/_Utility.php wrote to someplugin/src/utilities/Drei.php
++ templates/src/templates/_components/utilities/_content.twig wrote to someplugin/src/templates/_components/utilities/Eins_content.twig
++ templates/src/templates/_components/utilities/_content.twig wrote to someplugin/src/templates/_components/utilities/Zwei_content.twig
++ templates/src/templates/_components/utilities/_content.twig wrote to someplugin/src/templates/_components/utilities/Drei_content.twig
++ templates/src/resources/css/utilities/_utility.css wrote to someplugin/src/resources/css/utilities/Eins.css
++ templates/src/resources/css/utilities/_utility.css wrote to someplugin/src/resources/css/utilities/Zwei.css
++ templates/src/resources/css/utilities/_utility.css wrote to someplugin/src/resources/css/utilities/Drei.css
++ templates/src/resources/js/utilities/_utility.js wrote to someplugin/src/resources/js/utilities/Eins.js
++ templates/src/resources/js/utilities/_utility.js wrote to someplugin/src/resources/js/utilities/Zwei.js
++ templates/src/resources/js/utilities/_utility.js wrote to someplugin/src/resources/js/utilities/Drei.js
++ templates/src/widgets/_Widget.php wrote to someplugin/src/widgets/Un.php
++ templates/src/widgets/_Widget.php wrote to someplugin/src/widgets/Deux.php
++ templates/src/widgets/_Widget.php wrote to someplugin/src/widgets/Trois.php
++ templates/src/templates/_components/widgets/_body.twig wrote to someplugin/src/templates/_components/widgets/Un_body.twig
++ templates/src/templates/_components/widgets/_body.twig wrote to someplugin/src/templates/_components/widgets/Deux_body.twig
++ templates/src/templates/_components/widgets/_body.twig wrote to someplugin/src/templates/_components/widgets/Trois_body.twig
++ templates/src/templates/_components/widgets/_settings.twig wrote to someplugin/src/templates/_components/widgets/Un_settings.twig
++ templates/src/templates/_components/widgets/_settings.twig wrote to someplugin/src/templates/_components/widgets/Deux_settings.twig
++ templates/src/templates/_components/widgets/_settings.twig wrote to someplugin/src/templates/_components/widgets/Trois_settings.twig
++ templates/src/resources/css/widgets/_widget.css wrote to someplugin/src/resources/css/widgets/Un.css
++ templates/src/resources/css/widgets/_widget.css wrote to someplugin/src/resources/css/widgets/Deux.css
++ templates/src/resources/css/widgets/_widget.css wrote to someplugin/src/resources/css/widgets/Trois.css
++ templates/src/resources/js/widgets/_widget.js wrote to someplugin/src/resources/js/widgets/Un.js
++ templates/src/resources/js/widgets/_widget.js wrote to someplugin/src/resources/js/widgets/Deux.js
++ templates/src/resources/js/widgets/_widget.js wrote to someplugin/src/resources/js/widgets/Trois.js
++ templates/src/templates/_settings.twig wrote to someplugin/src/templates/settings.twig
++ templates/src/translations/_en.php wrote to someplugin/src/translations/en/someplugin.php
++ templates/src/twigextensions/_TwigExtension.php wrote to someplugin/src/twigextensions/SomePluginTwigExtension.php
++ templates/src/variables/_Variable.php wrote to someplugin/src/variables/SomePluginVariable.php
++ templates/src/resources/css/_style.css wrote to someplugin/src/resources/css/SomePlugin.css
++ templates/src/resources/js/_script.js wrote to someplugin/src/resources/js/SomePlugin.js
 > Copying boilerplate files
-+ templates/resources/icon-mask.svg copied to mycoolnewthing/resources/icon-mask.svg
-+ templates/resources/icon.svg copied to mycoolnewthing/resources/icon.svg
-+ templates/resources/images/plugin.png copied to mycoolnewthing/resources/images/plugin.png
-+ templates/resources/screenshots/plugin_logo.png copied to mycoolnewthing/resources/screenshots/plugin_logo.png
++ templates/src/icon-mask.svg copied to someplugin/src/icon-mask.svg
++ templates/src/icon.svg copied to someplugin/src/icon.svg
++ templates/src/resources/images/plugin.png copied to someplugin/src/resources/images/plugin.png
++ templates/src/resources/screenshots/plugin_logo.png copied to someplugin/src/resources/screenshots/plugin_logo.png
 > Sync to file system
-   create mycoolnewthing/MyCoolNewThingPlugin.php
-   create mycoolnewthing/README.md
-   create mycoolnewthing/LICENSE.txt
-   create mycoolnewthing/releases.json
-   create mycoolnewthing/elementtypes/MyCoolNewThing_SatuElementType.php
-   create mycoolnewthing/fieldtypes/MyCoolNewThing_DuaFieldType.php
-   create mycoolnewthing/templates/field.twig
-   create mycoolnewthing/resources/css/field.css
-   create mycoolnewthing/resources/js/field.js
-   create mycoolnewthing/models/MyCoolNewThing_TigaModel.php
-   create mycoolnewthing/models/MyCoolNewThing_SatuModel.php
-   create mycoolnewthing/records/MyCoolNewThing_EmpatRecord.php
-   create mycoolnewthing/records/MyCoolNewThing_SatuRecord.php
-   create mycoolnewthing/templates/settings.twig
-   create mycoolnewthing/translations/en.php
-   create mycoolnewthing/twigextensions/MyCoolNewThingTwigExtension.php
-   create mycoolnewthing/variables/MyCoolNewThingVariable.php
-   create mycoolnewthing/resources/css/style.css
-   create mycoolnewthing/resources/js/script.js
-   create mycoolnewthing/resources/icon-mask.svg
-   create mycoolnewthing/resources/icon.svg
-   create mycoolnewthing/resources/images/plugin.png
-   create mycoolnewthing/resources/screenshots/plugin_logo.png
+   create someplugin/src/SomePlugin.php
+   create someplugin/src/models/Settings.php
+   create someplugin/README.md
+   create someplugin/CHANGELOG.md
+   create someplugin/LICENSE.md
+   create someplugin/composer.json
+   create someplugin/src/console/controllers/EenController.php
+   create someplugin/src/console/controllers/TweeController.php
+   create someplugin/src/console/controllers/DrieController.php
+   create someplugin/src/controllers/OneController.php
+   create someplugin/src/controllers/TwoController.php
+   create someplugin/src/controllers/ThreeController.php
+   create someplugin/src/elements/Neung.php
+   create someplugin/src/elements/Song.php
+   create someplugin/src/elements/Sam.php
+   create someplugin/src/fields/Ichi.php
+   create someplugin/src/fields/Ni.php
+   create someplugin/src/fields/San.php
+   create someplugin/src/templates/_components/fields/Ichi_input.twig
+   create someplugin/src/templates/_components/fields/Ni_input.twig
+   create someplugin/src/templates/_components/fields/San_input.twig
+   create someplugin/src/templates/_components/fields/Ichi_settings.twig
+   create someplugin/src/templates/_components/fields/Ni_settings.twig
+   create someplugin/src/templates/_components/fields/San_settings.twig
+   create someplugin/src/resources/css/fields/Ichi_field.css
+   create someplugin/src/resources/css/fields/Ni_field.css
+   create someplugin/src/resources/css/fields/San_field.css
+   create someplugin/src/resources/js/fields/Ichi_field.js
+   create someplugin/src/resources/js/fields/Ni_field.js
+   create someplugin/src/resources/js/fields/San_field.js
+   create someplugin/src/models/Uno.php
+   create someplugin/src/models/Dos.php
+   create someplugin/src/models/Tres.php
+   create someplugin/src/records/Satu.php
+   create someplugin/src/records/Dua.php
+   create someplugin/src/records/Tiga.php
+   create someplugin/src/migrations/Install.php
+   create someplugin/src/services/Yi.php
+   create someplugin/src/services/Er.php
+   create someplugin/src/services/San.php
+   create someplugin/src/tasks/Hana.php
+   create someplugin/src/tasks/Dul.php
+   create someplugin/src/tasks/Set.php
+   create someplugin/src/utilities/Eins.php
+   create someplugin/src/utilities/Zwei.php
+   create someplugin/src/utilities/Drei.php
+   create someplugin/src/templates/_components/utilities/Eins_content.twig
+   create someplugin/src/templates/_components/utilities/Zwei_content.twig
+   create someplugin/src/templates/_components/utilities/Drei_content.twig
+   create someplugin/src/resources/css/utilities/Eins.css
+   create someplugin/src/resources/css/utilities/Zwei.css
+   create someplugin/src/resources/css/utilities/Drei.css
+   create someplugin/src/resources/js/utilities/Eins.js
+   create someplugin/src/resources/js/utilities/Zwei.js
+   create someplugin/src/resources/js/utilities/Drei.js
+   create someplugin/src/widgets/Un.php
+   create someplugin/src/widgets/Deux.php
+   create someplugin/src/widgets/Trois.php
+   create someplugin/src/templates/_components/widgets/Un_body.twig
+   create someplugin/src/templates/_components/widgets/Deux_body.twig
+   create someplugin/src/templates/_components/widgets/Trois_body.twig
+   create someplugin/src/templates/_components/widgets/Un_settings.twig
+   create someplugin/src/templates/_components/widgets/Deux_settings.twig
+   create someplugin/src/templates/_components/widgets/Trois_settings.twig
+   create someplugin/src/resources/css/widgets/Un.css
+   create someplugin/src/resources/css/widgets/Deux.css
+   create someplugin/src/resources/css/widgets/Trois.css
+   create someplugin/src/resources/js/widgets/Un.js
+   create someplugin/src/resources/js/widgets/Deux.js
+   create someplugin/src/resources/js/widgets/Trois.js
+   create someplugin/src/templates/settings.twig
+   create someplugin/src/translations/en/someplugin.php
+   create someplugin/src/twigextensions/SomePluginTwigExtension.php
+   create someplugin/src/variables/SomePluginVariable.php
+   create someplugin/src/resources/css/SomePlugin.css
+   create someplugin/src/resources/js/SomePlugin.js
+   create someplugin/src/icon-mask.svg
+   create someplugin/src/icon.svg
+   create someplugin/src/resources/images/plugin.png
+   create someplugin/src/resources/screenshots/plugin_logo.png
 [ Install ]
 [ End ]
 > End install commands
 + Fin. executed
-Your Craft CMS plugin MyCoolNewThing has been created.
+Your Craft CMS plugin SomePlugin has been created.
 The default LICENSE.txt is the MIT license; feel free to change it as you see fit.
 > All set.  Have a nice day.
 ```
@@ -170,6 +358,6 @@ The default LICENSE.txt is the MIT license; feel free to change it as you see fi
 
 The `craftplugin` generator can also be passed arguments via the command line, bypassing the interactive prompts.  So it's possible do do something like this:
 
-    yo craftplugin --pluginComponents="controllers,elementtypes,fieldtypes,models,records,services,settings,twigextensions,variables" --apiVersion="api_version_2_5" --pluginName="Gimme the works" --pluginDescription="Some cool plugin" --pluginVersion="1.0.0" --pluginAuthorName="Andrew Welch" --pluginAuthorUrl="http://nystudio107.com" --pluginAuthorGithub="khalwat" --elementName="Satu,One" --fieldName="Dua" --modelName="Tiga" --recordName="Empat"
+    yo craftplugin --pluginComponents="controllers,consolecommands,elementtypes,fieldtypes,models,records,services,settings,tasks,twigextensions,utilities,variables,widgets" --apiVersion="api_version_3_0" --pluginName="Some Plugin" --pluginDescription="Some Description" --pluginVersion="1.0.0" --pluginVendorName="Some Vendor" --pluginAuthorName="Some Author" --pluginAuthorUrl="https://SomeDomain.com" --pluginAuthorGithub="SomeGithub" --codeComments="yes" --consolecommandName="Een,Twee,Drie" --controllerName="One,Two,Three" --elementName="Neung,Song,Sam" --fieldName="Ichi,Ni,San" --modelName="Uno,Dos,Tres" --purchasableName="" --recordName="Satu,Dua,Tiga" --serviceName="Yi,Er,San" --utilityName="Eins,Zwei,Drei" --taskName="Hana,Dul,Set" --widgetName="Un,Deux,Trois"
 
 Brought to you by [nystudio107](http://nystudio107.com)
