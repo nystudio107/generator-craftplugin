@@ -29,7 +29,13 @@
         "handle": "<%= pluginDirName %>",
 	    "version": "<%= pluginVersion %>",
     	"schemaVersion": "<%= pluginVersion %>",
-    	"developer": "<%= pluginAuthorName %>",
+<% if (pluginComponents.indexOf('settings') >= 0){ -%>
+        "hasSettings": true,
+<% } else { -%>
+        "hasSettings": false,
+<% } -%>
+        "hasCpSection": false,
+        "developer": "<%= pluginAuthorName %>",
     	"developerUrl": "<%= pluginAuthorUrl %>",
     	"description": "<%= pluginDescription %>",
     	"documentationUrl": "<%= pluginDocsUrl %>",

@@ -14,8 +14,7 @@
 
 {% import "_includes/forms" as forms %}
 
-{% do view.registerCssResource("<%= pluginDirName %>/css/<%= pluginHandle %>.css") %}
-{% do view.registerJsResource("<%= pluginDirName %>/js/<%= pluginHandle %>.js") %}
+{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\web\\assets\\<%= pluginHandle %>AssetBundle") %}
 
 {{ forms.textField({
     label: 'Some Field',
