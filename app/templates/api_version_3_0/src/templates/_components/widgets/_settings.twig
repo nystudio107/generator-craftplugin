@@ -14,7 +14,7 @@
 
 {% import "_includes/forms" as forms %}
 
-{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\web\\assets\\<%= pluginHandle %>AssetBundle") %}
+{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\web\\<%= pluginHandle %>AssetBundle") %}
 
 {{ forms.textField({
     label: 'Message',
