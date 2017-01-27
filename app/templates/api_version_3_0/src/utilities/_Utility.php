@@ -11,6 +11,7 @@
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\utilities;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+use <%= pluginVendorName %>\<%= pluginDirName %>\web\assets\_components\utilities\<%= utilityName[index] %>AssetBundle;
 
 use Craft;
 use craft\base\Utility;
@@ -128,24 +129,7 @@ class <%= utilityName[index] %> extends Utility
 <% } -%>
     public static function contentHtml(): string
     {
-        Craft::$app->getView()->registerCssResource(
-            '<%= pluginDirName %>'
-            . DIRECTORY_SEPARATOR
-            . 'css'
-            . DIRECTORY_SEPARATOR
-            . 'utilities'
-            . DIRECTORY_SEPARATOR
-            . '<%= utilityName[index] %>.css'
-        );
-        Craft::$app->getView()->registerJsResource(
-            '<%= pluginDirName %>'
-            . DIRECTORY_SEPARATOR
-            . 'js'
-            . DIRECTORY_SEPARATOR
-            . 'utilities'
-            . DIRECTORY_SEPARATOR
-            . '<%= utilityName[index] %>.js'
-        );
+        Craft::$app->getView()->registerAssetBundle(<%= utilityName[index] %>AssetBundle::class);
 
         $someVar = 'Have a nice day!';
         return Craft::$app->getView()->renderTemplate(

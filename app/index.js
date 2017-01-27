@@ -229,7 +229,11 @@ module.exports = yo.generators.Base.extend({
                         var subPrefix = this.answers[file.subPrefix];
                         var _this = this;
                         subPrefix.forEach(function(thisPrefix, index) {
-                            destFile = _this.destDir + file.destDir + _this.answers.pluginHandle + thisPrefix + file.dest;
+                            var dirPrefix = "";
+                            if (file.dirSubPrefix) {
+                                dirPrefix = thisPrefix + file.dirSubPrefix;
+                            }
+                            destFile = _this.destDir + file.destDir + dirPrefix + _this.answers.pluginHandle + thisPrefix + file.dest;
                             _this.log('+ ' + _this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
                             _this.answers['index'] = index;
                             _this.fs.copyTpl(
@@ -240,10 +244,14 @@ module.exports = yo.generators.Base.extend({
                             });
                         } else {
 /* -- Handle templates that only have a prefix */
+                        var dirPrefix = "";
+                        if (file.dirSubPrefix) {
+                            dirPrefix = this.answers.pluginHandle + file.dirSubPrefix;
+                        }
                         if (file.lowercasePrefix)
-                            destFile = this.destDir + file.destDir + this.answers.pluginDirName + file.dest;
+                            destFile = this.destDir + file.destDir + dirPrefix + this.answers.pluginDirName + file.dest;
                         else
-                            destFile = this.destDir + file.destDir + this.answers.pluginHandle  + file.dest;
+                            destFile = this.destDir + file.destDir + dirPrefix + this.answers.pluginHandle  + file.dest;
                         this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
                         this.answers['index'] = 0;
                         this.fs.copyTpl(
@@ -258,7 +266,11 @@ module.exports = yo.generators.Base.extend({
                         var subPrefix = this.answers[file.subPrefix];
                         var _this = this;
                         subPrefix.forEach(function(thisPrefix, index) {
-                            destFile = _this.destDir + file.destDir + thisPrefix + file.dest;
+                            var dirPrefix = "";
+                            if (file.dirSubPrefix) {
+                                dirPrefix = thisPrefix + file.dirSubPrefix;
+                            }
+                            destFile = _this.destDir + file.destDir + dirPrefix + thisPrefix + file.dest;
                             _this.log('+ ' + _this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
                             _this.answers['index'] = index;
                             _this.fs.copyTpl(

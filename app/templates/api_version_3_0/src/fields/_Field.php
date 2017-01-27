@@ -11,6 +11,7 @@
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\fields;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+use <%= pluginVendorName %>\<%= pluginDirName %>\web\assets\_components\fields\<%= fieldName[index] %>AssetBundle;
 
 use Craft;
 use craft\base\ElementInterface;
@@ -322,24 +323,7 @@ class <%= fieldName[index] %> extends Field
 <% } -%>
     public function getInputHtml($value, ElementInterface $element = null): string
     {
-        Craft::$app->getView()->registerCssResource(
-            '<%= pluginDirName %>'
-            . DIRECTORY_SEPARATOR
-            . 'css'
-            . DIRECTORY_SEPARATOR
-            . 'fields'
-            . DIRECTORY_SEPARATOR
-            . '<%= fieldName[index] %>.css'
-        );
-        Craft::$app->getView()->registerJsResource(
-            '<%= pluginDirName %>'
-            . DIRECTORY_SEPARATOR
-            . 'js'
-            . DIRECTORY_SEPARATOR
-            . 'fields'
-            . DIRECTORY_SEPARATOR
-            . '<%= fieldName[index] %>.js'
-        );
+        Craft::$app->getView()->registerAssetBundle(<%= fieldName[index] %>AssetBundle::class);
 
         return Craft::$app->getView()->renderTemplate(
             '<%= pluginDirName %>'

@@ -323,27 +323,29 @@
             "prefix": false
         },
         {
-            "src": "src/web/_components/fields/_AssetBundle.php",
-            "destDir": "src/web/_components/fields/",
+            "src": "src/web/assets/_components/fields/_AssetBundle.php",
+            "destDir": "src/web/assets/_components/fields/",
             "dest": "AssetBundle.php",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
             "prefix": false
         },
         {
-            "src": "src/web/_components/fields/css/_field.css",
-            "destDir": "src/web/_components/fields/css/",
+            "src": "src/web/assets/_components/fields/resources/css/_field.css",
+            "destDir": "src/web/assets/_components/fields/",
             "dest": ".css",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
+            "dirSubPrefix": "/css/",
             "prefix": false
         },
         {
-            "src": "src/web/_components/fields/js/_field.js",
-            "destDir": "src/web/_components/fields/js/",
+            "src": "src/web/assets/_components/fields/resources/js/_field.js",
+            "destDir": "src/web/assets/_components/fields/",
             "dest": ".js",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
+            "dirSubPrefix": "/js/",
             "prefix": false
         },
         {
@@ -402,27 +404,29 @@
             "prefix": false
         },
         {
-            "src": "src/web/_components/utilities/_AssetBundle.php",
-            "destDir": "src/web/_components/utilities/",
+            "src": "src/web/assets/_components/utilities/_AssetBundle.php",
+            "destDir": "src/web/assets/_components/utilities/",
             "dest": "AssetBundle.php",
             "requires": ["utilities"],
             "subPrefix": "utilityName",
             "prefix": false
         },
         {
-            "src": "src/web/_components/utilities/css/_utility.css",
-            "destDir": "src/web/_components/utilities/css/",
+            "src": "src/web/assets/_components/utilities/resources/css/_utility.css",
+            "destDir": "src/web/assets/_components/utilities/",
             "dest": ".css",
             "requires": ["utilities"],
             "subPrefix": "utilityName",
+            "dirSubPrefix": "/css/",
             "prefix": false
         },
         {
-            "src": "src/web/_components/utilities/js/_utility.js",
-            "destDir": "src/web/_components/utilities/js/",
+            "src": "src/web/assets/_components/utilities/resources/js/_utility.js",
+            "destDir": "src/web/assets/_components/utilities/",
             "dest": ".js",
             "requires": ["utilities"],
             "subPrefix": "utilityName",
+            "dirSubPrefix": "/js/",
             "prefix": false
         },
         {
@@ -450,27 +454,29 @@
             "prefix": false
         },
         {
-            "src": "src/web/_components/widgets/_AssetBundle.php",
-            "destDir": "src/web/_components/widgets/",
+            "src": "src/web/assets/_components/widgets/_AssetBundle.php",
+            "destDir": "src/web/assets/_components/widgets/",
             "dest": "AssetBundle.php",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "prefix": false
         },
         {
-            "src": "src/web/_components/widgets/css/_widget.css",
-            "destDir": "src/web/_components/widgets/css/",
+            "src": "src/web/assets/_components/widgets/resources/css/_widget.css",
+            "destDir": "src/web/assets/_components/widgets/",
             "dest": ".css",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
+            "dirSubPrefix": "/css/",
             "prefix": false
         },
         {
-            "src": "src/web/_components/widgets/js/_widget.js",
-            "destDir": "src/web/_components/widgets/js/",
+            "src": "src/web/assets/_components/widgets/resources/js/_widget.js",
+            "destDir": "src/web/assets/_components/widgets/",
             "dest": ".js",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
+            "dirSubPrefix": "/js/",
             "prefix": false
         },
         {
@@ -509,17 +515,19 @@
             "prefix": true
         },
         {
-            "src": "src/web/assets/css/_style.css",
-            "destDir": "src/web/assets/css/",
+            "src": "src/web/assets/resources/css/_style.css",
+            "destDir": "src/web/assets/",
             "dest": ".css",
             "requires": ["settings"],
+            "dirSubPrefix": "/css/",
             "prefix": true
         },
         {
-            "src": "src/web/assets/js/_script.js",
-            "destDir": "src/web/assets/js/",
+            "src": "src/web/assets/resources/js/_script.js",
+            "destDir": "src/web/assets/",
             "dest": ".js",
             "requires": ["settings"],
+            "dirSubPrefix": "/js/",
             "prefix": true
         }
     ],
