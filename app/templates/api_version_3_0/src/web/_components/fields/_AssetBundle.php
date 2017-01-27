@@ -8,7 +8,7 @@
  * @copyright <%= copyrightNotice %>
  */
 
-namespace <%= pluginVendorName %>\<%= pluginDirName %>\web\assets\_components\fields;
+namespace <%= pluginVendorName %>\<%= pluginDirName %>\web\_components\fields;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
@@ -61,7 +61,7 @@ class <%= fieldName[index] %>AssetBundle extends AssetBundle
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // define the path that your publishable resources live
 <% } -%>
-        $this->sourcePath = "@<%= pluginVendorName %>/<%= pluginDirName %>/web/assets/_components/fields/<%= fieldName[index] %>";
+        $this->sourcePath = "@<%= pluginVendorName %>/<%= pluginDirName %>/web/_components/fields/resources";
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // define the dependencies

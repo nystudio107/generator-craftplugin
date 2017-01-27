@@ -11,7 +11,7 @@
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\widgets;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
-use <%= pluginVendorName %>\<%= pluginDirName %>\web\assets\_components\widgets\<%= widgetName[index] %>AssetBundle;
+use <%= pluginVendorName %>\<%= pluginDirName %>\web\_components\widgets\<%= widgetName[index] %>AssetBundle;
 
 use Craft;
 use craft\base\Widget;

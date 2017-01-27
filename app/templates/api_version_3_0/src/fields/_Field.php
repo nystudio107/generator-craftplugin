@@ -11,7 +11,7 @@
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\fields;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
-use <%= pluginVendorName %>\<%= pluginDirName %>\web\assets\_components\fields\<%= fieldName[index] %>AssetBundle;
+use <%= pluginVendorName %>\<%= pluginDirName %>\web\_components\fields\<%= fieldName[index] %>AssetBundle;
 
 use Craft;
 use craft\base\ElementInterface;
