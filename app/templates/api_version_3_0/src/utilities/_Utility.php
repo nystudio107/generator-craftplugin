@@ -89,21 +89,7 @@ class <%= utilityName[index] %> extends Utility
 <% } -%>
     public static function iconPath()
     {
-        return Craft::$app->getPath()->getPluginsPath()
-            . DIRECTORY_SEPARATOR
-            . '<%= pluginDirName %>'
-            . DIRECTORY_SEPARATOR
-            . 'src'
-            . DIRECTORY_SEPARATOR
-            . 'assetbundles'
-            . DIRECTORY_SEPARATOR
-            . '<%= utilityName[index].toLowerCase() %>utility'
-            . DIRECTORY_SEPARATOR
-            . 'dist'
-            . DIRECTORY_SEPARATOR
-            . 'img'
-            . DIRECTORY_SEPARATOR
-            .'<%= utilityName[index] %>-icon.svg';
+        return Craft::getAlias("@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= utilityName[index].toLowerCase() %>utility/dist/img/<%= utilityName[index] %>-icon.svg");
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
