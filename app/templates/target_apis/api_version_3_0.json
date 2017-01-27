@@ -77,6 +77,11 @@
                     "value": "controllers"
                 },
                 {
+                    "key": "cpsection",
+                    "name": "CPSection",
+                    "value": "cpsection"
+                },
+                {
                     "key": "elementtypes",
                     "name": "ElementTypes",
                     "value": "elementtypes"
@@ -509,6 +514,13 @@
             "requires": ["widgets"],
             "subPrefix": "widgetName",
             "dirSubPrefix": "widget/dist/js/",
+            "prefix": false
+        },
+        {
+            "src": "src/templates/_index.twig",
+            "destDir": "src/templates/",
+            "dest": "index.twig",
+            "requires": ["cpsection"],
             "prefix": false
         },
         {

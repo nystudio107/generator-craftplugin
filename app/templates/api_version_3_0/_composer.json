@@ -34,7 +34,11 @@
 <% } else { -%>
         "hasSettings": false,
 <% } -%>
+<% if (pluginComponents.indexOf('cpsection') >= 0){ -%>
+        "hasCpSection": true,
+<% } else { -%>
         "hasCpSection": false,
+<% } -%>
         "developer": "<%= pluginAuthorName %>",
     	"developerUrl": "<%= pluginAuthorUrl %>",
     	"description": "<%= pluginDescription %>",
