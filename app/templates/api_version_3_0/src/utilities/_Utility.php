@@ -11,7 +11,7 @@
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\utilities;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
-use <%= pluginVendorName %>\<%= pluginDirName %>\web\_components\utilities\<%= utilityName[index] %>AssetBundle;
+use <%= pluginVendorName %>\<%= pluginDirName %>\assetbundles\<%= utilityName[index].toLowerCase() %>utility\<%= utilityName[index] %>UtilityAsset;
 
 use Craft;
 use craft\base\Utility;
@@ -95,7 +95,15 @@ class <%= utilityName[index] %> extends Utility
             . DIRECTORY_SEPARATOR
             . 'src'
             . DIRECTORY_SEPARATOR
-            .'icon.svg';
+            . 'assetbundles'
+            . DIRECTORY_SEPARATOR
+            . '<%= utilityName[index].toLowerCase() %>utility'
+            . DIRECTORY_SEPARATOR
+            . 'dist'
+            . DIRECTORY_SEPARATOR
+            . 'img'
+            . DIRECTORY_SEPARATOR
+            .'<%= utilityName[index] %>-icon.svg';
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
@@ -129,7 +137,7 @@ class <%= utilityName[index] %> extends Utility
 <% } -%>
     public static function contentHtml(): string
     {
-        Craft::$app->getView()->registerAssetBundle(<%= utilityName[index] %>AssetBundle::class);
+        Craft::$app->getView()->registerAssetBundle(<%= utilityName[index] %>UtilityAsset::class);
 
         $someVar = 'Have a nice day!';
         return Craft::$app->getView()->renderTemplate(

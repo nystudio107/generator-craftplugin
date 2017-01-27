@@ -231,22 +231,29 @@ module.exports = yo.generators.Base.extend({
                         subPrefix.forEach(function(thisPrefix, index) {
                             var dirPrefix = "";
                             if (file.dirSubPrefix) {
-                                dirPrefix = thisPrefix + file.dirSubPrefix;
+                                dirPrefix = thisPrefix.directorize() + file.dirSubPrefix;
                             }
                             destFile = _this.destDir + file.destDir + dirPrefix + _this.answers.pluginHandle + thisPrefix + file.dest;
                             _this.log('+ ' + _this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
                             _this.answers['index'] = index;
-                            _this.fs.copyTpl(
-                                _this.templatePath(file.src),
-                                _this.destinationPath(destFile),
-                                _this.answers
-                                );
+                            if (file.justCopy) {
+                                _this.fs.copy(
+                                    _this.templatePath(file.src),
+                                    _this.destinationPath(destFile)
+                                    );
+                            } else {
+                                _this.fs.copyTpl(
+                                    _this.templatePath(file.src),
+                                    _this.destinationPath(destFile),
+                                    _this.answers
+                                    );
+                                }
                             });
                         } else {
 /* -- Handle templates that only have a prefix */
                         var dirPrefix = "";
                         if (file.dirSubPrefix) {
-                            dirPrefix = this.answers.pluginHandle + file.dirSubPrefix;
+                            dirPrefix = this.answers.pluginHandle.directorize() + file.dirSubPrefix;
                         }
                         if (file.lowercasePrefix)
                             destFile = this.destDir + file.destDir + dirPrefix + this.answers.pluginDirName + file.dest;
@@ -254,11 +261,18 @@ module.exports = yo.generators.Base.extend({
                             destFile = this.destDir + file.destDir + dirPrefix + this.answers.pluginHandle  + file.dest;
                         this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
                         this.answers['index'] = 0;
-                        this.fs.copyTpl(
-                            this.templatePath(file.src),
-                            this.destinationPath(destFile),
-                            this.answers
-                            );
+                        if (file.justCopy) {
+                            _this.fs.copy(
+                                _this.templatePath(file.src),
+                                _this.destinationPath(destFile)
+                                );
+                        } else {
+                            this.fs.copyTpl(
+                                this.templatePath(file.src),
+                                this.destinationPath(destFile),
+                                this.answers
+                                );
+                            }
                         }
                     } else {
                     if (file.subPrefix) {
@@ -268,27 +282,45 @@ module.exports = yo.generators.Base.extend({
                         subPrefix.forEach(function(thisPrefix, index) {
                             var dirPrefix = "";
                             if (file.dirSubPrefix) {
-                                dirPrefix = thisPrefix + file.dirSubPrefix;
+                                dirPrefix = thisPrefix.directorize() + file.dirSubPrefix;
                             }
                             destFile = _this.destDir + file.destDir + dirPrefix + thisPrefix + file.dest;
                             _this.log('+ ' + _this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
                             _this.answers['index'] = index;
-                            _this.fs.copyTpl(
-                                _this.templatePath(file.src),
-                                _this.destinationPath(destFile),
-                                _this.answers
-                                );
+                            if (file.justCopy) {
+                                _this.fs.copy(
+                                    _this.templatePath(file.src),
+                                    _this.destinationPath(destFile)
+                                    );
+                            } else {
+                                _this.fs.copyTpl(
+                                    _this.templatePath(file.src),
+                                    _this.destinationPath(destFile),
+                                    _this.answers
+                                    );
+                                }
                             });
                         } else {
 /* -- Handle templates that are not prefixed */
-                        destFile = this.destDir + file.destDir + file.dest;
+                        var dirPrefix = "";
+                        if (file.dirSubPrefix) {
+                            dirPrefix = this.answers.pluginHandle.directorize() + file.dirSubPrefix;
+                        }
+                        destFile = this.destDir + file.destDir + dirPrefix + file.dest;
                         this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
                         this.answers['index'] = 0;
-                        this.fs.copyTpl(
-                            this.templatePath(file.src),
-                            this.destinationPath(destFile),
-                            this.answers
-                            );
+                        if (file.justCopy) {
+                            _this.fs.copy(
+                                _this.templatePath(file.src),
+                                _this.destinationPath(destFile)
+                                );
+                        } else {
+                            this.fs.copyTpl(
+                                this.templatePath(file.src),
+                                this.destinationPath(destFile),
+                                this.answers
+                                );
+                            }
                         }
                     }
                 }
@@ -389,7 +421,7 @@ String.prototype.camelize = function() {
 
 // Return a string in kebab-case
 String.prototype.kebabize = function() {
-    return this.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();});
+    return this.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1);
 };
 
 // Convert a string to have proceed with a _ and be camel-cased, with the first letter capitalized

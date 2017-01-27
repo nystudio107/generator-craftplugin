@@ -12,4 +12,8 @@
  */
 #}
 
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= widgetName[index].toLowerCase() %>widget/dist/img/<%= widgetName[index] %>-icon.svg', true) %}
+
+<img src="{{ iconUrl }}" height="64" width="64" />
+
 <p>{{ message }}</p>

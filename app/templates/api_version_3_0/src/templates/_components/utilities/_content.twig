@@ -14,6 +14,10 @@
 
 <h1><%= utilityName[index] %></h1>
 
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= utilityName[index].toLowerCase() %>utility/dist/img/<%= utilityName[index] %>-icon.svg', true) %}
+
+<img src="{{ iconUrl }}" height="64" width="64" />
+
 <p>Your Utility content goes here</p>
 
 <p>{{ someVar }}</p>

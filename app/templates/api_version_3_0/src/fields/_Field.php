@@ -11,7 +11,7 @@
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\fields;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
-use <%= pluginVendorName %>\<%= pluginDirName %>\web\_components\fields\<%= fieldName[index] %>AssetBundle;
+use <%= pluginVendorName %>\<%= pluginDirName %>\assetbundles\<%= fieldName[index].toLowerCase() %>field\<%= fieldName[index] %>FieldAsset;
 
 use Craft;
 use craft\base\ElementInterface;
@@ -323,7 +323,7 @@ class <%= fieldName[index] %> extends Field
 <% } -%>
     public function getInputHtml($value, ElementInterface $element = null): string
     {
-        Craft::$app->getView()->registerAssetBundle(<%= fieldName[index] %>AssetBundle::class);
+        Craft::$app->getView()->registerAssetBundle(<%= fieldName[index] %>FieldAsset::class);
 
         return Craft::$app->getView()->renderTemplate(
             '<%= pluginDirName %>'

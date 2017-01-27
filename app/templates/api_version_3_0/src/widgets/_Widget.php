@@ -11,7 +11,7 @@
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\widgets;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
-use <%= pluginVendorName %>\<%= pluginDirName %>\web\_components\widgets\<%= widgetName[index] %>AssetBundle;
+use <%= pluginVendorName %>\<%= pluginDirName %>\assetbundles\<%= widgetName[index].toLowerCase() %>widget\<%= widgetName[index] %>WidgetAsset;
 
 use Craft;
 use craft\base\Widget;
@@ -93,7 +93,15 @@ class <%= widgetName[index] %> extends Widget
             . DIRECTORY_SEPARATOR
             . 'src'
             . DIRECTORY_SEPARATOR
-            .'icon.svg';
+            . 'assetbundles'
+            . DIRECTORY_SEPARATOR
+            . '<%= widgetName[index].toLowerCase() %>widget'
+            . DIRECTORY_SEPARATOR
+            . 'dist'
+            . DIRECTORY_SEPARATOR
+            . 'img'
+            . DIRECTORY_SEPARATOR
+            .'<%= widgetName[index] %>-icon.svg';
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
@@ -273,7 +281,7 @@ class <%= widgetName[index] %> extends Widget
 <% } -%>
     public function getBodyHtml()
     {
-        Craft::$app->getView()->registerAssetBundle(<%= widgetName[index] %>AssetBundle::class);
+        Craft::$app->getView()->registerAssetBundle(<%= widgetName[index] %>WidgetAsset::class);
 
         return Craft::$app->getView()->renderTemplate(
             '<%= pluginDirName %>'

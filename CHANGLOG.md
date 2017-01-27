@@ -1,5 +1,11 @@
 # generator-craftplugin Changelog
 
+## 1.1.37 - 2017.01.27
+### Added
+* Added an example of how to access resources from AssetBundles
+### Changed
+* Refactored the `assetbundles` multiple times
+
 ## 1.1.36 - 2017.01.26
 ### Added
 * AssetBundle all the things

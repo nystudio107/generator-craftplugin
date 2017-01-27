@@ -8,9 +8,7 @@
  * @copyright <%= copyrightNotice %>
  */
 
-namespace <%= pluginVendorName %>\<%= pluginDirName %>\web\_components\utilities;
-
-use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+namespace <%= pluginVendorName %>\<%= pluginDirName %>\assetbundles\<%= fieldName[index].toLowerCase() %>field;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -42,7 +40,7 @@ use craft\web\assets\cp\CpAsset;
  * @since     <%= pluginVersion %>
  */
 <% } -%>
-class <%= utilityName[index] %>AssetBundle extends AssetBundle
+class <%= fieldName[index] %>FieldAsset extends AssetBundle
 {
     // Public Methods
     // =========================================================================
@@ -61,7 +59,7 @@ class <%= utilityName[index] %>AssetBundle extends AssetBundle
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // define the path that your publishable resources live
 <% } -%>
-        $this->sourcePath = "@<%= pluginVendorName %>/<%= pluginDirName %>/web/_components/utilities/resources";
+        $this->sourcePath = "@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= fieldName[index].toLowerCase() %>field/dist";
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // define the dependencies
@@ -75,11 +73,11 @@ class <%= utilityName[index] %>AssetBundle extends AssetBundle
         // when this asset bundle is registered
 <% } -%>
         $this->js = [
-            'js/<%= utilityName[index] %>.js',
+            'js/<%= fieldName[index] %>.js',
         ];
 
         $this->css = [
-            'css/<%= utilityName[index] %>.css',
+            'css/<%= fieldName[index] %>.css',
         ];
 
         parent::init();

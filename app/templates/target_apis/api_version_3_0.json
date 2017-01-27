@@ -323,27 +323,40 @@
             "prefix": false
         },
         {
-            "src": "src/web/_components/fields/_AssetBundle.php",
-            "destDir": "src/web/_components/fields/",
-            "dest": "AssetBundle.php",
+            "src": "src/assetbundles/fieldresources/_FieldAssetBundle.php",
+            "destDir": "src/assetbundles/",
+            "dest": "FieldAsset.php",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
+            "dirSubPrefix": "field/",
             "prefix": false
         },
         {
-            "src": "src/web/_components/fields/resources/css/_field.css",
-            "destDir": "src/web/_components/fields/resources/css/",
+            "src": "src/assetbundles/fieldresources/dist/img/field.svg",
+            "destDir": "src/assetbundles/",
+            "dest": "-icon.svg",
+            "requires": ["fieldtypes"],
+            "subPrefix": "fieldName",
+            "dirSubPrefix": "field/dist/img/",
+            "justCopy": true,
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/fieldresources/dist/css/_field.css",
+            "destDir": "src/assetbundles/",
             "dest": ".css",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
+            "dirSubPrefix": "field/dist/css/",
             "prefix": false
         },
         {
-            "src": "src/web/_components/fields/resources/js/_field.js",
-            "destDir": "src/web/_components/fields/resources/js/",
+            "src": "src/assetbundles/fieldresources/dist/js/_field.js",
+            "destDir": "src/assetbundles/",
             "dest": ".js",
             "requires": ["fieldtypes"],
             "subPrefix": "fieldName",
+            "dirSubPrefix": "field/dist/js/",
             "prefix": false
         },
         {
@@ -402,27 +415,39 @@
             "prefix": false
         },
         {
-            "src": "src/web/_components/utilities/_AssetBundle.php",
-            "destDir": "src/web/_components/utilities/",
-            "dest": "AssetBundle.php",
+            "src": "src/assetbundles/utilityresources/_UtilityAssetBundle.php",
+            "destDir": "src/assetbundles/",
+            "dest": "UtilityAsset.php",
             "requires": ["utilities"],
             "subPrefix": "utilityName",
+            "dirSubPrefix": "utility/",
             "prefix": false
         },
         {
-            "src": "src/web/_components/utilities/resources/css/_utility.css",
-            "destDir": "src/web/_components/utilities/resources/css/",
+            "src": "src/assetbundles/utilityresources/dist/img/utility.svg",
+            "destDir": "src/assetbundles/",
+            "dest": "-icon.svg",
+            "requires": ["utilities"],
+            "subPrefix": "utilityName",
+            "dirSubPrefix": "utility/dist/img/",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/utilityresources/dist/css/_utility.css",
+            "destDir": "src/assetbundles/",
             "dest": ".css",
             "requires": ["utilities"],
             "subPrefix": "utilityName",
+            "dirSubPrefix": "utility/dist/css/",
             "prefix": false
         },
         {
-            "src": "src/web/_components/utilities/resources/js/_utility.js",
-            "destDir": "src/web/_components/utilities/resources/js/",
+            "src": "src/assetbundles/utilityresources/dist/js/_utility.js",
+            "destDir": "src/assetbundles/",
             "dest": ".js",
             "requires": ["utilities"],
             "subPrefix": "utilityName",
+            "dirSubPrefix": "utility/dist/js/",
             "prefix": false
         },
         {
@@ -450,27 +475,40 @@
             "prefix": false
         },
         {
-            "src": "src/web/_components/widgets/_AssetBundle.php",
-            "destDir": "src/web/_components/widgets/",
-            "dest": "AssetBundle.php",
+            "src": "src/assetbundles/widgetresources/_WidgetAssetBundle.php",
+            "destDir": "src/assetbundles/",
+            "dest": "WidgetAsset.php",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
+            "dirSubPrefix": "widget/",
             "prefix": false
         },
         {
-            "src": "src/web/_components/widgets/resources/css/_widget.css",
-            "destDir": "src/web/_components/widgets/resources/css/",
+            "src": "src/assetbundles/widgetresources/dist/img/widget.svg",
+            "destDir": "src/assetbundles/",
+            "dest": "-icon.svg",
+            "requires": ["widgets"],
+            "subPrefix": "widgetName",
+            "dirSubPrefix": "widget/dist/img/",
+            "justCopy": true,
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/widgetresources/dist/css/_widget.css",
+            "destDir": "src/assetbundles/",
             "dest": ".css",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
+            "dirSubPrefix": "widget/dist/css/",
             "prefix": false
         },
         {
-            "src": "src/web/_components/widgets/resources/js/_widget.js",
-            "destDir": "src/web/_components/widgets/resources/js/",
+            "src": "src/assetbundles/widgetresources/dist/js/_widget.js",
+            "destDir": "src/assetbundles/",
             "dest": ".js",
             "requires": ["widgets"],
             "subPrefix": "widgetName",
+            "dirSubPrefix": "widget/dist/js/",
             "prefix": false
         },
         {
@@ -502,24 +540,45 @@
             "prefix": true
         },
         {
-            "src": "src/web/_AssetBundle.php",
-            "destDir": "src/web/",
-            "dest": "AssetBundle.php",
+            "src": "src/assetbundles/pluginresources/_PluginAssetBundle.php",
+            "destDir": "src/assetbundles/",
+            "dest": "Asset.php",
             "requires": ["settings"],
+            "dirSubPrefix": "/",
             "prefix": true
         },
         {
-            "src": "src/web/resources/css/_style.css",
-            "destDir": "src/web/resources/css/",
+            "src": "src/assetbundles/pluginresources/dist/img/plugin-logo.png",
+            "destDir": "src/assetbundles/",
+            "dest": "plugin-logo.png",
+            "requires": ["settings"],
+            "dirSubPrefix": "/dist/img/",
+            "justCopy": true,
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/pluginresources/dist/img/plugin.png",
+            "destDir": "src/assetbundles/",
+            "dest": "plugin.png",
+            "requires": ["settings"],
+            "dirSubPrefix": "/dist/img/",
+            "justCopy": true,
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/pluginresources/dist/css/_style.css",
+            "destDir": "src/assetbundles/",
             "dest": ".css",
             "requires": ["settings"],
+            "dirSubPrefix": "/dist/css/",
             "prefix": true
         },
         {
-            "src": "src/web/resources/js/_script.js",
-            "destDir": "src/web/resources/js/",
+            "src": "src/assetbundles/pluginresources/dist/js/_script.js",
+            "destDir": "src/assetbundles/",
             "dest": ".js",
             "requires": ["settings"],
+            "dirSubPrefix": "/dist/js/",
             "prefix": true
         }
     ],
@@ -529,13 +588,6 @@
         },
         {
             "src": "src/icon.svg"
-        },
-        {
-            "src": "src/web/resources/img/plugin.png",
-            "requires": ["settings"]
-        },
-        {
-            "src": "src/web/resources/img/plugin_logo.png"
         }
     ],
     "END_INSTALL_COMMANDS": [
