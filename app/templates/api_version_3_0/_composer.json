@@ -44,6 +44,7 @@
     	"description": "<%= pluginDescription %>",
     	"documentationUrl": "<%= pluginDocsUrl %>",
     	"changelogUrl": "<%= pluginChangelogUrl %>",
+<% if (pluginComponents.indexOf('services') >= 0){ -%>
 <% var components = serviceName -%>
 <% if ((typeof(components[0]) !== 'undefined') && (components[0] !== "")) { -%>
     	"components": {
@@ -51,6 +52,7 @@
         	"<%= component[0].toLowerCase() + component.slice(1) %>": "<%= pluginVendorName %>\\<%= pluginDirName%>\\services\\<%= component%>"<% if (index !== array.length - 1) { %>,<% } %>
 <% }); -%>
     	},
+<% } -%>
 <% } -%>
         "class": "<%= pluginVendorName %>\\<%= pluginDirName %>\\<%= pluginHandle %>"
     }
