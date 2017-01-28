@@ -11,12 +11,26 @@
  * @since     <%= pluginVersion %>
  */
 #}
+<% var templateType = "normal"; -%>
+<% if ((pluginComponents.indexOf('cpsection') >= 0) && (typeof cpsectionName !== 'undefined')){ -%>
+<% var cpsections = cpsectionName -%>
+<% if (cpsections.length > 1) { -%>
+<% templateType = "subnav"; -%>
+<% if (cpsections[index] === "Index") { -%>
+<% templateType = "redirect" -%>
+<% } -%>
+<% } -%>
+<% } -%>
 
+<% if (templateType === "redirect") { -%>
+{% redirect url('<%= pluginDirName %>/<%= cpsections[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>') %}
+<% } -%>
+<% if (templateType === "normal") { -%>
 {% extends "_layouts/cp" %}
 {% import "_includes/forms" as forms %}
 
 {% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\<%= pluginDirName %>\\<%= pluginHandle %>Asset") %}
-{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\cpsection\\CPSectionAsset") %}
+{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\<%= cpsectionName[index].toLowerCase() %>cpsection\\<%= cpsectionName[index] %>CPSectionAsset") %}
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# Link for the ? icon at the bottom of the page #}
@@ -31,7 +45,57 @@
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# The URL to this plugin's base CP section #}
 <% } -%>
-{% set pluginCpUrl = url('<%= pluginHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>') %}
+{% set pluginCpUrl = url('<%= pluginDirName %>') %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# Get a URL to an image in our AssetBundle #}
+<% } -%>
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= cpsectionName[index].toLowerCase() %>cpsection/dist/img/<%= cpsectionName[index] %>-icon.svg', true) %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# Content that should appear in the page header#}
+<% } -%>
+{% set extraPageHeaderHtml %}
+    <div class="buttons">
+        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t }}</a>
+    </div>
+{% endset %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# The content of the CP Section#}
+<% } -%>
+{% set content %}
+    <h2>{{ "<%= cpsectionName[index] %> CP Section body goes here" |t }}</h2>
+    <img src="{{ iconUrl }}" height="64" width="64" />
+    <p class="textline"></p>
+{% endset %}
+<% } -%>
+<% if (templateType === "subnav") { -%>
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\<%= pluginDirName %>\\<%= pluginHandle %>Asset") %}
+{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\<%= cpsectionName[index].toLowerCase() %>cpsection\\<%= cpsectionName[index] %>CPSectionAsset") %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# Link for the ? icon at the bottom of the page #}
+<% } -%>
+{% set docsUrl = "<%= pluginDocsUrl %>" %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# The title of this CP section #}
+<% } -%>
+{% set title = "<%= pluginName %> | <%= cpsectionName[index] %>" %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# The URL to this plugin's base CP section #}
+<% } -%>
+{% set pluginCpUrl = url('<%= pluginDirName %>') %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# Get a URL to an image in our AssetBundle #}
+<% } -%>
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= cpsectionName[index].toLowerCase() %>cpsection/dist/img/<%= cpsectionName[index] %>-icon.svg', true) %}
 
 <% if ((pluginComponents.indexOf('cpsection') >= 0) && (typeof cpsectionName !== 'undefined')){ -%>
 <% var cpsections = cpsectionName -%>
@@ -39,28 +103,36 @@
 {% set subnav = {
 <% cpsections.forEach(function(cpsection, index, array){ -%>
 <% var cpsectionKebab = cpsection.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) -%>
+<% if (cpsectionKebab !== 'index') { -%>
     "<%= cpsectionKebab %>": { label: "<%= cpsection %>"|t, url: url(pluginCpUrl ~ '/<%= cpsectionKebab %>') },
+<% } -%>
 <% }) %>
 } %}
-{% set selectedSubnavItem = 'redirects' %}
+{% set selectedSubnavItem = '<%= cpsectionName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>' %}
 
+<% var cpsectionKebab = cpsectionName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) -%>
 {% set crumbs = [
-    { label: "SomeThing", url: url('retour') },
-    { label: "Redirects"|t, url: url('retour/redirects') },
+    { label: "<%= pluginName %>", url: url(pluginCpUrl) },
+    { label: "<%= cpsectionName[index] %>"|t, url: url(pluginCpUrl ~ '/<%= cpsectionKebab %>') },
 ] %}
 <% } -%>
 <% } -%>
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# Content that should appear in the page header#}
+<% } -%>
 {% set extraPageHeaderHtml %}
     <div class="buttons">
         <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t }}</a>
     </div>
 {% endset %}
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# The content of the CP Section#}
+<% } -%>
 {% set content %}
-
-        <h2>{{ "Dynamic Entry Redirects" |t }}</h2>
-
-        <p class="textline"></p>
-
+    <h2>{{ "<%= cpsectionName[index] %> CP Section body goes here" |t }}</h2>
+    <img src="{{ iconUrl }}" height="64" width="64" />
+    <p class="textline"></p>
 {% endset %}
+<% } -%>

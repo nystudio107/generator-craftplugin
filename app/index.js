@@ -174,6 +174,10 @@ module.exports = yo.generators.Base.extend({
                 if ((_this.answers["cpsectionName"].length == 1) && (_this.answers["cpsectionName"][0]=="")) {
                     _this.answers["cpsectionName"] = ["Index"];
                 }
+                // Add an "Index" that will just redirect to the first actual CP Section
+                if (_this.answers["cpsectionName"].length > 1) {
+                    _this.answers["cpsectionName"].push ("Index");
+                }
 /* -- Make sure these defaultNameHandles have a name */
                 var defaultNameHandles = ["consolecommandName", "controllerName", "modelName",  "recordName", "serviceName", "taskName", "utilityName", "widgetName"];
                 defaultNameHandles.forEach(function(defaultNameElement) {
