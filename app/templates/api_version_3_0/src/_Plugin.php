@@ -131,25 +131,6 @@ class <%= pluginHandle %> extends Plugin
 <% } -%>
     public static $plugin;
 
-    // Static Methods
-    // =========================================================================
-
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    /**
-     * Returns whether the plugin has its own section in the CP.
-     *
-     * @return bool Whether the plugin has its own section in the CP.
-     */
-<% } else { -%>
-    /**
-     * @inheritdoc
-     */
-<% } -%>
-    public static function hasCpSection(): bool
-    {
-        return false;
-    }
-
     // Public Methods
     // =========================================================================
 

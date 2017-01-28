@@ -161,6 +161,14 @@
             "store": false
         },
         {
+            "when": "cpsection",
+            "type": "input",
+            "name": "cpsectionName",
+            "message": "Name of your CPSection:",
+            "default": "",
+            "store": false
+        },
+        {
             "when": "elementtypes",
             "type": "input",
             "name": "elementName",
@@ -287,6 +295,52 @@
             "subPrefix": "controllerName",
             "prefix": false
         },
+
+        {
+            "src": "src/templates/_cpsection.twig",
+            "destDir": "src/templates/",
+            "dest": ".twig",
+            "requires": ["cpsection"],
+            "subPrefix": "cpsectionName",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/cpsectionresources/_CPSectionAssetBundle.php",
+            "destDir": "src/assetbundles/",
+            "dest": "CPSectionAsset.php",
+            "requires": ["cpsection"],
+            "subPrefix": "cpsectionName",
+            "dirSubPrefix": "cpsection/",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/cpsectionresources/dist/img/cpsection.svg",
+            "destDir": "src/assetbundles/",
+            "dest": "-icon.svg",
+            "requires": ["cpsection"],
+            "subPrefix": "cpsectionName",
+            "dirSubPrefix": "cpsection/dist/img/",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/cpsectionresources/dist/css/_cpsection.css",
+            "destDir": "src/assetbundles/",
+            "dest": ".css",
+            "requires": ["cpsection"],
+            "subPrefix": "cpsectionName",
+            "dirSubPrefix": "cpsection/dist/css/",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/cpsectionresources/dist/js/_cpsection.js",
+            "destDir": "src/assetbundles/",
+            "dest": ".js",
+            "requires": ["cpsection"],
+            "subPrefix": "cpsectionName",
+            "dirSubPrefix": "cpsection/dist/js/",
+            "prefix": false
+        },
+
         {
             "src": "src/elements/_Element.php",
             "destDir": "src/elements/",

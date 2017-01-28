@@ -147,6 +147,7 @@ module.exports = yo.generators.Base.extend({
             if (_this.api.API_KEY == "api_version_3_0") {
                 subPrefixHandles.push("consolecommandName");
                 subPrefixHandles.push("utilityName");
+                subPrefixHandles.push("cpsectionName");
                 }
 
             subPrefixHandles.forEach(function(subElement) {
