@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.1.38 - 2017.01.28
+### Added
+* Added CP Sections
+
 ## 1.1.37 - 2017.01.27
 ### Added
 * Added an example of how to access resources from AssetBundles
