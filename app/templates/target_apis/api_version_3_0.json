@@ -302,6 +302,7 @@
             "dest": ".twig",
             "requires": ["cpsection"],
             "subPrefix": "cpsectionName",
+            "kebab": true,
             "prefix": false
         },
         {

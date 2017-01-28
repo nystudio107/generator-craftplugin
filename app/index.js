@@ -168,8 +168,12 @@ module.exports = yo.generators.Base.extend({
                     }
                 });
 
-/* -- For API version 3.0x, make sure the controllers, models, records, and services have a name */
+/* -- API version 3.0x-specific checks */
             if (_this.api.API_KEY == "api_version_3_0") {
+                if ((_this.answers["cpsectionName"].length == 1) && (_this.answers["cpsectionName"][0]=="")) {
+                    delete _this.answers["cpsectionName"];
+                }
+/* -- Make sure these defaultNameHandles have a name */
                 var defaultNameHandles = ["consolecommandName", "controllerName", "modelName",  "recordName", "serviceName", "taskName", "utilityName", "widgetName"];
                 defaultNameHandles.forEach(function(defaultNameElement) {
                     _this.answers[defaultNameElement].forEach(function(nameElement, nameIndex, nameArray) {
@@ -214,6 +218,9 @@ module.exports = yo.generators.Base.extend({
             var destFile;
             var skip = false;
 
+            if ((file.subPrefix) && (typeof this.answers[file.subPrefix] == 'undefined')) {
+                skip = true;
+                }
             if ((typeof file.requires == 'object') && (file.requires.length)) {
                 var _this = this;
                 file.requires.forEach(function(thisRequires, index) {
@@ -284,7 +291,10 @@ module.exports = yo.generators.Base.extend({
                             var dirPrefix = "";
                             if (file.dirSubPrefix) {
                                 dirPrefix = thisPrefix.directorize() + file.dirSubPrefix;
-                            }
+                                }
+                            if (file.kebab) {
+                                thisPrefix = thisPrefix.kebabize();
+                                }
                             destFile = _this.destDir + file.destDir + dirPrefix + thisPrefix + file.dest;
                             _this.log('+ ' + _this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
                             _this.answers['index'] = index;
