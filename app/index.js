@@ -170,15 +170,19 @@ module.exports = yo.generators.Base.extend({
 
 /* -- API version 3.0x-specific checks */
             if (_this.api.API_KEY == "api_version_3_0") {
+                // Special-case for cpsections so that the default is "index"
                 if ((_this.answers["cpsectionName"].length == 1) && (_this.answers["cpsectionName"][0]=="")) {
-                    delete _this.answers["cpsectionName"];
+                    _this.answers["cpsectionName"] = ["Index"];
                 }
 /* -- Make sure these defaultNameHandles have a name */
                 var defaultNameHandles = ["consolecommandName", "controllerName", "modelName",  "recordName", "serviceName", "taskName", "utilityName", "widgetName"];
                 defaultNameHandles.forEach(function(defaultNameElement) {
                     _this.answers[defaultNameElement].forEach(function(nameElement, nameIndex, nameArray) {
-                        if (nameElement == "")
+                        var defName = "Default";
+                        // Special-case for cpsections so that the default is "index"
+                        if (nameElement == "") {
                             nameArray[nameIndex] = "Default";
+                            }
                         });
                     });
                 }
@@ -315,7 +319,7 @@ module.exports = yo.generators.Base.extend({
 /* -- Handle templates that are not prefixed */
                         var dirPrefix = "";
                         if (file.dirSubPrefix) {
-                            dirPrefix = this.answers.pluginHandle.directorize() + file.dirSubPrefix;
+                            dirPrefix = file.dirSubPrefix;
                         }
                         destFile = this.destDir + file.destDir + dirPrefix + file.dest;
                         this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));

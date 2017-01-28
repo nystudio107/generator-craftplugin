@@ -16,7 +16,7 @@ use craft\web\assets\cp\CpAsset;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
- * <%= pluginHandle %> AssetBundle
+ * <%= utilityName[index] %>UtilityAsset AssetBundle
  *
  * AssetBundle represents a collection of asset files, such as CSS, JS, images.
  *

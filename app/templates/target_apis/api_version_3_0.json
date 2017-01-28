@@ -295,7 +295,6 @@
             "subPrefix": "controllerName",
             "prefix": false
         },
-
         {
             "src": "src/templates/_cpsection.twig",
             "destDir": "src/templates/",
@@ -341,7 +340,6 @@
             "dirSubPrefix": "cpsection/dist/js/",
             "prefix": false
         },
-
         {
             "src": "src/elements/_Element.php",
             "destDir": "src/elements/",
@@ -572,13 +570,6 @@
             "prefix": false
         },
         {
-            "src": "src/templates/_index.twig",
-            "destDir": "src/templates/",
-            "dest": "index.twig",
-            "requires": ["cpsection"],
-            "prefix": false
-        },
-        {
             "src": "src/templates/_settings.twig",
             "destDir": "src/templates/",
             "dest": "settings.twig",
@@ -617,20 +608,20 @@
         {
             "src": "src/assetbundles/pluginresources/dist/img/plugin-logo.png",
             "destDir": "src/assetbundles/",
-            "dest": "plugin-logo.png",
+            "dest": "-logo.png",
             "requires": ["settings"],
             "dirSubPrefix": "/dist/img/",
             "justCopy": true,
-            "prefix": false
+            "prefix": true
         },
         {
             "src": "src/assetbundles/pluginresources/dist/img/plugin.png",
             "destDir": "src/assetbundles/",
-            "dest": "plugin.png",
+            "dest": "-icon.png",
             "requires": ["settings"],
             "dirSubPrefix": "/dist/img/",
             "justCopy": true,
-            "prefix": false
+            "prefix": true
         },
         {
             "src": "src/assetbundles/pluginresources/dist/css/_style.css",

@@ -8,7 +8,7 @@
  * @copyright <%= copyrightNotice %>
  */
 
-namespace <%= pluginVendorName %>\<%= pluginDirName %>\assetbundles\<%= fieldName[index].toLowerCase() %>cpsection;
+namespace <%= pluginVendorName %>\<%= pluginDirName %>\assetbundles\<%= cpsectionName[index].toLowerCase() %>cpsection;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -16,7 +16,7 @@ use craft\web\assets\cp\CpAsset;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
- * <%= pluginHandle %> AssetBundle
+ * <%= cpsectionName[index] %>CPSectionAsset AssetBundle
  *
  * AssetBundle represents a collection of asset files, such as CSS, JS, images.
  *

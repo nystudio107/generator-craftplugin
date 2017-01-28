@@ -11,11 +11,22 @@
  * @since     <%= pluginVersion %>
  */
 #}
+<% var shouldRedirect = false -%>
+<% if ((pluginComponents.indexOf('cpsection') >= 0) && (typeof cpsectionName !== 'undefined')){ -%>
+<% var cpsections = cpsectionName -%>
+<% if ((typeof(cpsections[0]) !== 'undefined') && (cpsections[0] !== "Index") && (cpsections.length > 1)) { -%>
+<% var shouldRedirect = true -%>
+<% } -%>
+<% } -%>
 
+<% if (shouldRedirect) { -%>
+{% redirect url('<%= pluginDirName %>/<%= cpsections[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>') %}
+<% } else { -%>
 {% extends "_layouts/cp" %}
 {% import "_includes/forms" as forms %}
 
 {% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\<%= pluginDirName %>\\<%= pluginHandle %>Asset") %}
+{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\<%= cpsectionName[0].toLowerCase() %>cpsection\\<%= cpsectionName[0] %>CPSectionAsset") %}
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# Link for the ? icon at the bottom of the page #}
@@ -26,28 +37,6 @@
 {# The title of this CP section #}
 <% } -%>
 {% set title = "<%= pluginName %>" %}
-
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-{# The URL to this plugin's base CP section #}
-<% } -%>
-{% set pluginCpUrl = url('<%= pluginHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>') %}
-
-<% if ((pluginComponents.indexOf('cpsection') >= 0) && (typeof cpsectionName !== 'undefined')){ -%>
-<% var cpsections = cpsectionName -%>
-<% if ((typeof(cpsections[0]) !== 'undefined') && (cpsections[0] !== "")) { -%>
-{% set subnav = {
-    redirects:      { label: "Redirects"|t, url: url('retour/redirects') },
-    statistics:     { label: "Statistics"|t, url: url('retour/statistics') },
-    settings:       { label: "Settings"|t, url: url('retour/settings') },
-} %}
-{% set selectedSubnavItem = 'redirects' %}
-
-{% set crumbs = [
-    { label: "SomeThing", url: url('retour') },
-    { label: "Redirects"|t, url: url('retour/redirects') },
-] %}
-<% } -%>
-<% } -%>
 
 {% set extraPageHeaderHtml %}
     <div class="buttons">
@@ -62,3 +51,4 @@
         <p class="textline"></p>
 
 {% endset %}
+<% } -%>
