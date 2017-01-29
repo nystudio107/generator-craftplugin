@@ -145,6 +145,6 @@ class <%= taskName[index] %> extends Task
 <% } -%>
     protected function defaultDescription(): string
     {
-        return Craft::t('<%= pluginDirName %>', '<%= taskName[index] %>');
+        return Craft::t('<%= pluginCamelHandle %>', '<%= taskName[index] %>');
     }
 }

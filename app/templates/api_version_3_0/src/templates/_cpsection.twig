@@ -23,7 +23,7 @@
 <% } -%>
 
 <% if (templateType === "redirect") { -%>
-{% redirect url('<%= pluginDirName %>/<%= cpsections[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>') %}
+{% redirect url('<%= pluginCamelHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}) %>/<%= cpsections[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>') %}
 <% } -%>
 <% if (templateType === "normal") { -%>
 {% extends "_layouts/cp" %}
@@ -45,7 +45,7 @@
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# The URL to this plugin's base CP section #}
 <% } -%>
-{% set pluginCpUrl = url('<%= pluginDirName %>') %}
+{% set pluginCpUrl = url('<%= pluginCamelHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}) %>') %}
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# Get a URL to an image in our AssetBundle #}
@@ -90,7 +90,7 @@
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# The URL to this plugin's base CP section #}
 <% } -%>
-{% set pluginCpUrl = url('<%= pluginDirName %>') %}
+{% set pluginCpUrl = url('<%= pluginCamelHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}) %>') %}
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# Get a URL to an image in our AssetBundle #}

@@ -74,7 +74,7 @@ class <%= fieldName[index] %> extends Field
 <% } -%>
     public static function displayName(): string
     {
-        return Craft::t('<%= pluginDirName %>', '<%= fieldName[index] %>');
+        return Craft::t('<%= pluginCamelHandle %>', '<%= fieldName[index] %>');
     }
 
     // Public Methods

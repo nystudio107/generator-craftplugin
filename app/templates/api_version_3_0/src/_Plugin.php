@@ -299,7 +299,7 @@ class <%= pluginHandle %> extends Plugin
  */
 <% } else { -%>
 <% } -%>
-        Craft::info('<%= pluginHandle %> ' . Craft::t('<%= pluginDirName %>', 'plugin loaded'), __METHOD__);
+        Craft::info('<%= pluginHandle %> ' . Craft::t('<%= pluginCamelHandle %>', 'plugin loaded'), __METHOD__);
     }
 
 <% if (pluginComponents.indexOf('variables') >= 0){ -%>

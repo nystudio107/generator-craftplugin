@@ -71,7 +71,7 @@ class <%= widgetName[index] %> extends Widget
 <% } -%>
     public static function displayName(): string
     {
-        return Craft::t('<%= pluginDirName %>', '<%= widgetName[index] %>');
+        return Craft::t('<%= pluginCamelHandle %>', '<%= widgetName[index] %>');
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
@@ -239,7 +239,7 @@ class <%= widgetName[index] %> extends Widget
     public function getSettingsHtml()
     {
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginDirName %>'
+            '<%= pluginCamelHandle %>'
             . DIRECTORY_SEPARATOR
             . '_components'
             . DIRECTORY_SEPARATOR
@@ -270,7 +270,7 @@ class <%= widgetName[index] %> extends Widget
         Craft::$app->getView()->registerAssetBundle(<%= widgetName[index] %>WidgetAsset::class);
 
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginDirName %>'
+            '<%= pluginCamelHandle %>'
             . DIRECTORY_SEPARATOR
             . '_components'
             . DIRECTORY_SEPARATOR

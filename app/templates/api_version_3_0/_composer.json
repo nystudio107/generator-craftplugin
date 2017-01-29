@@ -26,7 +26,7 @@
     },
     "extra": {
         "name": "<%= pluginHandle %>",
-        "handle": "<%= pluginDirName %>",
+        "handle": "<%= pluginCamelHandle %>",
 	    "version": "<%= pluginVersion %>",
     	"schemaVersion": "<%= pluginVersion %>",
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
