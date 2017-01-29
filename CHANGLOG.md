@@ -1,5 +1,12 @@
 # generator-craftplugin Changelog
 
+## 1.1.39 - 2017.01.28
+### Added
+* Added config.php
+### Fixed
+* Fixed the logo in README.md
+* Handle a case where a plugin has no services
+
 ## 1.1.38 - 2017.01.28
 ### Added
 * Added CP Sections
