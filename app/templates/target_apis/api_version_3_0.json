@@ -280,6 +280,12 @@
             "prefix": false
         },
         {
+            "src": "src/_config.php",
+            "destDir": "",
+            "dest": "src/config.php",
+            "prefix": false
+        },
+        {
             "src": "src/console/controllers/_Command.php",
             "destDir": "src/console/controllers/",
             "dest": "Controller.php",
