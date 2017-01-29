@@ -606,16 +606,7 @@
             "prefix": true
         },
         {
-            "src": "src/assetbundles/pluginresources/dist/img/plugin-logo.png",
-            "destDir": "src/assetbundles/",
-            "dest": "-logo.png",
-            "requires": ["settings"],
-            "dirSubPrefix": "/dist/img/",
-            "justCopy": true,
-            "prefix": true
-        },
-        {
-            "src": "src/assetbundles/pluginresources/dist/img/plugin.png",
+            "src": "src/assetbundles/pluginresources/dist/img/plugin.svg",
             "destDir": "src/assetbundles/",
             "dest": "-icon.png",
             "requires": ["settings"],
@@ -646,6 +637,9 @@
         },
         {
             "src": "src/icon.svg"
+        },
+        {
+            "src": "resources/img/plugin-logo.png"
         }
     ],
     "END_INSTALL_COMMANDS": [

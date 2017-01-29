@@ -2,7 +2,7 @@
 
 <%= pluginDescription %>
 
-![Screenshot](resources/screenshots/plugin_logo.png)
+![Screenshot](resources/img/plugin-logo.png)
 
 ## Installation
 
