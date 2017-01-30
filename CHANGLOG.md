@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.0 - 2017.01.30
+### Added
+* Craft 3 beta support
+
 ## 1.1.39 - 2017.01.28
 ### Added
 * Added config.php
