@@ -1,6 +1,6 @@
 {
-	"name": "<%= pluginVendorName %>/<%= pluginDirName %>",
-	"description": "<%= pluginDescription %>",
+    "name": "<%= pluginVendorName %>/<%= pluginDirName %>",
+    "description": "<%= pluginDescription %>",
     "type": "craft-plugin",
     "version": "1.2.0",
     "keywords": [
@@ -11,12 +11,12 @@
         "<%= pluginDirName %>"
     ],
     "license": "MIT",
-	"authors": [
-		{
-			"name": "<%= pluginAuthorName %>",
-			"homepage": "<%= pluginAuthorUrl %>"
-		}
-	],
+    "authors": [
+        {
+            "name": "<%= pluginAuthorName %>",
+            "homepage": "<%= pluginAuthorUrl %>"
+        }
+    ],
     "require": {
     },
     "autoload": {
@@ -27,8 +27,8 @@
     "extra": {
         "name": "<%= pluginHandle %>",
         "handle": "<%= pluginCamelHandle %>",
-	    "version": "<%= pluginVersion %>",
-    	"schemaVersion": "<%= pluginVersion %>",
+        "version": "<%= pluginVersion %>",
+        "schemaVersion": "<%= pluginVersion %>",
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
         "hasSettings": true,
 <% } else { -%>
@@ -40,18 +40,18 @@
         "hasCpSection": false,
 <% } -%>
         "developer": "<%= pluginAuthorName %>",
-    	"developerUrl": "<%= pluginAuthorUrl %>",
-    	"description": "<%= pluginDescription %>",
-    	"documentationUrl": "<%= pluginDocsUrl %>",
-    	"changelogUrl": "<%= pluginChangelogUrl %>",
+        "developerUrl": "<%= pluginAuthorUrl %>",
+        "description": "<%= pluginDescription %>",
+        "documentationUrl": "<%= pluginDocsUrl %>",
+        "changelogUrl": "<%= pluginChangelogUrl %>",
 <% if (pluginComponents.indexOf('services') >= 0){ -%>
 <% var components = serviceName -%>
 <% if ((typeof(components[0]) !== 'undefined') && (components[0] !== "")) { -%>
-    	"components": {
+        "components": {
 <% components.forEach(function(component, index, array){ -%>
-        	"<%= component[0].toLowerCase() + component.slice(1) %>": "<%= pluginVendorName %>\\<%= pluginDirName%>\\services\\<%= component%>"<% if (index !== array.length - 1) { %>,<% } %>
+            "<%= component[0].toLowerCase() + component.slice(1) %>": "<%= pluginVendorName %>\\<%= pluginDirName%>\\services\\<%= component%>"<% if (index !== array.length - 1) { %>,<% } %>
 <% }); -%>
-    	},
+        },
 <% } -%>
 <% } -%>
         "class": "<%= pluginVendorName %>\\<%= pluginDirName %>\\<%= pluginHandle %>"
