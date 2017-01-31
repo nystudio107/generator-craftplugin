@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.1 - 2017.01.31
+### Fixed
+* Removed errant tabs from the `composer.json` file
+
 ## 1.2.0 - 2017.01.30
 ### Added
 * Craft 3 beta support
