@@ -76,7 +76,7 @@ class <%= consolecommandName[index] %>Controller extends Controller
     {
         $result = 'something';
 
-        echo "Welcome to the <%= consolecommandName[index] %> actionIndex() method\n";
+        echo "Welcome to the console <%= consolecommandName[index] %>Controller actionIndex() method\n";
 
         return $result;
     }
@@ -101,7 +101,7 @@ class <%= consolecommandName[index] %>Controller extends Controller
     {
         $result = 'something';
 
-        echo "Welcome to the <%= consolecommandName[index] %> actionDoSomething() method\n";
+        echo "Welcome to the console <%= consolecommandName[index] %>Controller actionDoSomething() method\n";
 
         return $result;
     }

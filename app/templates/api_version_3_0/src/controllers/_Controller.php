@@ -73,7 +73,7 @@ class <%= controllerName[index] %>Controller extends Controller
 <% } -%>
     public function actionIndex()
     {
-        $result = 'something';
+        $result = 'Welcome to the <%= controllerName[index] %>Controller actionIndex() method';
 
         return $result;
     }
@@ -92,7 +92,7 @@ class <%= controllerName[index] %>Controller extends Controller
 <% } -%>
     public function actionDoSomething()
     {
-        $result = 'something';
+        $result = 'Welcome to the <%= controllerName[index] %>Controller actionDoSomething() method';
 
         return $result;
     }
