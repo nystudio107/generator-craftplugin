@@ -183,7 +183,7 @@ class <%= pluginHandle %> extends Plugin
 <% var controllers = controllerName -%>
 <% if ((typeof(controllers[0]) !== 'undefined') && (controllers[0] !== "")) { -%>
 <% controllers.forEach(function(controller, index, array){ -%>
-                $event->rules['siteActionTrigger<%= index + 1 %>'] = '<%= pluginDirName %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>';
+                $event->rules['siteActionTrigger<%= index + 1 %>'] = '<%= pluginCamelHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}) %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>';
 <% }); -%>
 <% } -%>
             }
@@ -199,7 +199,7 @@ class <%= pluginHandle %> extends Plugin
 <% var controllers = controllerName -%>
 <% if ((typeof(controllers[0]) !== 'undefined') && (controllers[0] !== "")) { -%>
 <% controllers.forEach(function(controller, index, array){ -%>
-                $event->rules['cpActionTrigger<%= index + 1 %>'] = '<%= pluginDirName %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
+                $event->rules['cpActionTrigger<%= index + 1 %>'] = '<%= pluginCamelHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}) %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
 <% }); -%>
 <% } -%>
             }
