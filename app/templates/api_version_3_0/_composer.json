@@ -7,7 +7,7 @@
         "craft",
         "cms",
         "craftcms",
-        "plugin",
+        "craft-plugin",
         "<%= pluginDirName %>"
     ],
     "license": "MIT",
