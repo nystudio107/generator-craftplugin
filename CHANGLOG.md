@@ -1,5 +1,13 @@
 # generator-craftplugin Changelog
 
+## 1.2.2 - 2017.02.02
+### Fixed
+* Updated the console controllers and web controllers to return something more useful
+* Fixed the generated route URIs to kebab-case the plugin handle
+* Fixed the action URIs in the comments for controllers to kebab-case the plugin handle
+### Changed
+* plugin -> craft-plugin in `composer.json`
+
 ## 1.2.1 - 2017.01.31
 ### Fixed
 * Removed errant tabs from the `composer.json` file
