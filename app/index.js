@@ -182,10 +182,13 @@ module.exports = yo.generators.Base.extend({
                 var defaultNameHandles = ["consolecommandName", "controllerName", "modelName",  "recordName", "serviceName", "taskName", "utilityName", "widgetName"];
                 defaultNameHandles.forEach(function(defaultNameElement) {
                     _this.answers[defaultNameElement].forEach(function(nameElement, nameIndex, nameArray) {
-                        var defName = "Default";
-                        // Special-case for cpsections so that the default is "index"
+                        var defName = _this.answers.pluginHandle + defaultNameElement.capitalizeFirstLetter().slice(0, -4);
+                        // Special-case for cpsections so that the default is "Default"
+                        if ((defaultNameElement == "controllerName") || (defaultNameElement == "consolecommandName")) {
+                            defName = "Default";
+                        }
                         if (nameElement == "") {
-                            nameArray[nameIndex] = "Default";
+                            nameArray[nameIndex] = defName;
                             }
                         });
                     });

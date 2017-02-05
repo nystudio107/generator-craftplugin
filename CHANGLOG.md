@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.3 - 2017.02.05
+### Fixed
+* Changed the default class name from the reserved word `Default` to the plugin handle if no name is provided
+
 ## 1.2.2 - 2017.02.02
 ### Fixed
 * Updated the console controllers and web controllers to return something more useful
