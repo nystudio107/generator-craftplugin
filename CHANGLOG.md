@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.5 - 2017.02.06
+### Changed
+* Fixed an issue with the generated Element template that would throw a PHP error
+
 ## 1.2.4 - 2017.02.05
 ### Changed
 * Ensured that the calls to getPublishedUrl() correspond to the published assets directory

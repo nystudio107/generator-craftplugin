@@ -14,6 +14,8 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
 use Craft;
 use craft\base\Element;
+use craft\elements\db\ElementQuery;
+use craft\elements\db\ElementQueryInterface;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
@@ -213,7 +215,7 @@ class <%= elementName[index] %> extends Element
 <% } -%>
     public static function find(): ElementQueryInterface
     {
-        return return parent::find();
+        return new ElementQuery(get_called_class());
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
