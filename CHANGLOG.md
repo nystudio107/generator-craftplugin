@@ -1,5 +1,13 @@
 # generator-craftplugin Changelog
 
+## 1.2.4 - 2017.02.05
+### Changed
+* Ensured that the calls to getPublishedUrl() correspond to the published assets directory
+* Removed deprecated view.registerCssResource() and view.registerJsResource() calls
+
+### Added
+* Added proper namespacing for the Field JavaScript
+
 ## 1.2.3 - 2017.02.05
 ### Fixed
 * Changed the default class name from the reserved word `Default` to the plugin handle if no name is provided

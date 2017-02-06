@@ -18,6 +18,7 @@ use craft\base\ElementInterface;
 use craft\base\Field;
 use craft\helpers\Db;
 use yii\db\Schema;
+use craft\helpers\Json;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
@@ -204,6 +205,7 @@ class <%= fieldName[index] %> extends Field
 <% } -%>
     public function getSettingsHtml()
     {
+        // Render the settings template
         return Craft::$app->getView()->renderTemplate(
             '<%= pluginDirName %>'
             . DIRECTORY_SEPARATOR
@@ -213,7 +215,7 @@ class <%= fieldName[index] %> extends Field
             . DIRECTORY_SEPARATOR
             . '<%= fieldName[index] %>_settings',
             [
-                'field' => $this
+                'field' => $this,
             ]
         );
     }
@@ -323,8 +325,24 @@ class <%= fieldName[index] %> extends Field
 <% } -%>
     public function getInputHtml($value, ElementInterface $element = null): string
     {
+        // Register our asset bundle
         Craft::$app->getView()->registerAssetBundle(<%= fieldName[index] %>FieldAsset::class);
 
+        // Get our id and namespace
+        $id = Craft::$app->getView()->formatInputId($this->handle);
+        $namespacedId = Craft::$app->getView()->namespaceInputId($id);
+
+        // Variables to pass down to our field JavaScript to let it namespace properly
+        $jsonVars = [
+            'id' => $id,
+            'name' => $this->handle,
+            'namespace' => $namespacedId,
+            'prefix' => Craft::$app->getView()->namespaceInputId(''),
+            ];
+        $jsonVars = Json::encode($jsonVars);
+        Craft::$app->getView()->registerJs("$('#{$namespacedId}-field').<%= pluginHandle %><%= fieldName[index] %>(" . $jsonVars . ");");
+
+        // Render the input template
         return Craft::$app->getView()->renderTemplate(
             '<%= pluginDirName %>'
             . DIRECTORY_SEPARATOR
@@ -337,6 +355,8 @@ class <%= fieldName[index] %> extends Field
                 'name' => $this->handle,
                 'value' => $value,
                 'field' => $this,
+                'id' => $id,
+                'namespacedId' => $namespacedId,
             ]
         );
     }

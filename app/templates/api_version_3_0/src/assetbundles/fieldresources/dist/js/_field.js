@@ -7,12 +7,12 @@
  * @copyright <%= copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
  * @package   <%= pluginHandle %>
- * @since     <%= pluginVersion %>
+ * @since     <%= pluginVersion %><%= pluginHandle %><%= fieldName[index] %>
  */
 
  ;(function ( $, window, document, undefined ) {
 
-    var pluginName = "<%= pluginHandle %><%= fieldName %>FieldType",
+    var pluginName = "<%= pluginHandle %><%= fieldName[index] %>",
         defaults = {
         };
 

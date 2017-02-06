@@ -12,7 +12,7 @@
  */
 #}
 
-{% set iconUrl = view.getAssetManager().getPublishedUrl('@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= widgetName[index].toLowerCase() %>widget/dist/img/<%= widgetName[index] %>-icon.svg', true) %}
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= widgetName[index].toLowerCase() %>widget/dist', true) ~ '/img/<%= widgetName[index] %>-icon.svg' %}
 
 <img src="{{ iconUrl }}" height="64" width="64" />
 
