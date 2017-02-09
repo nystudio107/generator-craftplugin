@@ -1,11 +1,11 @@
 <?php
 /**
- * <%= pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> plugin for Craft CMS 3.x
  *
- * <%= pluginDescription %>
+ * <%- pluginDescription %>
  *
  * @link      <%= pluginAuthorUrl %>
- * @copyright <%= copyrightNotice %>
+ * @copyright <%- copyrightNotice %>
  */
 
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\migrations;
@@ -19,7 +19,7 @@ use craft\services\Config;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
- * <%= pluginName %> Install Migration
+ * <%- pluginName %> Install Migration
  *
  * If your plugin needs to create any custom database tables when it gets installed,
  * create a migrations/ folder within your plugin folder, and save an Install.php file
@@ -28,13 +28,13 @@ use craft\services\Config;
  * If you need to perform any additional actions on install/uninstall, override the
  * safeUp() and safeDown() methods.
  *
- * @author    <%= pluginAuthorName %>
+ * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
 <% } else { -%>
 /**
- * @author    <%= pluginAuthorName %>
+ * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */

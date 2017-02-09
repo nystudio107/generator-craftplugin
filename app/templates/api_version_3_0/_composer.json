@@ -1,6 +1,6 @@
 {
     "name": "<%= pluginVendorName %>/<%= pluginDirName %>",
-    "description": "<%= pluginDescription %>",
+    "description": "<%- pluginDescription %>",
     "type": "craft-plugin",
     "version": "<%= pluginVersion %>",
     "keywords": [
@@ -13,7 +13,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "<%= pluginAuthorName %>",
+            "name": "<%- pluginAuthorName %>",
             "homepage": "<%= pluginAuthorUrl %>"
         }
     ],
@@ -25,7 +25,7 @@
         }
     },
     "extra": {
-        "name": "<%= pluginName %>",
+        "name": "<%- pluginName %>",
         "handle": "<%= pluginCamelHandle %>",
         "schemaVersion": "<%= pluginVersion %>",
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>

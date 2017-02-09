@@ -1,11 +1,11 @@
 <?php
 /**
- * <%= pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> plugin for Craft CMS 3.x
  *
- * <%= pluginDescription %>
+ * <%- pluginDescription %>
  *
  * @link      <%= pluginAuthorUrl %>
- * @copyright <%= copyrightNotice %>
+ * @copyright <%- copyrightNotice %>
  */
 
 namespace <%= pluginVendorName %>\<%= pluginDirName %>;
@@ -101,13 +101,13 @@ use yii\base\Event;
  *
  * https://craftcms.com/docs/plugins/introduction
  *
- * @author    <%= pluginAuthorName %>
+ * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
 <% } else { -%>
 /**
- * @author    <%= pluginAuthorName %>
+ * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */

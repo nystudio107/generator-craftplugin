@@ -1,11 +1,11 @@
 <?php
 /**
- * <%= pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> plugin for Craft CMS 3.x
  *
- * <%= pluginDescription %>
+ * <%- pluginDescription %>
  *
  * @link      <%= pluginAuthorUrl %>
- * @copyright <%= copyrightNotice %>
+ * @copyright <%- copyrightNotice %>
  */
 
 namespace <%= pluginVendorName %>\<%= pluginDirName%>\services;
@@ -25,13 +25,13 @@ use craft\base\Component;
  *
  * https://craftcms.com/docs/plugins/services
  *
- * @author    <%= pluginAuthorName %>
+ * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
 <% } else { -%>
 /**
- * @author    <%= pluginAuthorName %>
+ * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */

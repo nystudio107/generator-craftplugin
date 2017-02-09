@@ -1,11 +1,11 @@
 <?php
 /**
- * <%= pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> plugin for Craft CMS 3.x
  *
- * <%= pluginDescription %>
+ * <%- pluginDescription %>
  *
  * @link      <%= pluginAuthorUrl %>
- * @copyright <%= copyrightNotice %>
+ * @copyright <%- copyrightNotice %>
  */
 
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\variables;
@@ -16,20 +16,20 @@ use Craft;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
- * <%= pluginName %> Variable
+ * <%- pluginName %> Variable
  *
  * Craft allows plugins to provide their own template variables, accessible from
  * the {{ craft }} global variable (e.g. {{ craft.<%= pluginCamelHandle %> }}).
  *
  * https://craftcms.com/docs/plugins/variables
  *
- * @author    <%= pluginAuthorName %>
+ * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
 <% } else { -%>
 /**
- * @author    <%= pluginAuthorName %>
+ * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */

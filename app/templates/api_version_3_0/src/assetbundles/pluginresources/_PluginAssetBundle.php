@@ -1,11 +1,11 @@
 <?php
 /**
- * <%= pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> plugin for Craft CMS 3.x
  *
- * <%= pluginDescription %>
+ * <%- pluginDescription %>
  *
  * @link      <%= pluginAuthorUrl %>
- * @copyright <%= copyrightNotice %>
+ * @copyright <%- copyrightNotice %>
  */
 
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\assetbundles\<%= pluginHandle %>;
@@ -29,13 +29,13 @@ use craft\web\assets\cp\CpAsset;
  *
  * http://www.yiiframework.com/doc-2.0/guide-structure-assets.html
  *
- * @author    <%= pluginAuthorName %>
+ * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */
 <% } else { -%>
 /**
- * @author    <%= pluginAuthorName %>
+ * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
  */

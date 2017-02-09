@@ -1,17 +1,17 @@
 <?php
 /**
- * <%= pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> plugin for Craft CMS 3.x
  *
- * <%= pluginDescription %>
+ * <%- pluginDescription %>
  *
  * @link      <%= pluginAuthorUrl %>
- * @copyright <%= copyrightNotice %>
+ * @copyright <%- copyrightNotice %>
  */
 
 /**
- * <%= pluginName %> config.php
+ * <%- pluginName %> config.php
  *
- * Completely optional configuration settings for <%= pluginName %> if you want to customize some
+ * Completely optional configuration settings for <%- pluginName %> if you want to customize some
  * of its more esoteric behavior, or just want specific control over things.
  *
  * Don't edit this file, instead copy it to 'craft/config' as '<%= pluginDirName %>.php' and make

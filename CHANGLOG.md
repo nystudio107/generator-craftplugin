@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.8 - 2017.02.08
+### Changed
+* `pluginName`, `pluginAuthorName`, `pluginDescription` and `copyrightNotice` are now all output unescaped
+
 ## 1.2.7 - 2017.02.08
 ### Changed
 * `extra.name` is now the actual plugin name in the `composer.json`

@@ -3,7 +3,7 @@
 // WARNING: Not converted to Craft 3 yet
 
 /**
- * <%= pluginName %> plugin for Craft CMS
+ * <%- pluginName %> plugin for Craft CMS
  *
  * <%= pluginHandle %><%= purchasableName[index] %> ElementType
  *
@@ -18,8 +18,8 @@
  * --snip--
  *
 <% } -%>
- * @author    <%= pluginAuthorName %>
- * @copyright <%= copyrightNotice %>
+ * @author    <%- pluginAuthorName %>
+ * @copyright <%- copyrightNotice %>
  * @link      <%= pluginAuthorUrl %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
