@@ -119,6 +119,7 @@ module.exports = yo.generators.Base.extend({
             this.answers.copyrightNotice = "Copyright (c) " + now.getFullYear() + " " + this.answers.pluginAuthorName;
             this.answers.pluginDownloadUrl = "???";
             this.answers.pluginDocsUrl = "???";
+            this.answers.pluginIssuesUrl = "???";
             this.answers.pluginReleasesUrl = "???";
             this.answers.pluginChangelogUrl = "???";
             this.answers.pluginCloneUrl = "???";
@@ -132,6 +133,7 @@ module.exports = yo.generators.Base.extend({
                 this.answers.pluginDownloadUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/archive/master.zip";
                 this.answers.pluginCloneUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + ".git";
                 this.answers.pluginDocsUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/blob/master/README.md";
+                this.answers.pluginIssuesUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/issues";
                 this.answers.pluginReleasesUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/master/releases.json";
                 if (this.api.API_KEY == "api_version_3_0") {
                     this.answers.pluginChangelogUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/master/CHANGELOG.md";

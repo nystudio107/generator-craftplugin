@@ -1,5 +1,13 @@
 # generator-craftplugin Changelog
 
+## 1.2.9 - 2017.02.08
+### Changed
+* Removed `extra.pluginDocumentationUrl` from `composer.json`
+
+### Added
+* Added `support.docs` to `composer.json`
+* Added `support.issues` to `composer.json`
+
 ## 1.2.8 - 2017.02.08
 ### Changed
 * `pluginName`, `pluginAuthorName`, `pluginDescription` and `copyrightNotice` are now all output unescaped

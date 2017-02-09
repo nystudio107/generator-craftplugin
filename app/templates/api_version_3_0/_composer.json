@@ -10,6 +10,10 @@
         "craft-plugin",
         "<%= pluginDirName %>"
     ],
+    "support": {
+        "docs": "<%= pluginDocsUrl %>",
+        "issues": "<%= pluginIssuesUrl %>"
+    },
     "license": "MIT",
     "authors": [
         {
@@ -38,7 +42,6 @@
 <% } else { -%>
         "hasCpSection": false,
 <% } -%>
-        "documentationUrl": "<%= pluginDocsUrl %>",
         "changelogUrl": "<%= pluginChangelogUrl %>",
 <% if (pluginComponents.indexOf('services') >= 0){ -%>
 <% var components = serviceName -%>
