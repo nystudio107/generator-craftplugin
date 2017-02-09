@@ -2,7 +2,7 @@
     "name": "<%= pluginVendorName %>/<%= pluginDirName %>",
     "description": "<%= pluginDescription %>",
     "type": "craft-plugin",
-    "version": "1.2.0",
+    "version": "<%= pluginVersion %>",
     "keywords": [
         "craft",
         "cms",

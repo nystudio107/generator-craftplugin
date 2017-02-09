@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.6 - 2017.02.08
+### Fixed
+* Fixed the incorrectly hard-code version in the `composer.json`
+
 ## 1.2.5 - 2017.02.06
 ### Changed
 * Fixed an issue with the generated Element template that would throw a PHP error
