@@ -25,9 +25,8 @@
         }
     },
     "extra": {
-        "name": "<%= pluginHandle %>",
+        "name": "<%= pluginName %>",
         "handle": "<%= pluginCamelHandle %>",
-        "version": "<%= pluginVersion %>",
         "schemaVersion": "<%= pluginVersion %>",
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
         "hasSettings": true,
@@ -39,9 +38,6 @@
 <% } else { -%>
         "hasCpSection": false,
 <% } -%>
-        "developer": "<%= pluginAuthorName %>",
-        "developerUrl": "<%= pluginAuthorUrl %>",
-        "description": "<%= pluginDescription %>",
         "documentationUrl": "<%= pluginDocsUrl %>",
         "changelogUrl": "<%= pluginChangelogUrl %>",
 <% if (pluginComponents.indexOf('services') >= 0){ -%>

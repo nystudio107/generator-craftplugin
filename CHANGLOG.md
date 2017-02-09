@@ -1,5 +1,13 @@
 # generator-craftplugin Changelog
 
+## 1.2.7 - 2017.02.08
+### Changed
+* `extra.name` is now the actual plugin name in the `composer.json`
+* Removed `extra.version` in the `composer.json` since it's already specified in `version`
+* Removed `extra.description` in the `composer.json` since it's already specified in `description`
+* Removed `extra.developer` in the `composer.json` since it's already specified in `authors[]`
+* Removed `extra.developerUrl` in the `composer.json` since it's already specified in `authors[]`
+
 ## 1.2.6 - 2017.02.08
 ### Fixed
 * Fixed the incorrectly hard-code version in the `composer.json`
