@@ -614,7 +614,7 @@
         {
             "src": "src/assetbundles/pluginresources/dist/img/plugin.svg",
             "destDir": "src/assetbundles/",
-            "dest": "-icon.png",
+            "dest": "-icon.svg",
             "requires": ["settings"],
             "dirSubPrefix": "/dist/img/",
             "justCopy": true,

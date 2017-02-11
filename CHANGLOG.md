@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.2.10 - 2017.02.10
+### Changed
+* Removed the `[]` around the version number in `CHANGELOG.md`
+* Fixed the incorrect `.png` suffix for the plugin asset bundle icon
+
 ## 1.2.9 - 2017.02.08
 ### Changed
 * Removed `extra.pluginDocumentationUrl` from `composer.json`
