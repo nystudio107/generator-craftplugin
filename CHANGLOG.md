@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.2.12 - 2017.02.14
+### Fixed
+* Fixed the composer URL in the README.md to be kebab-case
+* Switched the translation back to use the `pluginDirName`
+
 ## 1.2.11 - 2017.02.14
 ### Changed
 * Composer package names and github-related names are now in kebab-case
