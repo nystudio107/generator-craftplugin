@@ -56,6 +56,7 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\widgets\<%= widget %> as <%= wid
 <% var includeRegisterUrlRulesEvent = false -%>
 use Craft;
 use craft\base\Plugin;
+use craft\services\Plugins;
 <% if (pluginComponents.indexOf('consolecommands') >= 0){ -%>
 use craft\console\Application as ConsoleApplication;
 <% } -%>
@@ -279,6 +280,17 @@ class <%= pluginHandle %> extends Plugin
 <% } -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+        // Do something after we're installed
+<% } else { -%>
+<% } -%>
+        Event::on(
+            Plugins::className(),
+            Plugins::EVENT_AFTER_INSTALL_PLUGIN,
+            function (PluginEvent $event) {
+            }
+        );
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
  * Logging in Craft involves using one of the following methods:
  *
@@ -325,92 +337,6 @@ class <%= pluginHandle %> extends Plugin
     // Protected Methods
     // =========================================================================
 
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    /**
-     * Performs actions before the plugin is installed.
-     *
-     * @return bool Whether the plugin should be installed
-     */
-<% } else { -%>
-    /**
-     * @inheritdoc
-     */
-<% } -%>
-    protected function beforeInstall(): bool
-    {
-        return true;
-    }
-
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    /**
-     * Performs actions after the plugin is installed.
-     */
-<% } else { -%>
-    /**
-     * @inheritdoc
-     */
-<% } -%>
-    protected function afterInstall()
-    {
-    }
-
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    /**
-     * Performs actions before the plugin is updated.
-     *
-     * @return bool Whether the plugin should be updated
-     */
-<% } else { -%>
-    /**
-     * @inheritdoc
-     */
-<% } -%>
-    protected function beforeUpdate(): bool
-    {
-        return true;
-    }
-
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    /**
-     * Performs actions after the plugin is updated.
-     */
-<% } else { -%>
-    /**
-     * @inheritdoc
-     */
-<% } -%>
-    protected function afterUpdate()
-    {
-    }
-
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    /**
-     * Performs actions before the plugin is installed.
-     *
-     * @return bool Whether the plugin should be installed
-     */
-<% } else { -%>
-    /**
-     * @inheritdoc
-     */
-<% } -%>
-    protected function beforeUninstall(): bool
-    {
-        return true;
-    }
-
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    /**
-     * Performs actions after the plugin is installed.
-     */
-<% } else { -%>
-    /**
-     * @inheritdoc
-     */
-<% } -%>
-    protected function afterUninstall()
-    {
-    }
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>

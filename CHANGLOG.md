@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.2.14 - 2017.02.15
+### Changed
+* Removed deprecated methods for events like `onAfterInstall`
+* Added an example of using `Plugins::` events
+
 ## 1.2.13 - 2017.02.14
 ### Fixed
 * Switched the translation back to use the `pluginCamelHandle` doh
