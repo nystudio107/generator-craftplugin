@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.11 - 2017.02.14
+### Changed
+* Composer package names and github-related names are now in kebab-case
+
 ## 1.2.10 - 2017.02.10
 ### Changed
 * Removed the `[]` around the version number in `CHANGELOG.md`

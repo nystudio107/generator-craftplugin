@@ -136,7 +136,13 @@ module.exports = yo.generators.Base.extend({
                 this.answers.pluginIssuesUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/issues";
                 this.answers.pluginReleasesUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/master/releases.json";
                 if (this.api.API_KEY == "api_version_3_0") {
-                    this.answers.pluginChangelogUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/master/CHANGELOG.md";
+                    this.answers.pluginChangelogUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginHandle.kebabize() + "/master/CHANGELOG.md";
+
+                    this.answers.pluginDownloadUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginHandle.kebabize() + "/archive/master.zip";
+                    this.answers.pluginCloneUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginHandle.kebabize() + ".git";
+                    this.answers.pluginDocsUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginHandle.kebabize() + "/blob/master/README.md";
+                    this.answers.pluginIssuesUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginHandle.kebabize() + "/issues";
+                    this.answers.pluginReleasesUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginHandle.kebabize() + "/master/releases.json";
                     }
                 }
 
