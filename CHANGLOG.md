@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.13 - 2017.02.14
+### Fixed
+* Switched the translation back to use the `pluginCamelHandle` doh
+
 ## 1.2.12 - 2017.02.14
 ### Fixed
 * Fixed the composer URL in the README.md to be kebab-case
