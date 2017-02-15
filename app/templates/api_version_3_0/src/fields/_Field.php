@@ -99,10 +99,82 @@ class <%= fieldName[index] %> extends Field
 <% } -%>
     public function rules()
     {
-        return [
+        $rules = parent::rules();
+        $rules = array_merge($rules, [
             ['someAttribute', 'string'],
             ['someAttribute', 'default', 'value' => 'Some Default'],
-        ];
+        ]);
+        return $rules;
+    }
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Returns the column type that this field should get within the content table.
+     *
+     * This method will only be called if [[hasContentColumn()]] returns true.
+     *
+     * @return string The column type. [[\yii\db\QueryBuilder::getColumnType()]] will be called
+     * to convert the give column type to the physical one. For example, `string` will be converted
+     * as `varchar(255)` and `string(100)` becomes `varchar(100)`. `not null` will automatically be
+     * appended as well.
+     * @see \yii\db\QueryBuilder::getColumnType()
+     */
+<% } else { -%>
+    /**
+     * @inheritdoc
+     */
+<% } -%>
+    public function getContentColumnType(): string
+    {
+        return Schema::TYPE_STRING;
+    }
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Normalizes the field’s value for use.
+     *
+     * This method is called when the field’s value is first accessed from the element. For example, the first time
+     * `entry.myFieldHandle` is called from a template, or right before [[getInputHtml()]] is called. Whatever
+     * this method returns is what `entry.myFieldHandle` will likewise return, and what [[getInputHtml()]]’s and
+     * [[serializeValue()]]’s $value arguments will be set to.
+     *
+     * @param mixed                 $value   The raw field value
+     * @param ElementInterface|null $element The element the field is associated with, if there is one
+     *
+     * @return mixed The prepared field value
+     */
+<% } else { -%>
+    /**
+     * @inheritdoc
+     */
+<% } -%>
+    public function normalizeValue($value, ElementInterface $element = null)
+    {
+        return $value;
+    }
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Modifies an element query.
+     *
+     * This method will be called whenever elements are being searched for that may have this field assigned to them.
+     *
+     * If the method returns `false`, the query will be stopped before it ever gets a chance to execute.
+     *
+     * @param ElementQueryInterface $query The element query
+     * @param mixed                 $value The value that was set on this field’s corresponding [[ElementCriteriaModel]] param,
+     *                                     if any.
+     *
+     * @return null|false `false` in the event that the method is sure that no elements are going to be found.
+     */
+<% } else { -%>
+    /**
+     * @inheritdoc
+     */
+<% } -%>
+    public function serializeValue($value, ElementInterface $element = null)
+    {
+        return parent::serializeValue($value, $element);
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>

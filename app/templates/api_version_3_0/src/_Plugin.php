@@ -57,6 +57,7 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\widgets\<%= widget %> as <%= wid
 use Craft;
 use craft\base\Plugin;
 use craft\services\Plugins;
+use craft\events\PluginEvent;
 <% if (pluginComponents.indexOf('consolecommands') >= 0){ -%>
 use craft\console\Application as ConsoleApplication;
 <% } -%>

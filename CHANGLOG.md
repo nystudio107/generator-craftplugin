@@ -1,5 +1,13 @@
 # generator-craftplugin Changelog
 
+## 1.2.15 - 2017.02.15
+### Added
+* Added `getContentColumnType()`, `normalizeValue()`, & `serializeValue()` to `Fields.php`
+* Added merging of parent rules for `Fields.php`
+
+### Fixed
+* Fixed missing `use craft\events\PluginEvent;` in `_Plugin.php`
+
 ## 1.2.14 - 2017.02.15
 ### Changed
 * Removed deprecated methods for events like `onAfterInstall`
