@@ -31,12 +31,14 @@ var apis = {};
     *** End configuration section ***
 -------------------------------------------------------------------------------- */
 
-var yo              = require('yeoman-generator');
-var chalk           = require('chalk');
-var fs              = require('fs');
-var child_process   = require('child_process');
-var path            = require('path');
-var optionOrPrompt  = require('yeoman-option-or-prompt');
+var yo               = require('yeoman-generator');
+var chalk            = require('chalk');
+var fs               = require('fs');
+var child_process    = require('child_process');
+var path             = require('path');
+var optionOrPrompt   = require('yeoman-option-or-prompt');
+
+var phpReservedWords = require('./php-reserved-words.js');
 
 module.exports = yo.generators.Base.extend({
 
@@ -106,6 +108,14 @@ module.exports = yo.generators.Base.extend({
             var now = new Date();
 
             this.answers = answers;
+
+            if (this.api.API_KEY == "api_version_3_0") {
+                // Make sure this isn't a reserved word
+                if (phpReservedWords.indexOf(this.answers.pluginName.toLowerCase()) != -1) {
+                    console.log("### Invalid use of a PHP reserved word as a plugin name: " + this.answers.pluginName);
+                    this.answers.pluginName += "Plugin";
+                }
+            }
             this.answers.templatesDir = 'templates';
             this.answers.pluginDirName = this.answers.pluginName.directorize();
             this.answers.pluginCamelHandle = this.answers.pluginName.camelize();
@@ -198,6 +208,11 @@ module.exports = yo.generators.Base.extend({
                         if (nameElement == "") {
                             nameArray[nameIndex] = defName;
                             }
+                        // Make sure this isn't a reserved word
+                        if (phpReservedWords.indexOf(nameElement.toLowerCase()) != -1) {
+                            console.log("### Invalid use of a PHP reserved word as a component name: " + nameElement);
+                            nameArray[nameIndex] = nameElement + defaultNameElement.capitalizeFirstLetter().slice(0, -4);
+                        }
                         });
                     });
                 }

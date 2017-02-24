@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.2.16 - 2017.02.24
+### Added
+* Ensure that PHP reserved words are not used for the plugin name; appened "Plugin" if so
+* Ensure that PHP reserved words are not used for a component name; append the component type if so
+
 ## 1.2.15 - 2017.02.15
 ### Added
 * Added `getContentColumnType()`, `normalizeValue()`, & `serializeValue()` to `Fields.php`
