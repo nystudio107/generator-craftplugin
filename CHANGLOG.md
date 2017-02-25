@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.17 - 2017.02.25
+### Added
+* Added a `.gitignore` file for the Craft 3.x API
+
 ## 1.2.16 - 2017.02.24
 ### Added
 * Ensure that PHP reserved words are not used for the plugin name; appened "Plugin" if so

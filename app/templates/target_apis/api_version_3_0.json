@@ -280,6 +280,12 @@
             "prefix": false
         },
         {
+            "src": "_gitignore",
+            "destDir": "",
+            "dest": ".gitignore",
+            "prefix": false
+        },
+        {
             "src": "src/_config.php",
             "destDir": "",
             "dest": "src/config.php",
