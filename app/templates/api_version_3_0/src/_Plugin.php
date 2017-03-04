@@ -288,6 +288,9 @@ class <%= pluginHandle %> extends Plugin
             Plugins::className(),
             Plugins::EVENT_AFTER_INSTALL_PLUGIN,
             function (PluginEvent $event) {
+                if ($event->plugin === $this) {
+                    // We were just installed
+                }
             }
         );
 

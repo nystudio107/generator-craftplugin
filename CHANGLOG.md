@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.18 - 2017.03.03
+### Added
+* Check for whether our plugin is being installed in `EVENT_AFTER_INSTALL_PLUGIN` event handlers
+
 ## 1.2.17 - 2017.02.25
 ### Added
 * Added a `.gitignore` file for the Craft 3.x API
