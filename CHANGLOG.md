@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.20 - 2017.03.05
+### Changed
+* Refactored the `_Record.php` template to be in line with the current Craft 3 beta
+
 ## 1.2.19 - 2017.03.04
 ### Added
 * Modern-style `[]` for `config.php`

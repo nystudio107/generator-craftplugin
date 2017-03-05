@@ -19,23 +19,14 @@ use craft\db\ActiveRecord;
 /**
  * <%= recordName[index] %> Record
  *
- * Active record models (or “records”) are like models, except with a
- * database-facing layer built on top. On top of all the things that models
- * can do, records can:
+ * ActiveRecord is the base class for classes representing relational data in terms of objects.
  *
- * - Define database table schemas
- * - Represent rows in the database
- * - Find, alter, and delete rows
+ * Active Record implements the [Active Record design pattern](http://en.wikipedia.org/wiki/Active_record).
+ * The premise behind Active Record is that an individual [[ActiveRecord]] object is associated with a specific
+ * row in a database table. The object's attributes are mapped to the columns of the corresponding table.
+ * Referencing an Active Record attribute is equivalent to accessing the corresponding table column for that record.
  *
- * Note: Records’ ability to modify the database means that they should never
- * be used to transport data throughout the system. Their instances should be
- * contained to services only, so that services remain the one and only place
- * where system state changes ever occur.
- *
- * When a plugin is installed, Craft will look for any records provided by the
- * plugin, and automatically create the database tables for them.
- *
- * https://craftcms.com/docs/plugins/records
+ * http://www.yiiframework.com/doc-2.0/guide-db-active-record.html
  *
  * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
@@ -54,20 +45,24 @@ class <%= recordName[index] %> extends ActiveRecord
     // =========================================================================
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    /**
-     * Returns the name of the database table the model is associated with (sans
-     * table prefix). By convention, tables created by plugins should be prefixed
-     * with the plugin name and an underscore.
+     /**
+     * Declares the name of the database table associated with this AR class.
+     * By default this method returns the class name as the table name by calling [[Inflector::camel2id()]]
+     * with prefix [[Connection::tablePrefix]]. For example if [[Connection::tablePrefix]] is `tbl_`,
+     * `Customer` becomes `tbl_customer`, and `OrderItem` becomes `tbl_order_item`. You may override this method
+     * if the table is not named after this convention.
      *
-     * @return string
+     * By convention, tables created by plugins should be prefixed with the plugin
+     * name and an underscore.
      *
+     * @return string the table name
      */
 <% } else { -%>
     /**
      * @inheritdoc
      */
 <% } -%>
-    public function getTableName()
+    public static function tableName()
     {
         return '{{%<%= pluginDirName %>_<%= recordName[index].toLowerCase() %>}}';
     }
