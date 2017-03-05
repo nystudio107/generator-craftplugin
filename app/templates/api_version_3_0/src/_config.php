@@ -21,9 +21,9 @@
  * have different settings groups for each environment, just as you do for 'general.php'
  */
 
-return array(
+return [
 
     // This controls blah blah blah
     "someSetting" => true,
 
-);
+];

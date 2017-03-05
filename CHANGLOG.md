@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.19 - 2017.03.04
+### Added
+* Modern-style `[]` for `config.php`
+
 ## 1.2.18 - 2017.03.03
 ### Added
 * Check for whether our plugin is being installed in `EVENT_AFTER_INSTALL_PLUGIN` event handlers
