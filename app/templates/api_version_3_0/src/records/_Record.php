@@ -41,7 +41,7 @@ use craft\db\ActiveRecord;
 <% } -%>
 class <%= recordName[index] %> extends ActiveRecord
 {
-    // Public Methods
+    // Public Static Methods
     // =========================================================================
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
