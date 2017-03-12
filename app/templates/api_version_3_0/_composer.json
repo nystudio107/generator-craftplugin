@@ -22,6 +22,7 @@
         }
     ],
     "require": {
+        "craftcms/cms": "~3.0.0-beta.1"
     },
     "autoload": {
         "psr-4": {

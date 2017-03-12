@@ -1,12 +1,12 @@
 {
   "name": "generator-craftplugin",
-  "version": "1.2.20",
+  "version": "1.2.21",
   "description": "generator-craftplugin is a Yeoman generator for Craft CMS plugins",
   "main": "app/index.js",
   "files": [
     "app"
   ],
-  "repository": "khalwat/generator-craftplugin",
+  "repository": "nystudio107/generator-craftplugin",
   "keywords": [
     "yeoman-generator",
     "generator-craftplugin",

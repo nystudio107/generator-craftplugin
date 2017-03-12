@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.2.21 - 2017.03.12
+### Changed
+* Require `craftcms/cms` in `composer.json` again
+* Translations are a lowercase version of the pluginHandle
+
 ## 1.2.20 - 2017.03.05
 ### Changed
 * Refactored the `_Record.php` template to be in line with the current Craft 3 beta
