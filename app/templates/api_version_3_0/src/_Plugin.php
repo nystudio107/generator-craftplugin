@@ -10,6 +10,14 @@
 
 namespace <%= pluginVendorName %>\<%= pluginDirName %>;
 
+<% if (pluginComponents.indexOf('services') >= 0){ -%>
+<% var services = serviceName -%>
+<% if ((typeof(services[0]) !== 'undefined') && (services[0] !== "")) { -%>
+<% services.forEach(function(service, index, array){ -%>
+use <%= pluginVendorName %>\<%= pluginDirName%>\services\<%= service %> as <%= service %>Service;
+<% }); -%>
+<% } -%>
+<% } -%>
 <% if (pluginComponents.indexOf('variables') >= 0){ -%>
 use <%= pluginVendorName %>\<%= pluginDirName %>\variables\<%= pluginHandle %>Variable;
 <% } -%>
@@ -88,9 +96,8 @@ use craft\events\RegisterComponentTypesEvent;
 <% if (includeRegisterUrlRulesEvent === true){ -%>
 use craft\events\RegisterUrlRulesEvent;
 <% } -%>
-<% if ((includeRegisterComponentTypesEvent === true) || (includeRegisterUrlRulesEvent === true)) { -%>
+
 use yii\base\Event;
-<% } -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
@@ -106,12 +113,33 @@ use yii\base\Event;
  * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
+ *
+<% if (pluginComponents.indexOf('services') >= 0){ -%>
+<% var services = serviceName -%>
+<% if ((typeof(services[0]) !== 'undefined') && (services[0] !== "")) { -%>
+<% services.forEach(function(service, index, array){ -%>
+ * @property  <%= service %>Service <%= service[0].toLowerCase() + service.slice(1) %>
+use <%= pluginVendorName %>\<%= pluginDirName%>\services\<%= service %> as <%= service %>Service;
+<% }); -%>
+<% } -%>
+<% } -%>
  */
 <% } else { -%>
 /**
+ * Class <%= pluginHandle %>
+ *
  * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
  * @since     <%= pluginVersion %>
+ *
+<% if (pluginComponents.indexOf('services') >= 0){ -%>
+<% var services = serviceName -%>
+<% if ((typeof(services[0]) !== 'undefined') && (services[0] !== "")) { -%>
+<% services.forEach(function(service, index, array){ -%>
+ * @property  <%= service %>Service <%= service[0].toLowerCase() + service.slice(1) %>
+<% }); -%>
+<% } -%>
+<% } -%>
  */
 <% } -%>
 class <%= pluginHandle %> extends Plugin
@@ -124,11 +152,11 @@ class <%= pluginHandle %> extends Plugin
      * Static property that is an instance of this plugin class so that it can be accessed via
      * <%= pluginHandle %>::$plugin
      *
-     * @var static
+     * @var <%= pluginHandle %>
      */
 <% } else { -%>
     /**
-     * @var static
+     * @var <%= pluginHandle %>
      */
 <% } -%>
     public static $plugin;
@@ -289,7 +317,10 @@ class <%= pluginHandle %> extends Plugin
             Plugins::EVENT_AFTER_INSTALL_PLUGIN,
             function (PluginEvent $event) {
                 if ($event->plugin === $this) {
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
                     // We were just installed
+<% } else { -%>
+<% } -%>
                 }
             }
         );

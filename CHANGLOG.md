@@ -1,5 +1,13 @@
 # generator-craftplugin Changelog
 
+## 1.2.22 - 2017.03.12
+### Added
+* Added code inspection typehinting for the `$plugin` static variable in the plugin's main class
+* Added code inspection typehinting for services via `@property` on plugin's main class
+
+### Fixed
+* Fixed an issue with it not including `yii\base\Event` by default
+
 ## 1.2.21 - 2017.03.12
 ### Changed
 * Require `craftcms/cms` in `composer.json` again
