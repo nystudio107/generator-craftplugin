@@ -118,8 +118,7 @@ use yii\base\Event;
 <% var services = serviceName -%>
 <% if ((typeof(services[0]) !== 'undefined') && (services[0] !== "")) { -%>
 <% services.forEach(function(service, index, array){ -%>
- * @property  <%= service %>Service <%= service[0].toLowerCase() + service.slice(1) %>
-use <%= pluginVendorName %>\<%= pluginDirName%>\services\<%= service %> as <%= service %>Service;
+ * @property  <%= service %>Service $<%= service[0].toLowerCase() + service.slice(1) %>
 <% }); -%>
 <% } -%>
 <% } -%>
@@ -136,7 +135,7 @@ use <%= pluginVendorName %>\<%= pluginDirName%>\services\<%= service %> as <%= s
 <% var services = serviceName -%>
 <% if ((typeof(services[0]) !== 'undefined') && (services[0] !== "")) { -%>
 <% services.forEach(function(service, index, array){ -%>
- * @property  <%= service %>Service <%= service[0].toLowerCase() + service.slice(1) %>
+ * @property  <%= service %>Service $<%= service[0].toLowerCase() + service.slice(1) %>
 <% }); -%>
 <% } -%>
 <% } -%>

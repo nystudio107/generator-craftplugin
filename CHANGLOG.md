@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.2.23 - 2017.03.13
+### Fixed
+* Added a `$` in front of the `@property` variables
+* Fixed errant output when `codeComments` was on
+
 ## 1.2.22 - 2017.03.12
 ### Added
 * Added code inspection typehinting for the `$plugin` static variable in the plugin's main class
