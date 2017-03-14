@@ -122,10 +122,22 @@ class Install extends Migration
 <% var records = recordName -%>
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    // {{%<%= pluginDirName %>_<%= record.toLowerCase() %>}} table
+<% } else { -%>
+<% } -%>
         $this->createTable(
             '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}',
             [
                 'id' => $this->primaryKey(),
+                'dateCreated' => $this->dateTime()->notNull(),
+                'dateUpdated' => $this->dateTime()->notNull(),
+                'uid' => $this->uid(),
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+                // Custom columns in the table
+<% } else { -%>
+<% } -%>
+                'siteId' => $this->integer()->notNull(),
                 'some_field' => $this->string(255)->notNull()->defaultValue(''),
             ]
         );
@@ -152,6 +164,10 @@ class Install extends Migration
 <% var records = recordName -%>
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    // {{%<%= pluginDirName %>_<%= record.toLowerCase() %>}} table
+<% } else { -%>
+<% } -%>
         $this->createIndex(
             $this->db->getIndexName(
                 '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}',
@@ -162,7 +178,6 @@ class Install extends Migration
             'some_field',
             true
         );
-
         // Additional commands depending on the db driver
         switch ($this->driver) {
             case Connection::DRIVER_MYSQL:
@@ -190,6 +205,19 @@ class Install extends Migration
 <% } -%>
     protected function addForeignKeys()
     {
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    // {{%<%= pluginDirName %>_<%= record.toLowerCase() %>}} table
+<% } else { -%>
+<% } -%>
+        $this->addForeignKey(
+            $this->db->getForeignKeyName('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', 'siteId'),
+            '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}',
+            'siteId',
+            '{{%sites}}',
+            'id',
+            'CASCADE',
+            'CASCADE'
+        );
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
@@ -223,6 +251,10 @@ class Install extends Migration
 <% var records = recordName -%>
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    // {{%<%= pluginDirName %>_<%= record.toLowerCase() %>}} table
+<% } else { -%>
+<% } -%>
         $this->dropTable('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}');
 <% if (index !== array.length - 1) { -%>
 
@@ -247,6 +279,10 @@ class Install extends Migration
 <% var records = recordName -%>
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    // {{%<%= pluginDirName %>_<%= record.toLowerCase() %>}} table
+<% } else { -%>
+<% } -%>
         $this->dropIndex($this->db->getIndexName('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', 'some_field', true), '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}');
 <% if (index !== array.length - 1) { -%>
 

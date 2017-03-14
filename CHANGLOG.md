@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.2.25 - 2017.03.14
+### Changed
+* Added `dateCreated`, `dateUpdated`, and `uid` to the `Install.php` migration
+* Added a `foreignKey` example in the `Install.php` migration
+
 ## 1.2.24 - 2017.03.14
 ### Fixed
 * Changed the translation category `toLowerCase()` for compliance with Craft `3.0.0-beta-7`
