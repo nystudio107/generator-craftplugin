@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.24 - 2017.03.14
+### Fixed
+* Changed the translation category `toLowerCase()` for compliance with Craft `3.0.0-beta-7`
+
 ## 1.2.23 - 2017.03.13
 ### Fixed
 * Added a `$` in front of the `@property` variables

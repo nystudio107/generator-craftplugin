@@ -71,7 +71,7 @@ class <%= widgetName[index] %> extends Widget
 <% } -%>
     public static function displayName(): string
     {
-        return Craft::t('<%= pluginCamelHandle %>', '<%= widgetName[index] %>');
+        return Craft::t('<%= pluginDirName %>', '<%= widgetName[index] %>');
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>

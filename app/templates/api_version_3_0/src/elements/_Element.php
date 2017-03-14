@@ -103,7 +103,7 @@ class <%= elementName[index] %> extends Element
 <% } -%>
     public static function displayName(): string
     {
-        return Craft::t('<%= pluginCamelHandle %>', '<%= elementName[index] %>');
+        return Craft::t('<%= pluginDirName %>', '<%= elementName[index] %>');
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>

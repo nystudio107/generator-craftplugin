@@ -38,7 +38,7 @@ class <%= pluginHandle %><%= purchasableName[index] %>ElementType extends BaseEl
      */
     public function getName()
     {
-        return Craft::t('<%= pluginHandle %><%= purchasableName[index] %>');
+        return Craft::t('<%= pluginDirName %><%= purchasableName[index] %>');
     }
 
     /**
