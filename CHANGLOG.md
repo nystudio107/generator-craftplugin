@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.26 - 2017.03.14
+### Changed
+* Fixed EJS syntax errors in the `Install.php` migration
+
 ## 1.2.25 - 2017.03.14
 ### Changed
 * Added `dateCreated`, `dateUpdated`, and `uid` to the `Install.php` migration
