@@ -239,13 +239,7 @@ class <%= widgetName[index] %> extends Widget
     public function getSettingsHtml()
     {
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginCamelHandle %>'
-            . DIRECTORY_SEPARATOR
-            . '_components'
-            . DIRECTORY_SEPARATOR
-            . 'widgets'
-            . DIRECTORY_SEPARATOR
-            . '<%= widgetName[index] %>_settings',
+            '<%= pluginCamelHandle %>/_components/widgets/<%= widgetName[index] %>_settings',
             [
                 'widget' => $this
             ]
@@ -270,13 +264,7 @@ class <%= widgetName[index] %> extends Widget
         Craft::$app->getView()->registerAssetBundle(<%= widgetName[index] %>WidgetAsset::class);
 
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginCamelHandle %>'
-            . DIRECTORY_SEPARATOR
-            . '_components'
-            . DIRECTORY_SEPARATOR
-            . 'widgets'
-            . DIRECTORY_SEPARATOR
-            . '<%= widgetName[index] %>_body',
+            '<%= pluginDirName %>/_components/widgets/<%= widgetName[index] %>_body',
             [
                 'message' => $this->message
             ]

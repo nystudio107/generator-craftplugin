@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.27 - 2017.03.14
+### Changed
+* Removed pointless `DIRECTORY_SEPARATOR` in `renderTemplate()` calls
+
 ## 1.2.26 - 2017.03.14
 ### Changed
 * Fixed EJS syntax errors in the `Install.php` migration

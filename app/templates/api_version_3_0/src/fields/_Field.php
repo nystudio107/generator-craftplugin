@@ -279,13 +279,7 @@ class <%= fieldName[index] %> extends Field
     {
         // Render the settings template
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginDirName %>'
-            . DIRECTORY_SEPARATOR
-            . '_components'
-            . DIRECTORY_SEPARATOR
-            . 'fields'
-            . DIRECTORY_SEPARATOR
-            . '<%= fieldName[index] %>_settings',
+            '<%= pluginDirName %>/_components/fields/<%= fieldName[index] %>_settings',
             [
                 'field' => $this,
             ]
@@ -416,13 +410,7 @@ class <%= fieldName[index] %> extends Field
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginDirName %>'
-            . DIRECTORY_SEPARATOR
-            . '_components'
-            . DIRECTORY_SEPARATOR
-            . 'fields'
-            . DIRECTORY_SEPARATOR
-            . '<%= fieldName[index] %>_input',
+            '<%= pluginDirName %>/_components/fields/<%= fieldName[index] %>_input',
             [
                 'name' => $this->handle,
                 'value' => $value,

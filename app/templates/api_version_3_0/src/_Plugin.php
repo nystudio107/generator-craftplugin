@@ -404,9 +404,7 @@ class <%= pluginHandle %> extends Plugin
     protected function settingsHtml(): string
     {
         return Craft::$app->view->renderTemplate(
-            '<%= pluginDirName %>'
-            . DIRECTORY_SEPARATOR
-            . 'settings',
+            '<%= pluginDirName %>/settings',
             [
                 'settings' => $this->getSettings()
             ]
