@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.28 - 2017.03.16
+### Changed
+* Changed the `XXXX plugin loaded` log message so that we're no longer concatenating a translated string with a non-translated string
+
 ## 1.2.27 - 2017.03.14
 ### Changed
 * Removed pointless `DIRECTORY_SEPARATOR` in `renderTemplate()` calls

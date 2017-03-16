@@ -29,5 +29,5 @@
  */
 <% } -%>
 return [
-    'plugin loaded' => 'plugin loaded',
+    '<%- pluginName %> plugin loaded' => '<%- pluginName %> plugin loaded',
 ];
