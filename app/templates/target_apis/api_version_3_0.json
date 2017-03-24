@@ -289,6 +289,7 @@
             "src": "src/_config.php",
             "destDir": "",
             "dest": "src/config.php",
+            "requires": ["settings"],
             "prefix": false
         },
         {

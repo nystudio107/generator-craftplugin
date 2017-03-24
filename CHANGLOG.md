@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.2.30 - 2017.03.24
+### Changed
+* Changed the `install` migration to use `$this->driver = Craft::$app->getConfig()->getDb()->driver;`
+* Brought the `config.php` file in line with the changes in Craft 3 beta 8
+
 ## 1.2.29 - 2017.03.24
 ### Changed
 * The `install` migration is now coded more defensively, to add & drop tables only if they don't exist already

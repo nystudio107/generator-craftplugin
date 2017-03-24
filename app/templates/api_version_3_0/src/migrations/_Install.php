@@ -70,7 +70,7 @@ class Install extends Migration
 <% } -%>
     public function safeUp()
     {
-        $this->driver = Craft::$app->getConfig()->get('driver', Config::CATEGORY_DB);
+        $this->driver = Craft::$app->getConfig()->getDb()->driver;
         if ($this->createTables()) {
             $this->createIndexes();
             $this->addForeignKeys();
@@ -98,7 +98,7 @@ class Install extends Migration
 <% } -%>
     public function safeDown()
     {
-        $this->driver = Craft::$app->getConfig()->get('driver', Config::CATEGORY_DB);
+        $this->driver = Craft::$app->getConfig()->getDb()->driver;
         $this->removeTables();
         return true;
     }
