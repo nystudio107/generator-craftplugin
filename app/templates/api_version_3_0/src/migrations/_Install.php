@@ -71,10 +71,11 @@ class Install extends Migration
     public function safeUp()
     {
         $this->driver = Craft::$app->getConfig()->get('driver', Config::CATEGORY_DB);
-        $this->createTables();
-        $this->createIndexes();
-        $this->addForeignKeys();
-        $this->insertDefaultData();
+        if ($this->createTables()) {
+            $this->createIndexes();
+            $this->addForeignKeys();
+            $this->insertDefaultData();
+        }
 
         return true;
     }
@@ -98,7 +99,6 @@ class Install extends Migration
     public function safeDown()
     {
         $this->driver = Craft::$app->getConfig()->get('driver', Config::CATEGORY_DB);
-        $this->removeIndexes();
         $this->removeTables();
         return true;
     }
@@ -119,6 +119,8 @@ class Install extends Migration
 <% } -%>
     protected function createTables()
     {
+        $tablesCreated = false;
+
 <% var records = recordName -%>
 <% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
 <% records.forEach(function(record, index, array){ -%>
@@ -126,26 +128,32 @@ class Install extends Migration
     // <%= pluginDirName %>_<%= record.toLowerCase() %> table
 <% } else { -%>
 <% } -%>
-        $this->createTable(
-            '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}',
-            [
-                'id' => $this->primaryKey(),
-                'dateCreated' => $this->dateTime()->notNull(),
-                'dateUpdated' => $this->dateTime()->notNull(),
-                'uid' => $this->uid(),
+        $tableSchema = Craft::$app->db->schema->getTableSchema('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}');
+        if ($tableSchema === null) {
+            $tablesCreated = true;
+            $this->createTable(
+                '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}',
+                [
+                    'id' => $this->primaryKey(),
+                    'dateCreated' => $this->dateTime()->notNull(),
+                    'dateUpdated' => $this->dateTime()->notNull(),
+                    'uid' => $this->uid(),
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
                 // Custom columns in the table
 <% } else { -%>
 <% } -%>
-                'siteId' => $this->integer()->notNull(),
-                'some_field' => $this->string(255)->notNull()->defaultValue(''),
-            ]
-        );
+                    'siteId' => $this->integer()->notNull(),
+                    'some_field' => $this->string(255)->notNull()->defaultValue(''),
+                ]
+            );
+        }
 <% if (index !== array.length - 1) { -%>
 
 <% }; -%>
 <% }); -%>
 <% } -%>
+
+        return $tablesCreated;
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
@@ -263,35 +271,7 @@ class Install extends Migration
     // <%= pluginDirName %>_<%= record.toLowerCase() %> table
 <% } else { -%>
 <% } -%>
-        $this->dropTable('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}');
-<% if (index !== array.length - 1) { -%>
-
-<% }; -%>
-<% }); -%>
-<% } -%>
-    }
-
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    /**
-     * Removes the indexes needed for the Records used by the plugin
-     *
-     * @return void
-     */
-<% } else { -%>
-    /**
-     * @return void
-     */
-<% } -%>
-    protected function removeIndexes()
-    {
-<% var records = recordName -%>
-<% if ((typeof(records[0]) !== 'undefined') && (records[0] !== "")) { -%>
-<% records.forEach(function(record, index, array){ -%>
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    // <%= pluginDirName %>_<%= record.toLowerCase() %> table
-<% } else { -%>
-<% } -%>
-        $this->dropIndex($this->db->getIndexName('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', 'some_field', true), '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}');
+        $this->dropTableIfExists('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}');
 <% if (index !== array.length - 1) { -%>
 
 <% }; -%>

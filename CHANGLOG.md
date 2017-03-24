@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.2.29 - 2017.03.24
+### Changed
+* The `install` migration is now coded more defensively, to add & drop tables only if they don't exist already
+* Changed `hasSettings` -> `hasCpSettings` in the `composer.json`
+
 ## 1.2.28 - 2017.03.16
 ### Changed
 * Changed the `XXXX plugin loaded` log message so that we're no longer concatenating a translated string with a non-translated string

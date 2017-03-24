@@ -34,9 +34,9 @@
         "handle": "<%= pluginCamelHandle %>",
         "schemaVersion": "<%= pluginVersion %>",
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
-        "hasSettings": true,
+        "hasCpSettings": true,
 <% } else { -%>
-        "hasSettings": false,
+        "hasCpSettings": false,
 <% } -%>
 <% if (pluginComponents.indexOf('cpsection') >= 0){ -%>
         "hasCpSection": true,
