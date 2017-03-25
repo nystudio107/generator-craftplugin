@@ -110,11 +110,11 @@ class Install extends Migration
     /**
      * Creates the tables needed for the Records used by the plugin
      *
-     * @return void
+     * @return bool
      */
 <% } else { -%>
     /**
-     * @return void
+     * @return bool
      */
 <% } -%>
     protected function createTables()

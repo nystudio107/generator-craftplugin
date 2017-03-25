@@ -345,7 +345,14 @@ class <%= pluginHandle %> extends Plugin
  */
 <% } else { -%>
 <% } -%>
-        Craft::info(Craft::t('<%= pluginDirName %>', '{name} plugin loaded', ['name' => $this->name]), __METHOD__);
+        Craft::info(
+            Craft::t(
+                '<%= pluginDirName %>',
+                '{name} plugin loaded',
+                ['name' => $this->name]
+            ),
+            __METHOD__
+        );
     }
 
 <% if (pluginComponents.indexOf('variables') >= 0){ -%>

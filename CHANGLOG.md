@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.2.31 - 2017.03.25
+### Changed
+* Fixed the docblock for the `install` migration
+* Better log statement formatting
+
 ## 1.2.30 - 2017.03.24
 ### Changed
 * Changed the `install` migration to use `$this->driver = Craft::$app->getConfig()->getDb()->driver;`
