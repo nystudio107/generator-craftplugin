@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.32 - 2017.03.27
+### Added
+* Added an example of accessing a plugin's settings from a service
+
 ## 1.2.31 - 2017.03.25
 ### Changed
 * Fixed the docblock for the `install` migration

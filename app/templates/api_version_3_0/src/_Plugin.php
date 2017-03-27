@@ -379,7 +379,6 @@ class <%= pluginHandle %> extends Plugin
     // =========================================================================
 
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
-
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
      * Creates and returns the model used to store the plugin’s settings.
