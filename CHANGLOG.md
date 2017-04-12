@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.34 - 2017.04.12
+### Added
+* Updated `composer.json` to add more common editor settings, `/vendor`, etc.
+
 ## 1.2.33 - 2017.04.11
 ### Added
 * Added `asset-packagist` to `composer.json` for Scrutinizer & manual plugin install
