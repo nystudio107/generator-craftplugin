@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.33 - 2017.04.11
+### Added
+* Added `asset-packagist` to `composer.json` for Scrutinizer & manual plugin install
+
 ## 1.2.32 - 2017.03.27
 ### Added
 * Added an example of accessing a plugin's settings from a service
