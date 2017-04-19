@@ -13,9 +13,8 @@ namespace <%= pluginVendorName %>\<%= pluginDirName %>\migrations;
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
 use Craft;
-use craft\db\Connection;
+use craft\config\DbConfig;
 use craft\db\Migration;
-use craft\services\Config;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
@@ -188,9 +187,9 @@ class Install extends Migration
         );
         // Additional commands depending on the db driver
         switch ($this->driver) {
-            case Connection::DRIVER_MYSQL:
+            case DbConfig::DRIVER_MYSQL:
                 break;
-            case Connection::DRIVER_PGSQL:
+            case DbConfig::DRIVER_PGSQL:
                 break;
         }
 <% if (index !== array.length - 1) { -%>

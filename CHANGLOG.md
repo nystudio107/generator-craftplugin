@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.35 - 2017.04.19
+### Changed
+* Fixed the `Install.php` migration to sync with Craft beta changes of `Connection` -> `DbConfig`
+
 ## 1.2.34 - 2017.04.12
 ### Added
 * Updated `composer.json` to add more common editor settings, `/vendor`, etc.
