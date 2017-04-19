@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.36 - 2017.04.19
+### Changed
+* Renamed `someField` -> `someAttribute` to fix Twig errors on the plugin Settings page
+
 ## 1.2.35 - 2017.04.19
 ### Changed
 * Fixed the `Install.php` migration to sync with Craft beta changes of `Connection` -> `DbConfig`

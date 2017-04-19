@@ -61,11 +61,11 @@ class <%= serviceName[index] %> extends Component
     {
         $result = 'something';
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
-        // Check our Plugin's settings for `someField`
+        // Check our Plugin's settings for `someAttribute`
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 <% } else { -%>
 <% } -%>
-        if (<%= pluginHandle %>::$plugin->getSettings()->someField) {
+        if (<%= pluginHandle %>::$plugin->getSettings()->someAttribute) {
         }
 <% } -%>
 

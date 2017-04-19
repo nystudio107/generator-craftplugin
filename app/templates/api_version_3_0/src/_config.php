@@ -25,6 +25,6 @@
 return [
 
     // This controls blah blah blah
-    "someField" => true,
+    "someAttribute" => true,
 
 ];
