@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.2.37 - 2017.04.27
+### Changed
+* Refresh the Yii schema caches after adding tables in the `Install.php` migration
+
 ## 1.2.36 - 2017.04.19
 ### Changed
 * Renamed `someField` -> `someAttribute` to fix Twig errors on the plugin Settings page
