@@ -12,6 +12,8 @@
     *** Begin configuration section ***
 -------------------------------------------------------------------------------- */
 
+const PLUGIN_CONF_FILE_NAME = ".craftplugin";
+
 const API_QUESTIONS = [
         {
             type: "list",
@@ -52,6 +54,23 @@ module.exports = yo.generators.Base.extend({
 
         this.answers = {};
         this.askApiVersion = true;
+        this.generateFullPlugin = true;
+        if (fs.existsSync(PLUGIN_CONF_FILE_NAME)) {
+            var data = fs.readFileSync(PLUGIN_CONF_FILE_NAME);
+            var obj = JSON.parse(data);
+            for (var property in obj) {
+                if (obj.hasOwnProperty(property)) {
+                    if (!this.options.hasOwnProperty(property)) {
+                        this.generateFullPlugin = false;
+                        if (Array.isArray(obj[property])) {
+                            this.options[property] = obj[property].join();
+                        } else {
+                            this.options[property] = obj[property];
+                        }
+                    }
+                }
+            }
+        }
 
 /* -- Load in our API JSON configs */
 
@@ -75,6 +94,7 @@ module.exports = yo.generators.Base.extend({
         if (this.askApiVersion) {
             this._optionOrPrompt(API_QUESTIONS, function(answers) {
                 this.api = apis[answers.apiVersion];
+                this.apiVersion = answers.apiVersion;
 /* -- Change the templates root based on the API version */
                 this.sourceRoot(this.sourceRoot() + "/" + this.api.API_KEY);
                 done();
@@ -108,6 +128,8 @@ module.exports = yo.generators.Base.extend({
             var now = new Date();
 
             this.answers = answers;
+            this.answers.apiVersion = this.apiVersion;
+            this.rawAnswers = JSON.stringify(answers);
 
             if (this.api.API_KEY == "api_version_3_0") {
                 // Make sure this isn't a reserved word
@@ -229,12 +251,19 @@ module.exports = yo.generators.Base.extend({
 
 /* -- Create the destination folder */
 
-        var dir = this.answers.pluginDirName;
-        this.log('+ Creating Craft plugin folder ' + chalk.green(dir));
-        if (!fs.existsSync(dir)){
-            fs.mkdirSync(dir);
-            }
-        this.destDir = dir + '/';
+        this.destDir = './';
+        if (this.generateFullPlugin) {
+            var dir = this.answers.pluginDirName;
+            this.log('+ Creating Craft plugin folder ' + chalk.green(dir));
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+                }
+            this.destDir = dir + '/';
+        }
+
+/* -- Write the answers out to a JSON file */
+
+        fs.writeFile(this.destDir + PLUGIN_CONF_FILE_NAME, this.rawAnswers, "utf8");
         },
 
 /* -- writing -- Where you write the generator specific files (routes, controllers, etc) */
