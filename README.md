@@ -360,4 +360,60 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
     yo craftplugin --pluginComponents="controllers,consolecommands,elementtypes,fieldtypes,models,records,services,settings,tasks,twigextensions,utilities,variables,widgets" --apiVersion="api_version_3_0" --pluginName="Some Plugin" --pluginDescription="Some Description" --pluginVersion="1.0.0" --pluginVendorName="Some Vendor" --pluginAuthorName="Some Author" --pluginAuthorUrl="https://SomeDomain.com" --pluginAuthorGithub="SomeGithub" --codeComments="yes" --consolecommandName="Een,Twee,Drie" --controllerName="One,Two,Three" --elementName="Neung,Song,Sam" --fieldName="Ichi,Ni,San" --modelName="Uno,Dos,Tres" --purchasableName="" --recordName="Satu,Dua,Tiga" --serviceName="Yi,Er,San" --utilityName="Eins,Zwei,Drei" --taskName="Hana,Dul,Set" --widgetName="Un,Deux,Trois"
 
+## Adding to an existing plugin
+
+As of version 1.3.0, the `generator-craftplugin` creates a `.craftplugin` project file in your plugin's root folder that contains all of the information needed to create the plugin scaffolding. If you have Yeoman and the `generator-craftplugin` installed locally, you can then `cd` to the directory and add components as you see fit.
+
+[![Adding to an existing plugin video](https://img.youtube.com/vi/kipJkCnaAOM/0.jpg)](https://youtu.be/kipJkCnaAOM)
+
+So to add a controller to a project that already has `controllers` we can just do:
+
+    yo craftplugin --controllerName="woofer"
+
+If we're adding a new component type that doesn't exist in the plugin yet, we can just do:
+
+    yo craftplugin --consolecommandName="woofer" --pluginComponents="consolecommands"
+
+Here's a list of the `pluginComponents`; if you want to add more than one, just use a comma separated list, e.g.: `--pluginComponents="controllers,consolecommands"`:
+
+    controllers
+    consolecommands
+    elementtypes
+    fieldtypes
+    models
+    records
+    services
+    settings
+    tasks
+    twigextensions
+    utilities
+    variables
+    widgets
+
+Here's a list of the parameters you can pass in to name the various components; if you want to add more than one, just use a comma separated list, e.g.: `--controllerName="One,Two,Three"`:
+
+    --consolecommandName=""
+    --controllerName=""
+    --elementName=""
+    --fieldName=""
+    --modelName=""
+    --purchasableName=""
+    --recordName=""
+    --serviceName=""
+    --utilityName=""
+    --taskName=""
+    --widgetName=""
+
+Here's a list of meta parameters that you can also pass in, to override what is in the `.craftplugin` file:
+
+    --apiVersion=""
+    --pluginName=""
+    --pluginDescription=""
+    --pluginVersion=""
+    --pluginVendorName=""
+    --pluginAuthorName=""
+    --pluginAuthorUrl=""
+    --pluginAuthorGithub=""
+    --codeComments=""
+
 Brought to you by [nystudio107](http://nystudio107.com)

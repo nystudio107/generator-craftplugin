@@ -1,5 +1,12 @@
 # generator-craftplugin Changelog
 
+## 1.3.0 - 2017.05.18
+### Added
+* Added a `.craftplugin` file that defines the settings of the plugin
+* Added the ability to add components on ad-hoc via `yo craftplugin --controllerName="Something"`
+* Added a video to the documentation showing how all of this works
+* Added more documentation on using `yo craftplugin`
+
 ## 1.2.37 - 2017.04.27
 ### Changed
 * Refresh the Yii schema caches after adding tables in the `Install.php` migration

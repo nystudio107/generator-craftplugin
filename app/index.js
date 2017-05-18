@@ -56,18 +56,18 @@ module.exports = yo.generators.Base.extend({
         this.askApiVersion = true;
         this.generateFullPlugin = true;
         if (fs.existsSync(PLUGIN_CONF_FILE_NAME)) {
+            this.generateFullPlugin = false;
             var data = fs.readFileSync(PLUGIN_CONF_FILE_NAME);
             var obj = JSON.parse(data);
             for (var property in obj) {
                 if (obj.hasOwnProperty(property)) {
-                    if (!this.options.hasOwnProperty(property)) {
-                        this.generateFullPlugin = false;
-                        if (Array.isArray(obj[property])) {
-                            this.options[property] = obj[property].join();
-                        } else {
-                            this.options[property] = obj[property];
-                        }
+                    var attributeValue = "";
+                    if (Array.isArray(obj[property])) {
+                        attributeValue = obj[property].join();
+                    } else {
+                        attributeValue = obj[property];
                     }
+                    this.options[property] = [this.options[property], attributeValue].filter(function (val) {return val;}).join(',');
                 }
             }
         }
