@@ -364,6 +364,8 @@ The `craftplugin` generator can also be passed arguments via the command line, b
 
 As of version 1.3.0, the `generator-craftplugin` creates a `.craftplugin` project file in your plugin's root folder that contains all of the information needed to create the plugin scaffolding. If you have Yeoman and the `generator-craftplugin` installed locally, you can then `cd` to the directory and add components as you see fit.
 
+Here's a video showing how that works:
+
 [![Adding to an existing plugin video](https://img.youtube.com/vi/kipJkCnaAOM/0.jpg)](https://youtu.be/kipJkCnaAOM)
 
 So to add a controller to a project that already has `controllers` we can just do:
