@@ -366,7 +366,7 @@ As of version 1.3.0, the `generator-craftplugin` creates a `.craftplugin` projec
 
 Here's a video showing how that works:
 
-[![Adding to an existing plugin video](https://img.youtube.com/vi/kipJkCnaAOM/0.jpg)](https://youtu.be/kipJkCnaAOM)
+[![Adding to an existing plugin video](https://img.youtube.com/vi/K-PwDHS76So/0.jpg)](https://youtu.be/K-PwDHS76So)
 
 So to add a controller to a project that already has `controllers` we can just do:
 
