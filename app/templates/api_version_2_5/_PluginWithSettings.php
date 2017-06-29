@@ -236,7 +236,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
      * do it with the prepSettings() method:
      *
 <% } -%>
-     * @param mixed $settings  The Widget's settings
+     * @param mixed $settings  The plugin's settings
      *
      * @return mixed
      */
