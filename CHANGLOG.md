@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.3.1 - 2017.06.29
+### Changed
+* Changed the date format to YYYY-MM-DD for `CHANGLOG.md`
+
 ## 1.3.0 - 2017.05.18
 ### Added
 * Added a `.craftplugin` file that defines the settings of the plugin

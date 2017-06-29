@@ -485,7 +485,7 @@ Date.prototype.yyyymmdd = function() {
    var dd  = this.getDate().toString();
 
    //Returns your formatted result
-  return yyyy + '.' + (MM[1]?MM:"0"+MM[0]) + '.' + (dd[1]?dd:"0"+dd[0]);
+  return yyyy + '-' + (MM[1]?MM:"0"+MM[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
 };
 
 // Return a string stripped of non-alpha characters, and replace spaces with _'s
