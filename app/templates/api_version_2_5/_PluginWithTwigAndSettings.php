@@ -249,7 +249,7 @@ class <%= pluginHandle %>Plugin extends BasePlugin
      * If you need to do any processing on your settings’ post data before they’re saved to the database, you can
      * do it with the prepSettings() method:
      *
-     * @param mixed $settings  The Widget's settings
+     * @param mixed $settings  The plugin's settings
      *
 <% } -%>
      * @return mixed
