@@ -86,6 +86,10 @@ use craft\services\Fields;
 <% includeRegisterComponentTypesEvent = true -%>
 use craft\services\Utilities;
 <% } -%>
+<% if (pluginComponents.indexOf('variables') >= 0){ -%>
+use craft\events\DefineComponentsEvent;
+use craft\web\twig\variables\CraftVariable;
+<% } -%>
 <% if (pluginComponents.indexOf('widgets') >= 0){ -%>
 <% includeRegisterComponentTypesEvent = true -%>
 use craft\services\Dashboard;
@@ -212,7 +216,7 @@ class <%= pluginHandle %> extends Plugin
 <% var controllers = controllerName -%>
 <% if ((typeof(controllers[0]) !== 'undefined') && (controllers[0] !== "")) { -%>
 <% controllers.forEach(function(controller, index, array){ -%>
-                $event->rules['siteActionTrigger<%= index + 1 %>'] = '<%= pluginCamelHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}) %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>';
+                $event->rules['siteActionTrigger<%= index + 1 %>'] = '<%= pluginKebabHandle %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>';
 <% }); -%>
 <% } -%>
             }
@@ -228,7 +232,7 @@ class <%= pluginHandle %> extends Plugin
 <% var controllers = controllerName -%>
 <% if ((typeof(controllers[0]) !== 'undefined') && (controllers[0] !== "")) { -%>
 <% controllers.forEach(function(controller, index, array){ -%>
-                $event->rules['cpActionTrigger<%= index + 1 %>'] = '<%= pluginCamelHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}) %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
+                $event->rules['cpActionTrigger<%= index + 1 %>'] = '<%= pluginKebabHandle %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
 <% }); -%>
 <% } -%>
             }
@@ -306,6 +310,19 @@ class <%= pluginHandle %> extends Plugin
             }
         );
 <% } -%>
+<% if (pluginComponents.indexOf('variables') >= 0){ -%>
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
+        // Register our variables
+<% } -%>
+        Event::on(
+            CraftVariable::class,
+            CraftVariable::EVENT_DEFINE_COMPONENTS,
+            function (DefineComponentsEvent $event) {
+                $event->components[] = <%= pluginHandle %>Variable::class;
+            }
+        );
+<% } -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // Do something after we're installed
@@ -347,7 +364,7 @@ class <%= pluginHandle %> extends Plugin
 <% } -%>
         Craft::info(
             Craft::t(
-                '<%= pluginDirName %>',
+                '<%= pluginKebabHandle %>',
                 '{name} plugin loaded',
                 ['name' => $this->name]
             ),
@@ -355,26 +372,6 @@ class <%= pluginHandle %> extends Plugin
         );
     }
 
-<% if (pluginComponents.indexOf('variables') >= 0){ -%>
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-    /**
-     * Returns the component definition that should be registered on the
-     * [[\craft\web\twig\variables\CraftVariable]] instance for this plugin’s handle.
-     *
-     * @return mixed|null The component definition to be registered.
-     * It can be any of the formats supported by [[\yii\di\ServiceLocator::set()]].
-     */
-<% } else { -%>
-    /**
-     * @inheritdoc
-     */
-<% } -%>
-    public function defineTemplateComponent()
-    {
-        return <%= pluginHandle %>Variable::class;
-    }
-
-<% } -%>
     // Protected Methods
     // =========================================================================
 

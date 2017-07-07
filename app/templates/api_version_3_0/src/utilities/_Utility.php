@@ -55,7 +55,7 @@ class <%= utilityName[index] %> extends Utility
 <% } -%>
     public static function displayName(): string
     {
-        return Craft::t('<%= pluginDirName %>', '<%= utilityName[index] %>');
+        return Craft::t('<%= pluginKebabHandle %>', '<%= utilityName[index] %>');
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>

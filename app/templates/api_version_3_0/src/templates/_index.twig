@@ -40,13 +40,13 @@
 
 {% set extraPageHeaderHtml %}
     <div class="buttons">
-        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t }}</a>
+        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t('<%= pluginKebabHandle %>') }}</a>
     </div>
 {% endset %}
 
 {% set content %}
 
-        <h2>{{ "Dynamic Entry Redirects" |t }}</h2>
+        <h2>{{ "Dynamic Entry Redirects"|t('<%= pluginKebabHandle %>') }}</h2>
 
         <p class="textline"></p>
 

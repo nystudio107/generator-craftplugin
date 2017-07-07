@@ -142,6 +142,7 @@ module.exports = yo.generators.Base.extend({
             this.answers.pluginDirName = this.answers.pluginName.directorize();
             this.answers.pluginCamelHandle = this.answers.pluginName.camelize();
             this.answers.pluginHandle = this.answers.pluginCamelHandle.capitalizeFirstLetter();
+            this.answers.pluginKebabHandle = this.answers.pluginHandle.kebabize();
 
 /* -- Auto-fill some variables we'll be using in our templates */
 

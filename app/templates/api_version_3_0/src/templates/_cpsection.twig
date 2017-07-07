@@ -23,7 +23,7 @@
 <% } -%>
 
 <% if (templateType === "redirect") { -%>
-{% redirect url('<%= pluginCamelHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}) %>/<%= cpsections[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>') %}
+{% redirect url('<%= pluginKebabHandle %>/<%= cpsections[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>') %}
 <% } -%>
 <% if (templateType === "normal") { -%>
 {% extends "_layouts/cp" %}
@@ -45,7 +45,7 @@
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# The URL to this plugin's base CP section #}
 <% } -%>
-{% set pluginCpUrl = url('<%= pluginCamelHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}) %>') %}
+{% set pluginCpUrl = url('<%= pluginKebabHandle %>') %}
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# Get a URL to an image in our AssetBundle #}
@@ -57,7 +57,7 @@
 <% } -%>
 {% set extraPageHeaderHtml %}
     <div class="buttons">
-        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t }}</a>
+        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t('<%= pluginKebabHandle %>') }}</a>
     </div>
 {% endset %}
 
@@ -65,7 +65,7 @@
 {# The content of the CP Section#}
 <% } -%>
 {% set content %}
-    <h2>{{ "<%= cpsectionName[index] %> CP Section body goes here" |t }}</h2>
+    <h2>{{ "<%= cpsectionName[index] %> CP Section body goes here"|t('<%= pluginKebabHandle %>') }}</h2>
     <img src="{{ iconUrl }}" height="64" width="64" />
     <p class="textline"></p>
 {% endset %}
@@ -90,7 +90,7 @@
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# The URL to this plugin's base CP section #}
 <% } -%>
-{% set pluginCpUrl = url('<%= pluginCamelHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}) %>') %}
+{% set pluginCpUrl = url('<%= pluginKebabHandle %>') %}
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# Get a URL to an image in our AssetBundle #}
@@ -104,7 +104,7 @@
 <% cpsections.forEach(function(cpsection, index, array){ -%>
 <% var cpsectionKebab = cpsection.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) -%>
 <% if (cpsectionKebab !== 'index') { -%>
-    "<%= cpsectionKebab %>": { label: "<%= cpsection %>"|t, url: url(pluginCpUrl ~ '/<%= cpsectionKebab %>') },
+    "<%= cpsectionKebab %>": { label: "<%= cpsection %>"|t('<%= pluginKebabHandle %>'), url: url(pluginCpUrl ~ '/<%= cpsectionKebab %>') },
 <% } -%>
 <% }) %>
 } %}
@@ -113,7 +113,7 @@
 <% var cpsectionKebab = cpsectionName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) -%>
 {% set crumbs = [
     { label: "<%- pluginName %>", url: url(pluginCpUrl) },
-    { label: "<%= cpsectionName[index] %>"|t, url: url(pluginCpUrl ~ '/<%= cpsectionKebab %>') },
+    { label: "<%= cpsectionName[index] %>"|t('<%= pluginKebabHandle %>'), url: url(pluginCpUrl ~ '/<%= cpsectionKebab %>') },
 ] %}
 <% } -%>
 <% } -%>
@@ -123,7 +123,7 @@
 <% } -%>
 {% set extraPageHeaderHtml %}
     <div class="buttons">
-        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t }}</a>
+        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t('<%= pluginKebabHandle %>') }}</a>
     </div>
 {% endset %}
 
@@ -131,7 +131,7 @@
 {# The content of the CP Section#}
 <% } -%>
 {% set content %}
-    <h2>{{ "<%= cpsectionName[index] %> CP Section body goes here" |t }}</h2>
+    <h2>{{ "<%= cpsectionName[index] %> CP Section body goes here"|t('<%= pluginKebabHandle %>') }}</h2>
     <img src="{{ iconUrl }}" height="64" width="64" />
     <p class="textline"></p>
 {% endset %}
