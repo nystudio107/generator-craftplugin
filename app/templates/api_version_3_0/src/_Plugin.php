@@ -319,7 +319,7 @@ class <%= pluginHandle %> extends Plugin
             CraftVariable::class,
             CraftVariable::EVENT_DEFINE_COMPONENTS,
             function (DefineComponentsEvent $event) {
-                $event->components[] = <%= pluginHandle %>Variable::class;
+                $event->components['<%= pluginCamelHandle %>'] = <%= pluginHandle %>Variable::class;
             }
         );
 <% } -%>
