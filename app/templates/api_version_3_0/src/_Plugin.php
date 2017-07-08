@@ -210,7 +210,7 @@ class <%= pluginHandle %> extends Plugin
         // Register our site routes
 <% } -%>
         Event::on(
-            UrlManager::className(),
+            UrlManager::class,
             UrlManager::EVENT_REGISTER_SITE_URL_RULES,
             function (RegisterUrlRulesEvent $event) {
 <% var controllers = controllerName -%>
@@ -226,7 +226,7 @@ class <%= pluginHandle %> extends Plugin
         // Register our CP routes
 <% } -%>
         Event::on(
-            UrlManager::className(),
+            UrlManager::class,
             UrlManager::EVENT_REGISTER_CP_URL_RULES,
             function (RegisterUrlRulesEvent $event) {
 <% var controllers = controllerName -%>
@@ -244,7 +244,7 @@ class <%= pluginHandle %> extends Plugin
         // Register our elements
 <% } -%>
         Event::on(
-            Elements::className(),
+            Elements::class,
             Elements::EVENT_REGISTER_ELEMENT_TYPES,
             function (RegisterComponentTypesEvent $event) {
 <% var elements = elementName -%>
@@ -262,7 +262,7 @@ class <%= pluginHandle %> extends Plugin
         // Register our fields
 <% } -%>
         Event::on(
-            Fields::className(),
+            Fields::class,
             Fields::EVENT_REGISTER_FIELD_TYPES,
             function (RegisterComponentTypesEvent $event) {
 <% var fields = fieldName -%>
@@ -280,7 +280,7 @@ class <%= pluginHandle %> extends Plugin
         // Register our utilities
 <% } -%>
         Event::on(
-            Utilities::className(),
+            Utilities::class,
             Utilities::EVENT_REGISTER_UTILITY_TYPES,
             function (RegisterComponentTypesEvent $event) {
 <% var utilities = utilityName -%>
@@ -298,7 +298,7 @@ class <%= pluginHandle %> extends Plugin
         // Register our widgets
 <% } -%>
         Event::on(
-            Dashboard::className(),
+            Dashboard::class,
             Dashboard::EVENT_REGISTER_WIDGET_TYPES,
             function (RegisterComponentTypesEvent $event) {
 <% var widgets = widgetName -%>
@@ -329,7 +329,7 @@ class <%= pluginHandle %> extends Plugin
 <% } else { -%>
 <% } -%>
         Event::on(
-            Plugins::className(),
+            Plugins::class,
             Plugins::EVENT_AFTER_INSTALL_PLUGIN,
             function (PluginEvent $event) {
                 if ($event->plugin === $this) {
