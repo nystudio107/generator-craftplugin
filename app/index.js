@@ -508,7 +508,12 @@ String.prototype.camelize = function() {
 
 // Return a string in kebab-case
 String.prototype.kebabize = function() {
-    return this.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1);
+    return this
+        .replace(/([^A-Z])([A-Z])/g, function($0, $1, $2){ return $1+'-'+$2 })
+        .replace(/_|\s/g, '-')
+        .replace(/\-{2,}/g, '-')
+        .replace(/^\-|\-$/g, '')
+        .toLowerCase();
 };
 
 // Convert a string to have proceed with a _ and be camel-cased, with the first letter capitalized
