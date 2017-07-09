@@ -1,5 +1,17 @@
 # generator-craftplugin Changelog
 
+## 1.3.2 - 2017.07.09
+### Added
+* Initial Craft beta 20 compatibility
+
+### Changed
+* For beta 20, extra.handle in composer.json should be "foo-bar" instead of "fooBar"
+* src/translations/en/foobar.php now renamed to foo-bar.php
+* Craft::t() calls now pass 'foo-bar' as the first argument instead of 'foobar'
+* the |t filters in the generated template(s) are now |t('foo-bar') (these were incorrectly not passing any category currently, meaning that they will default to the site category)
+* defineTemplateComponent() is now replaced with a listener for the defineComponents event on craft\web\twig\variables\CraftVariable
+* Installation instructions in the readme should only cover Composer installs (Beta 20 dropped support for manual plugin installs)
+
 ## 1.3.1 - 2017.06.29
 ### Changed
 * Changed the date format to YYYY-MM-DD for `CHANGLOG.md`
