@@ -593,7 +593,7 @@
             "src": "src/translations/_en.php",
             "destDir": "src/translations/en/",
             "dest": ".php",
-            "lowercasePrefix": true,
+            "kebabcasePrefix": true,
             "prefix": true
         },
         {

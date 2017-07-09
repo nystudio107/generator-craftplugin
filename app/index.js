@@ -327,8 +327,8 @@ module.exports = yo.generators.Base.extend({
                         if (file.dirSubPrefix) {
                             dirPrefix = this.answers.pluginHandle.directorize() + file.dirSubPrefix;
                         }
-                        if (file.lowercasePrefix)
-                            destFile = this.destDir + file.destDir + dirPrefix + this.answers.pluginDirName + file.dest;
+                        if (file.kebabcasePrefix)
+                            destFile = this.destDir + file.destDir + dirPrefix + this.answers.pluginKebabHandle + file.dest;
                         else
                             destFile = this.destDir + file.destDir + dirPrefix + this.answers.pluginHandle  + file.dest;
                         // Only write it if the file doesn't exist already
