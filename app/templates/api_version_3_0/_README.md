@@ -4,17 +4,23 @@
 
 ![Screenshot](resources/img/plugin-logo.png)
 
+## Requirements
+
+This plugin requires Craft CMS 3.0.0-beta.20 or later.
+
 ## Installation
 
-To install <%- pluginName %>, follow these steps:
+To install the plugin, follow these instructions.
 
-1. Download & unzip the file and place the `<%= pluginDirName %>` directory into your `craft/plugins` directory
-2.  -OR- do a `git clone <%= pluginCloneUrl %>` directly into your `craft/plugins` folder.  You can then update it with `git pull`
-3.  -OR- install with Composer via `composer require <%= pluginAuthorGithub %>/<%= pluginHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>`
-4. Install plugin in the Craft Control Panel under Settings > Plugins
-5. The plugin folder should be named `<%= pluginDirName %>` for Craft to see it.  GitHub recently started appending `-master` (the branch name) to the name of the folder for zip file downloads.
+1. Open your terminal and go to your Craft project:
 
-<%- pluginName %> works on Craft 3.x.
+        cd /path/to/project
+
+2. Then tell Composer to load the plugin:
+
+        composer require <%= pluginAuthorGithub %>/<%= pluginKebabHandle %>
+
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for <%- pluginName %>.
 
 ## <%- pluginName %> Overview
 

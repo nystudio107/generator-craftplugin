@@ -71,7 +71,7 @@ class <%= widgetName[index] %> extends Widget
 <% } -%>
     public static function displayName(): string
     {
-        return Craft::t('<%= pluginDirName %>', '<%= widgetName[index] %>');
+        return Craft::t('<%= pluginKebabHandle %>', '<%= widgetName[index] %>');
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
@@ -239,7 +239,7 @@ class <%= widgetName[index] %> extends Widget
     public function getSettingsHtml()
     {
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginCamelHandle %>/_components/widgets/<%= widgetName[index] %>_settings',
+            '<%= pluginKebabHandle %>/_components/widgets/<%= widgetName[index] %>_settings',
             [
                 'widget' => $this
             ]

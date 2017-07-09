@@ -1,5 +1,5 @@
 {
-    "name": "<%= pluginVendorName %>/<%= pluginHandle.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>",
+    "name": "<%= pluginVendorName %>/<%= pluginKebabHandle %>",
     "description": "<%- pluginDescription %>",
     "type": "craft-plugin",
     "version": "<%= pluginVersion %>",
@@ -37,7 +37,7 @@
     },
     "extra": {
         "name": "<%- pluginName %>",
-        "handle": "<%= pluginCamelHandle %>",
+        "handle": "<%= pluginKebabHandle %>",
         "schemaVersion": "<%= pluginVersion %>",
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
         "hasCpSettings": true,
