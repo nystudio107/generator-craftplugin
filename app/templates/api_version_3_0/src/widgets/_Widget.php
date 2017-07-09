@@ -264,7 +264,7 @@ class <%= widgetName[index] %> extends Widget
         Craft::$app->getView()->registerAssetBundle(<%= widgetName[index] %>WidgetAsset::class);
 
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginDirName %>/_components/widgets/<%= widgetName[index] %>_body',
+            '<%= pluginKebabHandle %>/_components/widgets/<%= widgetName[index] %>_body',
             [
                 'message' => $this->message
             ]

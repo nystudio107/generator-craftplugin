@@ -279,7 +279,7 @@ class <%= fieldName[index] %> extends Field
     {
         // Render the settings template
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginDirName %>/_components/fields/<%= fieldName[index] %>_settings',
+            '<%= pluginKebabHandle %>/_components/fields/<%= fieldName[index] %>_settings',
             [
                 'field' => $this,
             ]
@@ -410,7 +410,7 @@ class <%= fieldName[index] %> extends Field
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginDirName %>/_components/fields/<%= fieldName[index] %>_input',
+            '<%= pluginKebabHandle %>/_components/fields/<%= fieldName[index] %>_input',
             [
                 'name' => $this->handle,
                 'value' => $value,

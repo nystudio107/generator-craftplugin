@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.3.3 - 2017.07.10
+### Added
+* More kebab-case fixes
+
 ## 1.3.2 - 2017.07.09
 ### Added
 * Initial Craft 3 beta 20 compatibility

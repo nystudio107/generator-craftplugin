@@ -411,7 +411,7 @@ class <%= pluginHandle %> extends Plugin
     protected function settingsHtml(): string
     {
         return Craft::$app->view->renderTemplate(
-            '<%= pluginDirName %>/settings',
+            '<%= pluginKebabHandle %>/settings',
             [
                 'settings' => $this->getSettings()
             ]

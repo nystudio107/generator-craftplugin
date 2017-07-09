@@ -59,7 +59,7 @@ class <%= fieldName[index] %>FieldAsset extends AssetBundle
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // define the path that your publishable resources live
 <% } -%>
-        $this->sourcePath = "@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= fieldName[index].toLowerCase() %>field/dist";
+        $this->sourcePath = "@<%= pluginVendorName %>/<%= pluginKebabHandle %>/assetbundles/<%= fieldName[index].toLowerCase() %>field/dist";
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // define the dependencies

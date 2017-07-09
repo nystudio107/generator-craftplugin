@@ -127,7 +127,7 @@ class <%= utilityName[index] %> extends Utility
 
         $someVar = 'Have a nice day!';
         return Craft::$app->getView()->renderTemplate(
-            '<%= pluginDirName %>/_components/utilities/<%= utilityName[index] %>_content',
+            '<%= pluginKebabHandle %>/_components/utilities/<%= utilityName[index] %>_content',
             [
                 'someVar' => $someVar
             ]
