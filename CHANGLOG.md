@@ -2,7 +2,8 @@
 
 ## 1.3.2 - 2017.07.09
 ### Added
-* Initial Craft beta 20 compatibility
+* Initial Craft 3 beta 20 compatibility
+* Switched over to `yarn`
 
 ### Changed
 * For beta 20, extra.handle in composer.json should be "foo-bar" instead of "fooBar"
