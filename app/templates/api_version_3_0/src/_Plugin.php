@@ -126,6 +126,10 @@ use yii\base\Event;
 <% }); -%>
 <% } -%>
 <% } -%>
+<% if (pluginComponents.indexOf('settings') >= 0){ -%>
+ * @property  Settings $settings
+ * @method    Settings getSettings()
+<% } -%>
  */
 <% } else { -%>
 /**
