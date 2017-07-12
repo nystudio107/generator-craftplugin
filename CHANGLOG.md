@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.3.4 - 2017.07.12
+### Added
+* `config.php` files should be kebab-case, too
+
 ## 1.3.3 - 2017.07.10
 ### Added
 * More kebab-case fixes

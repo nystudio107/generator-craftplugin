@@ -14,7 +14,7 @@
  * This file exists only as a template for the <%- pluginName %> settings.
  * It does nothing on its own.
  *
- * Don't edit this file, instead copy it to 'craft/config' as '<%= pluginDirName %>.php'
+ * Don't edit this file, instead copy it to 'craft/config' as '<%= pluginKebabHandle %>.php'
  * and make your changes there to override default settings.
  *
  * Once copied to 'craft/config', this file will be multi-environment aware as
