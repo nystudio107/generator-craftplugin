@@ -73,7 +73,6 @@ use craft\console\Application as ConsoleApplication;
 <% includeRegisterUrlRulesEvent = true -%>
 use craft\web\UrlManager;
 <% } -%>
-<% var includeRegisterComponentTypesEvent = false -%>
 <% if (pluginComponents.indexOf('elementtypes') >= 0){ -%>
 <% includeRegisterComponentTypesEvent = true -%>
 use craft\services\Elements;
