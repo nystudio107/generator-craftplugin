@@ -86,7 +86,6 @@ use craft\services\Fields;
 use craft\services\Utilities;
 <% } -%>
 <% if (pluginComponents.indexOf('variables') >= 0){ -%>
-use craft\events\DefineComponentsEvent;
 use craft\web\twig\variables\CraftVariable;
 <% } -%>
 <% if (pluginComponents.indexOf('widgets') >= 0){ -%>
@@ -320,9 +319,11 @@ class <%= pluginHandle %> extends Plugin
 <% } -%>
         Event::on(
             CraftVariable::class,
-            CraftVariable::EVENT_DEFINE_COMPONENTS,
-            function (DefineComponentsEvent $event) {
-                $event->components['<%= pluginCamelHandle %>'] = <%= pluginHandle %>Variable::class;
+            CraftVariable::EVENT_INIT,
+            function (Event $event) {
+                /** @var CraftVariable $variable */
+                $variable = $event->sender;
+                $variable->set('<%= pluginCamelHandle %>', <%= pluginHandle %>Variable::class);
             }
         );
 <% } -%>
