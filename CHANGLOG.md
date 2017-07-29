@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.3.5 - 2017.07.28
+### Added
+* Craft 3 beta 23 compatibility
+
 ## 1.3.4 - 2017.07.12
 ### Added
 * `config.php` files should be kebab-case, too
