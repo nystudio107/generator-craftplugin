@@ -59,7 +59,7 @@ class <%= widgetName[index] %>WidgetAsset extends AssetBundle
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // define the path that your publishable resources live
 <% } -%>
-        $this->sourcePath = "@<%= pluginVendorName %>/<%= pluginKebabHandle %>/assetbundles/<%= widgetName[index].toLowerCase() %>widget/dist";
+        $this->sourcePath = "@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= widgetName[index].toLowerCase() %>widget/dist";
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // define the dependencies

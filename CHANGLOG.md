@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.3.6 - 2017.09.02
+### Added
+* Fixed the Yii asset bundle aliases, which should be the directory name, not the kebab-handle
+
 ## 1.3.5 - 2017.07.28
 ### Added
 * Craft 3 beta 23 compatibility
