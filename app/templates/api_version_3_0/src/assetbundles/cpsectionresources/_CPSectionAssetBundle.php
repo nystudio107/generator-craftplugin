@@ -59,7 +59,7 @@ class <%= cpsectionName[index] %>CPSectionAsset extends AssetBundle
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // define the path that your publishable resources live
 <% } -%>
-        $this->sourcePath = "@<%= pluginVendorName %>/<%= pluginKebabHandle %>/assetbundles/<%= cpsectionName[index].toLowerCase() %>cpsection/dist";
+        $this->sourcePath = "@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= cpsectionName[index].toLowerCase() %>cpsection/dist";
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // define the dependencies
