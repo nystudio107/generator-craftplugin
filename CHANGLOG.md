@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.3.7 - 2017.09.25
+### Changed
+* Fixed an issue with undefined indexes for the Craft 3.x APIs
+* Fixed the generated CP assets for the Craft 3.x APIs
+
 ## 1.3.6 - 2017.09.02
 ### Added
 * Fixed the Yii asset bundle aliases, which should be the directory name, not the kebab-handle
