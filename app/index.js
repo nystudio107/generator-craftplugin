@@ -192,7 +192,7 @@ module.exports = yo.generators.Base.extend({
                 }
 
             subPrefixHandles.forEach(function(subElement) {
-                if (typeof _this.answers[subElement] != 'undefined') {
+                if (typeof _this.answers[subElement] !== 'undefined') {
                     _this.answers[subElement] = _this.answers[subElement].split(',');
 /* -- For API version 2.5.x, prefixize() the names */
                     if (_this.api.API_KEY == "api_version_2_5") {
@@ -211,32 +211,36 @@ module.exports = yo.generators.Base.extend({
 
 /* -- API version 3.0x-specific checks */
             if (_this.api.API_KEY == "api_version_3_0") {
-                // Special-case for cpsections so that the default is "index"
-                if ((_this.answers["cpsectionName"].length == 1) && (_this.answers["cpsectionName"][0]=="")) {
-                    _this.answers["cpsectionName"] = ["Index"];
-                }
-                // Add an "Index" that will just redirect to the first actual CP Section
-                if (_this.answers["cpsectionName"].length > 1) {
-                    _this.answers["cpsectionName"].push ("Index");
+                if (typeof _this.answers["cpsectionName"] !== 'undefined') {
+                    // Special-case for cpsections so that the default is "index"
+                    if ((_this.answers["cpsectionName"].length == 1) && (_this.answers["cpsectionName"][0]=="")) {
+                        _this.answers["cpsectionName"] = ["Index"];
+                    }
+                    // Add an "Index" that will just redirect to the first actual CP Section
+                    if (_this.answers["cpsectionName"].length > 1) {
+                        _this.answers["cpsectionName"].push("Index");
+                    }
                 }
 /* -- Make sure these defaultNameHandles have a name */
                 var defaultNameHandles = ["consolecommandName", "controllerName", "modelName",  "recordName", "serviceName", "taskName", "utilityName", "widgetName"];
                 defaultNameHandles.forEach(function(defaultNameElement) {
-                    _this.answers[defaultNameElement].forEach(function(nameElement, nameIndex, nameArray) {
-                        var defName = _this.answers.pluginHandle + defaultNameElement.capitalizeFirstLetter().slice(0, -4);
-                        // Special-case for cpsections so that the default is "Default"
-                        if ((defaultNameElement == "controllerName") || (defaultNameElement == "consolecommandName")) {
-                            defName = "Default";
-                        }
-                        if (nameElement == "") {
-                            nameArray[nameIndex] = defName;
+                    if (typeof _this.answers[defaultNameElement] !== 'undefined') {
+                        _this.answers[defaultNameElement].forEach(function(nameElement, nameIndex, nameArray) {
+                            var defName = _this.answers.pluginHandle + defaultNameElement.capitalizeFirstLetter().slice(0, -4);
+                            // Special-case for cpsections so that the default is "Default"
+                            if ((defaultNameElement == "controllerName") || (defaultNameElement == "consolecommandName")) {
+                                defName = "Default";
                             }
-                        // Make sure this isn't a reserved word
-                        if (phpReservedWords.indexOf(nameElement.toLowerCase()) != -1) {
-                            console.log("### Invalid use of a PHP reserved word as a component name: " + nameElement);
-                            nameArray[nameIndex] = nameElement + defaultNameElement.capitalizeFirstLetter().slice(0, -4);
-                        }
+                            if (nameElement == "") {
+                                nameArray[nameIndex] = defName;
+                            }
+                            // Make sure this isn't a reserved word
+                            if (phpReservedWords.indexOf(nameElement.toLowerCase()) != -1) {
+                                console.log("### Invalid use of a PHP reserved word as a component name: " + nameElement);
+                                nameArray[nameIndex] = nameElement + defaultNameElement.capitalizeFirstLetter().slice(0, -4);
+                            }
                         });
+                    }
                     });
                 }
 
