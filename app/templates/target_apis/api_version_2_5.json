@@ -45,6 +45,7 @@
             "type": "checkbox",
             "name": "codeComments",
             "message": "Should there be code comments generated:",
+            "store": true,
             "choices": [
                 {
                     "key": "codeComments",
