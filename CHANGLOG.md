@@ -1,5 +1,10 @@
 # generator-craftplugin Changelog
 
+## 1.3.8 - 2017.10.07
+### Changed
+* Fixed an issue with code comments being turned off is not respected from the command line
+* The code comments setting is now stored from session to session
+
 ## 1.3.7 - 2017.09.25
 ### Changed
 * Fixed an issue with undefined indexes for the Craft 3.x APIs

@@ -179,6 +179,12 @@ module.exports = yo.generators.Base.extend({
                     }
                 }
 
+/* -- Handle code comments coming in as an array */
+
+            if (this.answers.codeComments.constructor === Array) {
+                this.answers.codeComments = typeof this.answers.codeComments !== 'undefined' && this.answers.codeComments.length > 0;
+            }
+
 /* -- Clean up the various handle names, and convert them to arrays */
 
             var subPrefixHandles = ["controllerName", "elementName", "fieldName", "modelName", "purchasableName", "recordName", "serviceName", "taskName", "widgetName"];
