@@ -195,7 +195,7 @@ class <%= pluginHandle %> extends Plugin
 <% if ((typeof codeComments !== 'undefined') && (codeComments)){ -%>
         // Add in our Twig extensions
 <% } -%>
-        Craft::$app->view->twig->addExtension(new <%= pluginHandle %>TwigExtension());
+        Craft::$app->view->registerRwigExtension(new <%= pluginHandle %>TwigExtension());
 <% } -%>
 <% if (pluginComponents.indexOf('consolecommands') >= 0){ -%>
 
