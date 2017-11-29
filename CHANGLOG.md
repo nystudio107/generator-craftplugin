@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.3.9 - 2017.11.29
+### Changed
+* Update how twig extensions are registered
+
 ## 1.3.8 - 2017.10.07
 ### Changed
 * Fixed an issue with code comments being turned off is not respected from the command line
