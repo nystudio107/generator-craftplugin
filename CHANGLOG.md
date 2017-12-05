@@ -1,5 +1,12 @@
 # generator-craftplugin Changelog
 
+## 1.3.10 - 2017.12.04
+### Added
+* Added Craft app API inspections for PhpStorm in the templates
+
+### Changed
+* Updated the `craftcms/cms` version to `^3.0.0-RC1` in the `composer.json` template
+
 ## 1.3.9 - 2017.11.29
 ### Changed
 * Update how twig extensions are registered
