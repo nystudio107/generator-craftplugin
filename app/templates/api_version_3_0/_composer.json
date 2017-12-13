@@ -24,12 +24,6 @@
     "require": {
         "craftcms/cms": "^3.0.0-RC1"
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
-    ],
     "autoload": {
         "psr-4": {
           "<%= pluginVendorName %>\\<%= pluginDirName %>\\": "src/"
