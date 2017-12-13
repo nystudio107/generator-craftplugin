@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.3.11 - 2017.12.13
+### Added
+* Removed `repositories` from `composer.json`
+
 ## 1.3.10 - 2017.12.04
 ### Added
 * Added Craft app API inspections for PhpStorm in the templates
