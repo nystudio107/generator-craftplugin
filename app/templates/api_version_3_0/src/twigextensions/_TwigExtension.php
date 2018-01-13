@@ -90,7 +90,7 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('someFilter', [$this, 'someInternalFunction']),
+            new \Twig_SimpleFunction('someFunction', [$this, 'someInternalFunction']),
         ];
     }
 

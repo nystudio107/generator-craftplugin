@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.3.12 - 2018.01.13
+### Added
+* Fixed a typo in `someFunction`
+
 ## 1.3.11 - 2017.12.13
 ### Added
 * Removed `repositories` from `composer.json`
