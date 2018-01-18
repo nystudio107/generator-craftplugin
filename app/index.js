@@ -228,7 +228,7 @@ module.exports = yo.generators.Base.extend({
                     }
                 }
 /* -- Make sure these defaultNameHandles have a name */
-                var defaultNameHandles = ["consolecommandName", "controllerName", "modelName",  "recordName", "serviceName", "taskName", "utilityName", "widgetName"];
+                var defaultNameHandles = ["consolecommandName", "controllerName", "fieldName", "modelName",  "recordName", "serviceName", "taskName", "utilityName", "widgetName"];
                 defaultNameHandles.forEach(function(defaultNameElement) {
                     if (typeof _this.answers[defaultNameElement] !== 'undefined') {
                         _this.answers[defaultNameElement].forEach(function(nameElement, nameIndex, nameArray) {
