@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.3.13 - 2018.01.18
+### Added
+* Handle a default name for Fields in the Craft 3 API, in case they are left blank
+
 ## 1.3.12 - 2018.01.13
 ### Added
 * Fixed a typo in `someFunction`
