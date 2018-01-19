@@ -172,6 +172,7 @@ class <%= pluginHandle %>Module extends Module
     public function __construct($id, $parent = null, array $config = [])
     {
         Craft::setAlias('@<%= pluginKebabHandle %>', $this->getBasePath());
+        $this->controllerNamespace = '<%= pluginKebabHandle %>\controllers';
 
         // Translation category
         $i18n = Craft::$app->getI18n();
@@ -201,8 +202,8 @@ class <%= pluginHandle %>Module extends Module
 
  <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
    /**
-     * Set our $plugin static property to this class so that it can be accessed via
-     * <%= pluginHandle %>::$plugin
+     * Set our $instance static property to this class so that it can be accessed via
+     * <%= pluginHandle %>::$instance
      *
      * Called after the plugin class is instantiated; do any one-time initialization
      * here such as hooks and events.
@@ -253,7 +254,7 @@ class <%= pluginHandle %>Module extends Module
         // Add in our console commands
 <% } -%>
         if (Craft::$app instanceof ConsoleApplication) {
-            $this->controllerNamespace = 'modules\<%= pluginDirName %>\console\controllers';
+            $this->controllerNamespace = '<%= pluginKebabHandle %>\console\controllers';
         }
 <% } -%>
 <% if (pluginComponents.indexOf('controllers') >= 0){ -%>

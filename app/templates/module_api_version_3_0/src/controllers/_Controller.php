@@ -8,7 +8,7 @@
  * @copyright <%- copyrightNotice %>
  */
 
-namespace modules\<%= pluginDirName %>\controllers;
+namespace <%= pluginDirName %>\controllers;
 
 use modules\<%= pluginDirName%>\<%= pluginHandle %>;
 
