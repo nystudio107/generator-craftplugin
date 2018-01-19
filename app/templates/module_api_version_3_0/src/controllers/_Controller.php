@@ -1,6 +1,6 @@
 <?php
 /**
- * <%- pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> module for Craft CMS 3.x
  *
  * <%- pluginDescription %>
  *
@@ -20,7 +20,7 @@ use craft\web\Controller;
  * <%= controllerName[index] %> Controller
  *
  * Generally speaking, controllers are the middlemen between the front end of
- * the CP/website and your plugin’s services. They contain action methods which
+ * the CP/website and your module’s services. They contain action methods which
  * handle individual tasks.
  *
  * A common pattern used throughout Craft involves a controller action gathering
@@ -61,7 +61,7 @@ class <%= controllerName[index] %>Controller extends Controller
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * Handle a request going to our plugin's index action URL,
+     * Handle a request going to our module's index action URL,
      * e.g.: actions/<%= pluginKebabHandle %>/<%= controllerName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>
      *
      * @return mixed
@@ -80,7 +80,7 @@ class <%= controllerName[index] %>Controller extends Controller
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * Handle a request going to our plugin's actionDoSomething URL,
+     * Handle a request going to our module's actionDoSomething URL,
      * e.g.: actions/<%= pluginKebabHandle %>/<%= controllerName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something
      *
      * @return mixed

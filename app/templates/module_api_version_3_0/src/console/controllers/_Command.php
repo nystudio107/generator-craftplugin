@@ -1,6 +1,6 @@
 <?php
 /**
- * <%- pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> module for Craft CMS 3.x
  *
  * <%- pluginDescription %>
  *
@@ -27,16 +27,16 @@ use yii\helpers\Console;
  * from the project root.
  *
  * Console Commands are just controllers that are invoked to handle console
- * actions. The segment routing is plugin/controller-name/action-name
+ * actions. The segment routing is module-name/controller-name/action-name
  *
  * The actionIndex() method is what is executed if no sub-commands are supplied, e.g.:
  *
- * ./craft <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>
+ * ./craft <%= pluginKebabHandle %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>
  *
  * Actions must be in 'kebab-case' so actionDoSomething() maps to 'do-something',
  * and would be invoked via:
  *
- * ./craft <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something
+ * ./craft <%= pluginKebabHandle %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something
  *
  * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
@@ -58,7 +58,7 @@ class <%= consolecommandName[index] %>Controller extends Controller
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * Handle <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %> console commands
+     * Handle <%= pluginKebabHandle %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %> console commands
      *
      * The first line of this method docblock is displayed as the description
      * of the Console Command in ./craft help
@@ -67,7 +67,7 @@ class <%= consolecommandName[index] %>Controller extends Controller
      */
 <% } else { -%>
     /**
-     * Handle <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %> console commands
+     * Handle <%= pluginKebabHandle %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %> console commands
      *
      * @return mixed
      */
@@ -83,7 +83,7 @@ class <%= consolecommandName[index] %>Controller extends Controller
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * Handle <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something console commands
+     * Handle <%= pluginKebabHandle %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something console commands
      *
      * The first line of this method docblock is displayed as the description
      * of the Console Command in ./craft help
@@ -92,7 +92,7 @@ class <%= consolecommandName[index] %>Controller extends Controller
      */
 <% } else { -%>
     /**
-     * Handle <%= pluginDirName %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something console commands
+     * Handle <%= pluginKebabHandle %>/<%= consolecommandName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something console commands
      *
      * @return mixed
      */

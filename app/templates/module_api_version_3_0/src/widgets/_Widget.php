@@ -1,6 +1,6 @@
 <?php
 /**
- * <%- pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> module for Craft CMS 3.x
  *
  * <%- pluginDescription %>
  *
@@ -21,7 +21,7 @@ use craft\base\Widget;
  * <%- pluginName %> Widget
  *
  * Dashboard widgets allow you to display information in the Admin CP Dashboard.
- * Adding new types of widgets to the dashboard couldn’t be easier in Craft
+ * Adding new types of widgets to the dashboard couldn't be easier in Craft
  *
  * https://craftcms.com/docs/plugins/widgets
  *

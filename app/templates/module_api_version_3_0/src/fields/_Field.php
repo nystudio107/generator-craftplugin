@@ -1,6 +1,6 @@
 <?php
 /**
- * <%- pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> module for Craft CMS 3.x
  *
  * <%- pluginDescription %>
  *
@@ -26,7 +26,7 @@ use craft\helpers\Json;
  *
  * Whenever someone creates a new field in Craft, they must specify what
  * type of field it is. The system comes with a handful of field types baked in,
- * and we’ve made it extremely easy for plugins to add new ones.
+ * and we’ve made it extremely easy for modules to add new ones.
  *
  * https://craftcms.com/docs/plugins/field-types
  *

@@ -1,6 +1,6 @@
 <?php
 /**
- * <%- pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> module for Craft CMS 3.x
  *
  * <%- pluginDescription %>
  *
@@ -18,7 +18,7 @@ use Craft;
 /**
  * <%- pluginName %> Variable
  *
- * Craft allows plugins to provide their own template variables, accessible from
+ * Craft allows modules to provide their own template variables, accessible from
  * the {{ craft }} global variable (e.g. {{ craft.<%= pluginCamelHandle %> }}).
  *
  * https://craftcms.com/docs/plugins/variables

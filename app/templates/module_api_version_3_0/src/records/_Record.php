@@ -1,6 +1,6 @@
 <?php
 /**
- * <%- pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> module for Craft CMS 3.x
  *
  * <%- pluginDescription %>
  *
@@ -52,7 +52,7 @@ class <%= recordName[index] %> extends ActiveRecord
      * `Customer` becomes `tbl_customer`, and `OrderItem` becomes `tbl_order_item`. You may override this method
      * if the table is not named after this convention.
      *
-     * By convention, tables created by plugins should be prefixed with the plugin
+     * By convention, tables created by modules should be prefixed with the module's
      * name and an underscore.
      *
      * @return string the table name

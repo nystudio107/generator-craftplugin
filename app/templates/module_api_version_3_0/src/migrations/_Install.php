@@ -1,6 +1,6 @@
 <?php
 /**
- * <%- pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> module for Craft CMS 3.x
  *
  * <%- pluginDescription %>
  *
@@ -20,8 +20,8 @@ use craft\db\Migration;
 /**
  * <%- pluginName %> Install Migration
  *
- * If your plugin needs to create any custom database tables when it gets installed,
- * create a migrations/ folder within your plugin folder, and save an Install.php file
+ * If your module needs to create any custom database tables when it gets installed,
+ * create a migrations/ folder within your module folder, and save an Install.php file
  * within it using the following template:
  *
  * If you need to perform any additional actions on install/uninstall, override the
@@ -110,7 +110,7 @@ class Install extends Migration
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * Creates the tables needed for the Records used by the plugin
+     * Creates the tables needed for the Records used by the module
      *
      * @return bool
      */
@@ -204,7 +204,7 @@ class Install extends Migration
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * Creates the foreign keys needed for the Records used by the plugin
+     * Creates the foreign keys needed for the Records used by the module
      *
      * @return void
      */
@@ -255,7 +255,7 @@ class Install extends Migration
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * Removes the tables needed for the Records used by the plugin
+     * Removes the tables needed for the Records used by the module
      *
      * @return void
      */
