@@ -229,7 +229,7 @@
     "TEMPLATE_FILES": [
         {
             "src": "_App.php",
-            "destDir": "",
+            "destDir": "config/",
             "dest": "app.php",
             "prefix": false
         },

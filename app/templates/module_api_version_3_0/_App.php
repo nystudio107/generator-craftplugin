@@ -19,8 +19,8 @@ return [
 <% var components = serviceName -%>
 <% if ((typeof(components[0]) !== 'undefined') && (components[0] !== "")) { -%>
         'components' => [
-        <% components.forEach(function(component, index, array){ -%>
-    '<%= component[0].toLowerCase() + component.slice(1) %>' => [
+<% components.forEach(function(component, index, array){ -%>
+            '<%= component[0].toLowerCase() + component.slice(1) %>' => [
                 'class' => '\modules\<%= pluginDirName %>\services\<%= component%>',
             ],
 <% }); -%>

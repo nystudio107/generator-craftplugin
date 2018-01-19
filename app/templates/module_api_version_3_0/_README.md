@@ -11,14 +11,26 @@ This module requires Craft CMS 3.0.0-RC1 or later.
 To install the module, follow these instructions.
 
 First, you'll need to add the contents of the `app.php` file to your `config/app.php` (or just copy it there if it does not exist). This ensures that your module will get loaded for each request. The file might look something like this:
-
-    return [
-        'modules' => [
-            'generic' => \modules\generic\GenericModule::class,
+```
+return [
+    'modules' => [
+        '<%= pluginKebabHandle %>' => \modules\<%= pluginDirName %>\<%= pluginHandle %>Module::class,
+<% if (pluginComponents.indexOf('services') >= 0){ -%>
+<% var components = serviceName -%>
+<% if ((typeof(components[0]) !== 'undefined') && (components[0] !== "")) { -%>
+        'components' => [
+<% components.forEach(function(component, index, array){ -%>
+            '<%= component[0].toLowerCase() + component.slice(1) %>' => [
+                'class' => '\modules\<%= pluginDirName %>\services\<%= component%>',
+            ],
+<% }); -%>
         ],
-        'bootstrap' => ['generic'],
-    ];
-
+<% } -%>
+<% } -%>
+    ],
+    'bootstrap' => ['<%= pluginKebabHandle %>'],
+];
+```
 You'll also need to make sure that you add the following to your project's `composer.json` file so that Composer can find your module:
 
     "autoload": {
