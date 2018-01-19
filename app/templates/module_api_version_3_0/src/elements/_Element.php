@@ -8,9 +8,9 @@
  * @copyright <%- copyrightNotice %>
  */
 
-namespace <%= pluginVendorName %>\<%= pluginDirName %>\elements;
+namespace modules\<%= pluginDirName %>\elements;
 
-use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+use modules\<%= pluginDirName%>\<%= pluginHandle %>;
 
 use Craft;
 use craft\base\Element;

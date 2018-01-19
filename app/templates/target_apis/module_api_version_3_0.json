@@ -30,13 +30,6 @@
         },
         {
             "type": "input",
-            "name": "pluginVendorName",
-            "message": "Module vendor name:",
-            "default": "Doe Enterprises",
-            "store": true
-        },
-        {
-            "type": "input",
             "name": "pluginAuthorUrl",
             "message": "Module author URL:",
             "default": "http://DoeDesign.com/",
