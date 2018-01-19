@@ -89,7 +89,7 @@ class <%= utilityName[index] %> extends Utility
 <% } -%>
     public static function iconPath()
     {
-        return Craft::getAlias("@<%= pluginKebabHandle %>/assetbundles/<%= utilityName[index].toLowerCase() %>utility/dist/img/<%= utilityName[index] %>-icon.svg");
+        return Craft::getAlias("@<%= pluginDirName %>/assetbundles/<%= utilityName[index].toLowerCase() %>utility/dist/img/<%= utilityName[index] %>-icon.svg");
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>

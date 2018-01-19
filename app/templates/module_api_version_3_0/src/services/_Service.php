@@ -48,7 +48,7 @@ class <%= serviceName[index] %> extends Component
      *
      * From any other plugin file, call it like this:
      *
-     *     <%= pluginHandle %>::$plugin-><%= serviceName[index][0].toLowerCase() + serviceName[index].slice(1) %>->exampleService()
+     *     <%= pluginHandle %>::$instance-><%= serviceName[index][0].toLowerCase() + serviceName[index].slice(1) %>->exampleService()
      *
      * @return mixed
      */

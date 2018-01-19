@@ -236,7 +236,7 @@
         {
             "src": "src/_Module.php",
             "destDir": "src/",
-            "dest": "Module.php",
+            "dest": ".php",
             "prefix": true
         },
         {

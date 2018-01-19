@@ -14,16 +14,18 @@
  */
 return [
     'modules' => [
-        '<%= pluginKebabHandle %>' => \modules\<%= pluginDirName %>\<%= pluginHandle %>Module::class,
+        '<%= pluginKebabHandle %>' => [
+            'class' => \modules\<%= pluginDirName %>\<%= pluginHandle %>::class,
 <% if (pluginComponents.indexOf('services') >= 0){ -%>
 <% var components = serviceName -%>
 <% if ((typeof(components[0]) !== 'undefined') && (components[0] !== "")) { -%>
-        'components' => [
+            'components' => [
 <% components.forEach(function(component, index, array){ -%>
-            '<%= component[0].toLowerCase() + component.slice(1) %>' => [
-                'class' => '\modules\<%= pluginDirName %>\services\<%= component%>',
-            ],
+                '<%= component[0].toLowerCase() + component.slice(1) %>' => [
+                    'class' => 'modules\<%= pluginDirName %>\services\<%= component%>',
+                ],
 <% }); -%>
+            ],
         ],
 <% } -%>
 <% } -%>

@@ -144,7 +144,7 @@ use yii\base\Module;
 <% } -%>
  */
 <% } -%>
-class <%= pluginHandle %>Module extends Module
+class <%= pluginHandle %> extends Module
 {
     // Static Properties
     // =========================================================================
@@ -171,8 +171,8 @@ class <%= pluginHandle %>Module extends Module
      */
     public function __construct($id, $parent = null, array $config = [])
     {
-        Craft::setAlias('@<%= pluginKebabHandle %>', $this->getBasePath());
-        $this->controllerNamespace = '<%= pluginKebabHandle %>\controllers';
+        Craft::setAlias('@<%= pluginDirName %>', $this->getBasePath());
+        $this->controllerNamespace = '<%= pluginDirName %>\controllers';
 
         // Translation category
         $i18n = Craft::$app->getI18n();
@@ -181,7 +181,7 @@ class <%= pluginHandle %>Module extends Module
             $i18n->translations[$id] = [
                 'class' => PhpMessageSource::class,
                 'sourceLanguage' => 'en-US',
-                'basePath' => '@<%= pluginKebabHandle %>/translations',
+                'basePath' => '@<%= pluginDirName %>/translations',
                 'forceTranslation' => true,
                 'allowOverrides' => true,
             ];
@@ -205,7 +205,7 @@ class <%= pluginHandle %>Module extends Module
      * Set our $instance static property to this class so that it can be accessed via
      * <%= pluginHandle %>::$instance
      *
-     * Called after the plugin class is instantiated; do any one-time initialization
+     * Called after the module class is instantiated; do any one-time initialization
      * here such as hooks and events.
      *
      * If you have a '/vendor/autoload.php' file, it will be loaded for you automatically;
@@ -254,7 +254,7 @@ class <%= pluginHandle %>Module extends Module
         // Add in our console commands
 <% } -%>
         if (Craft::$app instanceof ConsoleApplication) {
-            $this->controllerNamespace = '<%= pluginKebabHandle %>\console\controllers';
+            $this->controllerNamespace = '<%= pluginDirName %>\console\controllers';
         }
 <% } -%>
 <% if (pluginComponents.indexOf('controllers') >= 0){ -%>

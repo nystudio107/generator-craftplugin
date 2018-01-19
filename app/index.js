@@ -143,6 +143,12 @@ module.exports = yo.generators.Base.extend({
             this.answers.pluginCamelHandle = this.answers.pluginName.camelize();
             this.answers.pluginHandle = this.answers.pluginCamelHandle.capitalizeFirstLetter();
             this.answers.pluginKebabHandle = this.answers.pluginName.kebabize();
+            if (this.api.API_KEY == "module_api_version_3_0" && !this.answers.pluginDirName.includes('module')) {
+                this.answers.pluginDirName += "module";
+                this.answers.pluginCamelHandle += "Module";
+                this.answers.pluginHandle += "Module";
+                this.answers.pluginKebabHandle += "-module";
+            }
 
 /* -- Auto-fill some variables we'll be using in our templates */
 

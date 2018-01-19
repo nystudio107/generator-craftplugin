@@ -29,7 +29,7 @@ use craft\queue\BaseJob;
  *
  * $queue = Craft::$app->getQueue();
  * $jobId = $queue->push(new <%= taskName[index] %>Job([
- *     'description' => Craft::t('<%= pluginKebabHandle %>', 'This overrides the default description'),
+ *     'description' => Craft::t('<%= pluginDirName %>', 'This overrides the default description'),
  *     'someAttribute' => 'someValue',
  * ]));
  *
@@ -108,6 +108,6 @@ class <%= taskName[index] %> extends BaseJob
 <% } -%>
     protected function defaultDescription(): string
     {
-        return Craft::t('<%= pluginKebabHandle %>', '<%= taskName[index] %>');
+        return Craft::t('<%= pluginDirName %>', '<%= taskName[index] %>');
     }
 }

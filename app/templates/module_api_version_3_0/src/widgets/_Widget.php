@@ -87,7 +87,7 @@ class <%= widgetName[index] %> extends Widget
 <% } -%>
     public static function iconPath()
     {
-        return Craft::getAlias("@<%= pluginKebabHandle %>/assetbundles/<%= widgetName[index].toLowerCase() %>widget/dist/img/<%= widgetName[index] %>-icon.svg");
+        return Craft::getAlias("@<%= pluginDirName %>/assetbundles/<%= widgetName[index].toLowerCase() %>widget/dist/img/<%= widgetName[index] %>-icon.svg");
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
