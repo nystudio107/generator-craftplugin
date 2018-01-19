@@ -17,7 +17,7 @@
         {
             "type": "input",
             "name": "pluginVersion",
-            "message": "Plugin initial version:",
+            "message": "Module initial version:",
             "default": "1.0.0",
             "store": true
         },
