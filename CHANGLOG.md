@@ -1,5 +1,13 @@
 # generator-craftplugin Changelog
 
+## 1.4.0 - 2018.01.19
+### Added
+* Added support for modules via `module_api_version_3_0`
+
+### Changed
+* Fixed the Craft 3 API `Tasks` to generate proper Craft 3 Queue `Jobs`
+* Added Code Comment documentation to Craft 3 API `Tasks`
+
 ## 1.3.13 - 2018.01.18
 ### Added
 * Handle a default name for Fields in the Craft 3 API, in case they are left blank

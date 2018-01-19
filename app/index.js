@@ -131,7 +131,7 @@ module.exports = yo.generators.Base.extend({
             this.answers.apiVersion = this.apiVersion;
             this.rawAnswers = JSON.stringify(answers);
 
-            if (this.api.API_KEY == "api_version_3_0") {
+            if (this.api.API_KEY == "api_version_3_0" || this.api.API_KEY == "module_api_version_3_0") {
                 // Make sure this isn't a reserved word
                 if (phpReservedWords.indexOf(this.answers.pluginName.toLowerCase()) != -1) {
                     console.log("### Invalid use of a PHP reserved word as a plugin name: " + this.answers.pluginName);
@@ -143,6 +143,12 @@ module.exports = yo.generators.Base.extend({
             this.answers.pluginCamelHandle = this.answers.pluginName.camelize();
             this.answers.pluginHandle = this.answers.pluginCamelHandle.capitalizeFirstLetter();
             this.answers.pluginKebabHandle = this.answers.pluginName.kebabize();
+            if (this.api.API_KEY == "module_api_version_3_0" && !this.answers.pluginDirName.includes('module')) {
+                this.answers.pluginDirName += "module";
+                this.answers.pluginCamelHandle += "Module";
+                this.answers.pluginHandle += "Module";
+                this.answers.pluginKebabHandle += "-module";
+            }
 
 /* -- Auto-fill some variables we'll be using in our templates */
 
@@ -168,7 +174,7 @@ module.exports = yo.generators.Base.extend({
                 this.answers.pluginDocsUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/blob/master/README.md";
                 this.answers.pluginIssuesUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/issues";
                 this.answers.pluginReleasesUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/master/releases.json";
-                if (this.api.API_KEY == "api_version_3_0") {
+                if (this.api.API_KEY == "api_version_3_0" || this.api.API_KEY == "module_api_version_3_0") {
                     this.answers.pluginChangelogUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginKebabHandle + "/master/CHANGELOG.md";
 
                     this.answers.pluginDownloadUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginKebabHandle + "/archive/master.zip";
@@ -197,6 +203,12 @@ module.exports = yo.generators.Base.extend({
                 subPrefixHandles.push("cpsectionName");
                 }
 
+            /* -- For module API version 3.0x, we have a few more subPrefixHandles */
+            if (_this.api.API_KEY == "module_api_version_3_0") {
+                subPrefixHandles.push("consolecommandName");
+                subPrefixHandles.push("utilityName");
+            }
+
             subPrefixHandles.forEach(function(subElement) {
                 if (typeof _this.answers[subElement] !== 'undefined') {
                     _this.answers[subElement] = _this.answers[subElement].split(',');
@@ -212,7 +224,13 @@ module.exports = yo.generators.Base.extend({
                             nameArray[nameIndex] = nameElement.camelize().capitalizeFirstLetter();
                             });
                         }
-                    }
+ /* -- For module API version 3.0x, Camelize() the names */
+                    if (_this.api.API_KEY == "module_api_version_3_0") {
+                        _this.answers[subElement].forEach(function(nameElement, nameIndex, nameArray) {
+                            nameArray[nameIndex] = nameElement.camelize().capitalizeFirstLetter();
+                            });
+                        }
+                   }
                 });
 
 /* -- API version 3.0x-specific checks */

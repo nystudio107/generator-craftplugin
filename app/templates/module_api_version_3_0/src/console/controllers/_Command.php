@@ -1,6 +1,6 @@
 <?php
 /**
- * <%- pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> module for Craft CMS 3.x
  *
  * <%- pluginDescription %>
  *
@@ -8,9 +8,9 @@
  * @copyright <%- copyrightNotice %>
  */
 
-namespace <%= pluginVendorName %>\<%= pluginDirName %>\console\controllers;
+namespace <%= pluginDirName %>\console\controllers;
 
-use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
+use modules\<%= pluginDirName%>\<%= pluginHandle %>;
 
 use Craft;
 use yii\console\Controller;
@@ -27,7 +27,7 @@ use yii\helpers\Console;
  * from the project root.
  *
  * Console Commands are just controllers that are invoked to handle console
- * actions. The segment routing is plugin-name/controller-name/action-name
+ * actions. The segment routing is module-name/controller-name/action-name
  *
  * The actionIndex() method is what is executed if no sub-commands are supplied, e.g.:
  *

@@ -1,0 +1,20 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * <%- pluginName %> module for Craft CMS
+ *
+ * <%= widgetName[index] %> Widget Body
+ *
+ * @author    <%- pluginAuthorName %>
+ * @copyright <%- copyrightNotice %>
+ * @link      <%= pluginAuthorUrl %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
+#}
+
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@<%= pluginKebabHandle %>/assetbundles/<%= widgetName[index].toLowerCase() %>widget/dist', true) ~ '/img/<%= widgetName[index] %>-icon.svg' %}
+
+<img src="{{ iconUrl }}" height="64" width="64" />
+
+<p>{{ message }}</p>

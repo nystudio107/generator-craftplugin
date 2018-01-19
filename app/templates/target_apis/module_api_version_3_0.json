@@ -1,51 +1,38 @@
 {
-    "API_NAME": "Version 3.0.x",
-    "API_KEY": "api_version_3_0",
+    "API_NAME": "Module Version 3.0.x",
+    "API_KEY": "module_api_version_3_0",
     "QUESTIONS": [
         {
             "type": "input",
             "name": "pluginName",
-            "message": "Plugin name:",
+            "message": "Module name:",
             "default": "Generic"
         },
         {
             "type": "input",
             "name": "pluginDescription",
-            "message": "Short description of the plugin:",
-            "default": "This is a generic Craft CMS plugin"
+            "message": "Short description of the module:",
+            "default": "This is a generic Craft CMS module"
         },
         {
             "type": "input",
             "name": "pluginVersion",
-            "message": "Plugin initial version:",
+            "message": "Module initial version:",
             "default": "1.0.0",
             "store": true
         },
         {
             "type": "input",
             "name": "pluginAuthorName",
-            "message": "Plugin author name:",
+            "message": "Module author name:",
             "default": "John Doe",
             "store": true
         },
         {
             "type": "input",
-            "name": "pluginVendorName",
-            "message": "Plugin vendor name:",
-            "default": "Doe Enterprises",
-            "store": true
-        },
-        {
-            "type": "input",
             "name": "pluginAuthorUrl",
-            "message": "Plugin author URL:",
+            "message": "Module author URL:",
             "default": "http://DoeDesign.com/",
-            "store": true
-        },
-        {
-            "type": "input",
-            "name": "pluginAuthorGithub",
-            "message": "Plugin author GitHub.com name:",
             "store": true
         },
         {
@@ -65,7 +52,7 @@
         {
             "type": "checkbox",
             "name": "pluginComponents",
-            "message": "Select what components your plugin will have:",
+            "message": "Select what components your module will have:",
             "choices": [
                 {
                     "key": "consolecommands",
@@ -76,11 +63,6 @@
                     "key": "controllers",
                     "name": "Controllers",
                     "value": "controllers"
-                },
-                {
-                    "key": "cpsection",
-                    "name": "CPSection",
-                    "value": "cpsection"
                 },
                 {
                     "key": "elementtypes",
@@ -111,11 +93,6 @@
                     "key": "services",
                     "name": "Services",
                     "value": "services"
-                },
-                {
-                    "key": "settings",
-                    "name": "Settings",
-                    "value": "settings"
                 },
                 {
                     "key": "tasks",
@@ -244,17 +221,16 @@
     ],
     "TEMPLATE_FILES": [
         {
-            "src": "src/_Plugin.php",
+            "src": "_App.php",
+            "destDir": "config/",
+            "dest": "app.php",
+            "prefix": false
+        },
+        {
+            "src": "src/_Module.php",
             "destDir": "src/",
             "dest": ".php",
             "prefix": true
-        },
-        {
-            "src": "src/models/_Settings.php",
-            "destDir": "src/models/",
-            "dest": "Settings.php",
-            "requires": ["settings"],
-            "prefix": false
         },
         {
             "src": "_README.md",
@@ -275,22 +251,9 @@
             "prefix": false
         },
         {
-            "src": "_composer.json",
-            "destDir": "",
-            "dest": "composer.json",
-            "prefix": false
-        },
-        {
             "src": "_gitignore",
             "destDir": "",
             "dest": ".gitignore",
-            "prefix": false
-        },
-        {
-            "src": "src/_config.php",
-            "destDir": "",
-            "dest": "src/config.php",
-            "requires": ["settings"],
             "prefix": false
         },
         {
@@ -307,51 +270,6 @@
             "dest": "Controller.php",
             "requires": ["controllers"],
             "subPrefix": "controllerName",
-            "prefix": false
-        },
-        {
-            "src": "src/templates/_cpsection.twig",
-            "destDir": "src/templates/",
-            "dest": ".twig",
-            "requires": ["cpsection"],
-            "subPrefix": "cpsectionName",
-            "kebab": true,
-            "prefix": false
-        },
-        {
-            "src": "src/assetbundles/cpsectionresources/_CPSectionAssetBundle.php",
-            "destDir": "src/assetbundles/",
-            "dest": "CPSectionAsset.php",
-            "requires": ["cpsection"],
-            "subPrefix": "cpsectionName",
-            "dirSubPrefix": "cpsection/",
-            "prefix": false
-        },
-        {
-            "src": "src/assetbundles/cpsectionresources/dist/img/cpsection.svg",
-            "destDir": "src/assetbundles/",
-            "dest": "-icon.svg",
-            "requires": ["cpsection"],
-            "subPrefix": "cpsectionName",
-            "dirSubPrefix": "cpsection/dist/img/",
-            "prefix": false
-        },
-        {
-            "src": "src/assetbundles/cpsectionresources/dist/css/_cpsection.css",
-            "destDir": "src/assetbundles/",
-            "dest": ".css",
-            "requires": ["cpsection"],
-            "subPrefix": "cpsectionName",
-            "dirSubPrefix": "cpsection/dist/css/",
-            "prefix": false
-        },
-        {
-            "src": "src/assetbundles/cpsectionresources/dist/js/_cpsection.js",
-            "destDir": "src/assetbundles/",
-            "dest": ".js",
-            "requires": ["cpsection"],
-            "subPrefix": "cpsectionName",
-            "dirSubPrefix": "cpsection/dist/js/",
             "prefix": false
         },
         {
@@ -584,13 +502,6 @@
             "prefix": false
         },
         {
-            "src": "src/templates/_settings.twig",
-            "destDir": "src/templates/",
-            "dest": "settings.twig",
-            "requires": ["settings"],
-            "prefix": false
-        },
-        {
             "src": "src/translations/_en.php",
             "destDir": "src/translations/en/",
             "dest": ".php",
@@ -612,49 +523,36 @@
             "prefix": true
         },
         {
-            "src": "src/assetbundles/pluginresources/_PluginAssetBundle.php",
+            "src": "src/assetbundles/moduleresources/_ModuleAssetBundle.php",
             "destDir": "src/assetbundles/",
             "dest": "Asset.php",
-            "requires": ["settings"],
             "dirSubPrefix": "/",
             "prefix": true
         },
         {
-            "src": "src/assetbundles/pluginresources/dist/img/plugin.svg",
+            "src": "src/assetbundles/moduleresources/dist/img/plugin.svg",
             "destDir": "src/assetbundles/",
             "dest": "-icon.svg",
-            "requires": ["settings"],
             "dirSubPrefix": "/dist/img/",
             "justCopy": true,
             "prefix": true
         },
         {
-            "src": "src/assetbundles/pluginresources/dist/css/_style.css",
+            "src": "src/assetbundles/moduleresources/dist/css/_style.css",
             "destDir": "src/assetbundles/",
             "dest": ".css",
-            "requires": ["settings"],
             "dirSubPrefix": "/dist/css/",
             "prefix": true
         },
         {
-            "src": "src/assetbundles/pluginresources/dist/js/_script.js",
+            "src": "src/assetbundles/moduleresources/dist/js/_script.js",
             "destDir": "src/assetbundles/",
             "dest": ".js",
-            "requires": ["settings"],
             "dirSubPrefix": "/dist/js/",
             "prefix": true
         }
     ],
     "BOILERPLATE_FILES": [
-        {
-            "src": "src/icon-mask.svg"
-        },
-        {
-            "src": "src/icon.svg"
-        },
-        {
-            "src": "resources/img/plugin-logo.png"
-        }
     ],
     "END_INSTALL_COMMANDS": [
         {
