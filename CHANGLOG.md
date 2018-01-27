@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.4.1 - 2018.01.26
+### Changed
+* Fixed module namespacing for controllers & aliases
+
 ## 1.4.0 - 2018.01.19
 ### Added
 * Added support for modules via `module_api_version_3_0`
