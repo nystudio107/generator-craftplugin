@@ -234,7 +234,7 @@ module.exports = yo.generators.Base.extend({
                 });
 
 /* -- API version 3.0x-specific checks */
-            if (_this.api.API_KEY == "api_version_3_0") {
+            if (_this.api.API_KEY == "api_version_3_0"  || _this.api.API_KEY == "module_api_version_3_0") {
                 if (typeof _this.answers["cpsectionName"] !== 'undefined') {
                     // Special-case for cpsections so that the default is "index"
                     if ((_this.answers["cpsectionName"].length == 1) && (_this.answers["cpsectionName"][0]=="")) {
