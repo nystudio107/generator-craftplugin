@@ -171,8 +171,8 @@ class <%= pluginHandle %> extends Module
      */
     public function __construct($id, $parent = null, array $config = [])
     {
-        Craft::setAlias('@<%= pluginDirName %>', $this->getBasePath());
-        $this->controllerNamespace = '<%= pluginDirName %>\controllers';
+        Craft::setAlias('@modules/<%= pluginDirName %>', $this->getBasePath());
+        $this->controllerNamespace = 'modules\<%= pluginDirName %>\controllers';
 
         // Translation category
         $i18n = Craft::$app->getI18n();
@@ -254,7 +254,7 @@ class <%= pluginHandle %> extends Module
         // Add in our console commands
 <% } -%>
         if (Craft::$app instanceof ConsoleApplication) {
-            $this->controllerNamespace = '<%= pluginDirName %>\console\controllers';
+            $this->controllerNamespace = 'modules\<%= pluginDirName %>\console\controllers';
         }
 <% } -%>
 <% if (pluginComponents.indexOf('controllers') >= 0){ -%>
@@ -269,7 +269,7 @@ class <%= pluginHandle %> extends Module
 <% var controllers = controllerName -%>
 <% if ((typeof(controllers[0]) !== 'undefined') && (controllers[0] !== "")) { -%>
 <% controllers.forEach(function(controller, index, array){ -%>
-                $event->rules['siteActionTrigger<%= index + 1 %>'] = '<%= pluginKebabHandle %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>';
+                $event->rules['siteActionTrigger<%= index + 1 %>'] = 'modules/<%= pluginKebabHandle %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>';
 <% }); -%>
 <% } -%>
             }
@@ -285,7 +285,7 @@ class <%= pluginHandle %> extends Module
 <% var controllers = controllerName -%>
 <% if ((typeof(controllers[0]) !== 'undefined') && (controllers[0] !== "")) { -%>
 <% controllers.forEach(function(controller, index, array){ -%>
-                $event->rules['cpActionTrigger<%= index + 1 %>'] = '<%= pluginKebabHandle %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
+                $event->rules['cpActionTrigger<%= index + 1 %>'] = 'modules/<%= pluginKebabHandle %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
 <% }); -%>
 <% } -%>
             }
