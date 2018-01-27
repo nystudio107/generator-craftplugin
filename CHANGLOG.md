@@ -3,6 +3,7 @@
 ## 1.4.1 - 2018.01.26
 ### Changed
 * Fixed module namespacing for controllers & aliases
+* Fixed an issue with empty names for various module components
 
 ## 1.4.0 - 2018.01.19
 ### Added
