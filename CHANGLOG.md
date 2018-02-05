@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.4.2 - 2018.02.05
+### Changed
+* Fixed an issue with the translation and AssetBundle aliases
+
 ## 1.4.1 - 2018.01.26
 ### Changed
 * Fixed module namespacing for controllers & aliases
