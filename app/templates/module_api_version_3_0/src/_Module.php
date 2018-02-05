@@ -181,7 +181,7 @@ class <%= pluginHandle %> extends Module
             $i18n->translations[$id] = [
                 'class' => PhpMessageSource::class,
                 'sourceLanguage' => 'en-US',
-                'basePath' => '@<%= pluginDirName %>/translations',
+                'basePath' => '@modules/<%= pluginDirName %>/translations',
                 'forceTranslation' => true,
                 'allowOverrides' => true,
             ];
