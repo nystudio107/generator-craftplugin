@@ -1,5 +1,11 @@
 # generator-craftplugin Changelog
 
+## 1.4.3 - 2018.02.09
+### Changed
+* Improved the module's `_Service.php` template
+* Removed `schemaVersion` from the `composer.json`'s `extra` array
+* Added the public property `$schemaVersion` in the plugin's primary class
+
 ## 1.4.2 - 2018.02.05
 ### Changed
 * Fixed an issue with the translation and AssetBundle aliases
