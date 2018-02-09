@@ -166,6 +166,22 @@ class <%= pluginHandle %> extends Plugin
 <% } -%>
     public static $plugin;
 
+    // Public Properties
+    // =========================================================================
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * To execute your plugin’s migrations, you’ll need to increase its schema version.
+     *
+     * @var string
+     */
+<% } else { -%>
+    /**
+     * @var string
+     */
+<% } -%>
+    public $schemaVersion = '<%= pluginVersion %>';
+
     // Public Methods
     // =========================================================================
 
