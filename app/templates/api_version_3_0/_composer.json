@@ -32,7 +32,6 @@
     "extra": {
         "name": "<%- pluginName %>",
         "handle": "<%= pluginKebabHandle %>",
-        "schemaVersion": "<%= pluginVersion %>",
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
         "hasCpSettings": true,
 <% } else { -%>
