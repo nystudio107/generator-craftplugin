@@ -60,14 +60,6 @@ class <%= serviceName[index] %> extends Component
     public function exampleService()
     {
         $result = 'something';
-<% if (pluginComponents.indexOf('settings') >= 0){ -%>
-        // Check our module's settings for `someAttribute`
-<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
-<% } else { -%>
-<% } -%>
-        if (<%= pluginHandle %>::$plugin->getSettings()->someAttribute) {
-        }
-<% } -%>
 
         return $result;
     }
