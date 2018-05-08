@@ -291,8 +291,16 @@ module.exports = yo.generators.Base.extend({
 
 /* -- Write the answers out to a JSON file */
 
-        fs.writeFile(this.destDir + PLUGIN_CONF_FILE_NAME, this.rawAnswers, "utf8");
-        },
+        fs.writeFile(
+            this.destDir + PLUGIN_CONF_FILE_NAME,
+            this.rawAnswers,
+            "utf8",
+            (err) => {
+                if (err) throw err;
+                this.log(chalk.green('> Configuration synced to filesystem.'));
+            }
+        );
+    },
 
 /* -- writing -- Where you write the generator specific files (routes, controllers, etc) */
 
