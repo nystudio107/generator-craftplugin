@@ -331,23 +331,7 @@ module.exports = yo.generators.Base.extend({
                                 dirPrefix = thisPrefix.directorize() + file.dirSubPrefix;
                             }
                             destFile = _this.destDir + file.destDir + dirPrefix + _this.answers.pluginHandle + thisPrefix + file.dest;
-                            // Only write it if the file doesn't exist already
-                            if (!fs.existsSync(destFile)) {
-                                _this.log('+ ' + _this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
-                                _this.answers['index'] = index;
-                                if (file.justCopy) {
-                                    _this.fs.copy(
-                                        _this.templatePath(file.src),
-                                        _this.destinationPath(destFile)
-                                        );
-                                } else {
-                                    _this.fs.copyTpl(
-                                        _this.templatePath(file.src),
-                                        _this.destinationPath(destFile),
-                                        _this.answers
-                                        );
-                                    }
-                                }
+                            _this._writeFile(file, destFile, index);
                             });
                         } else {
 /* -- Handle templates that only have a prefix */
@@ -359,23 +343,7 @@ module.exports = yo.generators.Base.extend({
                             destFile = this.destDir + file.destDir + dirPrefix + this.answers.pluginKebabHandle + file.dest;
                         else
                             destFile = this.destDir + file.destDir + dirPrefix + this.answers.pluginHandle  + file.dest;
-                        // Only write it if the file doesn't exist already
-                        if (!fs.existsSync(destFile)) {
-                            this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
-                            this.answers['index'] = 0;
-                            if (file.justCopy) {
-                                _this.fs.copy(
-                                    _this.templatePath(file.src),
-                                    _this.destinationPath(destFile)
-                                    );
-                            } else {
-                                this.fs.copyTpl(
-                                    this.templatePath(file.src),
-                                    this.destinationPath(destFile),
-                                    this.answers
-                                    );
-                                }
-                            }
+                        this._writeFile(file, destFile, 0);
                         }
                     } else {
                     if (file.subPrefix) {
@@ -391,23 +359,7 @@ module.exports = yo.generators.Base.extend({
                                 thisPrefix = thisPrefix.kebabize();
                                 }
                             destFile = _this.destDir + file.destDir + dirPrefix + thisPrefix + file.dest;
-                            // Only write it if the file doesn't exist already
-                            if (!fs.existsSync(destFile)) {
-                                _this.log('+ ' + _this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
-                                _this.answers['index'] = index;
-                                if (file.justCopy) {
-                                    _this.fs.copy(
-                                        _this.templatePath(file.src),
-                                        _this.destinationPath(destFile)
-                                        );
-                                } else {
-                                    _this.fs.copyTpl(
-                                        _this.templatePath(file.src),
-                                        _this.destinationPath(destFile),
-                                        _this.answers
-                                        );
-                                    }
-                                }
+                            _this._writeFile(file, destFile, index);
                             });
                         } else {
 /* -- Handle templates that are not prefixed */
@@ -416,23 +368,7 @@ module.exports = yo.generators.Base.extend({
                             dirPrefix = file.dirSubPrefix;
                         }
                         destFile = this.destDir + file.destDir + dirPrefix + file.dest;
-                        // Only write it if the file doesn't exist already
-                        if (!fs.existsSync(destFile)) {
-                            this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
-                            this.answers['index'] = 0;
-                            if (file.justCopy) {
-                                _this.fs.copy(
-                                    _this.templatePath(file.src),
-                                    _this.destinationPath(destFile)
-                                    );
-                            } else {
-                                this.fs.copyTpl(
-                                    this.templatePath(file.src),
-                                    this.destinationPath(destFile),
-                                    this.answers
-                                    );
-                                }
-                            }
+                        this._writeFile(file, destFile, 0);
                         }
                     }
                 }
@@ -454,8 +390,8 @@ module.exports = yo.generators.Base.extend({
                     });
                 }
                 if (!skip) {
-                    // Only write it if the file doesn't exist already
-                    if (!fs.existsSync(destFile)) {
+                    // Only write it if the file doesn't exist already and we're generating the full plugin or it is not skippable
+                    if (!fs.existsSync(destFile) && (this.generateFullPlugin || !file.skippable)) {
                     this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' copied to ' + chalk.green(destFile));
                     this.fs.copy(
                         this.templatePath(file.src),
@@ -494,6 +430,33 @@ module.exports = yo.generators.Base.extend({
         this.log('The default LICENSE.txt is the ' + chalk.green('MIT license') +  '; feel free to change it as you see fit.');
         this.log(chalk.green('> All set.  Have a nice day.'));
         },
+
+    _writeFile: function(file, destFile, index) {
+        // Only write it if the file doesn't exist already
+        if (!fs.existsSync(destFile)) {
+            this.answers['index'] = index;
+
+            // Don't recreate skippable files
+            if (!this.generateFullPlugin && file.skippable) {
+              return;
+            }
+
+            if (file.justCopy) {
+                this.fs.copy(
+                    this.templatePath(file.src),
+                    this.destinationPath(destFile)
+                    );
+            } else {
+                this.fs.copyTpl(
+                    this.templatePath(file.src),
+                    this.destinationPath(destFile),
+                    this.answers
+                    );
+                }
+
+            this.log('+ ' + this.answers.templatesDir + "/" + file.src + ' wrote to ' + chalk.green(destFile));
+        }
+    },
 
 });
 
