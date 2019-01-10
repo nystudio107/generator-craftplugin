@@ -171,7 +171,7 @@ class <%= pluginHandle %> extends Module
      */
     public function __construct($id, $parent = null, array $config = [])
     {
-        Craft::setAlias('@modules/<%= pluginDirName %>', $this->getBasePath());
+        Craft::setAlias('@<%= pluginDirName %>', $this->getBasePath());
         $this->controllerNamespace = 'modules\<%= pluginDirName %>\controllers';
 
         // Translation category
@@ -181,7 +181,7 @@ class <%= pluginHandle %> extends Module
             $i18n->translations[$id] = [
                 'class' => PhpMessageSource::class,
                 'sourceLanguage' => 'en-US',
-                'basePath' => '@modules/<%= pluginDirName %>/translations',
+                'basePath' => '@<%= pluginDirName %>/translations',
                 'forceTranslation' => true,
                 'allowOverrides' => true,
             ];

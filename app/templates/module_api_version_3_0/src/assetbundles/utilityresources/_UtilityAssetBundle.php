@@ -59,7 +59,7 @@ class <%= utilityName[index] %>UtilityAsset extends AssetBundle
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // define the path that your publishable resources live
 <% } -%>
-        $this->sourcePath = "@modules/<%= pluginDirName %>/assetbundles/<%= utilityName[index].toLowerCase() %>utility/dist";
+        $this->sourcePath = "@<%= pluginDirName %>/assetbundles/<%= utilityName[index].toLowerCase() %>utility/dist";
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
         // define the dependencies
