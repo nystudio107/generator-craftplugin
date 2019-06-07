@@ -27,7 +27,7 @@ class ExampleFunctionalCest
      */
     public function testCraftEdition(FunctionalTester $I)
     {
-        $I->amOnPage('?p=/admin_trigger_here/');
-        $I->see('Craft CMS Test section');
+        $I->amOnPage('?p=/');
+        $I->seeResponseCodeIs(200);
     }
 }
