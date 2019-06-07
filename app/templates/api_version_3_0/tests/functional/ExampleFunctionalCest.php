@@ -8,14 +8,6 @@ use FunctionalTester;
 
 class ExampleFunctionalCest
 {
-    // Public properties
-    // =========================================================================
-
-    /**
-     * @var UnitTester
-     */
-    protected $tester;
-
     // Public methods
     // =========================================================================
 
