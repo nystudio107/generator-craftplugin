@@ -244,6 +244,18 @@
     ],
     "TEMPLATE_FILES": [
         {
+            "src": "_codeception.yml",
+            "destDir": "",
+            "dest": "codeception.yml",
+            "prefix": false
+        },
+        {
+            "src": "tests/",
+            "destDir": "tests/",
+            "dest": "",
+            "prefix": false
+        },
+        {
             "src": "src/_Plugin.php",
             "destDir": "src/",
             "dest": ".php",
