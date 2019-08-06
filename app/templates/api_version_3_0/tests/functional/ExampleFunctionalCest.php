@@ -3,7 +3,6 @@
 namespace <%= pluginVendorName %>\<%= pluginDirName %>tests\acceptance;
 
 use Craft;
-use craft\elements\User;
 use FunctionalTester;
 
 class ExampleFunctionalCest
