@@ -25,7 +25,7 @@ use <%= pluginVendorName %>\<%= pluginDirName %>\<%= pluginHandle %>;
  */
 class ExampleUnitTest extends Unit
 {
-    // Public properties
+    // Properties
     // =========================================================================
 
     /**

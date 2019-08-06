@@ -32,7 +32,7 @@ modules:
       migrations: []
       plugins:
         <%= pluginKebabHandle %>:
-          class: '<%= pluginVendorName %>\<%= pluginDirName %>\<%= pluginHandle %>'
+          class: '\<%= pluginVendorName %>\<%= pluginDirName %>\<%= pluginHandle %>'
           handle: <%= pluginKebabHandle %>
       cleanup: true
       transaction: true
