@@ -1,4 +1,4 @@
 storage/*
 
-!storage/.gitkeep
+!storage/example-file.txt
 
