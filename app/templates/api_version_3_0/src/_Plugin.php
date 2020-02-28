@@ -182,6 +182,40 @@ class <%= pluginHandle %> extends Plugin
 <% } -%>
     public $schemaVersion = '<%= pluginVersion %>';
 
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Set to `true` if the plugin should have a settings view in the control panel.
+     *
+     * @var bool
+     */
+<% } else { -%>
+    /**
+     * @var bool
+     */
+<% } -%>
+<% if (pluginComponents.indexOf('settings') >= 0){ -%>
+    public $hasCpSettings = true;
+<% } else { -%>
+    public $hasCpSettings = false;
+<% } -%>
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Set to `true` if the plugin should have its own section (main nav item) in the control panel.
+     *
+     * @var bool
+     */
+<% } else { -%>
+    /**
+     * @var bool
+     */
+<% } -%>
+<% if (pluginComponents.indexOf('cpsection') >= 0){ -%>
+    public $hasCpSection = true;
+<% } else { -%>
+    public $hasCpSection = false;
+<% } -%>
+
     // Public Methods
     // =========================================================================
 
