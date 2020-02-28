@@ -57,7 +57,7 @@ module.exports = yo.generators.Base.extend({
         this.generateFullPlugin = true;
         if (fs.existsSync(PLUGIN_CONF_FILE_NAME)) {
             this.generateFullPlugin = false;
-            var data = fs.readFileSync(PLUGIN_CONF_FILE_NAME);
+            var data = fs.readFileSync(PLUGIN_CONF_FILE_NAME, 'utf8');
             var obj = JSON.parse(data);
             for (var property in obj) {
                 if (obj.hasOwnProperty(property)) {
@@ -75,12 +75,12 @@ module.exports = yo.generators.Base.extend({
 /* -- Load in our API JSON configs */
 
         path = this.sourceRoot() + TARGET_APIS_DIR;
-        fs.readdirSync(path).forEach(function(file, index) {
+        fs.readdirSync(path, 'utf8').forEach(function(file, index) {
             var curPath = path + "/" + file;
             if (!fs.statSync(curPath).isDirectory()) {
                 var ext = file.substr(file.lastIndexOf('.') + 1);
                 if (ext == 'json') {
-                    var data = fs.readFileSync(curPath);
+                    var data = fs.readFileSync(curPath, 'utf8');
                     var obj = JSON.parse(data);
 /* -- Fill in the API_QUESTIONS with the found target APIs */
                     apis[obj.API_KEY] = obj;
@@ -291,7 +291,7 @@ module.exports = yo.generators.Base.extend({
 
 /* -- Write the answers out to a JSON file */
 
-        fs.writeFile(this.destDir + PLUGIN_CONF_FILE_NAME, this.rawAnswers, "utf8");
+        fs.writeFile(this.destDir + PLUGIN_CONF_FILE_NAME, this.rawAnswers, function() {});
         },
 
 /* -- writing -- Where you write the generator specific files (routes, controllers, etc) */
