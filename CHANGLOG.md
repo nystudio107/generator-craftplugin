@@ -12,6 +12,7 @@
 * Docs link to Craft 3 docs
 * Fixed iconpath for widgets and utilities for Modules
 * Remove deprecated `composer/installers` from the `composer.json`
+* Fixed docblock comments for `serializeValue` for Fields
 
 ## 1.4.3 - 2018.02.09
 ### Changed
