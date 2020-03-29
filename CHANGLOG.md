@@ -3,7 +3,8 @@
 ## 1.5.0 - 2020.03.30
 ### Added
 * Include the following in the 'extra' section: `developer`, `developerUrl`, & `documentationUrl`
-  
+* Move `hasCpSettings` and `hasCpSection` to plugin class
+
 ### Fixed
 * Use `fs.writeFileSync()` for Node 10+ compatibility
 * Update `_cpsection.twig` to use the `{% actionButton %}` block instead of `extraPageHeaderHtml`
