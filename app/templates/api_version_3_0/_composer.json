@@ -32,16 +32,6 @@
     "extra": {
         "name": "<%- pluginName %>",
         "handle": "<%= pluginKebabHandle %>",
-<% if (pluginComponents.indexOf('settings') >= 0){ -%>
-        "hasCpSettings": true,
-<% } else { -%>
-        "hasCpSettings": false,
-<% } -%>
-<% if (pluginComponents.indexOf('cpsection') >= 0){ -%>
-        "hasCpSection": true,
-<% } else { -%>
-        "hasCpSection": false,
-<% } -%>
         "developer": "<%= pluginAuthorName %>",
         "developerUrl": "<%= pluginAuthorUrl %>",
         "documentationUrl": "<%= pluginDocsUrl %>",
