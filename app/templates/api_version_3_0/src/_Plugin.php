@@ -110,7 +110,7 @@ use yii\base\Event;
  * For the purposes of the plugin docs, we’re going to assume that you know PHP and SQL,
  * as well as some semi-advanced concepts like object-oriented programming and PHP namespaces.
  *
- * https://craftcms.com/docs/plugins/introduction
+ * https://docs.craftcms.com/v3/extend/
  *
  * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
@@ -181,6 +181,40 @@ class <%= pluginHandle %> extends Plugin
      */
 <% } -%>
     public $schemaVersion = '<%= pluginVersion %>';
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Set to `true` if the plugin should have a settings view in the control panel.
+     *
+     * @var bool
+     */
+<% } else { -%>
+    /**
+     * @var bool
+     */
+<% } -%>
+<% if (pluginComponents.indexOf('settings') >= 0){ -%>
+    public $hasCpSettings = true;
+<% } else { -%>
+    public $hasCpSettings = false;
+<% } -%>
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+    /**
+     * Set to `true` if the plugin should have its own section (main nav item) in the control panel.
+     *
+     * @var bool
+     */
+<% } else { -%>
+    /**
+     * @var bool
+     */
+<% } -%>
+<% if (pluginComponents.indexOf('cpsection') >= 0){ -%>
+    public $hasCpSection = true;
+<% } else { -%>
+    public $hasCpSection = false;
+<% } -%>
 
     // Public Methods
     // =========================================================================

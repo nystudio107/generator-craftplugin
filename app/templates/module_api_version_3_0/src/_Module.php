@@ -269,7 +269,7 @@ class <%= pluginHandle %> extends Module
 <% var controllers = controllerName -%>
 <% if ((typeof(controllers[0]) !== 'undefined') && (controllers[0] !== "")) { -%>
 <% controllers.forEach(function(controller, index, array){ -%>
-                $event->rules['siteActionTrigger<%= index + 1 %>'] = 'modules/<%= pluginKebabHandle %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>';
+                $event->rules['siteActionTrigger<%= index + 1 %>'] = '<%= pluginKebabHandle %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>';
 <% }); -%>
 <% } -%>
             }
@@ -285,7 +285,7 @@ class <%= pluginHandle %> extends Module
 <% var controllers = controllerName -%>
 <% if ((typeof(controllers[0]) !== 'undefined') && (controllers[0] !== "")) { -%>
 <% controllers.forEach(function(controller, index, array){ -%>
-                $event->rules['cpActionTrigger<%= index + 1 %>'] = 'modules/<%= pluginKebabHandle %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
+                $event->rules['cpActionTrigger<%= index + 1 %>'] = '<%= pluginKebabHandle %>/<%= controller.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>/do-something';
 <% }); -%>
 <% } -%>
             }

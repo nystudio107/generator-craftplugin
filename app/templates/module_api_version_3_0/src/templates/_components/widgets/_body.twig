@@ -13,7 +13,7 @@
  */
 #}
 
-{% set iconUrl = view.getAssetManager().getPublishedUrl('@<%= pluginKebabHandle %>/assetbundles/<%= widgetName[index].toLowerCase() %>widget/dist', true) ~ '/img/<%= widgetName[index] %>-icon.svg' %}
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@modules/<%= pluginKebabHandle %>/assetbundles/<%= widgetName[index].toLowerCase() %>widget/dist', true) ~ '/img/<%= widgetName[index] %>-icon.svg' %}
 
 <img src="{{ iconUrl }}" height="64" width="64" />
 

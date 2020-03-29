@@ -122,11 +122,9 @@
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# Content that should appear in the page header#}
 <% } -%>
-{% set extraPageHeaderHtml %}
-    <div class="buttons">
-        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t('<%= pluginKebabHandle %>') }}</a>
-    </div>
-{% endset %}
+{% block actionButton %}
+    <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t('<%= pluginKebabHandle %>') }}</a>
+{% endblock %}
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 {# The content of the CP Section#}
