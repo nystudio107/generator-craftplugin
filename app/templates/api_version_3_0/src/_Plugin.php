@@ -110,7 +110,7 @@ use yii\base\Event;
  * For the purposes of the plugin docs, we’re going to assume that you know PHP and SQL,
  * as well as some semi-advanced concepts like object-oriented programming and PHP namespaces.
  *
- * https://craftcms.com/docs/plugins/introduction
+ * https://docs.craftcms.com/v3/extend/
  *
  * @author    <%- pluginAuthorName %>
  * @package   <%= pluginHandle %>
