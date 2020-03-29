@@ -10,6 +10,7 @@
 * Fix module generated controller routes
 * Docs link to Craft 3 docs
 * Fixed iconpath for widgets and utilities for Modules
+* Remove deprecated `composer/installers` from the `composer.json`
 
 ## 1.4.3 - 2018.02.09
 ### Changed
