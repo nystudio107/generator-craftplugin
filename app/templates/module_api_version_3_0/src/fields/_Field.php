@@ -155,17 +155,14 @@ class <%= fieldName[index] %> extends Field
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
-     * Modifies an element query.
+     * Prepares the field’s value to be stored somewhere, like the content table or JSON-encoded in an entry revision table.
      *
-     * This method will be called whenever elements are being searched for that may have this field assigned to them.
+     * Data types that are JSON-encodable are safe (arrays, integers, strings, booleans, etc).
+     * Whatever this returns should be something [[normalizeValue()]] can handle.
      *
-     * If the method returns `false`, the query will be stopped before it ever gets a chance to execute.
-     *
-     * @param ElementQueryInterface $query The element query
-     * @param mixed                 $value The value that was set on this field’s corresponding [[ElementCriteriaModel]] param,
-     *                                     if any.
-     *
-     * @return null|false `false` in the event that the method is sure that no elements are going to be found.
+     * @param mixed $value The raw field value
+     * @param ElementInterface|null $element The element the field is associated with, if there is one
+     * @return mixed The serialized field value
      */
 <% } else { -%>
     /**
