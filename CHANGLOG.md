@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.5.0 - 2020.03.30
+### Fixed
+* Use `fs.writeFileSync()` for Node 10+ compatibility
+
 ## 1.4.3 - 2018.02.09
 ### Changed
 * Improved the module's `_Service.php` template
