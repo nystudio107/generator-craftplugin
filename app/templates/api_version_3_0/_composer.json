@@ -32,6 +32,9 @@
     "extra": {
         "name": "<%- pluginName %>",
         "handle": "<%= pluginKebabHandle %>",
+        "developer": "<%= pluginAuthorName %>",
+        "developerUrl": "<%= pluginAuthorUrl %>",
+        "documentationUrl": "<%= pluginDocsUrl %>",
         "changelogUrl": "<%= pluginChangelogUrl %>",
 <% if (pluginComponents.indexOf('services') >= 0){ -%>
 <% var components = serviceName -%>

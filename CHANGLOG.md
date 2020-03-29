@@ -1,5 +1,17 @@
 # generator-craftplugin Changelog
 
+## 1.5.0 - 2020.03.30
+### Added
+* Include the following in the 'extra' section: `developer`, `developerUrl`, & `documentationUrl`
+  
+### Fixed
+* Use `fs.writeFileSync()` for Node 10+ compatibility
+* Update `_cpsection.twig` to use the `{% actionButton %}` block instead of `extraPageHeaderHtml`
+* Fix module generated controller routes
+* Docs link to Craft 3 docs
+* Fixed iconpath for widgets and utilities for Modules
+* Remove deprecated `composer/installers` from the `composer.json`
+
 ## 1.4.3 - 2018.02.09
 ### Changed
 * Improved the module's `_Service.php` template
