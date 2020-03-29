@@ -3,6 +3,8 @@
 ## 1.5.0 - 2020.03.30
 ### Fixed
 * Use `fs.writeFileSync()` for Node 10+ compatibility
+* Update `_cpsection.twig` to use the `{% actionButton %}` block instead of `extraPageHeaderHtml`
+* Fix module generated controller routes
 
 ## 1.4.3 - 2018.02.09
 ### Changed
