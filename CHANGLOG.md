@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.5.1 - 2020.04.15
+### Fixed
+* Make sure that `api_version_3_0 plugins` & modules have the default asset bundle with the properly lowercase namespace
+
 ## 1.5.0 - 2020.03.30
 ### Added
 * Include the following in the 'extra' section: `developer`, `developerUrl`, & `documentationUrl`
