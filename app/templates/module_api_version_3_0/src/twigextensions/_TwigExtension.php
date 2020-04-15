@@ -14,6 +14,10 @@ use modules\<%= pluginDirName%>\<%= pluginHandle %>;
 
 use Craft;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
+
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
  * Twig can be extended in many ways; you can add extra tags, filters, tests, operators,
@@ -33,7 +37,7 @@ use Craft;
  * @since     <%= pluginVersion %>
  */
 <% } -%>
-class <%= pluginHandle %>TwigExtension extends \Twig_Extension
+class <%= pluginHandle %>TwigExtension extends AbstractExtension
 {
     // Public Methods
     // =========================================================================
@@ -70,7 +74,7 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('someFilter', [$this, 'someInternalFunction']),
+            new TwigFilter('someFilter', [$this, 'someInternalFunction']),
         ];
     }
 
@@ -90,7 +94,7 @@ class <%= pluginHandle %>TwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('someFunction', [$this, 'someInternalFunction']),
+            new TwigFunction('someFunction', [$this, 'someInternalFunction']),
         ];
     }
 
