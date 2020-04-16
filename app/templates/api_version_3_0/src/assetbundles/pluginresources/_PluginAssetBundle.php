@@ -8,7 +8,7 @@
  * @copyright <%- copyrightNotice %>
  */
 
-namespace <%= pluginVendorName %>\<%= pluginDirName %>\assetbundles\<%= pluginHandle %>;
+namespace <%= pluginVendorName %>\<%= pluginDirName %>\assetbundles\<%= pluginHandle.toLowerCase() %>;
 
 use Craft;
 use craft\web\AssetBundle;
