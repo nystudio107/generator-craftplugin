@@ -1,5 +1,9 @@
 # generator-craftplugin Changelog
 
+## 1.6.0 - 2020.04.26
+### Added
+* Added support for the Codeception testing framework, thanks to a PR from Giel
+
 ## 1.5.1 - 2020.04.15
 ### Changed
 * Updated to use the new Twig Extension class namespace to avoid deprecation errors
