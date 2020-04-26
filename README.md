@@ -16,7 +16,7 @@ This assumes you have `nodejs`, `npm`, and `yeoman` installed already.
 4.  -OR- do an `npm -g install generator-craftplugin` to install it via npm (and thus skip the `npm link` step)
 5. The generator folder should be named `generator-craftplugin`.  GitHub recently started appending `-master` (the branch name) to the name of the folder for zip file downloads.
 
-Requires Node version 4.0.0 or later.
+Requires Node version 8.0.0 or later.
 
 ## Usage
 
@@ -34,7 +34,7 @@ generator-craftplugin will ask you a few questions:
 * **Plugin author GitHub.com name:** - enter the GitHub.com handle of the author of the plugin.  If you don't have one, just leave it blank
 * **Select what components your plugin will have:** - select the components you want included in your plugin, using the arrow keys to change the component, and `<space>` to select them.
 
-If you selected `Controllers`, `ElementTypes`, `FieldTypes`, `Models`, `Purchasables`. `Records`, `Services`, `Tasks`, or `Widgets` components, it will also ask you for a name for each one, respectively.  If you want multiple components, just separate them with a , in the name input.
+If you selected `Controllers`, `ElementTypes`, `FieldTypes`, `Models`, `Purchasables`, `Records`, `Services`, `Tasks`, or `Widgets` components, it will also ask you for a name for each one, respectively.  If you want multiple components, just separate them with a , in the name input.
 
 generator-craftplugin will then do the following for you:
 
@@ -52,6 +52,7 @@ Here's an example of the output from a `yo craftplugin` generator:
 ? Select what Craft CMS API to target: (Use arrow keys)
   Version 2.5.x
 ❯ Version 3.0.x
+  Module Version 3.0.x
 [ Prompting ]
 ? Plugin name: Some Plugin
 ? Short description of the plugin: Some Description
@@ -75,6 +76,7 @@ e selection)
  ◉ Services
  ◉ Settings
  ◉ Tasks
+ ◉ Tests
  ◉ TwigExtensions
  ◉ Utilities
  ◉ Variables
@@ -108,6 +110,7 @@ e selection)
      'services',
      'settings',
      'tasks',
+     'tests',
      'twigextensions',
      'utilities',
      'variables',
@@ -155,6 +158,7 @@ e selection)
      'services',
      'settings',
      'tasks',
+     'tests',
      'twigextensions',
      'utilities',
      'variables',
@@ -183,6 +187,8 @@ e selection)
   pluginChangelogUrl: 'https://raw.githubusercontent.com/SomeGithub/someplugin/master/CHANGELOG.md',
   pluginCloneUrl: 'https://github.com/SomeGithub/someplugin.git' }
 > Writing template files
++ templates/_codeception.yml wrote to someplugin/codeception.yml
++ templates/tests/ wrote to someplugin/tests/
 + templates/src/_Plugin.php wrote to someplugin/src/SomePlugin.php
 + templates/src/models/_Settings.php wrote to someplugin/src/models/Settings.php
 + templates/_README.md wrote to someplugin/README.md
@@ -265,6 +271,25 @@ e selection)
 + templates/src/resources/images/plugin.png copied to someplugin/src/resources/images/plugin.png
 + templates/src/resources/screenshots/plugin_logo.png copied to someplugin/src/resources/screenshots/plugin_logo.png
 > Sync to file system
+   create someplugin/codeception.yml
+   create someplugin/tests/_bootstrap.php
+   create someplugin/tests/_craft/config/db.php
+   create someplugin/tests/_craft/config/general.php
+   create someplugin/tests/_craft/config/routes.php
+   create someplugin/tests/_craft/config/test.php
+   create someplugin/tests/_craft/storage/example-file.txt
+   create someplugin/tests/_craft/templates/example.twig
+   create someplugin/tests/_support/FunctionalTester.php
+   create someplugin/tests/_support/Helper/Functional.php
+   create someplugin/tests/_support/Helper/Unit.php
+   create someplugin/tests/_support/UnitTester.php
+   create someplugin/tests/example-env
+   create someplugin/tests/functional.suite.yml
+   create someplugin/tests/functional/_bootstrap.php
+   create someplugin/tests/functional/ExampleFunctionalCest.php
+   create someplugin/tests/unit.suite.yml
+   create someplugin/tests/unit/_bootstrap.php
+   create someplugin/tests/unit/ExampleUnitTest.php
    create someplugin/src/SomePlugin.php
    create someplugin/src/models/Settings.php
    create someplugin/README.md
@@ -358,7 +383,7 @@ The default LICENSE.txt is the MIT license; feel free to change it as you see fi
 
 The `craftplugin` generator can also be passed arguments via the command line, bypassing the interactive prompts.  So it's possible do do something like this:
 
-    yo craftplugin --pluginComponents="controllers,consolecommands,elementtypes,fieldtypes,models,records,services,settings,tasks,twigextensions,utilities,variables,widgets" --apiVersion="api_version_3_0" --pluginName="Some Plugin" --pluginDescription="Some Description" --pluginVersion="1.0.0" --pluginVendorName="Some Vendor" --pluginAuthorName="Some Author" --pluginAuthorUrl="https://SomeDomain.com" --pluginAuthorGithub="SomeGithub" --codeComments="yes" --consolecommandName="Een,Twee,Drie" --controllerName="One,Two,Three" --elementName="Neung,Song,Sam" --fieldName="Ichi,Ni,San" --modelName="Uno,Dos,Tres" --purchasableName="" --recordName="Satu,Dua,Tiga" --serviceName="Yi,Er,San" --utilityName="Eins,Zwei,Drei" --taskName="Hana,Dul,Set" --widgetName="Un,Deux,Trois"
+    yo craftplugin --pluginComponents="controllers,consolecommands,elementtypes,fieldtypes,models,records,services,settings,tasks,tests,twigextensions,utilities,variables,widgets" --apiVersion="api_version_3_0" --pluginName="Some Plugin" --pluginDescription="Some Description" --pluginVersion="1.0.0" --pluginVendorName="Some Vendor" --pluginAuthorName="Some Author" --pluginAuthorUrl="https://SomeDomain.com" --pluginAuthorGithub="SomeGithub" --codeComments="yes" --consolecommandName="Een,Twee,Drie" --controllerName="One,Two,Three" --elementName="Neung,Song,Sam" --fieldName="Ichi,Ni,San" --modelName="Uno,Dos,Tres" --purchasableName="" --recordName="Satu,Dua,Tiga" --serviceName="Yi,Er,San" --utilityName="Eins,Zwei,Drei" --taskName="Hana,Dul,Set" --widgetName="Un,Deux,Trois"
 
 ## Adding to an existing plugin
 
@@ -387,6 +412,7 @@ Here's a list of the `pluginComponents`; if you want to add more than one, just 
     services
     settings
     tasks
+    tests
     twigextensions
     utilities
     variables
