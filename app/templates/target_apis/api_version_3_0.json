@@ -123,6 +123,11 @@
                     "value": "tasks"
                 },
                 {
+                    "key": "tests",
+                    "name": "Tests",
+                    "value": "tests"
+                },
+                {
                     "key": "twigextensions",
                     "name": "TwigExtensions",
                     "value": "twigextensions"
@@ -247,12 +252,14 @@
             "src": "_codeception.yml",
             "destDir": "",
             "dest": "codeception.yml",
+            "requires": ["tests"],
             "prefix": false
         },
         {
             "src": "tests/",
             "destDir": "tests/",
             "dest": "",
+            "requires": ["tests"],
             "prefix": false
         },
         {
