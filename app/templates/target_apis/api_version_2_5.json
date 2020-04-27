@@ -233,25 +233,29 @@
             "src": "_README.md",
             "destDir": "",
             "dest": "README.md",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "_CHANGELOG.md",
             "destDir": "",
             "dest": "CHANGELOG.md",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "_LICENSE.txt",
             "destDir": "",
             "dest": "LICENSE.txt",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "_releases.json",
             "destDir": "",
             "dest": "releases.json",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "_composer.json",
@@ -445,7 +449,8 @@
             "src": "translations/_en.php",
             "destDir": "translations/",
             "dest": "en.php",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "twigextensions/_TwigExtension.php",
@@ -478,17 +483,21 @@
     ],
     "BOILERPLATE_FILES": [
         {
-            "src": "resources/icon-mask.svg"
+            "src": "resources/icon-mask.svg",
+            "skippable": true
         },
         {
-            "src": "resources/icon.svg"
+            "src": "resources/icon.svg",
+            "skippable": true
         },
         {
             "src": "resources/images/plugin.png",
-            "requires": ["settings"]
+            "requires": ["settings"],
+            "skippable": true
         },
         {
-            "src": "resources/screenshots/plugin_logo.png"
+            "src": "resources/screenshots/plugin_logo.png",
+            "skippable": true
         }
     ],
     "END_INSTALL_COMMANDS": [

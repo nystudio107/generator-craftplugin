@@ -236,25 +236,29 @@
             "src": "_README.md",
             "destDir": "",
             "dest": "README.md",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "_CHANGELOG.md",
             "destDir": "",
             "dest": "CHANGELOG.md",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "_LICENSE.md",
             "destDir": "",
             "dest": "LICENSE.md",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "_gitignore",
             "destDir": "",
             "dest": ".gitignore",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "src/console/controllers/_Command.php",
@@ -506,7 +510,8 @@
             "destDir": "src/translations/en/",
             "dest": ".php",
             "kebabcasePrefix": true,
-            "prefix": true
+            "prefix": true,
+            "skippable": true
         },
         {
             "src": "src/twigextensions/_TwigExtension.php",
@@ -535,7 +540,8 @@
             "dest": "-icon.svg",
             "dirSubPrefix": "/dist/img/",
             "justCopy": true,
-            "prefix": true
+            "prefix": true,
+            "skippable": true
         },
         {
             "src": "src/assetbundles/moduleresources/dist/css/_style.css",

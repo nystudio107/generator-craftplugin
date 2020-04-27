@@ -279,19 +279,22 @@
             "src": "_README.md",
             "destDir": "",
             "dest": "README.md",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "_CHANGELOG.md",
             "destDir": "",
             "dest": "CHANGELOG.md",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "_LICENSE.md",
             "destDir": "",
             "dest": "LICENSE.md",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "_composer.json",
@@ -303,7 +306,8 @@
             "src": "_gitignore",
             "destDir": "",
             "dest": ".gitignore",
-            "prefix": false
+            "prefix": false,
+            "skippable": true
         },
         {
             "src": "src/_config.php",
@@ -614,7 +618,8 @@
             "destDir": "src/translations/en/",
             "dest": ".php",
             "kebabcasePrefix": true,
-            "prefix": true
+            "prefix": true,
+            "skippable": true
         },
         {
             "src": "src/twigextensions/_TwigExtension.php",
@@ -645,7 +650,8 @@
             "requires": ["settings"],
             "dirSubPrefix": "/dist/img/",
             "justCopy": true,
-            "prefix": true
+            "prefix": true,
+            "skippable": true
         },
         {
             "src": "src/assetbundles/pluginresources/dist/css/_style.css",
@@ -666,13 +672,16 @@
     ],
     "BOILERPLATE_FILES": [
         {
-            "src": "src/icon-mask.svg"
+            "src": "src/icon-mask.svg",
+            "skippable": true
         },
         {
-            "src": "src/icon.svg"
+            "src": "src/icon.svg",
+            "skippable": true
         },
         {
-            "src": "resources/img/plugin-logo.png"
+            "src": "resources/img/plugin-logo.png",
+            "skippable": true
         }
     ],
     "END_INSTALL_COMMANDS": [
