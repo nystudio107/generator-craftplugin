@@ -1,6 +1,6 @@
 {
-    "API_NAME": "Version 3.0.x",
-    "API_KEY": "api_version_3_0",
+    "API_NAME": "Version 4.0.x",
+    "API_KEY": "api_version_4_0",
     "QUESTIONS": [
         {
             "type": "input",

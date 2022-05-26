@@ -1,6 +1,6 @@
 {
-    "API_NAME": "Module Version 3.0.x",
-    "API_KEY": "module_api_version_3_0",
+    "API_NAME": "Module Version 4.0.x",
+    "API_KEY": "module_api_version_4_0",
     "QUESTIONS": [
         {
             "type": "input",
