@@ -1,4 +1,4 @@
-# <%- pluginName %> module for Craft CMS 3.x
+# <%- pluginName %> module for Craft CMS 4.x
 
 <%- pluginDescription %>
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * <%- pluginName %> plugin for Craft CMS 3.x
+ * <%- pluginName %> plugin for Craft CMS 4.x
  *
  * <%- pluginDescription %>
  *
