@@ -1,0 +1,4 @@
+storage/*
+
+!storage/example-file.txt
+

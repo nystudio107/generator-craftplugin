@@ -131,7 +131,7 @@ module.exports = yo.generators.Base.extend({
             this.answers.apiVersion = this.apiVersion;
             this.rawAnswers = JSON.stringify(answers);
 
-            if (this.api.API_KEY == "api_version_3_0" || this.api.API_KEY == "module_api_version_3_0") {
+            if (['api_version_3_0', 'module_api_version_3_0', 'api_version_4_0', 'module_api_version_4_0'].includes(this.api.API_KEY)) {
                 // Make sure this isn't a reserved word
                 if (phpReservedWords.indexOf(this.answers.pluginName.toLowerCase()) != -1) {
                     console.log("### Invalid use of a PHP reserved word as a plugin name: " + this.answers.pluginName);
@@ -143,7 +143,7 @@ module.exports = yo.generators.Base.extend({
             this.answers.pluginCamelHandle = this.answers.pluginName.camelize();
             this.answers.pluginHandle = this.answers.pluginCamelHandle.capitalizeFirstLetter();
             this.answers.pluginKebabHandle = this.answers.pluginName.kebabize();
-            if (this.api.API_KEY == "module_api_version_3_0" && !this.answers.pluginDirName.includes('module')) {
+            if (['module_api_version_3_0', 'module_api_version_4_0'].includes(this.api.API_KEY) && !this.answers.pluginDirName.includes('module')) {
                 this.answers.pluginDirName += "module";
                 this.answers.pluginCamelHandle += "Module";
                 this.answers.pluginHandle += "Module";
@@ -174,7 +174,7 @@ module.exports = yo.generators.Base.extend({
                 this.answers.pluginDocsUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/blob/master/README.md";
                 this.answers.pluginIssuesUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/issues";
                 this.answers.pluginReleasesUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginDirName + "/master/releases.json";
-                if (this.api.API_KEY == "api_version_3_0" || this.api.API_KEY == "module_api_version_3_0") {
+                if (['api_version_3_0', 'module_api_version_3_0', 'api_version_4_0', 'module_api_version_4_0'].includes(this.api.API_KEY)) {
                     this.answers.pluginChangelogUrl = "https://raw.githubusercontent.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginKebabHandle + "/master/CHANGELOG.md";
 
                     this.answers.pluginDownloadUrl = "https://github.com/" + this.answers.pluginAuthorGithub + "/" + this.answers.pluginKebabHandle + "/archive/master.zip";
@@ -196,15 +196,15 @@ module.exports = yo.generators.Base.extend({
             var subPrefixHandles = ["controllerName", "elementName", "fieldName", "modelName", "purchasableName", "recordName", "serviceName", "taskName", "widgetName"];
             var _this = this;
 
-/* -- For API version 3.0x, we have a few more subPrefixHandles */
-            if (_this.api.API_KEY == "api_version_3_0") {
+/* -- For API version 3.0x+, we have a few more subPrefixHandles */
+            if (['api_version_3_0', 'api_version_4_0'].includes(_this.api.API_KEY)) {
                 subPrefixHandles.push("consolecommandName");
                 subPrefixHandles.push("utilityName");
                 subPrefixHandles.push("cpsectionName");
                 }
 
-            /* -- For module API version 3.0x, we have a few more subPrefixHandles */
-            if (_this.api.API_KEY == "module_api_version_3_0") {
+            /* -- For module API version 3.0x+, we have a few more subPrefixHandles */
+            if (['module_api_version_3_0', 'module_api_version_4_0'].includes(_this.api.API_KEY)) {
                 subPrefixHandles.push("consolecommandName");
                 subPrefixHandles.push("utilityName");
             }
@@ -218,14 +218,14 @@ module.exports = yo.generators.Base.extend({
                             nameArray[nameIndex] = nameElement.prefixize();
                             });
                         }
-/* -- For API version 3.0x, Camelize() the names */
-                    if (_this.api.API_KEY == "api_version_3_0") {
+/* -- For API version 3.0x+, Camelize() the names */
+                    if (['api_version_3_0'], 'api_version_4_0'].includes(_this.api.API_KEY)) {
                         _this.answers[subElement].forEach(function(nameElement, nameIndex, nameArray) {
                             nameArray[nameIndex] = nameElement.camelize().capitalizeFirstLetter();
                             });
                         }
- /* -- For module API version 3.0x, Camelize() the names */
-                    if (_this.api.API_KEY == "module_api_version_3_0") {
+ /* -- For module API version 3.0x+, Camelize() the names */
+                    if (['module_api_version_3_0', 'module_api_version_4_0'].includes(_this.api.API_KEY)) {
                         _this.answers[subElement].forEach(function(nameElement, nameIndex, nameArray) {
                             nameArray[nameIndex] = nameElement.camelize().capitalizeFirstLetter();
                             });
@@ -233,8 +233,8 @@ module.exports = yo.generators.Base.extend({
                    }
                 });
 
-/* -- API version 3.0x-specific checks */
-            if (_this.api.API_KEY == "api_version_3_0"  || _this.api.API_KEY == "module_api_version_3_0") {
+/* -- API version 3.0x+-specific checks */
+            if (['api_version_3_0', 'module_api_version_3_0', 'api_version_4_0', 'module_api_version_4_0'].includes(_this.api.API_KEY)) {
                 if (typeof _this.answers["cpsectionName"] !== 'undefined') {
                     // Special-case for cpsections so that the default is "index"
                     if ((_this.answers["cpsectionName"].length == 1) && (_this.answers["cpsectionName"][0]=="")) {

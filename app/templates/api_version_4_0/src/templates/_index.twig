@@ -1,0 +1,55 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * <%- pluginName %> plugin for Craft CMS 4.x
+ *
+ * <%- pluginName %> index.twig
+ *
+ * @author    <%- pluginAuthorName %>
+ * @copyright <%- copyrightNotice %>
+ * @link      <%= pluginAuthorUrl %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
+#}
+<% var shouldRedirect = false -%>
+<% if ((pluginComponents.indexOf('cpsection') >= 0) && (typeof cpsectionName !== 'undefined')){ -%>
+<% var cpsections = cpsectionName -%>
+<% if ((typeof(cpsections[0]) !== 'undefined') && (cpsections[0] !== "Index") && (cpsections.length > 1)) { -%>
+<% var shouldRedirect = true -%>
+<% } -%>
+<% } -%>
+
+<% if (shouldRedirect) { -%>
+{% redirect url('<%= pluginDirName %>/<%= cpsections[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>') %}
+<% } else { -%>
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\<%= pluginDirName %>\\<%= pluginHandle %>Asset") %}
+{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\<%= cpsectionName[0].toLowerCase() %>cpsection\\<%= cpsectionName[0] %>CPSectionAsset") %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# Link for the ? icon at the bottom of the page #}
+<% } -%>
+{% set docsUrl = "<%= pluginDocsUrl %>" %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# The title of this CP section #}
+<% } -%>
+{% set title = "<%- pluginName %>" %}
+
+{% set extraPageHeaderHtml %}
+    <div class="buttons">
+        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t('<%= pluginKebabHandle %>') }}</a>
+    </div>
+{% endset %}
+
+{% set content %}
+
+        <h2>{{ "Dynamic Entry Redirects"|t('<%= pluginKebabHandle %>') }}</h2>
+
+        <p class="textline"></p>
+
+{% endset %}
+<% } -%>

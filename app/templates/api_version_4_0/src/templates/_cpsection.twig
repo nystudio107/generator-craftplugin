@@ -1,0 +1,137 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * <%- pluginName %> plugin for Craft CMS 4.x
+ *
+ * <%- pluginName %> index.twig
+ *
+ * @author    <%- pluginAuthorName %>
+ * @copyright <%- copyrightNotice %>
+ * @link      <%= pluginAuthorUrl %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
+#}
+<% var templateType = "normal"; -%>
+<% if ((pluginComponents.indexOf('cpsection') >= 0) && (typeof cpsectionName !== 'undefined')){ -%>
+<% var cpsections = cpsectionName -%>
+<% if (cpsections.length > 1) { -%>
+<% templateType = "subnav"; -%>
+<% if (cpsections[index] === "Index") { -%>
+<% templateType = "redirect" -%>
+<% } -%>
+<% } -%>
+<% } -%>
+
+<% if (templateType === "redirect") { -%>
+{% redirect url('<%= pluginKebabHandle %>/<%= cpsections[0].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>') %}
+<% } -%>
+<% if (templateType === "normal") { -%>
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\<%= pluginDirName %>\\<%= pluginHandle %>Asset") %}
+{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\<%= cpsectionName[index].toLowerCase() %>cpsection\\<%= cpsectionName[index] %>CPSectionAsset") %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# Link for the ? icon at the bottom of the page #}
+<% } -%>
+{% set docsUrl = "<%= pluginDocsUrl %>" %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# The title of this CP section #}
+<% } -%>
+{% set title = "<%- pluginName %>" %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# The URL to this plugin's base CP section #}
+<% } -%>
+{% set pluginCpUrl = url('<%= pluginKebabHandle %>') %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# Get a URL to an image in our AssetBundle #}
+<% } -%>
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= cpsectionName[index].toLowerCase() %>cpsection/dist', true) ~ '/img/<%= cpsectionName[index] %>-icon.svg' %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# Content that should appear in the page header#}
+<% } -%>
+{% set extraPageHeaderHtml %}
+    <div class="buttons">
+        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t('<%= pluginKebabHandle %>') }}</a>
+    </div>
+{% endset %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# The content of the CP Section#}
+<% } -%>
+{% set content %}
+    <h2>{{ "<%= cpsectionName[index] %> CP Section body goes here"|t('<%= pluginKebabHandle %>') }}</h2>
+    <img src="{{ iconUrl }}" height="64" width="64" />
+    <p class="textline"></p>
+{% endset %}
+<% } -%>
+<% if (templateType === "subnav") { -%>
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\<%= pluginDirName %>\\<%= pluginHandle %>Asset") %}
+{% do view.registerAssetBundle("<%= pluginVendorName %>\\<%= pluginDirName %>\\assetbundles\\<%= cpsectionName[index].toLowerCase() %>cpsection\\<%= cpsectionName[index] %>CPSectionAsset") %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# Link for the ? icon at the bottom of the page #}
+<% } -%>
+{% set docsUrl = "<%= pluginDocsUrl %>" %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# The title of this CP section #}
+<% } -%>
+{% set title = "<%- pluginName %> | <%= cpsectionName[index] %>" %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# The URL to this plugin's base CP section #}
+<% } -%>
+{% set pluginCpUrl = url('<%= pluginKebabHandle %>') %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# Get a URL to an image in our AssetBundle #}
+<% } -%>
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= cpsectionName[index].toLowerCase() %>cpsection/dist', true) ~ '/img/<%= cpsectionName[index] %>-icon.svg' %}
+
+<% if ((pluginComponents.indexOf('cpsection') >= 0) && (typeof cpsectionName !== 'undefined')){ -%>
+<% var cpsections = cpsectionName -%>
+<% if ((typeof(cpsections[0]) !== 'undefined') && (cpsections[0] !== "")) { -%>
+{% set subnav = {
+<% cpsections.forEach(function(cpsection, index, array){ -%>
+<% var cpsectionKebab = cpsection.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) -%>
+<% if (cpsectionKebab !== 'index') { -%>
+    "<%= cpsectionKebab %>": { label: "<%= cpsection %>"|t('<%= pluginKebabHandle %>'), url: url(pluginCpUrl ~ '/<%= cpsectionKebab %>') },
+<% } -%>
+<% }) %>
+} %}
+{% set selectedSubnavItem = '<%= cpsectionName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) %>' %}
+
+<% var cpsectionKebab = cpsectionName[index].replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();}).slice(1) -%>
+{% set crumbs = [
+    { label: "<%- pluginName %>", url: url(pluginCpUrl) },
+    { label: "<%= cpsectionName[index] %>"|t('<%= pluginKebabHandle %>'), url: url(pluginCpUrl ~ '/<%= cpsectionKebab %>') },
+] %}
+<% } -%>
+<% } -%>
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# Content that should appear in the page header#}
+<% } -%>
+{% block actionButton %}
+    <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t('<%= pluginKebabHandle %>') }}</a>
+{% endblock %}
+
+<% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
+{# The content of the CP Section#}
+<% } -%>
+{% set content %}
+    <h2>{{ "<%= cpsectionName[index] %> CP Section body goes here"|t('<%= pluginKebabHandle %>') }}</h2>
+    <img src="{{ iconUrl }}" height="64" width="64" />
+    <p class="textline"></p>
+{% endset %}
+<% } -%>
