@@ -157,14 +157,14 @@ class <%= pluginHandle %> extends Plugin
      * Static property that is an instance of this plugin class so that it can be accessed via
      * <%= pluginHandle %>::$plugin
      *
-     * @var <%= pluginHandle %>
+     * @var <%= pluginHandle %>|null
      */
 <% } else { -%>
     /**
-     * @var <%= pluginHandle %>
+     * @var <%= pluginHandle %>|null
      */
 <% } -%>
-    public static $plugin;
+    public ?<%= pluginHandle %> $plugin = null;
 
     // Public Properties
     // =========================================================================
@@ -180,7 +180,7 @@ class <%= pluginHandle %> extends Plugin
      * @var string
      */
 <% } -%>
-    public $schemaVersion = '<%= pluginVersion %>';
+    public string $schemaVersion = '<%= pluginVersion %>';
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
     /**
@@ -194,9 +194,9 @@ class <%= pluginHandle %> extends Plugin
      */
 <% } -%>
 <% if (pluginComponents.indexOf('settings') >= 0){ -%>
-    public $hasCpSettings = true;
+    public bool $hasCpSettings = true;
 <% } else { -%>
-    public $hasCpSettings = false;
+    public bool $hasCpSettings = false;
 <% } -%>
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
@@ -211,9 +211,9 @@ class <%= pluginHandle %> extends Plugin
      */
 <% } -%>
 <% if (pluginComponents.indexOf('cpsection') >= 0){ -%>
-    public $hasCpSection = true;
+    public bool $hasCpSection = true;
 <% } else { -%>
-    public $hasCpSection = false;
+    public bool $hasCpSection = false;
 <% } -%>
 
     // Public Methods
@@ -441,7 +441,7 @@ class <%= pluginHandle %> extends Plugin
      * @inheritdoc
      */
 <% } -%>
-    protected function createSettingsModel()
+    protected function createSettingsModel(): Settings
     {
         return new Settings();
     }
@@ -458,7 +458,7 @@ class <%= pluginHandle %> extends Plugin
      * @inheritdoc
      */
 <% } -%>
-    protected function settingsHtml(): string
+    protected function settingsHtml(): ?string
     {
         return Craft::$app->view->renderTemplate(
             '<%= pluginKebabHandle %>/settings',

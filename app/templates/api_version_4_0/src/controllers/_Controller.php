@@ -49,11 +49,11 @@ class <%= controllerName[index] %>Controller extends Controller
     // =========================================================================
 
     /**
-     * @var    bool|array Allows anonymous access to this controller's actions.
+     * @var    array|int|bool Allows anonymous access to this controller's actions.
      *         The actions must be in 'kebab-case'
      * @access protected
      */
-    protected $allowAnonymous = ['index', 'do-something'];
+    protected array|int|bool $allowAnonymous = ['index', 'do-something'];
 
     // Public Methods
     // =========================================================================

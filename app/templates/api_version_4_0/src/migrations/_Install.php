@@ -13,7 +13,7 @@ namespace <%= pluginVendorName %>\<%= pluginDirName %>\migrations;
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
 use Craft;
-use craft\config\DbConfig;
+use craft\db\Connection;
 use craft\db\Migration;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
@@ -40,14 +40,6 @@ use craft\db\Migration;
 <% } -%>
 class Install extends Migration
 {
-    // Public Properties
-    // =========================================================================
-
-    /**
-     * @var string The database driver to use
-     */
-    public $driver;
-
     // Public Methods
     // =========================================================================
 
@@ -69,7 +61,6 @@ class Install extends Migration
 <% } -%>
     public function safeUp()
     {
-        $this->driver = Craft::$app->getConfig()->getDb()->driver;
         if ($this->createTables()) {
             $this->createIndexes();
             $this->addForeignKeys();
@@ -99,7 +90,6 @@ class Install extends Migration
 <% } -%>
     public function safeDown()
     {
-        $this->driver = Craft::$app->getConfig()->getDb()->driver;
         $this->removeTables();
 
         return true;
@@ -119,7 +109,7 @@ class Install extends Migration
      * @return bool
      */
 <% } -%>
-    protected function createTables()
+    protected function createTables(): bool
     {
         $tablesCreated = false;
 
@@ -178,21 +168,12 @@ class Install extends Migration
     // <%= pluginDirName %>_<%= record.toLowerCase() %> table
 <% } else { -%>
 <% } -%>
-        $this->createIndex(
-            $this->db->getIndexName(
-                '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}',
-                'some_field',
-                true
-            ),
-            '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}',
-            'some_field',
-            true
-        );
+        $this->createIndex(null, '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', 'some_field', true);
         // Additional commands depending on the db driver
-        switch ($this->driver) {
-            case DbConfig::DRIVER_MYSQL:
+        switch ($this->db->getDriverName()) {
+            case Connection::DRIVER_MYSQL:
                 break;
-            case DbConfig::DRIVER_PGSQL:
+            case Connection::DRIVER_PGSQL:
                 break;
         }
 <% if (index !== array.length - 1) { -%>
@@ -222,15 +203,7 @@ class Install extends Migration
     // <%= pluginDirName %>_<%= record.toLowerCase() %> table
 <% } else { -%>
 <% } -%>
-        $this->addForeignKey(
-            $this->db->getForeignKeyName('{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', 'siteId'),
-            '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}',
-            'siteId',
-            '{{%sites}}',
-            'id',
-            'CASCADE',
-            'CASCADE'
-        );
+        $this->addForeignKey(null, '{{%<%= pluginDirName %>_<%= record.toLowerCase() %>}}', 'siteId', '{{%sites}}', 'id', 'CASCADE', 'CASCADE');
 <% if (index !== array.length - 1) { -%>
 
 <% }; -%>

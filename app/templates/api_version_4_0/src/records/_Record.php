@@ -61,7 +61,7 @@ class <%= recordName[index] %> extends ActiveRecord
      * @inheritdoc
      */
 <% } -%>
-    public static function tableName()
+    public static function tableName(): string
     {
         return '{{%<%= pluginDirName %>_<%= recordName[index].toLowerCase() %>}}';
     }

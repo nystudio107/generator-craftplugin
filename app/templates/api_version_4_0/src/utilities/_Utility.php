@@ -87,7 +87,7 @@ class <%= utilityName[index] %> extends Utility
      * @inheritdoc
      */
 <% } -%>
-    public static function iconPath()
+    public static function iconPath(): ?string
     {
         return Craft::getAlias("@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= utilityName[index].toLowerCase() %>utility/dist/img/<%= utilityName[index] %>-icon.svg");
     }

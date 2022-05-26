@@ -55,7 +55,7 @@ class <%= fieldName[index] %> extends Field
      * @var string
      */
 <% } -%>
-    public $someAttribute = 'Some Default';
+    public string $someAttribute = 'Some Default';
 
     // Static Methods
     // =========================================================================
@@ -95,13 +95,11 @@ class <%= fieldName[index] %> extends Field
      * @inheritdoc
      */
 <% } -%>
-    public function rules()
+    protected function defineRules(): array
     {
-        $rules = parent::rules();
-        $rules = array_merge($rules, [
-            ['someAttribute', 'string'],
-            ['someAttribute', 'default', 'value' => 'Some Default'],
-        ]);
+        $rules = parent::defineRules();
+        $rules[] = ['someAttribute', 'string'];
+        $rules[] = ['someAttribute', 'default', 'value' => 'Some Default'];
         return $rules;
     }
 
@@ -122,7 +120,7 @@ class <%= fieldName[index] %> extends Field
      * @inheritdoc
      */
 <% } -%>
-    public function getContentColumnType(): string
+    public function getContentColumnType(): array|string
     {
         return Schema::TYPE_STRING;
     }
@@ -146,7 +144,7 @@ class <%= fieldName[index] %> extends Field
      * @inheritdoc
      */
 <% } -%>
-    public function normalizeValue($value, ElementInterface $element = null)
+    public function normalizeValue(mixed $value, ?ElementInterface $element = null): mixed
     {
         return $value;
     }
@@ -167,7 +165,7 @@ class <%= fieldName[index] %> extends Field
      * @inheritdoc
      */
 <% } -%>
-    public function serializeValue($value, ElementInterface $element = null)
+    public function serializeValue(mixed $value, ?ElementInterface $element = null): mixed
     {
         return parent::serializeValue($value, $element);
     }
@@ -270,7 +268,7 @@ class <%= fieldName[index] %> extends Field
      * @inheritdoc
      */
 <% } -%>
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         // Render the settings template
         return Craft::$app->getView()->renderTemplate(
@@ -384,24 +382,28 @@ class <%= fieldName[index] %> extends Field
      * @inheritdoc
      */
 <% } -%>
-    public function getInputHtml($value, ElementInterface $element = null): string
+    public function getInputHtml(mixed $value, ?ElementInterface $element = null): string
     {
         // Register our asset bundle
         Craft::$app->getView()->registerAssetBundle(<%= fieldName[index] %>FieldAsset::class);
 
         // Get our id and namespace
-        $id = Craft::$app->getView()->formatInputId($this->handle);
+        $id = $this->getInputId();
         $namespacedId = Craft::$app->getView()->namespaceInputId($id);
 
-        // Variables to pass down to our field JavaScript to let it namespace properly
-        $jsonVars = [
-            'id' => $id,
-            'name' => $this->handle,
-            'namespace' => $namespacedId,
-            'prefix' => Craft::$app->getView()->namespaceInputId(''),
-            ];
-        $jsonVars = Json::encode($jsonVars);
-        Craft::$app->getView()->registerJs("$('#{$namespacedId}-field').<%= pluginHandle %><%= fieldName[index] %>(" . $jsonVars . ");");
+        Craft::$app->getView()->registerJsWithVars(function($namespacedId, $settings) {
+            return <<<JS
+$('#$namespacedId-field').<%= pluginHandle %><%= fieldName[index] %>($settings);
+JS;
+        }, [
+            $namespacedId,
+            [
+                'id' => $id,
+                'name' => $this->handle,
+                'namespace' => $namespacedId,
+                'prefix' => Craft::$app->getView()->namespaceInputId(''),
+            ],
+        ]);
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(

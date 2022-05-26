@@ -69,7 +69,7 @@ class <%= taskName[index] %> extends BaseJob
      * @var string
      */
 <% } -%>
-    public $someAttribute = 'Some Default';
+    public string $someAttribute = 'Some Default';
 
     // Public Methods
     // =========================================================================
@@ -87,7 +87,7 @@ class <%= taskName[index] %> extends BaseJob
      * @inheritdoc
      */
 <% } -%>
-    public function execute($queue)
+    public function execute($queue): void
     {
         // Do work here
     }
@@ -106,7 +106,7 @@ class <%= taskName[index] %> extends BaseJob
      * @inheritdoc
      */
 <% } -%>
-    protected function defaultDescription(): string
+    protected function defaultDescription(): ?string
     {
         return Craft::t('<%= pluginKebabHandle %>', '<%= taskName[index] %>');
     }

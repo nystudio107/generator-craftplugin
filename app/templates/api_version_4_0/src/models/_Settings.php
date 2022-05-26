@@ -52,7 +52,7 @@ class Settings extends Model
      * @var string
      */
 <% } -%>
-    public $someAttribute = 'Some Default';
+    public string $someAttribute = 'Some Default';
 
     // Public Methods
     // =========================================================================
@@ -73,7 +73,7 @@ class Settings extends Model
      * @inheritdoc
      */
 <% } -%>
-    public function rules()
+    protected function defineRules(): array
     {
         return [
             ['someAttribute', 'string'],

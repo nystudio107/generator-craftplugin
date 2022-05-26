@@ -53,7 +53,7 @@ class <%= widgetName[index] %> extends Widget
      * @var string
      */
 <% } -%>
-    public $message = 'Hello, world.';
+    public string $message = 'Hello, world.';
 
     // Static Methods
     // =========================================================================
@@ -85,7 +85,7 @@ class <%= widgetName[index] %> extends Widget
      * @inheritdoc
      */
 <% } -%>
-    public static function iconPath()
+    public static function iconPath(): string
     {
         return Craft::getAlias("@<%= pluginVendorName %>/<%= pluginDirName %>/assetbundles/<%= widgetName[index].toLowerCase() %>widget/dist/img/<%= widgetName[index] %>-icon.svg");
     }
@@ -101,7 +101,7 @@ class <%= widgetName[index] %> extends Widget
      * @inheritdoc
      */
 <% } -%>
-    public static function maxColspan()
+    public static function maxColspan(): ?int
     {
         return null;
     }
@@ -125,16 +125,11 @@ class <%= widgetName[index] %> extends Widget
      * @inheritdoc
      */
 <% } -%>
-    public function rules()
+    protected function defineRules(): array
     {
-        $rules = parent::rules();
-        $rules = array_merge(
-            $rules,
-            [
-                ['message', 'string'],
-                ['message', 'default', 'value' => 'Hello, world.'],
-            ]
-        );
+        $rules = parent::defineRules();
+        $rules[] = ['message', 'string'];
+        $rules[] = ['message', 'default', 'value' => 'Hello, world.'];
         return $rules;
     }
 
@@ -236,7 +231,7 @@ class <%= widgetName[index] %> extends Widget
      * @inheritdoc
      */
 <% } -%>
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         return Craft::$app->getView()->renderTemplate(
             '<%= pluginKebabHandle %>/_components/widgets/<%= widgetName[index] %>_settings',
@@ -259,7 +254,7 @@ class <%= widgetName[index] %> extends Widget
      * @inheritdoc
      */
 <% } -%>
-    public function getBodyHtml()
+    public function getBodyHtml(): ?string
     {
         Craft::$app->getView()->registerAssetBundle(<%= widgetName[index] %>WidgetAsset::class);
 

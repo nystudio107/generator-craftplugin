@@ -50,7 +50,7 @@ class <%= modelName[index] %> extends Model
      * @var string
      */
 <% } -%>
-    public $someAttribute = 'Some Default';
+    public string $someAttribute = 'Some Default';
 
     // Public Methods
     // =========================================================================
@@ -71,7 +71,7 @@ class <%= modelName[index] %> extends Model
      * @inheritdoc
      */
 <% } -%>
-    public function rules()
+    protected function defineRules(): array
     {
         return [
             ['someAttribute', 'string'],

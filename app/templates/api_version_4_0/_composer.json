@@ -22,12 +22,11 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.0.0"
+        "craftcms/cms": "^4.0.0"
     },
 <% if (pluginComponents.indexOf('tests') >= 0){ -%>
     "require-dev": {
-      "craftcms/cms": "^3.2.0",
-      "codeception/codeception": "^3.0",
+      "codeception/codeception": "^4.0",
       "vlucas/phpdotenv": "^3.0"
     },
 <% } -%>

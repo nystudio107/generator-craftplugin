@@ -16,6 +16,8 @@ use Craft;
 use craft\base\Element;
 use craft\elements\db\ElementQuery;
 use craft\elements\db\ElementQueryInterface;
+use craft\models\FieldLayout;
+use craft\models\TagGroup;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
@@ -85,7 +87,7 @@ class <%= elementName[index] %> extends Element
      * @var string
      */
 <% } -%>
-    public $someAttribute = 'Some Default';
+    public string $someAttribute = 'Some Default';
 
     // Static Methods
     // =========================================================================
@@ -258,12 +260,12 @@ class <%= elementName[index] %> extends Element
      * @inheritdoc
      */
 <% } -%>
-    public function rules()
+    protected function defineRules(): array
     {
-        return [
-            ['someAttribute', 'string'],
-            ['someAttribute', 'default', 'value' => 'Some Default'],
-        ];
+        $rules = parent::defineRules();
+        $rules[] = ['someAttribute', 'string'];
+        $rules[] = ['someAttribute', 'default', 'value' => 'Some Default'];
+        return $rules;
     }
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
@@ -293,7 +295,7 @@ class <%= elementName[index] %> extends Element
      * @inheritdoc
      */
 <% } -%>
-    public function getFieldLayout()
+    public function getFieldLayout(): FieldLayout
     {
         $tagGroup = $this->getGroup();
 
@@ -310,7 +312,7 @@ class <%= elementName[index] %> extends Element
      * @inheritdoc
      */
 <% } -%>
-    public function getGroup()
+    public function getGroup(): TagGroup
     {
         if ($this->groupId === null) {
             throw new InvalidConfigException('Tag is missing its group ID');
@@ -392,7 +394,7 @@ class <%= elementName[index] %> extends Element
      * @inheritdoc
      */
 <% } -%>
-    public function afterSave(bool $isNew)
+    public function afterSave(bool $isNew): void
     {
     }
 
@@ -423,7 +425,7 @@ class <%= elementName[index] %> extends Element
      * @inheritdoc
      */
 <% } -%>
-    public function afterDelete()
+    public function afterDelete(): void
     {
     }
 

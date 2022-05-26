@@ -58,7 +58,7 @@ class <%= pluginHandle %>Variable
      * @return string
      */
 <% } -%>
-    public function exampleVariable($optional = null)
+    public function exampleVariable($optional = null): string
     {
         $result = "And away we go to the Twig template...";
         if ($optional) {

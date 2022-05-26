@@ -51,7 +51,7 @@ class <%= pluginHandle %>TwigExtension extends AbstractExtension
      * @inheritdoc
      */
 <% } -%>
-    public function getName()
+    public function getName(): string
     {
         return '<%= pluginHandle %>';
     }
@@ -69,7 +69,7 @@ class <%= pluginHandle %>TwigExtension extends AbstractExtension
      * @inheritdoc
      */
 <% } -%>
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('someFilter', [$this, 'someInternalFunction']),
@@ -89,7 +89,7 @@ class <%= pluginHandle %>TwigExtension extends AbstractExtension
      * @inheritdoc
      */
 <% } -%>
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('someFunction', [$this, 'someInternalFunction']),
@@ -111,7 +111,7 @@ class <%= pluginHandle %>TwigExtension extends AbstractExtension
      * @return string
      */
 <% } -%>
-    public function someInternalFunction($text = null)
+    public function someInternalFunction($text = null): string
     {
         $result = $text . " in the way";
 
