@@ -12,7 +12,6 @@ namespace <%= pluginVendorName %>\<%= pluginDirName %>\records;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
-use Craft;
 use craft\db\ActiveRecord;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>

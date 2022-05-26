@@ -12,8 +12,6 @@ namespace <%= pluginVendorName %>\<%= pluginDirName %>\variables;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
-use Craft;
-
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**
  * <%- pluginName %> Variable

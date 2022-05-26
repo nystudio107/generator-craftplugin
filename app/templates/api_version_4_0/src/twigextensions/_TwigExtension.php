@@ -12,8 +12,6 @@ namespace <%= pluginVendorName %>\<%= pluginDirName %>\twigextensions;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
-use Craft;
-
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;

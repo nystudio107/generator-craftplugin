@@ -12,7 +12,6 @@ namespace <%= pluginVendorName %>\<%= pluginDirName %>\models;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
-use Craft;
 use craft\base\Model;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>

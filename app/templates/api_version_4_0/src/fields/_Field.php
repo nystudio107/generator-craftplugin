@@ -16,9 +16,7 @@ use <%= pluginVendorName %>\<%= pluginDirName %>\assetbundles\<%= fieldName[inde
 use Craft;
 use craft\base\ElementInterface;
 use craft\base\Field;
-use craft\helpers\Db;
 use yii\db\Schema;
-use craft\helpers\Json;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**

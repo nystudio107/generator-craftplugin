@@ -12,9 +12,7 @@ namespace <%= pluginVendorName %>\<%= pluginDirName %>\console\controllers;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
-use Craft;
 use yii\console\Controller;
-use yii\helpers\Console;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
 /**

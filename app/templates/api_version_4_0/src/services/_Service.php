@@ -12,7 +12,6 @@ namespace <%= pluginVendorName %>\<%= pluginDirName%>\services;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
-use Craft;
 use craft\base\Component;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>

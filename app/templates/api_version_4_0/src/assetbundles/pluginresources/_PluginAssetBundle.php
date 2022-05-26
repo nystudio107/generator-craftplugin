@@ -10,7 +10,6 @@
 
 namespace <%= pluginVendorName %>\<%= pluginDirName %>\assetbundles\<%= pluginHandle.toLowerCase() %>;
 
-use Craft;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 

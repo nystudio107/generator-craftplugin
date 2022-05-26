@@ -12,7 +12,6 @@ namespace <%= pluginVendorName %>\<%= pluginDirName %>\controllers;
 
 use <%= pluginVendorName %>\<%= pluginDirName%>\<%= pluginHandle %>;
 
-use Craft;
 use craft\web\Controller;
 
 <% if ((typeof codeComments !== 'undefined') && (codeComments)) { -%>
