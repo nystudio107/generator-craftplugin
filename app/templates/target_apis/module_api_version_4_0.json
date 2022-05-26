@@ -1,0 +1,563 @@
+{
+    "API_NAME": "Module Version 3.0.x",
+    "API_KEY": "module_api_version_3_0",
+    "QUESTIONS": [
+        {
+            "type": "input",
+            "name": "pluginName",
+            "message": "Module name:",
+            "default": "Generic"
+        },
+        {
+            "type": "input",
+            "name": "pluginDescription",
+            "message": "Short description of the module:",
+            "default": "This is a generic Craft CMS module"
+        },
+        {
+            "type": "input",
+            "name": "pluginVersion",
+            "message": "Module initial version:",
+            "default": "1.0.0",
+            "store": true
+        },
+        {
+            "type": "input",
+            "name": "pluginAuthorName",
+            "message": "Module author name:",
+            "default": "John Doe",
+            "store": true
+        },
+        {
+            "type": "input",
+            "name": "pluginAuthorUrl",
+            "message": "Module author URL:",
+            "default": "http://DoeDesign.com/",
+            "store": true
+        },
+        {
+            "type": "checkbox",
+            "name": "codeComments",
+            "message": "Should there be code comments generated:",
+            "store": true,
+            "choices": [
+                {
+                    "key": "codeComments",
+                    "name": "Code Comments",
+                    "value": "codeComments",
+                    "checked": true
+                }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "name": "pluginComponents",
+            "message": "Select what components your module will have:",
+            "choices": [
+                {
+                    "key": "consolecommands",
+                    "name": "ConsoleCommands",
+                    "value": "consolecommands"
+                },
+                {
+                    "key": "controllers",
+                    "name": "Controllers",
+                    "value": "controllers"
+                },
+                {
+                    "key": "elementtypes",
+                    "name": "ElementTypes",
+                    "value": "elementtypes"
+                },
+                {
+                    "key": "fieldtypes",
+                    "name": "FieldTypes",
+                    "value": "fieldtypes"
+                },
+                {
+                    "key": "models",
+                    "name": "Models",
+                    "value": "models"
+                },
+                {
+                    "key": "purchasables",
+                    "name": "Purchasables",
+                    "value": "purchasables"
+                },
+                {
+                    "key": "records",
+                    "name": "Records",
+                    "value": "records"
+                },
+                {
+                    "key": "services",
+                    "name": "Services",
+                    "value": "services"
+                },
+                {
+                    "key": "tasks",
+                    "name": "Jobs",
+                    "value": "tasks"
+                },
+                {
+                    "key": "twigextensions",
+                    "name": "TwigExtensions",
+                    "value": "twigextensions"
+                },
+                {
+                    "key": "utilities",
+                    "name": "Utilities",
+                    "value": "utilities"
+                },
+                {
+                    "key": "variables",
+                    "name": "Variables",
+                    "value": "variables"
+                },
+                {
+                    "key": "widgets",
+                    "name": "Widgets",
+                    "value": "widgets"
+                }
+            ],
+            "store": true
+        },
+        {
+            "when": "consolecommands",
+            "type": "input",
+            "name": "consolecommandName",
+            "message": "Name of your ConsoleCommand:",
+            "default": "",
+            "store": false
+        },
+        {
+            "when": "controllers",
+            "type": "input",
+            "name": "controllerName",
+            "message": "Name of your Controller:",
+            "default": "",
+            "store": false
+        },
+        {
+            "when": "cpsection",
+            "type": "input",
+            "name": "cpsectionName",
+            "message": "Name of your CPSection:",
+            "default": "",
+            "store": false
+        },
+        {
+            "when": "elementtypes",
+            "type": "input",
+            "name": "elementName",
+            "message": "Name of your Element:",
+            "default": "",
+            "store": false
+        },
+        {
+            "when": "fieldtypes",
+            "type": "input",
+            "name": "fieldName",
+            "message": "Name of your Field:",
+            "default": "",
+            "store": false
+        },
+        {
+            "when": "models",
+            "type": "input",
+            "name": "modelName",
+            "message": "Name of your Model:",
+            "default": "",
+            "store": false
+        },
+        {
+            "when": "purchasables",
+            "type": "input",
+            "name": "purchasableName",
+            "message": "Name of your Purchasable:",
+            "default": "",
+            "store": false
+        },
+        {
+            "when": "records",
+            "type": "input",
+            "name": "recordName",
+            "message": "Name of your Record:",
+            "default": "",
+            "store": false
+        },
+        {
+            "when": "services",
+            "type": "input",
+            "name": "serviceName",
+            "message": "Name of your Service:",
+            "default": "",
+            "store": false
+        },
+        {
+            "when": "tasks",
+            "type": "input",
+            "name": "taskName",
+            "message": "Name of your Job:",
+            "default": "",
+            "store": false
+        },
+        {
+            "when": "utilities",
+            "type": "input",
+            "name": "utilityName",
+            "message": "Name of your Utility:",
+            "default": "",
+            "store": false
+        },
+        {
+            "when": "widgets",
+            "type": "input",
+            "name": "widgetName",
+            "message": "Name of your Widget:",
+            "default": "",
+            "store": false
+        }
+    ],
+    "TEMPLATE_FILES": [
+        {
+            "src": "_App.php",
+            "destDir": "config/",
+            "dest": "app.php",
+            "prefix": false
+        },
+        {
+            "src": "src/_Module.php",
+            "destDir": "src/",
+            "dest": ".php",
+            "prefix": true
+        },
+        {
+            "src": "_README.md",
+            "destDir": "",
+            "dest": "README.md",
+            "prefix": false
+        },
+        {
+            "src": "_CHANGELOG.md",
+            "destDir": "",
+            "dest": "CHANGELOG.md",
+            "prefix": false
+        },
+        {
+            "src": "_LICENSE.md",
+            "destDir": "",
+            "dest": "LICENSE.md",
+            "prefix": false
+        },
+        {
+            "src": "_gitignore",
+            "destDir": "",
+            "dest": ".gitignore",
+            "prefix": false
+        },
+        {
+            "src": "src/console/controllers/_Command.php",
+            "destDir": "src/console/controllers/",
+            "dest": "Controller.php",
+            "requires": ["consolecommands"],
+            "subPrefix": "consolecommandName",
+            "prefix": false
+        },
+        {
+            "src": "src/controllers/_Controller.php",
+            "destDir": "src/controllers/",
+            "dest": "Controller.php",
+            "requires": ["controllers"],
+            "subPrefix": "controllerName",
+            "prefix": false
+        },
+        {
+            "src": "src/elements/_Element.php",
+            "destDir": "src/elements/",
+            "dest": ".php",
+            "requires": ["elementtypes"],
+            "subPrefix": "elementName",
+            "prefix": false
+        },
+        {
+            "src": "src/elements/_Purchasable.php",
+            "destDir": "src/elements/",
+            "dest": ".php",
+            "requires": ["purchasables"],
+            "subPrefix": "purchasableName",
+            "prefix": false
+        },
+        {
+            "src": "src/fields/_Field.php",
+            "destDir": "src/fields/",
+            "dest": ".php",
+            "requires": ["fieldtypes"],
+            "subPrefix": "fieldName",
+            "prefix": false
+        },
+        {
+            "src": "src/templates/_components/fields/_input.twig",
+            "destDir": "src/templates/_components/fields/",
+            "dest": "_input.twig",
+            "requires": ["fieldtypes"],
+            "subPrefix": "fieldName",
+            "prefix": false
+        },
+        {
+            "src": "src/templates/_components/fields/_settings.twig",
+            "destDir": "src/templates/_components/fields/",
+            "dest": "_settings.twig",
+            "requires": ["fieldtypes"],
+            "subPrefix": "fieldName",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/fieldresources/_FieldAssetBundle.php",
+            "destDir": "src/assetbundles/",
+            "dest": "FieldAsset.php",
+            "requires": ["fieldtypes"],
+            "subPrefix": "fieldName",
+            "dirSubPrefix": "field/",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/fieldresources/dist/img/field.svg",
+            "destDir": "src/assetbundles/",
+            "dest": "-icon.svg",
+            "requires": ["fieldtypes"],
+            "subPrefix": "fieldName",
+            "dirSubPrefix": "field/dist/img/",
+            "justCopy": true,
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/fieldresources/dist/css/_field.css",
+            "destDir": "src/assetbundles/",
+            "dest": ".css",
+            "requires": ["fieldtypes"],
+            "subPrefix": "fieldName",
+            "dirSubPrefix": "field/dist/css/",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/fieldresources/dist/js/_field.js",
+            "destDir": "src/assetbundles/",
+            "dest": ".js",
+            "requires": ["fieldtypes"],
+            "subPrefix": "fieldName",
+            "dirSubPrefix": "field/dist/js/",
+            "prefix": false
+        },
+        {
+            "src": "src/models/_Model.php",
+            "destDir": "src/models/",
+            "dest": ".php",
+            "requires": ["models"],
+            "subPrefix": "modelName",
+            "prefix": false
+        },
+        {
+            "src": "src/records/_Record.php",
+            "destDir": "src/records/",
+            "dest": ".php",
+            "requires": ["records"],
+            "subPrefix": "recordName",
+            "prefix": false
+        },
+        {
+            "src": "src/migrations/_Install.php",
+            "destDir": "src/migrations/",
+            "dest": "Install.php",
+            "requires": ["records"],
+            "prefix": false
+        },
+        {
+            "src": "src/services/_Service.php",
+            "destDir": "src/services/",
+            "dest": ".php",
+            "requires": ["services"],
+            "subPrefix": "serviceName",
+            "prefix": false
+        },
+        {
+            "src": "src/jobs/_Job.php",
+            "destDir": "src/jobs/",
+            "dest": ".php",
+            "requires": ["tasks"],
+            "subPrefix": "taskName",
+            "prefix": false
+        },
+        {
+            "src": "src/utilities/_Utility.php",
+            "destDir": "src/utilities/",
+            "dest": ".php",
+            "requires": ["utilities"],
+            "subPrefix": "utilityName",
+            "prefix": false
+        },
+        {
+            "src": "src/templates/_components/utilities/_content.twig",
+            "destDir": "src/templates/_components/utilities/",
+            "dest": "_content.twig",
+            "requires": ["utilities"],
+            "subPrefix": "utilityName",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/utilityresources/_UtilityAssetBundle.php",
+            "destDir": "src/assetbundles/",
+            "dest": "UtilityAsset.php",
+            "requires": ["utilities"],
+            "subPrefix": "utilityName",
+            "dirSubPrefix": "utility/",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/utilityresources/dist/img/utility.svg",
+            "destDir": "src/assetbundles/",
+            "dest": "-icon.svg",
+            "requires": ["utilities"],
+            "subPrefix": "utilityName",
+            "dirSubPrefix": "utility/dist/img/",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/utilityresources/dist/css/_utility.css",
+            "destDir": "src/assetbundles/",
+            "dest": ".css",
+            "requires": ["utilities"],
+            "subPrefix": "utilityName",
+            "dirSubPrefix": "utility/dist/css/",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/utilityresources/dist/js/_utility.js",
+            "destDir": "src/assetbundles/",
+            "dest": ".js",
+            "requires": ["utilities"],
+            "subPrefix": "utilityName",
+            "dirSubPrefix": "utility/dist/js/",
+            "prefix": false
+        },
+        {
+            "src": "src/widgets/_Widget.php",
+            "destDir": "src/widgets/",
+            "dest": ".php",
+            "requires": ["widgets"],
+            "subPrefix": "widgetName",
+            "prefix": false
+        },
+        {
+            "src": "src/templates/_components/widgets/_body.twig",
+            "destDir": "src/templates/_components/widgets/",
+            "dest": "_body.twig",
+            "requires": ["widgets"],
+            "subPrefix": "widgetName",
+            "prefix": false
+        },
+        {
+            "src": "src/templates/_components/widgets/_settings.twig",
+            "destDir": "src/templates/_components/widgets/",
+            "dest": "_settings.twig",
+            "requires": ["widgets"],
+            "subPrefix": "widgetName",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/widgetresources/_WidgetAssetBundle.php",
+            "destDir": "src/assetbundles/",
+            "dest": "WidgetAsset.php",
+            "requires": ["widgets"],
+            "subPrefix": "widgetName",
+            "dirSubPrefix": "widget/",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/widgetresources/dist/img/widget.svg",
+            "destDir": "src/assetbundles/",
+            "dest": "-icon.svg",
+            "requires": ["widgets"],
+            "subPrefix": "widgetName",
+            "dirSubPrefix": "widget/dist/img/",
+            "justCopy": true,
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/widgetresources/dist/css/_widget.css",
+            "destDir": "src/assetbundles/",
+            "dest": ".css",
+            "requires": ["widgets"],
+            "subPrefix": "widgetName",
+            "dirSubPrefix": "widget/dist/css/",
+            "prefix": false
+        },
+        {
+            "src": "src/assetbundles/widgetresources/dist/js/_widget.js",
+            "destDir": "src/assetbundles/",
+            "dest": ".js",
+            "requires": ["widgets"],
+            "subPrefix": "widgetName",
+            "dirSubPrefix": "widget/dist/js/",
+            "prefix": false
+        },
+        {
+            "src": "src/translations/_en.php",
+            "destDir": "src/translations/en/",
+            "dest": ".php",
+            "kebabcasePrefix": true,
+            "prefix": true
+        },
+        {
+            "src": "src/twigextensions/_TwigExtension.php",
+            "destDir": "src/twigextensions/",
+            "dest": "TwigExtension.php",
+            "requires": ["twigextensions"],
+            "prefix": true
+        },
+        {
+            "src": "src/variables/_Variable.php",
+            "destDir": "src/variables/",
+            "dest": "Variable.php",
+            "requires": ["variables"],
+            "prefix": true
+        },
+        {
+            "src": "src/assetbundles/moduleresources/_ModuleAssetBundle.php",
+            "destDir": "src/assetbundles/",
+            "dest": "Asset.php",
+            "dirSubPrefix": "/",
+            "prefix": true
+        },
+        {
+            "src": "src/assetbundles/moduleresources/dist/img/plugin.svg",
+            "destDir": "src/assetbundles/",
+            "dest": "-icon.svg",
+            "dirSubPrefix": "/dist/img/",
+            "justCopy": true,
+            "prefix": true
+        },
+        {
+            "src": "src/assetbundles/moduleresources/dist/css/_style.css",
+            "destDir": "src/assetbundles/",
+            "dest": ".css",
+            "dirSubPrefix": "/dist/css/",
+            "prefix": true
+        },
+        {
+            "src": "src/assetbundles/moduleresources/dist/js/_script.js",
+            "destDir": "src/assetbundles/",
+            "dest": ".js",
+            "dirSubPrefix": "/dist/js/",
+            "prefix": true
+        }
+    ],
+    "BOILERPLATE_FILES": [
+    ],
+    "END_INSTALL_COMMANDS": [
+        {
+            "name": "Fin.",
+            "command": "echo 'Fin.'"
+        }
+    ]
+}

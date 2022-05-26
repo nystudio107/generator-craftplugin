@@ -1,0 +1,24 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * <%- pluginName %> module for Craft CMS
+ *
+ * <%= utilityName[index] %> Utility Content
+ *
+ * @author    <%- pluginAuthorName %>
+ * @copyright <%- copyrightNotice %>
+ * @link      <%= pluginAuthorUrl %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
+#}
+
+<h1><%= utilityName[index] %></h1>
+
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@modules/<%= pluginKebabHandle %>/assetbundles/<%= utilityName[index].toLowerCase() %>utility/dist', true) ~ '/img/<%= utilityName[index] %>-icon.svg' %}
+
+<img src="{{ iconUrl }}" height="64" width="64" />
+
+<p>Your Utility content goes here</p>
+
+<p>{{ someVar }}</p>

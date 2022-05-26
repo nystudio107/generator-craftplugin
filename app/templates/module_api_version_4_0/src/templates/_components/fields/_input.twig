@@ -1,0 +1,24 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * <%- pluginName %> module for Craft CMS 3.x
+ *
+ * <%= fieldName[index] %> Field Input
+ *
+ * @author    <%- pluginAuthorName %>
+ * @copyright <%- copyrightNotice %>
+ * @link      <%= pluginAuthorUrl %>
+ * @package   <%= pluginHandle %>
+ * @since     <%= pluginVersion %>
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+        label: 'Some Field',
+        instructions: 'Enter some text here.',
+        id: name,
+        name: name,
+        value: value})
+}}

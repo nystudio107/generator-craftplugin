@@ -1,0 +1,58 @@
+{
+    "name": "<%= pluginVendorName %>/<%= pluginKebabHandle %>",
+    "description": "<%- pluginDescription %>",
+    "type": "craft-plugin",
+    "version": "<%= pluginVersion %>",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "<%= pluginName.toLowerCase() %>"
+    ],
+    "support": {
+        "docs": "<%= pluginDocsUrl %>",
+        "issues": "<%= pluginIssuesUrl %>"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "<%- pluginAuthorName %>",
+            "homepage": "<%= pluginAuthorUrl %>"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+<% if (pluginComponents.indexOf('tests') >= 0){ -%>
+    "require-dev": {
+      "craftcms/cms": "^3.2.0",
+      "codeception/codeception": "^3.0",
+      "vlucas/phpdotenv": "^3.0"
+    },
+<% } -%>
+    "autoload": {
+        "psr-4": {
+          "<%= pluginVendorName %>\\<%= pluginDirName %>\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "<%- pluginName %>",
+        "handle": "<%= pluginKebabHandle %>",
+        "developer": "<%= pluginAuthorName %>",
+        "developerUrl": "<%= pluginAuthorUrl %>",
+        "documentationUrl": "<%= pluginDocsUrl %>",
+        "changelogUrl": "<%= pluginChangelogUrl %>",
+<% if (pluginComponents.indexOf('services') >= 0){ -%>
+<% var components = serviceName -%>
+<% if ((typeof(components[0]) !== 'undefined') && (components[0] !== "")) { -%>
+        "components": {
+<% components.forEach(function(component, index, array){ -%>
+            "<%= component[0].toLowerCase() + component.slice(1) %>": "<%= pluginVendorName %>\\<%= pluginDirName%>\\services\\<%= component%>"<% if (index !== array.length - 1) { %>,<% } %>
+<% }); -%>
+        },
+<% } -%>
+<% } -%>
+        "class": "<%= pluginVendorName %>\\<%= pluginDirName %>\\<%= pluginHandle %>"
+    }
+}
