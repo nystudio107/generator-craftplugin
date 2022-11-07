@@ -21,6 +21,6 @@
     "chalk": "^1.1.1",
     "inflection": "^1.7.1",
     "yeoman-option-or-prompt": "^1.0.2",
-    "yeoman-generator": "^0.20.3"
+    "yeoman-generator": "^5.7.0"
   }
 }
